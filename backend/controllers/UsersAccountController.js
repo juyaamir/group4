@@ -6,9 +6,9 @@ export const getAllUsers = async (req, res) => {
 
     let users;
     if (name) {
-      users = await User.find({ name }).select("-password -isAdmin");
+      users = await User.find({ name }).select("-password");
     } else {
-      users = await User.find().select("-password -isAdmin");
+      users = await User.find().select("-password");
     }
 
     res.json(users);
@@ -21,7 +21,11 @@ export const getAllUsers = async (req, res) => {
  * Create a single user
 
  */
+
 export const createSingleUser = async (req, res) => {
+  const { firstname, lastname, email, password } = req.body;
+
+  //console.log(firstname, lastname, email, password);
   try {
     const user = new User(req.body);
     const createdUser = await user.save();

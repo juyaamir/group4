@@ -5,6 +5,7 @@ import express from "express";
 import usersRoutes from "./routes/UsersAccountRoutes.js";
 
 const app = express();
+app.use(express.json());
 dotenv.config();
 app.use(cors({ origin: "*" }));
 const port = process.env.PORT || 8000;

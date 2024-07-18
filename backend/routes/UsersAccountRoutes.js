@@ -5,7 +5,7 @@ import {
   createSingleUser,
   updateSingleUser,
   deleteSingleUser,
-} from "../controllers/UsersAccountController";
+} from "../controllers/UsersAccountController.js";
 
 const router = Router();
 

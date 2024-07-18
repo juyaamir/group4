@@ -18,8 +18,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+
+  //hobbies, age,nationality,interests (dont keep it required)
 });
 
-const Accountdetails = mongoose.model("Accountdetails", userSchema);
+const UsersAccount = mongoose.model("UsersAccount", userSchema);
 
-export default Accountdetails;
+export default UsersAccount;

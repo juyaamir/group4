@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
+const travelSchema = mongoose.Schema({
   userid: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -22,6 +22,6 @@ const userSchema = mongoose.Schema({
   },
 });
 
-const Travelhistory = mongoose.model("Travelhistory", userSchema);
+const Travelhistory = mongoose.model("Travelhistory", travelSchema);
 
 export default Travelhistory;

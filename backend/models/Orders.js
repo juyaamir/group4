@@ -12,6 +12,7 @@ const ordersSchema = mongoose.Schema(
       required: true,
       default: 0.0,
     },
+    //items array should refer products (one thing or many)
     itemname: {
       type: String,
       required: true,

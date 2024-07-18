@@ -60,10 +60,9 @@ export const getSingleUser = async (req, res) => {
  */
 export const updateSingleUser = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    }).select("-password");
+    const user = await User.findByIdAndUpdate(req.params.id, req.body).select(
+      "-password"
+    );
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 
 import usersRoutes from "./routes/UsersAccountRoutes.js";
+import orderRouter from "./routes/OrderRouter.js";
 
 const app = express();
 app.use(express.json());
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/usersaccount", usersRoutes);
+app.use("/api/v1/order", orderRouter);
 
 app.get("/*", (req, res) => {
   res.send("invalid endpoint!");

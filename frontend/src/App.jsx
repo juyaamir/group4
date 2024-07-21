@@ -1,10 +1,10 @@
+import LocationAPI from "./components/LocationAPI"
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <h1 className="text-red-600 bg-yellow-300">App</h1>
-    </>
+    <div>
+      <LocationAPI />
+    </div>
   )
 }
 

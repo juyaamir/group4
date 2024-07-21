@@ -10,14 +10,16 @@ const fetchLocation = async (location) => {
   }
 };
 
+const initialFormData = {
+  location: '',
+  start: '',
+  end: ''
+}
+
 const LocationAPI = () => {
   const [error, setError] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
-  const [formData, setFormData] = useState({
-    location: '',
-    start: '',
-    end: ''
-  });
+  const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
 
   const handleChange = async (e) => {
@@ -40,8 +42,16 @@ const LocationAPI = () => {
     }
   };
 
-  const handleSubmit =  (e) => {
+  const handleSubmit =  async(e) => {
     e.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&&start=${formData.start}&&end=${formData.end}`);
+      console.log(response.data);
+      setFormData(initialFormData);
+    } catch (error) {
+      console.error('Error fetching the weather', error);
+    }
+
 
   };
 
@@ -58,26 +68,7 @@ const LocationAPI = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} disabled={loading} className="p-4 mx-auto my-20 border border-gray-200 rounded-lg w-64 ">
-        <label htmlFor="location" className="mx-4" >
-            Destination: 
-        </label>
-        <input
-          type="search"
-          name="location"
-          id="location"
-          value={formData.location}
-          onChange={handleChange}
-          placeholder="Enter the destination"
-          className="p-1 text-center mx-4 my-1 border border-gray-200 w-52"
-        />
-        <ul>
-          {suggestions.map((suggestion, index) => (
-            <li key={index} onClick={() => handleSuggestionClick(suggestion)} className="bg-gray-50 hover:cursor-pointer hover:bg-gray-200 m-2">
-              {suggestion.display_name}
-            </li>
-          ))}
-        </ul>
-
+        
         <label htmlFor="start" className="mx-4" >
             Start Date: 
         </label>
@@ -102,6 +93,28 @@ const LocationAPI = () => {
           placeholder="Enter the end date"
           className="p-1 text-center mx-4 my-1 border border-gray-200 w-52"
         />
+
+<label htmlFor="location" className="mx-4" >
+        Destination: 
+        </label>
+        <input
+          type="search"
+          name="location"
+          id="location"
+          value={formData.location}
+          onChange={handleChange}
+          placeholder="Enter the destination"
+          className="p-1 text-center mx-4 my-1 border border-gray-200 w-52"
+        />
+        <ul>
+          {suggestions.map((suggestion, index) => (
+            <li key={index} onClick={() => handleSuggestionClick(suggestion)} className="bg-gray-50 hover:cursor-pointer hover:bg-gray-200 m-2">
+              {suggestion.display_name}
+            </li>
+          ))}
+        </ul>
+
+
         <button type="submit" 
             className="border border-gray-300 px-3 bg-orange-500 rounded-lg mx-auto block text-white p-1 my-2 "
             disabled={loading} >

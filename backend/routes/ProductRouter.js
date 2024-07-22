@@ -1,22 +1,22 @@
 import { Router } from "express";
 import {
-  getAllproducts,
-  getSingleproduct,
-  createSinglproduct,
-  updateSingleproduct,
-  deleteSingleproduct,
+  getAllProducts,
+  getSingleProduct,
+  createSinglProduct,
+  updateSingleProduct,
+  deleteSingleProduct,
 } from "../controllers/ProductController.js";
 
-const productrouter = Router();
+const productRouter = Router();
 
-productrouter.get("/", getAllproducts).post("/", createSinglproduct);
+productRouter.get("/", getAllProducts).post("/", createSinglProduct);
 
 /* orderrouter.post("/", createSingleUser); */
 
 productrouter
-  .get("/:id", getSingleproduct)
-  .put("/:id", updateSingleproduct)
-  .delete("/:id", deleteSingleproduct);
+  .get("/:id", getSingleProduct)
+  .put("/:id", updateSingleProduct)
+  .delete("/:id", deleteSingleProduct);
 
 /* orderrouter.put("/:id", updateSingleUser);
 orderrouter.delete("/:id", deleteSingleUser); */

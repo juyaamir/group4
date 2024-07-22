@@ -20,11 +20,20 @@ function HomePage() {
               </Link>
             </li>
             <li>
+              <Link to="/home2" className="text-gray-900 hover:text-red-500">
+                HOME2 😜
+              </Link>
+            </li>
+            <li>
               <Link to="/products" className="text-gray-900 hover:text-red-500">
                 PRODUCTS
               </Link>
             </li>
-            <li></li>
+            <li>
+            <Link to="/login" className="text-gray-900 hover:text-red-500">
+                LOGIN
+              </Link>
+            </li>
             <li>
               <Link to="/signup" className="text-gray-900 hover:text-red-500">
                 SIGNUP

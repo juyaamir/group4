@@ -29,10 +29,12 @@ function App() {
       <LocationAPI />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/home2" element={<Home />} />
       </Routes>
 
       <ToastContainer

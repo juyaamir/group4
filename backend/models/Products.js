@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const productsSchema = mongoose.Schema(
   {
-    itemname: {
+    productname: {
       type: String,
       required: true,
     },
@@ -25,6 +25,6 @@ const productsSchema = mongoose.Schema(
   }
 );
 
-const Products = mongoose.model("products", productsSchema);
+const Products = mongoose.model("Products", productsSchema);
 
 export default Products;

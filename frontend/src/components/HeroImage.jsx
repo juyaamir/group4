@@ -1,5 +1,5 @@
-import React from "react";
 
+import { Link } from "react-router-dom";
 const HeroImage = () => {
   return (
     <>
@@ -20,9 +20,9 @@ const HeroImage = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-primary"> Login</button>
+            <button className="btn btn-primary"><Link to='/signin'>SignIn</Link> </button>
             <button className="btn btn-outline btn-success ml-10">
-              SignUp
+               <Link to='/signup'>SignUp</Link>
             </button>
           </div>
         </div>

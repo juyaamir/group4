@@ -16,27 +16,27 @@ function HomePage() {
           <ul className="flex items-center space-x-6">
             <li>
               <Link to="/home" className="text-gray-900 hover:text-red-500">
-                HOME
-              </Link>
-            </li>
-            <li>
-              <Link to="/home2" className="text-gray-900 hover:text-red-500">
-                HOME2 😜
+                Home
               </Link>
             </li>
             <li>
               <Link to="/products" className="text-gray-900 hover:text-red-500">
-                PRODUCTS
+                Products
               </Link>
             </li>
             <li>
-            <Link to="/login" className="text-gray-900 hover:text-red-500">
-                LOGIN
+              <Link to="/vacation-plan" className="text-gray-900 hover:text-red-500">
+                Plan your vacation
+              </Link>
+            </li>
+            <li>
+            <Link to="/signin" className="text-gray-900 hover:text-red-500">
+                SignIn
               </Link>
             </li>
             <li>
               <Link to="/signup" className="text-gray-900 hover:text-red-500">
-                SIGNUP
+                SignUp
               </Link>
             </li>
           </ul>

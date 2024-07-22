@@ -1,17 +1,10 @@
-
-
-import Header from "../components/Header";
-import Main from "../components/Main";
-import Footer from "../components/Footer";
-import HeroImage from "../components/HeroImage";
+import HomePage from "./HomePage/HomePage.jsx";
 
 const Home = () => {
   return (
     <div>
-      <Header />
-      <HeroImage />
-      <Main />
-      <Footer />
+      <p>handleSuggestionClick</p>
+      <HomePage />
     </div>
   );
 };

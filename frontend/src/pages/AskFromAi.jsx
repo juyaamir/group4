@@ -1,7 +1,7 @@
 import React from "react";
 
 const AskFromAi = () => {
-  return <div>AskFromAi</div>;
+  return <div>Plan your vacation</div>;
 };
 
 export default AskFromAi;

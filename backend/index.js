@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 /* import session from "express-session"; */
 
-
 import connectDB from "./db/db.js";
 import weatherRouter from "./routes/API/weatherRoutes.js";
 
@@ -13,9 +12,9 @@ import userRouter from "./routes/UsersAccountRoutes.js";
 import orderRouter from "./routes/OrderRouter.js";
 import productRouter from "./routes/ProductRouter.js";
 
-
+// importing routes
+import userRouter2 from "./routes/UserRoute/index.js";
 import loggingRoutes from "./routes/LoginRoute/index.js";
-
 
 const app = express();
 app.use(express.json());
@@ -51,7 +50,6 @@ app.use((req, res, next) => {
   next();
  */
 
-
 //location API route
 app.use("/api/v1/location", locationRouter);
 
@@ -69,7 +67,7 @@ app.get("/*", (req, res) => {
 
 // End points
 app.use("/api/v1/auth", loggingRoutes);
-app.use("/api/v1/usersaccounts", userRouter);
+app.use("/api/v1/usersaccounts", userRouter2);
 
 // app listening port
 const port = process.env.PORT || 8000;

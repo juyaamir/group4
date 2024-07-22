@@ -10,13 +10,11 @@ import locationRouter from "./routes/API/locationRoutes.js";
 import orderRouter from "./routes/OrderRouter.js";
 import productRouter from "./routes/ProductRouter.js";
 
-
 const app = express();
 app.use(express.json());
 dotenv.config();
 app.use(cors({ origin: "*" }));
 const port = process.env.PORT || 8000;
-
 
 connectDB();
 
@@ -24,15 +22,15 @@ app.get("/", (req, res) => {
   res.send(`Hello from Express!`);
 });
 //user account API route
-app.use("/api/v1/user-account", userRouter);
 
 //location API route
 app.use("/api/v1/location", locationRouter);
 
+//Routes for models
 
+app.use("/api/v1/user-account", userRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/product", productRouter);
-
 
 //weather API route
 app.use("/api/v1/weather", weatherRouter);

@@ -11,7 +11,7 @@ import { Routes, Route } from "react-router-dom";
 import Product from "./pages/Product";
 import OrderSummary from "./pages/OrderSummary";
 import Checkout from "./pages/Checkout";
-import SuggestionFromAi from "./pages/SuggestionFromAi";
+import AskFromAi from "./pages/AskFromAi";
 
 const App = () => {
   return (
@@ -33,7 +33,7 @@ const App = () => {
         <Route path="/products" element={<Product />} />
         <Route path="/order-summary" element={<OrderSummary />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/suggestion-from-ai" element={<SuggestionFromAi />} />
+        <Route path="/ask-from-ai" element={<AskFromAi />} />
       </Routes>
     </>
   );

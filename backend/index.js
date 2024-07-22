@@ -3,10 +3,11 @@ import dotenv from "dotenv";
 import express from "express";
 
 import weatherRouter from "./routes/API/weatherRoutes.js";
-import userRouter from "./routes/UsersAccountRoutes.js";
+
 import connectDB from "./db/db.js";
 import locationRouter from "./routes/API/locationRoutes.js";
 
+import userRouter from "./routes/UsersAccountRoutes.js";
 import orderRouter from "./routes/OrderRouter.js";
 import productRouter from "./routes/ProductRouter.js";
 
@@ -21,12 +22,11 @@ connectDB();
 app.get("/", (req, res) => {
   res.send(`Hello from Express!`);
 });
-//user account API route
 
 //location API route
 app.use("/api/v1/location", locationRouter);
 
-//Routes for models
+//Routes for models (user account, product, order) //user account API route
 
 app.use("/api/v1/user-account", userRouter);
 app.use("/api/v1/order", orderRouter);

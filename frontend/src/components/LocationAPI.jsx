@@ -21,6 +21,7 @@ const LocationAPI = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
+  const [weather, setWeather] = useState(null);
 
   const handleChange = async (e) => {
     const { name, value } = e.target;
@@ -46,6 +47,7 @@ const LocationAPI = () => {
     e.preventDefault();
     try {
       const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&&start=${formData.start}&&end=${formData.end}`);
+      setWeather(response.data);
       console.log(response.data);
       setFormData(initialFormData);
     } catch (error) {
@@ -121,6 +123,16 @@ const LocationAPI = () => {
             Search
         </button>
       </form>
+      {weather ? (
+        <div className="mx-auto my-20 border border-gray-200 rounded-lg w-64 p-4">
+          <h2 className="text-center">Weather</h2>
+          <p>Latitude: {weather.latitude}</p>
+          <p>Longitude: {weather.longitude}</p>
+          <p>Resolved address: {weather.resolvedAddress}</p>
+          <p>Time Zone: {weather.timezone}°</p>
+          <p>Description: {weather.currentConditions.description}</p>
+        </div>
+      ): null}
     </div>
   );
 };

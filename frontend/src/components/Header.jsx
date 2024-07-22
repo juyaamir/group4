@@ -27,7 +27,7 @@ const Header = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link to={`/`}>Home</Link>
+              <Link to={`/home`}>Home</Link>
             </li>
             <li>
               <Link to={`/about`}>About</Link>
@@ -46,7 +46,7 @@ const Header = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">JourneyPack</a>
+        <a className="btn btn-ghost text-3xl Sofia">JourneyPack</a>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

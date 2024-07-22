@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 /* import session from "express-session"; */
 
-// database connection
 import connectDB from "./db/db.js";
 import weatherRouter from "./routes/API/weatherRoutes.js";
 
@@ -17,7 +16,6 @@ import productRouter from "./routes/ProductRouter.js";
 import userRouter2 from "./routes/UserRoute/index.js";
 import loggingRoutes from "./routes/LoginRoute/index.js";
 
-// create application from express
 const app = express();
 app.use(express.json());
 dotenv.config();

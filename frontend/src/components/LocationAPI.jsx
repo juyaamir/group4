@@ -10,6 +10,7 @@ const fetchLocation = async (location) => {
   }
 };
 
+
 const initialFormData = {
   location: '',
   start: '',
@@ -21,7 +22,7 @@ const LocationAPI = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
-  const [weather, setWeather] = useState(null);
+  //const [weather, setWeather] = useState(null);
 
   const handleChange = async (e) => {
     const { name, value } = e.target;
@@ -46,14 +47,29 @@ const LocationAPI = () => {
   const handleSubmit =  async(e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`https://journeypack.onrender.com/api/v1/weather?destination=${formData.location}&&start=${formData.start}&&end=${formData.end}`);
-      setWeather(response.data);
-      console.log(response.data);
-      setFormData(initialFormData);
+      const response = await axios.get(`https://journeypack.onrender.com/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
+     // setWeather(response.data);
+      const {data} = response;
+      const dataToSend = {
+        timezone: data.timezone, resolvedAddress: data.resolvedAddress, 
+        days: data.days.map((day) => ({
+          datetime: day.datetime,
+          tempmax: day.tempmax,
+          tempmin: day.tempmin,
+          precipprob: day.precipprob,
+          windgust: day.windgust,
+          humidity: day.humidity,
+          uvindex: day.uvindex,
+          condition: day.conditions,
+          description: day.description
+        })) 
+      };
+      console.log(dataToSend);
+      
+     // setFormData(initialFormData);
     } catch (error) {
       console.error('Error fetching the weather', error);
     }
-
 
   };
 
@@ -123,18 +139,29 @@ const LocationAPI = () => {
             Search
         </button>
       </form>
-      {weather ? (
+
+  {/*     {
+      weather ? (
         <div className="mx-auto my-20 border border-gray-200 rounded-lg w-64 p-4">
           <h2 className="text-center">Weather</h2>
-          <p>Latitude: {weather.latitude}</p>
-          <p>Longitude: {weather.longitude}</p>
-          <p>Resolved address: {weather.resolvedAddress}</p>
+          <p>Address: {weather.resolvedAddress}</p>
           <p>Time Zone: {weather.timezone}</p>
-      
-          <p>Time Zone: {weather.timezone}°</p>
-  
+          <p>Days:</p>
+          <ul>
+            {weather.days.map((day, index) => (
+                <li key={index} className="border border-gray-200 p-2 m-2">
+                  <p>datetime: {day.datetime}, conditions: {day.conditions}, description: {day.description}, tempmax: {day.tempmax}, tempmin: {day.tempmin}, 
+                    precipprob: {day.precipprob}, windgust: {day.windgust}, humidity: {day.humidity}, uvindex: {day.uvindex}
+                  </p>
+                  
+                </li> 
+            ))}
+          </ul>
+          
         </div>
-      ): null}
+      ): null
+      }
+ */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-/* import usersRoutes from "./routes/UsersAccountRoutes.js"; */
+
 import weatherRouter from "./routes/API/weatherRoutes.js";
 import userRouter from "./routes/UsersAccountRoutes.js";
 import connectDB from "./db/db.js";

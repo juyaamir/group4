@@ -13,7 +13,7 @@ productRouter.get("/", getAllProducts).post("/", createSinglProduct);
 
 /* orderrouter.post("/", createSingleUser); */
 
-productrouter
+productRouter
   .get("/:id", getSingleProduct)
   .put("/:id", updateSingleProduct)
   .delete("/:id", deleteSingleProduct);
@@ -21,4 +21,4 @@ productrouter
 /* orderrouter.put("/:id", updateSingleUser);
 orderrouter.delete("/:id", deleteSingleUser); */
 
-export default productrouter;
+export default productRouter;

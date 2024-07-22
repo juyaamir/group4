@@ -129,6 +129,8 @@ const LocationAPI = () => {
           <p>Latitude: {weather.latitude}</p>
           <p>Longitude: {weather.longitude}</p>
           <p>Resolved address: {weather.resolvedAddress}</p>
+          <p>Time Zone: {weather.timezone}</p>
+      
           <p>Time Zone: {weather.timezone}°</p>
   
         </div>

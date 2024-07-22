@@ -1,21 +1,21 @@
 import { Router } from "express";
 import {
   getAllorders,
-  getSingleorder,
-  createSingleorder,
-  updateSingleorder,
+  getSingleOrder,
+  createSinglorder,
+  updateSingleOrder,
   deleteSingleorder,
 } from "../controllers/OrderController.js";
 
 const orderrouter = Router();
 
-orderrouter.get("/", getAllorders).post("/", createSingleorder);
+orderrouter.get("/", getAllorders).post("/", createSinglorder);
 
 /* orderrouter.post("/", createSingleUser); */
 
 orderrouter
-  .get("/:id", getSingleorder)
-  .put("/:id", updateSingleorder)
+  .get("/:id", getSingleOrder)
+  .put("/:id", updateSingleOrder)
   .delete("/:id", deleteSingleorder);
 
 /* orderrouter.put("/:id", updateSingleUser);

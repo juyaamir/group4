@@ -4,14 +4,14 @@ export const getAllOrders = async (req, res) => {
   try {
     const { price, type } = req.query;
 
-    let userorder;
+    let userOrder;
     if (price) {
-      userorder = await Order.find({ price });
+      userOrder = await Order.find({ price });
     } else {
-      userorder = await Order.find();
+      userOrder = await Order.find();
     }
 
-    res.json(userorder);
+    res.json(userOrder);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error });
   }

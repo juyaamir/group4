@@ -39,9 +39,9 @@ export const createSinglorder = async (req, res) => {
  * Get a single Order by ID
 
  */
-export const getSingleOrder = async (req, res) => {
+export const getSingleorder = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id).select("-password");
+    const order = await Order.findById(req.params.id);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
@@ -58,7 +58,7 @@ export const getSingleOrder = async (req, res) => {
  * Update a single Order by ID
  
  */
-export const updateSingleOrder = async (req, res) => {
+export const updateSingleorder = async (req, res) => {
   try {
     const order = await Order.findByIdAndUpdate(req.params.id, req.body);
     if (!order) {

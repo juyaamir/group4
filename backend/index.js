@@ -4,6 +4,7 @@ import express from "express";
 
 import usersRoutes from "./routes/UsersAccountRoutes.js";
 import orderRouter from "./routes/OrderRouter.js";
+import productRouter from "./routes/ProductRouter.js";
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/usersaccount", usersRoutes);
 app.use("/api/v1/order", orderRouter);
+app.use("/api/v1/product", productRouter);
 
 app.get("/*", (req, res) => {
   res.send("invalid endpoint!");

@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {
   getAllorders,
-  getSingleOrder,
+  getSingleorder,
   createSinglorder,
-  updateSingleOrder,
+  updateSingleorder,
   deleteSingleorder,
 } from "../controllers/OrderController.js";
 
@@ -14,8 +14,8 @@ orderrouter.get("/", getAllorders).post("/", createSinglorder);
 /* orderrouter.post("/", createSingleUser); */
 
 orderrouter
-  .get("/:id", getSingleOrder)
-  .put("/:id", updateSingleOrder)
+  .get("/:id", getSingleorder)
+  .put("/:id", updateSingleorder)
   .delete("/:id", deleteSingleorder);
 
 /* orderrouter.put("/:id", updateSingleUser);

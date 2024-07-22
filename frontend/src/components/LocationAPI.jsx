@@ -3,7 +3,7 @@ import axios from "axios";
 
 const fetchLocation = async (location) => {
   try {
-    const response = await axios.get(`http://localhost:8000/api/v1/location?destination=${location}`);
+    const response = await axios.get(`https://journeypack.onrender.com/api/v1/location?destination=${location}`);
     return response.data;
   } catch (error) {
     throw error.response?.data?.error || 'Error fetching the location';
@@ -46,7 +46,7 @@ const LocationAPI = () => {
   const handleSubmit =  async(e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&&start=${formData.start}&&end=${formData.end}`);
+      const response = await axios.get(`https://journeypack.onrender.com/api/v1/weather?destination=${formData.location}&&start=${formData.start}&&end=${formData.end}`);
       setWeather(response.data);
       console.log(response.data);
       setFormData(initialFormData);
@@ -130,7 +130,7 @@ const LocationAPI = () => {
           <p>Longitude: {weather.longitude}</p>
           <p>Resolved address: {weather.resolvedAddress}</p>
           <p>Time Zone: {weather.timezone}°</p>
-          <p>Description: {weather.currentConditions.description}</p>
+  
         </div>
       ): null}
     </div>

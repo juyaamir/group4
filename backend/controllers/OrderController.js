@@ -1,17 +1,17 @@
 import Order from "../models/Orders.js";
 
-export const getAllorders = async (req, res) => {
+export const getAllOrders = async (req, res) => {
   try {
     const { price, type } = req.query;
 
-    let userorder;
+    let userOrder;
     if (price) {
-      userorder = await Order.find({ price });
+      userOrder = await Order.find({ price });
     } else {
-      userorder = await Order.find();
+      userOrder = await Order.find();
     }
 
-    res.json(userorder);
+    res.json(userOrder);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error });
   }
@@ -22,7 +22,7 @@ export const getAllorders = async (req, res) => {
 
  */
 
-export const createSinglorder = async (req, res) => {
+export const createSinglOrder = async (req, res) => {
   const { userid, price, productid } = req.body;
 
   //console.log(userid, price, productid);
@@ -39,7 +39,7 @@ export const createSinglorder = async (req, res) => {
  * Get a single Order by ID
 
  */
-export const getSingleorder = async (req, res) => {
+export const getSingleOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
     if (!order) {
@@ -58,7 +58,7 @@ export const getSingleorder = async (req, res) => {
  * Update a single Order by ID
  
  */
-export const updateSingleorder = async (req, res) => {
+export const updateSingleOrder = async (req, res) => {
   try {
     const order = await Order.findByIdAndUpdate(req.params.id, req.body);
     if (!order) {
@@ -77,7 +77,7 @@ export const updateSingleorder = async (req, res) => {
  * Delete a single order by ID
 
  */
-export const deleteSingleorder = async (req, res) => {
+export const deleteSingleOrder = async (req, res) => {
   try {
     const order = await Order.findByIdAndDelete(req.params.id);
     if (!order) {

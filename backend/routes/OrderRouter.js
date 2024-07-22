@@ -1,24 +1,24 @@
 import { Router } from "express";
 import {
-  getAllorders,
-  getSingleorder,
-  createSinglorder,
-  updateSingleorder,
-  deleteSingleorder,
+  getAllOrders,
+  getSingleOrder,
+  createSinglOrder,
+  updateSingleOrder,
+  deleteSingleOrder,
 } from "../controllers/OrderController.js";
 
-const orderrouter = Router();
+const orderRouter = Router();
 
-orderrouter.get("/", getAllorders).post("/", createSinglorder);
+orderRouter.get("/", getAllOrders).post("/", createSinglOrder);
 
 /* orderrouter.post("/", createSingleUser); */
 
-orderrouter
-  .get("/:id", getSingleorder)
-  .put("/:id", updateSingleorder)
-  .delete("/:id", deleteSingleorder);
+orderRouter
+  .get("/:id", getSingleOrder)
+  .put("/:id", updateSingleOrder)
+  .delete("/:id", deleteSingleOrder);
 
 /* orderrouter.put("/:id", updateSingleUser);
 orderrouter.delete("/:id", deleteSingleUser); */
 
-export default orderrouter;
+export default orderRouter;

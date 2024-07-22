@@ -6,9 +6,9 @@ export const getAllUsers = async (req, res) => {
 
     let users;
     if (name) {
-      users = await User.find({ name }).select("-password");
+      users = await User.find({ name });
     } else {
-      users = await User.find().select("-password");
+      users = await User.find();
     }
 
     res.json(users);
@@ -41,7 +41,7 @@ export const createSingleUser = async (req, res) => {
  */
 export const getSingleUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).select("-password");
+    const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -60,9 +60,7 @@ export const getSingleUser = async (req, res) => {
  */
 export const updateSingleUser = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body).select(
-      "-password"
-    );
+    const user = await User.findByIdAndUpdate(req.params.id, req.body);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

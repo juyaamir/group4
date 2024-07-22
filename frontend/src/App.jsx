@@ -8,26 +8,20 @@ import Signup from "./components/Signup.jsx";
 
 import LocationAPI from "./components/LocationAPI";
 import Home from "./pages/Home";
-
-
-/* import About from "./pages/About";
-import Contact from "./pages/Contact";
-import PersonalAccountDetail from "./pages/PersonalAccountDetail";
-
-
-import Product from "./pages/Product";
-import OrderSummary from "./pages/OrderSummary";
-import Checkout from "./pages/Checkout";
-import AskFromAi from "./pages/AskFromAi";
- */
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import HeroImage from "./components/HeroImage.jsx";
 
 
 function App() {
   return (
     <>
-      {/* <h1 className="text-red-600 bg-yellow-300">App</h1> */}
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <div className="flex-grow">
+        <HeroImage />
+        <HomePage />
       <LocationAPI />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
@@ -50,6 +44,9 @@ function App() {
         pauseOnHover
         theme="light"
       />
+      </div>
+      <Footer />
+    </div>
     </>
   );
 }

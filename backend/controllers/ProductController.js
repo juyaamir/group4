@@ -6,9 +6,9 @@ export const getAllProducts = async (req, res) => {
 
     let userProduct;
     if (productName) {
-      userproduct = await Product.find({ productName });
+      userProduct = await Product.find({ productName });
     } else {
-      userproduct = await Product.find();
+      userProduct = await Product.find();
     }
 
     res.json(userProduct);

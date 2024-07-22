@@ -7,8 +7,9 @@ import userRouter from "./routes/UsersAccountRoutes.js";
 import connectDB from "./db/db.js";
 import locationRouter from "./routes/API/locationRoutes.js";
 
-import usersRoutes from "./routes/UsersAccountRoutes.js";
-/* import orderRouter from "./routes/OrderRouter.js"; */
+import orderRouter from "./routes/OrderRouter.js";
+import productRouter from "./routes/ProductRouter.js";
+
 
 const app = express();
 app.use(express.json());
@@ -27,8 +28,11 @@ app.use("/api/v1/user-account", userRouter);
 
 //location API route
 app.use("/api/v1/location", locationRouter);
-app.use("/api/v1/usersaccount", usersRoutes);
-//app.use("/api/v1/order", orderRouter);
+
+
+app.use("/api/v1/order", orderRouter);
+app.use("/api/v1/product", productRouter);
+
 
 //weather API route
 app.use("/api/v1/weather", weatherRouter);

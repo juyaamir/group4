@@ -13,7 +13,7 @@ const ordersSchema = mongoose.Schema(
       default: 0.0,
     },
     //items array should refer products (one thing or many)
-    itemname: [
+    productid: [
       {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -26,6 +26,6 @@ const ordersSchema = mongoose.Schema(
   }
 );
 
-const Orders = mongoose.model("products", ordersSchema);
+const Orders = mongoose.model("Orders", ordersSchema);
 
 export default Orders;

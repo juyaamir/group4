@@ -4,14 +4,14 @@ import { Router } from "express";
 import {
   getAllorders,
   getSingleorder,
-  createSingleorder,
+  createSinglorder,
   updateSingleorder,
   deleteSingleorder,
 } from "../controllers/OrderController.js";
 
 const orderrouter = Router();
 
-orderrouter.get("/", getAllorders).post("/", createSingleorder);
+orderrouter.get("/", getAllorders).post("/", createSinglorder);
 
 
  */

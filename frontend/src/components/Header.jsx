@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import React from "react";
+import { Alert } from "antd";
+import Marquee from "react-fast-marquee";
 
 const Header = () => {
   return (
@@ -46,7 +49,16 @@ const Header = () => {
               <Link to={`/product`}>Products</Link>
             </li>
             <li>
-              <Link to={`/plan-your-vacation`}>Plan Your Vacation</Link>
+              <Link to={`/plan-your-vacation`}>
+                <Alert
+                  banner
+                  message={
+                    <Marquee pauseOnHover gradient={false}>
+                      Ask from <strong>JourneyPack</strong>
+                    </Marquee>
+                  }
+                />
+              </Link>
             </li>
             <li>
               <Link to={`/contact-us`}>Contact Us</Link>
@@ -86,7 +98,17 @@ const Header = () => {
               <Link to={`/product`}>Products</Link>
             </li>
             <li>
-              <Link to={`/plan-your-vacation`}>Plan Your Vacation</Link>
+              <Link to={`/plan-your-vacation`}>
+                <Alert
+                  banner
+                  message={
+                    <Marquee>
+                      Need help what to pack! Ask From
+                      <strong>&nbsp;JourneyPack</strong>
+                    </Marquee>
+                  }
+                />
+              </Link>
             </li>
             <li>
               <Link to={`/contact-us`}>Contact Us</Link>
@@ -137,8 +159,13 @@ const Header = () => {
               </div>
             </div>
           </div>
+          <div>
+            <Link to={`/signin`}>
+              <button className="btn btn-outline">Sign in</button>
+            </Link>
+          </div>
 
-          <div className="dropdown dropdown-end">
+          {/*  <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
@@ -163,7 +190,7 @@ const Header = () => {
                 <a>Logout</a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

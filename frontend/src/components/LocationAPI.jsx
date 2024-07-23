@@ -3,7 +3,7 @@ import axios from "axios";
 
 const fetchLocation = async (location) => {
   try {
-    const response = await axios.get(`https://journeypack.onrender.com/api/v1/location?destination=${location}`);
+    const response = await axios.get(`http://localhost:8000/api/v1/location?destination=${location}`);
     return response.data;
   } catch (error) {
     throw error.response?.data?.error || 'Error fetching the location';
@@ -47,7 +47,7 @@ const LocationAPI = () => {
   const handleSubmit =  async(e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`https://journeypack.onrender.com/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
+      const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
      // setWeather(response.data);
       const {data} = response;
       const dataToSend = {
@@ -139,29 +139,6 @@ const LocationAPI = () => {
             Search
         </button>
       </form>
-
-  {/*     {
-      weather ? (
-        <div className="mx-auto my-20 border border-gray-200 rounded-lg w-64 p-4">
-          <h2 className="text-center">Weather</h2>
-          <p>Address: {weather.resolvedAddress}</p>
-          <p>Time Zone: {weather.timezone}</p>
-          <p>Days:</p>
-          <ul>
-            {weather.days.map((day, index) => (
-                <li key={index} className="border border-gray-200 p-2 m-2">
-                  <p>datetime: {day.datetime}, conditions: {day.conditions}, description: {day.description}, tempmax: {day.tempmax}, tempmin: {day.tempmin}, 
-                    precipprob: {day.precipprob}, windgust: {day.windgust}, humidity: {day.humidity}, uvindex: {day.uvindex}
-                  </p>
-                  
-                </li> 
-            ))}
-          </ul>
-          
-        </div>
-      ): null
-      }
- */}
     </div>
   );
 };

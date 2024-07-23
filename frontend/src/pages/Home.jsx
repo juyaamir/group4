@@ -1,15 +1,11 @@
-import Header from "../components/Header";
-import Main from "../components/Main";
-import Footer from "../components/Footer";
-import HeroImage from "../components/HeroImage";
+import HeroImage from "../components/HeroImage.jsx";
+import Main from "../components/Main.jsx";
 
 const Home = () => {
   return (
     <div>
-      <Header />
       <HeroImage />
-      <Main />
-      <Footer />
+      {/*  <Main /> */}
     </div>
   );
 };

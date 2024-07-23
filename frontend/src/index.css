@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.Sofia {
+    font-family: 'Sofia';
+}

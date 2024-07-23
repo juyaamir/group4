@@ -2,65 +2,57 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-//import HomePage from "../src/pages/HomePage/HomePage.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
-import LocationAPI from "./components/LocationAPI";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-// import SignUp from "./pages/SignUp";
-// import Login from "./pages/Login";
-import PersonalAccountDetail from "./pages/PersonalAccountDetail";
 
-import Product from "./pages/Product";
-import OrderSummary from "./pages/OrderSummary";
-import Checkout from "./pages/Checkout";
-import AskFromAi from "./pages/AskFromAi";
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Product from "./pages/Product.jsx";
+import Contact from "./pages/Contact.jsx";
+import Profile from "./pages/Profile.jsx";
+import Cart from "./pages/Cart.jsx";
+
+import PlanYourVacation from "./pages/PlanYourVacation.jsx";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
     <>
-      <div>
-        <LocationAPI />
+      <Header />
+      <div className="flex flex-col min-h-screen">
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/cart" element={<Cart />} />
+
+            <Route path="/signin" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/plan-your-vacation" element={<PlanYourVacation />} />
+          </Routes>
+
+          <ToastContainer
+            position="top-right"
+            limit={1}
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </div>
       </div>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/personal-account-detail"
-          element={<PersonalAccountDetail />}
-        />
-        <Route path="/products" element={<Product />} />
-        <Route path="/order-summary" element={<OrderSummary />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/ask-from-ai" element={<AskFromAi />} />
-
-        {/* <Route path="/" element={<Login />} /> */}
-        {/* <Route path="/signup" element={<Signup />} /> */}
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/home" element={<HomePage />} /> */}
-      </Routes>
-
-      <ToastContainer
-        position="top-right"
-        limit={1}
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <Footer />
     </>
   );
 }
-
 export default App;

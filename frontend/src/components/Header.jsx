@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 const Header = () => {
   return (
     <>
-      <div className="flex justify-evenly navbar bg-neutral text-neutral-content">
+      <div className="flex justify-around navbar bg-neutral text-neutral-content">
         <p>Reviews</p>
         <p>
           Free &nbsp;

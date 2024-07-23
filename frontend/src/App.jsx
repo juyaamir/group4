@@ -23,7 +23,7 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/product" element={<Product />} />
             <Route path="/contact-us" element={<Contact />} />
@@ -32,7 +32,7 @@ function App() {
 
             <Route path="/signin" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/vacation-plan" element={<PlanYourVacation />} />
+            <Route path="/plan-your-vacation" element={<PlanYourVacation />} />
           </Routes>
 
           <ToastContainer

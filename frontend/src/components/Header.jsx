@@ -43,10 +43,13 @@ const Header = () => {
             </li>
 
             <li>
-              <Link to={`/products`}>Products</Link>
+              <Link to={`/product`}>Products</Link>
             </li>
             <li>
-              <Link to={`/Ask-from-ai`}>Plan Your Vacation</Link>
+              <Link to={`/plan-your-vacation`}>Plan Your Vacation</Link>
+            </li>
+            <li>
+              <Link to={`/contact-us`}>Contact Us</Link>
             </li>
           </ul>
         </div>
@@ -74,19 +77,19 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Home</a>
+              <Link to={`/home`}>Home</Link>
             </li>
             <li>
-              <a>About Us</a>
+              <Link to={`/about`}>About</Link>
             </li>
             <li>
-              <a>Products</a>
+              <Link to={`/product`}>Products</Link>
             </li>
             <li>
-              <a>Plan Your Vacation</a>
+              <Link to={`/plan-your-vacation`}>Plan Your Vacation</Link>
             </li>
             <li>
-              <a>Contact Us</a>
+              <Link to={`/contact-us`}>Contact Us</Link>
             </li>
           </ul>
         </div>
@@ -124,9 +127,11 @@ const Header = () => {
                   <span className="text-lg font-bold">1 Items</span>
                   <span className="text-info">Subtotal: $999</span>
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
-                      View cart
-                    </button>
+                    <Link to={`/cart`}>
+                      <button className="btn btn-primary btn-block">
+                        View cart
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -150,15 +155,10 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+              <li className="justify-between">
+                <Link to={`/profile`}>Profile</Link>
               </li>
-              <li>
-                <a>Settings</a>
-              </li>
+
               <li>
                 <a>Logout</a>
               </li>

@@ -1,7 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-/* import session from "express-session"; */
+import imageRouter from "./routes/imageRouter.js";
+import chatRouter from './routes/chatRouter.js'
+import errorHandler from "./Middleware/errorHandler.js";
+import validateProvider from "./Middleware/validateProvider.js";
+import validateMode from "./Middleware/validateMode.js";
+
 
 // database connection
 import connectDB from "./db/db.js";
@@ -17,7 +22,8 @@ import productRouter from "./routes/ProductRouter.js";
 // importing routes
 import userRouter from "./routes/UserRoute/index.js";
 import loggingRoutes from "./routes/LoginRoute/index.js";
-
+// app listening port
+const port = process.env.PORT || 8000;
 const app = express();
 app.use(express.json());
 dotenv.config();
@@ -60,10 +66,12 @@ app.use("/api/v1/location", locationRouter);
 //app.use("/api/v1/user-account", userRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/product", productRouter);
-
+app.use(errorHandler);
 //weather API route
 app.use("/api/v1/weather", weatherRouter);
-
+app.use("/api/v1/chat/completions", chatRouter);
+app.use("/api/v1/images/generate", imageRouter);
+app.use(errorHandler);
 app.get("/*", (req, res) => {
   res.send("invalid endpoint!");
 });
@@ -72,8 +80,7 @@ app.get("/*", (req, res) => {
 app.use("/api/v1/auth", loggingRoutes);
 app.use("/api/v1/usersaccounts", userRouter);
 
-// app listening port
-const port = process.env.PORT || 8000;
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

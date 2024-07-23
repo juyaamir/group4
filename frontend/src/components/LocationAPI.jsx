@@ -64,6 +64,7 @@ const LocationAPI = () => {
           description: day.description
         })) 
       };
+      
       console.log(dataToSend);
       
      // setFormData(initialFormData);

@@ -67,7 +67,7 @@ const LocationAPI = () => {
       
       console.log(dataToSend);
       
-     // setFormData(initialFormData);
+      setFormData(initialFormData);
     } catch (error) {
       console.error('Error fetching the weather', error);
     }

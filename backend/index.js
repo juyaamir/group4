@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 /* import session from "express-session"; */
 
+// database connection
 import connectDB from "./db/db.js";
+
 import weatherRouter from "./routes/API/weatherRoutes.js";
 
 import locationRouter from "./routes/API/locationRoutes.js";

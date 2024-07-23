@@ -50,14 +50,7 @@ const Header = () => {
             </li>
             <li>
               <Link to={`/plan-your-vacation`}>
-                <Alert
-                  banner
-                  message={
-                    <Marquee pauseOnHover gradient={false}>
-                      Ask from <strong>JourneyPack</strong>
-                    </Marquee>
-                  }
-                />
+                Ask from <strong>JourneyPack</strong>
               </Link>
             </li>
             <li>

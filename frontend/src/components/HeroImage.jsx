@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 const HeroImage = () => {
   return (
@@ -20,9 +19,11 @@ const HeroImage = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-primary"><Link to='/signin'>SignIn</Link> </button>
+            <button className="btn btn-primary">
+              <Link to="/signin">Sign In</Link>{" "}
+            </button>
             <button className="btn btn-outline btn-success ml-10">
-               <Link to='/signup'>SignUp</Link>
+              <Link to="/signup">Sign Up</Link>
             </button>
           </div>
         </div>

@@ -1,10 +1,11 @@
-import HomePage from "./HomePage/HomePage.jsx";
+import HeroImage from "../components/HeroImage.jsx";
+import Main from "../components/Main.jsx";
 
 const Home = () => {
   return (
     <div>
-      <p>handleSuggestionClick</p>
-      <HomePage />
+      <HeroImage />
+      {/*  <Main /> */}
     </div>
   );
 };

@@ -9,7 +9,7 @@ export const getAll = async (req, res) => {
   try {
     const user = await UsersAccount.find();
 
-    res.status(200).json(accountUserUser);
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error });
   }

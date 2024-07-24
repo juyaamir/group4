@@ -152,13 +152,8 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div>
-            <Link to={`/signin`}>
-              <button className="btn btn-outline">Sign in</button>
-            </Link>
-          </div>
 
-          {/*  <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
@@ -183,7 +178,13 @@ const Header = () => {
                 <a>Logout</a>
               </li>
             </ul>
-          </div> */}
+          </div>
+
+          <div>
+            <Link to={`/signin`}>
+              <button className="btn btn-outline">Sign in</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

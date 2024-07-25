@@ -2,11 +2,18 @@ import Product from "../models/Products.js";
 
 export const getAllProducts = async (req, res) => {
   try {
-    const { productName, type } = req.query;
+    const { productName } = req.query;
+    const ct = req.query;
+
+    let ctValue = ct["category"];
+    console.log(ctValue);
 
     let userProduct;
     if (productName) {
-      userProduct = await Product.find({ productName });
+      userProduct = await Product.find(productName);
+    }
+    if (ctValue) {
+      userProduct = await Product.find({ category: { $eq: ctValue } });
     } else {
       userProduct = await Product.find();
     }

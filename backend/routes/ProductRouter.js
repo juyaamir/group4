@@ -10,6 +10,7 @@ import {
 const productRouter = Router();
 
 productRouter.get("/", getAllProducts).post("/", createSinglProduct);
+//productRouter.get("?category=category", getAllProducts);
 
 /* orderrouter.post("/", createSingleUser); */
 

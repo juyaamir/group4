@@ -7,17 +7,18 @@ const Product = () => {
         <div role="tablist" className="tabs tabs-lifted w-full">
           <input
             type="radio"
-            name="my_tabs_2"
+            name="my_tabs_1"
             role="tab"
             className="tab"
             aria-label="Travel Clothing"
+            defaultChecked
           />
           <div
             role="tabpanel"
             className="tab-content bg-base-100 border-base-300 rounded-box p-6"
           >
             <div className="flex gap-4">
-              <ProductCard category={"Household item"} />
+              <ProductCard category={"Travel Clothing"} />
             </div>
           </div>
 
@@ -26,8 +27,7 @@ const Product = () => {
             name="my_tabs_2"
             role="tab"
             className="tab"
-            aria-label="Travel Accessories"
-            defaultChecked
+            aria-label="Electronics"
           />
           <div
             role="tabpanel"
@@ -40,23 +40,23 @@ const Product = () => {
 
           <input
             type="radio"
-            name="my_tabs_2"
+            name="my_tabs_3"
             role="tab"
             className="tab"
-            aria-label="Baclpack & Bags"
+            aria-label="Bags "
           />
           <div
             role="tabpanel"
             className="tab-content bg-base-100 border-base-300 rounded-box p-6"
           >
             <div className="flex gap-4">
-              <ProductCard category={"Sport"} />
+              <ProductCard category={"Bags"} />
             </div>
           </div>
 
           <input
             type="radio"
-            name="my_tabs_2"
+            name="my_tabs_4"
             role="tab"
             className="tab"
             aria-label="Cosmetics"

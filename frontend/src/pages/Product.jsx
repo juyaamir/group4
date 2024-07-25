@@ -66,7 +66,7 @@ const Product = () => {
             className="tab-content bg-base-100 border-base-300 rounded-box p-6"
           >
             <div className="flex gap-4">
-              <ProductCard category={"Accessories"} />
+              <ProductCard category={"Cosmetics"} />
             </div>
           </div>
         </div>

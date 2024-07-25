@@ -6,7 +6,7 @@ export const getAllProducts = async (req, res) => {
     const ct = req.query;
 
     let ctValue = ct["category"];
-    console.log(ctValue);
+    //console.log(ctValue);
 
     let userProduct;
     if (productName) {
@@ -31,6 +31,9 @@ export const getAllProducts = async (req, res) => {
 
 export const createSinglProduct = async (req, res) => {
   try {
+    const { porductname, price, category } = req.body;
+    console.log(porductname, price, category);
+
     const product = new Product(req.body);
     const createdProduct = await product.save();
     res.json(createdProduct);

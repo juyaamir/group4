@@ -31,8 +31,8 @@ export const getAllProducts = async (req, res) => {
 
 export const createSinglProduct = async (req, res) => {
   try {
-    const { porductname, price, category } = req.body;
-    console.log(porductname, price, category);
+    //const { porductname, price, category } = req.body;
+    //console.log(porductname, price, category);
 
     const product = new Product(req.body);
     const createdProduct = await product.save();
@@ -66,6 +66,8 @@ export const getSingleProduct = async (req, res) => {
  
  */
 export const updateSingleProduct = async (req, res) => {
+  /* console.log(req.body);
+  console.log(req.params.id); */
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body);
     if (!product) {

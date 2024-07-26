@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar, Space } from "antd";
 
 const Header = () => {
   //Get item from local Storage"
@@ -168,9 +170,9 @@ const Header = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                <Avatar
+                  style={{ backgroundColor: "#87d068" }}
+                  icon={<UserOutlined />}
                 />
               </div>
             </div>
@@ -190,7 +192,7 @@ const Header = () => {
 
           <div>
             <Link to={`/signin`}>
-              <button className="btn btn-outline">Sign in</button>
+              <button className="btn btn-sm glass">Sign in</button>
             </Link>
           </div>
         </div>

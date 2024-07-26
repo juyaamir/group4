@@ -2,8 +2,18 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar, Space } from "antd";
 
 const Header = () => {
+  //Get item from local Storage"
+  let getid = localStorage.getItem("id");
+
+  //// Getting id manually from database"
+  let idObj = { _id: "6699132f8f11764e49cbcba4" };
+  let id = idObj["_id"];
+  console.log(id);
+
   return (
     <>
       <div className="flex justify-around navbar bg-neutral text-neutral-content">
@@ -152,22 +162,17 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div>
-            <Link to={`/signin`}>
-              <button className="btn btn-outline">Sign in</button>
-            </Link>
-          </div>
 
-          {/*  <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                <Avatar
+                  style={{ backgroundColor: "#87d068" }}
+                  icon={<UserOutlined />}
                 />
               </div>
             </div>
@@ -176,14 +181,20 @@ const Header = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li className="justify-between">
-                <Link to={`/profile`}>Profile</Link>
+                <Link to={`/profile/${id}`}>Profile</Link>
               </li>
 
               <li>
                 <a>Logout</a>
               </li>
             </ul>
-          </div> */}
+          </div>
+
+          <div>
+            <Link to={`/signin`}>
+              <button className="btn btn-sm glass">Sign in</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

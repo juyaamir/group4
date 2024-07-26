@@ -2,11 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import imageRouter from "./routes/imageRouter.js";
-import chatRouter from './routes/chatRouter.js'
+import chatRouter from "./routes/chatRouter.js";
 import errorHandler from "./Middleware/errorHandler.js";
 import validateProvider from "./Middleware/validateProvider.js";
 import validateMode from "./Middleware/validateMode.js";
-
 
 // database connection
 import connectDB from "./db/db.js";
@@ -71,15 +70,15 @@ app.use(errorHandler);
 app.use("/api/v1/weather", weatherRouter);
 app.use("/api/v1/chat/completions", chatRouter);
 app.use("/api/v1/images/generate", imageRouter);
+app.use("/api/v1/auth", loggingRoutes);
+app.use("/api/v1/usersaccounts", userRouter);
+
 app.use(errorHandler);
 app.get("/*", (req, res) => {
   res.send("invalid endpoint!");
 });
 
 // End points
-app.use("/api/v1/auth", loggingRoutes);
-app.use("/api/v1/usersaccounts", userRouter);
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

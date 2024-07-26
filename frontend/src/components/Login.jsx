@@ -30,7 +30,7 @@ const Login = () => {
       localStorage.setItem("userName", data.userName);
       localStorage.setItem("userId", data.userId);
       handleReset();
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       toast.error(error.response.data.message);
     }

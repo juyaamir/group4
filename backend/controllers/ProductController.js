@@ -2,11 +2,18 @@ import Product from "../models/Products.js";
 
 export const getAllProducts = async (req, res) => {
   try {
-    const { productName, type } = req.query;
+    const { productName } = req.query;
+    const ct = req.query;
+
+    let ctValue = ct["category"];
+    //console.log(ctValue);
 
     let userProduct;
     if (productName) {
-      userProduct = await Product.find({ productName });
+      userProduct = await Product.find(productName);
+    }
+    if (ctValue) {
+      userProduct = await Product.find({ category: { $eq: ctValue } });
     } else {
       userProduct = await Product.find();
     }
@@ -24,6 +31,9 @@ export const getAllProducts = async (req, res) => {
 
 export const createSinglProduct = async (req, res) => {
   try {
+    //const { porductname, price, category } = req.body;
+    //console.log(porductname, price, category);
+
     const product = new Product(req.body);
     const createdProduct = await product.save();
     res.json(createdProduct);
@@ -56,6 +66,8 @@ export const getSingleProduct = async (req, res) => {
  
  */
 export const updateSingleProduct = async (req, res) => {
+  /* console.log(req.body);
+  console.log(req.params.id); */
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body);
     if (!product) {

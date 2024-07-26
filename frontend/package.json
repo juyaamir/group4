@@ -19,6 +19,7 @@
     "html2canvas-pro": "^1.5.8",
     "jspdf": "^2.5.1",
     "marked": "^13.0.2",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.5",

@@ -17,7 +17,7 @@ import { isAuthenticated } from "../../Middleware/Users/index.js";
 //   isAuthenticated,
 // } from "../../Middleware/Users/index.js";
 
-//userRouter.get("/", isAuthenticated, getAll);
+userRouter.get("/", isAuthenticated, getAll);
 // userRouter.post("/", postErrorValidator, createOne);
 // userRouter.get(
 //   "/:id",
@@ -27,7 +27,7 @@ import { isAuthenticated } from "../../Middleware/Users/index.js";
 // userRouter.put("/:id", isAuthenticated, updateOne);
 // userRouter.delete("/:id", isAuthenticated, deletOne);
 
-userRouter.get("/", getAll);
+//userRouter.get("/", getAll);
 userRouter.post("/", createOne);
 userRouter.get("/:id", getOne);
 userRouter.put("/:id", updateOne);

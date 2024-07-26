@@ -25,8 +25,15 @@ export const createOne = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    // const { name, email, password } = req.body
     const user = new UsersAccount(req.body);
     const createdUser = await user.save();
+    // const user = await UsersAccount.create({
+    //   name,
+    //   email,
+    //   password,
+    // })
+
     res.status(201).json(createdUser);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error });

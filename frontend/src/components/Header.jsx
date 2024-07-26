@@ -4,6 +4,12 @@ import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
 
 const Header = () => {
+  let idObj = { _id: "6699132f8f11764e49cbcba4" };
+
+  let id = idObj["_id"];
+
+  console.log(id);
+
   return (
     <>
       <div className="flex justify-around navbar bg-neutral text-neutral-content">
@@ -171,7 +177,7 @@ const Header = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li className="justify-between">
-                <Link to={`/profile`}>Profile</Link>
+                <Link to={`/profile/${id}`}>Profile</Link>
               </li>
 
               <li>

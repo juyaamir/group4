@@ -82,8 +82,9 @@ const fetchLocationSuggestions = async (location) => {
       
       console.log(weatherData);
       
-      const prompt  = `Give a brief overview of the weather at the end, then provide a 
+      const prompt  = `Give a brief overview of the weather, then provide a 
       packing list based on the weather forecast data and the activities, also recommend hotels based on the hotel type, in the following format:
+      **Weather Overview:**
 
       **Packing List:**
       <p><b><i>Clothing</i></b></p>

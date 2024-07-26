@@ -3,10 +3,11 @@ import { useState } from "react";
 import backgroundImage from "../assets/nellie-adamyan-DQLEFBUHiVs-unsplash.jpg";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { URL } from "../utils/MyLocalURL";
+// import { URL } from "../utils/MyLocalURL";
 import { motion } from "framer-motion";
 
 const Login = () => {
+  const URL = import.meta.env.VITE_APP_URL;
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +17,7 @@ const Login = () => {
     setPassword("");
   };
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const newUser = {
@@ -45,7 +46,7 @@ const Login = () => {
     >
       <motion.div>
         <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block text-white text-left text-sm">Email</label>
             <input

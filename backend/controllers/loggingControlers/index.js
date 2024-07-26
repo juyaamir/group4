@@ -1,14 +1,21 @@
 import UsersAccount from "../../models/UsersAccount.js";
-import bcrypt from "bcryptjs";
 import { generateToken } from "../../utils/auth.js";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await UsersAccount.findOne({ email });
-    const userName = user?.firstname;
-    const userId = user?._id;
-    if (user && bcrypt.compareSync(password.toString(), user.password)) {
+
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    const userName = user.firstname;
+    const userId = user._id;
+
+    const isMatch = await user.matchPassword(password);
+
+    if (isMatch) {
       const token = generateToken(user);
       res.json({
         userId,
@@ -21,7 +28,7 @@ export const login = async (req, res) => {
       res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error during login process:", error);
     res.status(500).json({ message: "Server error. Please try again later." });
   }
 };

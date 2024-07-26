@@ -1,0 +1,10 @@
+
+###
+POST  http://localhost:8000/api/v1/usersaccounts
+Content-Type: application/json
+    {
+      "firstname": "xxxx",
+      "lastname": "yyyy",
+      "email": "x@gmail.com",
+      "password": "123456"
+    }

@@ -1,6 +1,6 @@
 import { Router } from "express";
 const userRouter = Router();
-import { body, param } from "express-validator";
+//import { body, param } from "express-validator";
 
 // importing controllers
 import {
@@ -11,13 +11,13 @@ import {
   deletOne,
 } from "../../controllers/userControlers/index.js";
 
-import { isAuthenticated } from "../../Middleware/Users/index.js";
+//import { isAuthenticated } from "../../Middleware/Users/index.js";
 // import {
 //   postErrorValidator,
 //   isAuthenticated,
 // } from "../../Middleware/Users/index.js";
 
-userRouter.get("/", isAuthenticated, getAll);
+//userRouter.get("/", isAuthenticated, getAll);
 // userRouter.post("/", postErrorValidator, createOne);
 // userRouter.get(
 //   "/:id",
@@ -27,7 +27,7 @@ userRouter.get("/", isAuthenticated, getAll);
 // userRouter.put("/:id", isAuthenticated, updateOne);
 // userRouter.delete("/:id", isAuthenticated, deletOne);
 
-//userRouter.get("/", getAll);
+userRouter.get("/", getAll);
 userRouter.post("/", createOne);
 userRouter.get("/:id", getOne);
 userRouter.put("/:id", updateOne);

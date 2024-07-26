@@ -24,11 +24,10 @@ import loggingRoutes from "./routes/LoginRoute/index.js";
 // app listening port
 const port = process.env.PORT || 8000;
 const app = express();
-app.use(express.json());
 dotenv.config();
-app.use(cors({ origin: "*" }));
-
 connectDB();
+app.use(express.json());
+app.use(cors({ origin: "*" }));
 
 app.get("/", (req, res) => {
   res.send(`Hello from Express!`);
@@ -65,19 +64,18 @@ app.use("/api/v1/location", locationRouter);
 //app.use("/api/v1/user-account", userRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/product", productRouter);
-app.use(errorHandler);
 //weather API route
 app.use("/api/v1/weather", weatherRouter);
 app.use("/api/v1/chat/completions", chatRouter);
 app.use("/api/v1/images/generate", imageRouter);
-app.use(errorHandler);
-app.get("/*", (req, res) => {
-  res.send("invalid endpoint!");
-});
 
 // End points
 app.use("/api/v1/auth", loggingRoutes);
 app.use("/api/v1/usersaccounts", userRouter);
+app.get("/*", (req, res) => {
+  res.send("invalid endpoint!");
+});
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

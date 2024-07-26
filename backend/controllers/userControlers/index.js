@@ -1,5 +1,7 @@
 import UsersAccount from "../../models/UsersAccount.js";
-import bcrypt from bcryptjs;
+import bcrypt from "bcryptjs";
+
+// import bcrypt from "bcrypt";
 //import { validationResult } from "express-validator";
 
 //===========================
@@ -22,6 +24,7 @@ export const getAll = async (req, res) => {
 
 export const createOne = async (req, res) => {
   try {
+    const { email } = req.body;
     // const errors = validationResult(req);
     // if (!errors.isEmpty()) {
     //   return res.status(400).json({ errors: errors.array() });
@@ -34,10 +37,9 @@ export const createOne = async (req, res) => {
       });
     }
 
-    //const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new UsersAccount(req.body);
-    await user.save();
-    res.status(201).json({ message: "User created successfully" });
+    const user = await UsersAccount.create(req.body);
+
+    res.status(201).json({ message: "User created successfully", user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error", error });

@@ -1,11 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
 
- import { fetchLocation } from "./utils/fetchLocation.jsx";
+import { fetchLocation } from "./utils/fetchLocation.jsx";
 
-const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData}) => {
+const initialFormData = {
+  location: '',
+  start: '',
+  end: ''
+}
+
+const LocationAPI = ({ setMessages, messages, setHide2 }) => {
   const [error, setError] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
+  const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
   const [ready, setReady] = useState(false);
   const [show, setShow] = useState(false);
@@ -49,7 +56,6 @@ const fetchLocationSuggestions = async (location) => {
 };
 
   const handleSubmit =  async(e) => {
-
     e.preventDefault();
     setShowForm(false);
     setHide2(true);
@@ -60,13 +66,10 @@ const fetchLocationSuggestions = async (location) => {
     };
     setMessages((prev) => [...prev, newMessage]);
     try {
-
       const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
-  
       const {data} = response;
-      const weatherData = {
-        timezone: data.timezone, 
-        resolvedAddress: data.resolvedAddress, 
+      const dataToSend = {
+        timezone: data.timezone, resolvedAddress: data.resolvedAddress, 
         days: data.days.map((day) => ({
           datetime: day.datetime,
           tempmax: day.tempmax,
@@ -79,68 +82,14 @@ const fetchLocationSuggestions = async (location) => {
           description: day.description
         })) 
       };
-      
-      console.log(weatherData);
-      
-      const prompt  = `Give a brief overview of the weather at the end, then provide a 
-      packing list based on the weather forecast data and the activities, also recommend hotels based on the hotel type, in the following format:
-
-      **Packing List:**
-      <p><b><i>Clothing</i></b></p>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li> 
-        <li>...</li>
-      </ul> 
-      <b><i>Essentials</i></b>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li> 
-        <li>...</li>
-      </ul>
-
-      <b><i>Toiletries</i></b>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li> 
-        <li>...</li>
-      </ul>
-
-      <b><i>Accessories</i></b>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li> 
-        <li>...</li>
-      </ul>
-      <b><i>Activity name</i></b>
-      <ul>
-        <li>Item 1 for activity</li>
-        <li>Item 2 for activity</li> 
-        <li>...</li>
-      </ul>
-      <b><i>Personal Items</i></b>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li> 
-        <li>...</li>
-      </ul> 
-
-      **Hotel Recommendations:**
-      <p><u>Hotel Name 1</u></p>
-      <ul>
-        <li>Feature 1</li>
-        <li>Feature 2</li> 
-        <li>...</li>
-      </ul> 
-      
-      Ensure each item, including sub-items, is on a separate line. 
-      Given:
-      * Weather forecast: ${JSON.stringify(weatherData)}
-      * Activities to do: ${JSON.stringify(activities)}
-      * Hotel type: ${hotel}
-      * Other activities: ${message}`;
-      
-
+      setFormData(initialFormData);
+      /* const weatherMessage */
+      const fullMessage = `Provide a short and precise packing list and hotel recommendations in a structured 
+      format with headings and bullet points for my trip given: 
+      weather forecast: ${dataToSend}, 
+      activities to do: ${activities}, 
+      hotel type: ${hotel}, other activities: ${message}`;
+      //const fullMessage = `${weatherMessage} ${message}`;
 
       const aiResponse = await fetch(
         'http://localhost:8000/api/v1/chat/completions',
@@ -153,7 +102,7 @@ const fetchLocationSuggestions = async (location) => {
           },
           body: JSON.stringify({
             model: 'gpt-4o',
-            messages: [...messages, { ...newMessage, content: prompt }],
+            messages: [...messages, { ...newMessage, content: fullMessage }],
             stream,
           }),
         }
@@ -286,63 +235,44 @@ const fetchLocationSuggestions = async (location) => {
               </div>
         </div> 
         ) : show && !ready ? (
-            <fieldset className="border p-2 rounded-lg">
+                    <fieldset className="border p-2 rounded-lg">
             <legend className="text-center ">Choose Activities</legend>
             <div className="text-6xl text-blue-400 flex flex-wrap gap-2">
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="swimming" name="Swimming" onChange={handleActivity} className="absolute top-0 left-0"/>
-                <label htmlFor="swimming" title='swimming'><i className="  fa-solid fa-person-swimming"></i></label>
-                <p className="text-base">Swimming</p>
+              <div>
+                <input type="checkbox" id="swimming" name="Swimming" onChange={handleActivity} />
+                <label htmlFor="swimming" title='swimming'><i className=" p-1 fa-solid fa-person-swimming"></i></label>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="hiking" name="Hiking" onChange={handleActivity} className="absolute top-0 left-0" />
+              <div>
+                <input type="checkbox" id="hiking" name="Hiking" onChange={handleActivity} />
                 <label htmlFor="hiking" title='hiking'><i className=" p-1 fa-solid fa-person-hiking"></i></label>
-                <p className="text-base">Hiking</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="cycling" name="Cycling" onChange={handleActivity} className="absolute top-0 left-0"/>
+              <div>
+                <input type="checkbox" id="cycling" name="Cycling" onChange={handleActivity}/>
                 <label htmlFor="cycling" title='cycling'><i className=" p-1 fa-solid fa-person-biking"></i></label>
-                <p className="text-base">Cycling</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="skiing" name="Skiing" onChange={handleActivity} className="absolute top-0 left-0" />
+              <div>
+                <input type="checkbox" id="skiing" name="Skiing" onChange={handleActivity} />
                 <label htmlFor="skiing" title='skiing'><i className=" p-1 fa-solid fa-person-skiing"></i></label>
-                <p className="text-base">Skiing</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="snowboarding" name="Snowboarding" onChange={handleActivity} className="absolute top-0 left-0" />
+              <div>
+                <input type="checkbox" id="snowboarding" name="Snowboarding" onChange={handleActivity} />
                 <label htmlFor="snowboarding" title='snowboarding'><i className="p-1 fa-solid fa-person-snowboarding"></i></label>
-                <p className="text-base">Snowboarding</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="camping" name="Camping" onChange={handleActivity} className="absolute top-0 left-0" />
+              <div>
+                <input type="checkbox" id="camping" name="Camping" onChange={handleActivity} />
                 <label htmlFor="camping" title='camping'><i className="p-1 fa-solid fa-fire"></i></label>
-                <p className="text-base">Camping</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="beach" name="Beach" onChange={handleActivity} className="absolute top-0 left-0"/>
+              <div>
+                <input type="checkbox" id="beach" name="Beach" onChange={handleActivity} />
                 <label htmlFor="beach" title='beach'><i className="p-1 fa-solid fa-umbrella-beach"></i></label>
-                <p className="text-base">Beach</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="running" name="Running" onChange={handleActivity} className="absolute top-0 left-0"/>
+              <div>
+                <input type="checkbox" id="running" name="Running" onChange={handleActivity} />
                 <label htmlFor="running" title='running'><i className="p-1 fa-solid fa-person-running"></i></label>
-                <p className="text-base">Running</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
-                <input type="checkbox" id="photography" name="Photography" onChange={handleActivity} className="absolute top-0 left-0" />
+              <div>
+                <input type="checkbox" id="photography" name="Photography" onChange={handleActivity} />
                 <label htmlFor="photography" title='photography'><i className="p-1 fa-solid fa-camera"></i></label>
-                <p className="text-base">Photography</p>
-              </div>
-              <div className="hover:text-blue-600 border hover:border-none relative rounded">
-                <input type="checkbox" id="cooking" name="Cooking" onChange={handleActivity} className="absolute top-0 left-0" />
-                <label htmlFor="cooking" title='cooking'><i className="p-1 fa-solid fa-kitchen-set"></i></label>
-                <p className="text-base">Cooking</p>
-              </div>
-              <div className="hover:text-blue-600 border hover:border-none relative rounded">
-                <input type="checkbox" id="museum" name="Museum visits" onChange={handleActivity} className="absolute top-0 left-0" />
-                <label htmlFor="museum" title='museum'><i className="p-1 fa-solid fa-landmark"></i></label>
-                <p className="text-base">Museum</p>
               </div>
             </div>
           </fieldset>
@@ -400,15 +330,15 @@ const fetchLocationSuggestions = async (location) => {
           !show && !ready ? (
           formData.location &&  formData.start && formData.end && 
           <button key='next' type="button" onClick={(()=> {setShow(true)})}
-          className="border border-gray-300 px-3 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-1 my-2 w-full"
+          className="border border-gray-300 px-3 bg-green-800 rounded-lg mx-auto block text-white p-1 my-2 w-full"
           >Select Activities</button>
           ) : show && !ready ? (
             <button type="button" key='next2' onClick={()=> setReady(true)}
-            className="border border-gray-300 px-3 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-1 my-2 w-full"
+            className="border border-gray-300 px-3 bg-green-800 rounded-lg mx-auto block text-white p-1 my-2 w-full"
             >Select Hotel Type</button>
           ) : (
           <button key='submit' type="submit" 
-          className="border border-gray-300 px-3 bg-orange-500 hover:bg-orange-700 rounded-lg mx-auto block text-white p-1 my-2 w-full "
+          className="border border-gray-300 px-3 bg-orange-500 rounded-lg mx-auto block text-white p-1 my-2 w-full "
           disabled={loading} >
           {loading ? 'loading...' : 
           'Begin Packing'} </button>

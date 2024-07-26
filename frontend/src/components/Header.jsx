@@ -4,10 +4,12 @@ import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
 
 const Header = () => {
+  //Get item from local Storage"
+  let getid = localStorage.getItem("id");
+
+  //// Getting id manually from database"
   let idObj = { _id: "6699132f8f11764e49cbcba4" };
-
   let id = idObj["_id"];
-
   console.log(id);
 
   return (

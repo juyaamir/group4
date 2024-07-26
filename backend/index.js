@@ -4,8 +4,13 @@ import cors from "cors";
 import imageRouter from "./routes/imageRouter.js";
 import chatRouter from "./routes/chatRouter.js";
 import errorHandler from "./Middleware/errorHandler.js";
+<<<<<<< HEAD
 import validateProvider from "./Middleware/validateProvider.js";
 import validateMode from "./Middleware/validateMode.js";
+=======
+//import validateProvider from "./Middleware/validateProvider.js";
+//import validateMode from "./Middleware/validateMode.js";
+>>>>>>> 8321fbab82c32209c29780112d584bc1ba71008f
 
 // database connection
 import connectDB from "./db/db.js";
@@ -24,11 +29,10 @@ import loggingRoutes from "./routes/LoginRoute/index.js";
 // app listening port
 const port = process.env.PORT || 8000;
 const app = express();
-app.use(express.json());
 dotenv.config();
-app.use(cors({ origin: "*" }));
-
 connectDB();
+app.use(express.json());
+app.use(cors({ origin: "*" }));
 
 app.get("/", (req, res) => {
   res.send(`Hello from Express!`);
@@ -65,11 +69,11 @@ app.use("/api/v1/location", locationRouter);
 //app.use("/api/v1/user-account", userRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/product", productRouter);
-app.use(errorHandler);
 //weather API route
 app.use("/api/v1/weather", weatherRouter);
 app.use("/api/v1/chat/completions", chatRouter);
 app.use("/api/v1/images/generate", imageRouter);
+<<<<<<< HEAD
 app.use("/api/v1/auth", loggingRoutes);
 app.use("/api/v1/usersaccounts", userRouter);
 
@@ -79,6 +83,16 @@ app.get("/*", (req, res) => {
 });
 
 // End points
+=======
+
+// End points
+app.use("/api/v1/auth", loggingRoutes);
+app.use("/api/v1/usersaccounts", userRouter);
+app.get("/*", (req, res) => {
+  res.send("invalid endpoint!");
+});
+app.use(errorHandler);
+>>>>>>> 8321fbab82c32209c29780112d584bc1ba71008f
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

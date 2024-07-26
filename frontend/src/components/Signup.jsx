@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { URL } from "../utils/MyLocalURL";
 
 const Signup = () => {
+  const URL = import.meta.env.VITE_APP_URL;
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({

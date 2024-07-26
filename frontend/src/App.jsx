@@ -1,6 +1,8 @@
+
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import React from "react";
 
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
@@ -17,6 +19,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
 function App() {
+
   return (
     <>
       <Header />
@@ -33,7 +36,7 @@ function App() {
             <Route path="/signin" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/plan-your-vacation" element={<PlanYourVacation />} />
+            <Route path="/plan-your-vacation" element={<PlanYourVacation  />} />
           </Routes>
 
           <ToastContainer

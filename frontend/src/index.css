@@ -5,3 +5,18 @@
 .Sofia {
     font-family: 'Sofia';
 }
+.list-width {
+    width: 200mm;
+   /*  height: 297mm; */
+  /*   padding: o.7rem; */
+    box-sizing: border-box;
+    background-color: white;
+  }
+  
+  /* For screens smaller than 210mm */
+  @media (max-width: 210mm) {
+    .list-width {
+      width: 100%;
+      height: auto;
+    }
+  }

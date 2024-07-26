@@ -1,5 +1,8 @@
 import UsersAccount from "../../models/UsersAccount.js";
-import { validationResult } from "express-validator";
+import bcrypt from "bcryptjs";
+
+// import bcrypt from "bcrypt";
+//import { validationResult } from "express-validator";
 
 //===========================
 // get all user and query by name and type
@@ -21,21 +24,24 @@ export const getAll = async (req, res) => {
 
 export const createOne = async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    // const { name, email, password } = req.body
-    const user = new UsersAccount(req.body);
-    const createdUser = await user.save();
-    // const user = await UsersAccount.create({
-    //   name,
-    //   email,
-    //   password,
-    // })
+    const { email } = req.body;
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).json({ errors: errors.array() });
+    // }
 
-    res.status(201).json(createdUser);
+    const existingUser = await UsersAccount.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        message: "User already exists",
+      });
+    }
+
+    const user = await UsersAccount.create(req.body);
+
+    res.status(201).json({ message: "User created successfully", user });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Internal Server Error", error });
   }
 };

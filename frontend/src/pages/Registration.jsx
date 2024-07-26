@@ -1,8 +1,8 @@
 import { useState } from "react";
 //import { motion } from "framer-motion";
 
-import Login from "../../components/Login.jsx";
-import Signup from "../../components/Signup.jsx";
+import Login from "../components/Login.jsx";
+import Signup from "../components/Signup.jsx";
 
 const Registration = () => {
   const [islogin, setIslogin] = useState(true);

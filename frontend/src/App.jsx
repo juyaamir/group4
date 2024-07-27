@@ -1,11 +1,12 @@
-
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
+//import IsLogged from "./components/IsLogged.jsx";
 
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -19,10 +20,29 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
 function App() {
+  const [islogged, setIslogged] = useState(false);
+
+  // console.log(islogged);
+
+  /* const signout = () => {
+    localStorage.clear();
+    console.log("You signed out");
+  }; */
+  const getuserlogged = () => {
+    if (localStorage.getItem("token")) {
+      setIslogged(true);
+    } else {
+      setIslogged(false);
+    }
+  };
+  useEffect(() => {
+    getuserlogged();
+  }, [islogged]);
 
   return (
     <>
-      <Header />
+      <Header islogged={islogged} />
+
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
           <Routes>
@@ -36,7 +56,7 @@ function App() {
             <Route path="/signin" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/plan-your-vacation" element={<PlanYourVacation  />} />
+            <Route path="/plan-your-vacation" element={<PlanYourVacation />} />
           </Routes>
 
           <ToastContainer

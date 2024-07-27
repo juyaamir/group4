@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { useState, useEffect } from "react";
 import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
 
-const Header = () => {
-  //Get item from local Storage"
-  let getid = localStorage.getItem("id");
+const Header = (islogged) => {
+  let userlogged = islogged["islogged"];
 
-  //// Getting id manually from database"
-  let idObj = { _id: "6699132f8f11764e49cbcba4" };
-  let id = idObj["_id"];
-  console.log(id);
+  let getuserId = localStorage.getItem("userId");
+
+  const signout = () => {
+    userlogged = false;
+    localStorage.clear();
+    console.log("You signed out");
+  };
 
   return (
     <>
@@ -163,38 +166,44 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <Avatar
-                  style={{ backgroundColor: "#87d068" }}
-                  icon={<UserOutlined />}
-                />
+          {userlogged ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <Avatar
+                    style={{ backgroundColor: "#87d068" }}
+                    icon={<UserOutlined />}
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <button className="btn btn-sm glass">
+                    <Link to={`/profile/${getuserId}`}>Profile</Link>
+                  </button>
+                </li>
+
+                <li>
+                  <button className="btn btn-sm glass" onClick={signout}>
+                    Sign out
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li className="justify-between">
-                <Link to={`/profile/${id}`}>Profile</Link>
-              </li>
-
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <Link to={`/signin`}>
-              <button className="btn btn-sm glass">Sign in</button>
-            </Link>
-          </div>
+          ) : (
+            <div>
+              <Link to={`/signin`}>
+                <button className="btn btn-sm glass">Sign in</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -11,7 +11,8 @@ const ProductCard = (c) => {
   const [productItem, setProductItem] = useState([]);
   //console.log(c["category"]);
   let category = c["category"];
-
+  let getuserAdmin = localStorage.getItem("isAdmin");
+  //console.log(getuserAdmin);
   /*  const newdata = {
     productname: productname,
     price: price,
@@ -41,7 +42,7 @@ const ProductCard = (c) => {
   };
   useEffect(() => {
     getitems();
-  }, []);
+  }, [productItem]);
 
   /*   console.log(productItem.map((item) => item._id));
   console.log(productItem.map((item) => item.productname));
@@ -68,32 +69,34 @@ const ProductCard = (c) => {
                 <button className="btn btn-primary">Buy Now</button>
               </div>
             </div>
-            <div className="flex justify-between">
-              <div className="collapse">
-                <input type="checkbox" />
-                <div className="collapse-title text-md font-small">
-                  <Button type="dashed" icon={<EditOutlined />}></Button>
+            {getuserAdmin === "true" ? (
+              <div className="flex justify-between">
+                <div className="collapse">
+                  <input type="checkbox" />
+                  <div className="collapse-title text-md font-small">
+                    <Button type="dashed" icon={<EditOutlined />}></Button>
+                  </div>
+                  <div className="collapse-content">
+                    <p>
+                      <UpdateProduct itemid={item._id} />
+                    </p>
+                  </div>
                 </div>
-                <div className="collapse-content">
-                  <p>
-                    <UpdateProduct itemid={item._id} />
-                  </p>
+                <div>
+                  <Button
+                    className="mt-4 mr-3"
+                    type="dashed"
+                    icon={<DeleteOutlined />}
+                    onClick={() => handleClick2(item._id)}
+                  ></Button>
                 </div>
               </div>
-              <div>
-                <Button
-                  className="mt-4 mr-3"
-                  type="dashed"
-                  icon={<DeleteOutlined />}
-                  onClick={() => handleClick2(item._id)}
-                ></Button>
-              </div>
-            </div>
+            ) : null}
           </div>
         ))}
       </div>
 
-      <AddNewProduct />
+      {getuserAdmin === "true" ? <AddNewProduct /> : null}
 
       {/*   <button
         className="border border-solid rounded-md text-white bg-black p-2 my-6 justify-end"

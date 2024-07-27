@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
+import SignOut from "./components/SignOut.jsx";
 //import IsLogged from "./components/IsLogged.jsx";
 
 import Home from "./pages/Home.jsx";
@@ -37,7 +38,7 @@ function App() {
   };
   useEffect(() => {
     getuserlogged();
-  }, [islogged]);
+  }, []);
 
   return (
     <>
@@ -56,7 +57,11 @@ function App() {
             <Route path="/signin" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/plan-your-vacation" element={<PlanYourVacation />} />
+            <Route path="/signout" element={<SignOut />} />
+            <Route
+              path="/plan-your-vacation"
+              element={<PlanYourVacation islogged={islogged} />}
+            />
           </Routes>
 
           <ToastContainer

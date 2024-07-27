@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const AddNewProduct = () => {
@@ -30,6 +30,9 @@ const AddNewProduct = () => {
         console.error("Error:", error);
       });
   };
+  useEffect(() => {
+    handleSubmit();
+  }, [formData]);
 
   return (
     <div>

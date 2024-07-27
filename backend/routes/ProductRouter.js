@@ -6,18 +6,19 @@ import {
   updateSingleProduct,
   deleteSingleProduct,
 } from "../controllers/ProductController.js";
+import { isAdmin } from "../Middleware/Users/index.js";
 
 const productRouter = Router();
 
-productRouter.get("/", getAllProducts).post("/", createSinglProduct);
+productRouter.get("/", getAllProducts);
 //productRouter.get("?category=category", getAllProducts);
 
-/* orderrouter.post("/", createSingleUser); */
+productRouter.post("/", isAdmin, createSinglProduct);
 
 productRouter
   .get("/:id", getSingleProduct)
-  .put("/:id", updateSingleProduct)
-  .delete("/:id", deleteSingleProduct);
+  .put("/:id", isAdmin, updateSingleProduct)
+  .delete("/:id", isAdmin, deleteSingleProduct);
 
 /* orderrouter.put("/:id", updateSingleUser);
 orderrouter.delete("/:id", deleteSingleUser); */

@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import AddAdmin from "../components/AddAdmin";
 
 function Profile() {
+  /*   let userlogged = islogged["islogged"];
+
+  let getuserId = localStorage.getItem("userId"); */
+
   const { id } = useParams();
   const [user, setUser] = useState(null);
 
@@ -36,6 +41,7 @@ function Profile() {
   }
   return (
     <>
+      <AddAdmin />
       <div className="w-100 vh-100 d-flex justify-center items-center  border border-1 rounded-md m-8">
         {/* <div className='w-50'> */}
         <table className="table">

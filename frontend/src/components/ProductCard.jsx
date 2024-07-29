@@ -86,7 +86,7 @@ const ProductCard = (c) => {
 
                   <div>
                     <Button
-                      className="max-w-full"
+                      className="mt-4 mr-3 max-w-full"
                       type="dashed"
                       icon={<DeleteOutlined />}
                       onClick={() => handleClick2(item._id)}

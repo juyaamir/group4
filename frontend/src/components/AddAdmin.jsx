@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { isAdmin } from "../../../backend/Middleware/Users";
+/* import { isAdmin } from "../../../backend/Middleware/Users"; */
 
 const AddAdmin = () => {
   const URL = import.meta.env.VITE_APP_URL;
@@ -17,7 +17,7 @@ const AddAdmin = () => {
     lastname: "",
     email: "",
     password: "",
-    isAdmin: true,
+    isAdmin: "",
   });
 
   const { firstname, lastname, email, password, isAdmin } = formData;
@@ -27,6 +27,7 @@ const AddAdmin = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    console.log(formData);
   };
 
   const handleReset = () => {
@@ -121,15 +122,14 @@ const AddAdmin = () => {
               type="radio"
               name="isAdmin"
               onClick={handleChange}
-              value={true}
-              checked
+              value="true"
             />
             Yes
             <input
               type="radio"
               name="isAdmin"
               onClick={handleChange}
-              value={false}
+              value="false"
             />
             No
           </div>

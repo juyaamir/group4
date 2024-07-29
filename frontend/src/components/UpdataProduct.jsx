@@ -2,8 +2,11 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const UpdataProduct = (itemid) => {
+const UpdataProduct = (itemid, ct) => {
   const id = itemid["itemid"];
+  const cat = ct["ct"];
+
+  // const [radioValue, setRadioValue] = useState(0);
   // console.log(id);
 
   const [updateFormData, setUpdateFormData] = useState({
@@ -14,14 +17,20 @@ const UpdataProduct = (itemid) => {
 
   const { productname, price, category } = updateFormData;
 
+  /*  const onChange = (ev) => {
+    //save your value here with state variable
+    console.log(ev.target.value);
+    setRadioValue(ev.target.value);
+  }; */
+
   const handleChange1 = (e) => {
     setUpdateFormData({
       ...updateFormData,
       [e.target.name]: e.target.value,
     });
-  };
 
-  ///Create Product//
+    console.log(updateFormData);
+  };
   const handleSubmit1 = (e) => {
     // e.preventDefault();
     // axios.post(`http://localhost:8000/api/v1/product/${newitem}`);
@@ -66,18 +75,19 @@ const UpdataProduct = (itemid) => {
             required
           />
         </div>
+
         <div className="px-4">
-          <label for="price">Product Category </label>
           <input
             className="border border-2 m-5"
-            type="text"
+            type="radio"
             name="category"
             id="category"
             onChange={handleChange1}
-            value={category}
-            required
+            value={cat}
           />
+          <label for="price">{cat} </label>
         </div>
+
         <div className="px-4">
           <input
             className="border border-solid rounded-md text-white bg-black p-2 my-6 justify-end"

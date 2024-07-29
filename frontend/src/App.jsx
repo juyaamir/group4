@@ -38,7 +38,7 @@ function App() {
   };
   useEffect(() => {
     getuserlogged();
-  }, []);
+  }, [getuserlogged]);
 
   return (
     <>
@@ -60,7 +60,7 @@ function App() {
             <Route path="/signout" element={<SignOut />} />
             <Route
               path="/plan-your-vacation"
-              element={<PlanYourVacation islogged={islogged} />}
+              element={<PlanYourVacation userlogged={islogged} />}
             />
           </Routes>
 

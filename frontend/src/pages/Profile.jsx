@@ -5,13 +5,15 @@ import AddAdmin from "../components/AddAdmin";
 
 function Profile() {
   /*   let userlogged = islogged["islogged"];
+ 
 
   let getuserId = localStorage.getItem("userId"); */
 
+  let isUserAdmin = localStorage.getItem("isAdmin");
   const { id } = useParams();
   const [user, setUser] = useState(null);
 
-  //console.log(id);
+  // console.log(user.isAdmin);
 
   const [error, setError] = useState(null);
 
@@ -23,7 +25,7 @@ function Profile() {
         console.error(err);
         setError("Error fetching user data");
       });
-  }, [id]);
+  }, []);
 
   if (error) {
     return (
@@ -41,7 +43,6 @@ function Profile() {
   }
   return (
     <>
-      <AddAdmin />
       <div className="w-100 vh-100 d-flex justify-center items-center  border border-1 rounded-md m-8">
         {/* <div className='w-50'> */}
         <table className="table">
@@ -51,6 +52,7 @@ function Profile() {
               <th>Last Name</th>
               <th>Email</th>
               <th>Password</th>
+              <th>Is Admin</th>
             </tr>
           </thead>
           <tbody>
@@ -59,6 +61,7 @@ function Profile() {
               <td>{user.lastname}</td>
               <td>{user.email}</td>
               <td>{user.password}</td>
+              <td>{isUserAdmin}</td>
             </tr>
           </tbody>
         </table>
@@ -66,6 +69,7 @@ function Profile() {
       <div className="w-100 vh-100 d-flex justify-center items-center border border-1 rounded-md m-8">
         <h2>Orders History</h2>
       </div>
+      <AddAdmin />
     </>
   );
 }

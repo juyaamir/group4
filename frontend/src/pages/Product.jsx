@@ -1,9 +1,11 @@
 import ProductCard from "../components/ProductCard";
+import AddNewProduct from "../components/AddNewProduct";
 
 const Product = () => {
+  let isUserAdmin = localStorage.getItem("isAdmin");
   return (
     <>
-      <div className="border border-0 flex justify-center t px-10">
+      <div className="border border-0 flex flex-col justify-center t px-10">
         <div role="tablist" className="tabs tabs-lifted w-full">
           <input
             type="radio"
@@ -70,6 +72,7 @@ const Product = () => {
             </div>
           </div>
         </div>
+        {isUserAdmin === "true" ? <AddNewProduct /> : null}
       </div>
     </>
   );

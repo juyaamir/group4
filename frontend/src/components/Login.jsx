@@ -30,6 +30,7 @@ const Login = () => {
       localStorage.setItem("email", data.email);
       localStorage.setItem("userName", data.userName);
       localStorage.setItem("userId", data.userId);
+      localStorage.setItem("isAdmin", data.isAdmin);
       handleReset();
       navigate("/");
     } catch (error) {

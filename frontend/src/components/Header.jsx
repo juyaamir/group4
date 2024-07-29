@@ -11,12 +11,6 @@ const Header = (islogged) => {
 
   let getuserId = localStorage.getItem("userId");
 
-  const signout = () => {
-    userlogged = false;
-    localStorage.clear();
-    console.log("You signed out");
-  };
-
   return (
     <>
       <div className="flex justify-around navbar bg-neutral text-neutral-content">
@@ -191,8 +185,8 @@ const Header = (islogged) => {
                 </li>
 
                 <li>
-                  <button className="btn btn-sm glass" onClick={signout}>
-                    Sign out
+                  <button className="btn btn-sm glass">
+                    <Link to={`/signout`}>Sign out</Link>
                   </button>
                 </li>
               </ul>

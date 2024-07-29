@@ -6,13 +6,14 @@ import {
   updateSingleProduct,
   deleteSingleProduct,
 } from "../controllers/ProductController.js";
+/* import { isAdmin } from "../Middleware/Users/index.js"; */
 
 const productRouter = Router();
 
-productRouter.get("/", getAllProducts).post("/", createSinglProduct);
+productRouter.get("/", getAllProducts);
 //productRouter.get("?category=category", getAllProducts);
 
-/* orderrouter.post("/", createSingleUser); */
+productRouter.post("/", createSinglProduct);
 
 productRouter
   .get("/:id", getSingleProduct)

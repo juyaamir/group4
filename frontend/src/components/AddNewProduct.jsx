@@ -43,7 +43,7 @@ const AddNewProduct = () => {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
       //console.log(name);
-      const storageRef = ref(storage, "images/file.name");
+      const storageRef = ref(storage, `images/file.${name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
 

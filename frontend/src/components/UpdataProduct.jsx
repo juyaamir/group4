@@ -34,6 +34,11 @@ const UpdataProduct = ({ itemid, ct }) => {
   const handleSubmit1 = (e) => {
     // e.preventDefault();
     // axios.post(`http://localhost:8000/api/v1/product/${newitem}`);
+
+
+
+
+    
     axios
       .put(`http://localhost:8000/api/v1/product/${itemid}`, updateFormData)
       .then((response) => {
@@ -52,7 +57,7 @@ const UpdataProduct = ({ itemid, ct }) => {
       >
         <div className="flex-col">
           <h2 className="text-center text-xl font-bold">Edit</h2>
-          <label for="name">Enter Product Name </label>
+          <label htmlFor="name">Enter Product Name </label>
           <input
             className="border border-2 m-5"
             type="text"
@@ -64,7 +69,7 @@ const UpdataProduct = ({ itemid, ct }) => {
           />
         </div>
         <div className="px-4">
-          <label for="price">Enter Product Price </label>
+          <label htmlFor="price">Enter Product Price </label>
           <input
             className="border border-2 m-5"
             type="text"
@@ -85,7 +90,7 @@ const UpdataProduct = ({ itemid, ct }) => {
             onChange={handleChange1}
             value={ct}
           />
-          <label for="price">{ct}</label>
+          <label htmlFor="price">{ct}</label>
         </div>
 
         <div className="px-4">

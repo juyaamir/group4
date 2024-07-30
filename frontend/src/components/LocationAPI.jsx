@@ -19,7 +19,7 @@ const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData}) 
     stream: true,
     message: '',
   });
-
+  //change handler for the form fields
   const handleChange = async (e) => {
     const { name, value: inputValue } = e.target;
     const newValue =
@@ -33,7 +33,7 @@ const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData}) 
     });
     setState((prev) => ({ ...prev, [name]: newValue }));
 };
-
+//location suggestions 
 const fetchLocationSuggestions = async (location) => {
     setError(null);
     setLoading(true);
@@ -46,10 +46,9 @@ const fetchLocationSuggestions = async (location) => {
     } finally {
         setLoading(false);
     }
-};
-
+};  
+  //form submit handler 
   const handleSubmit =  async(e) => {
-
     e.preventDefault();
     setShowForm(false);
     setHide2(true);
@@ -58,11 +57,10 @@ const fetchLocationSuggestions = async (location) => {
       role: 'user',
       content: message,
     };
+
     setMessages((prev) => [...prev, newMessage]);
     try {
-
       const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
-  
       const {data} = response;
       const weatherData = {
         timezone: data.timezone, 
@@ -81,7 +79,8 @@ const fetchLocationSuggestions = async (location) => {
       };
       
       console.log(weatherData);
-      
+
+      //prompt for the AI
       const prompt  = `Give a brief overview of the weather, then provide a 
       packing list based on the weather forecast data and the activities, also recommend hotels based on the hotel type, in the following format:
       **Weather Overview:**
@@ -142,7 +141,7 @@ const fetchLocationSuggestions = async (location) => {
       * Other activities: ${message}`;
       
 
-
+      //posting the prompt to the AI and getting the response
       const aiResponse = await fetch(
         'http://localhost:8000/api/v1/chat/completions',
         {
@@ -168,7 +167,6 @@ const fetchLocationSuggestions = async (location) => {
       if (stream) {
         const reader = aiResponse.body.getReader();
         const decoder = new TextDecoder('utf-8');
-  
         let result;
         const messageId = crypto.randomUUID();
         while (!(result = await reader.read()).done) {

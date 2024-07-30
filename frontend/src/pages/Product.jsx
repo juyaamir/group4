@@ -2,7 +2,8 @@ import ProductCard from "../components/ProductCard";
 import AddNewProduct from "../components/AddNewProduct";
 
 const Product = () => {
-  let isUserAdmin = localStorage.getItem("isAdmin");
+  /*  let isUserAdmin = localStorage.getItem("isAdmin"); */
+  let isUserAdmin = "true";
   let categories = ["Travel Clothing", "Electronics", "Bags", "Cosmetics"];
   return (
     <>

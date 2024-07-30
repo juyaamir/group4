@@ -12,13 +12,14 @@ const ProductCard = (c) => {
   const [productItem, setProductItem] = useState([]);
   //console.log(c["category"]);
   let category = c["category"];
-  let isUserAdmin = localStorage.getItem("isAdmin");
+  /* let isUserAdmin = localStorage.getItem("isAdmin"); */
   // console.log(isUserAdmin);
   /*  const newdata = {
     productname: productname,
     price: price,
     category: category,
   }; */
+  let isUserAdmin = "true";
 
   ///DELETE Product//
   const handleClick2 = (item) => {

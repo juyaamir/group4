@@ -50,7 +50,8 @@ export const Chat = ({ messages, hide2, formData }) => {
             .map((message) => {
 
               const content = marked(message.content);
-                return <Message key={message.id} message={{ ...message, content }} />;
+                // return <Message key={message.id} message={{ ...message, content }} />;
+                return <Message key={message.id} message={{ content }} />;
             })}
             <Footer />
         </div>

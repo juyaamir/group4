@@ -32,7 +32,31 @@ const ProductCard = (c) => {
   }; */
 
   //get items//7
-  const getitems = () => {
+
+
+
+
+
+
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/v1/product?category=${category}`);
+        setProductItem(response.data);
+      } catch (error) {
+        console.error(`Error in fetching Product data: ${error}`);
+      }
+    };
+  
+    fetchProductData();
+  }, [category]);
+
+
+
+
+
+/*   const getitems = () => {
     axios
       .get(`http://localhost:8000/api/v1/product?category=${category}`)
       .then((response) => {
@@ -43,9 +67,17 @@ const ProductCard = (c) => {
       });
   };
   useEffect(() => {
+  feature/contact-page
     // getitems();
     console.log("I am a useeffect");
   }, [handleClick2]);
+
+    getitems();
+  }, [handleClick2]); */
+
+
+
+
 
   // console.log(productItem.map((item) => item.image));
   /*   console.log(productItem.map((item) => item._id));

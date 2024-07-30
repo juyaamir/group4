@@ -6,17 +6,16 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const AddNewProduct = () => {
   const [file, setFile] = useState("");
   const [imgurl, setImgurl] = useState("");
-
-  console.log(imgurl);
-
-  const changeimgfile = (e) => {};
-
   const [formData, setFormData] = useState({
     productname: "",
     price: "",
     category: "",
     image: "",
   });
+
+  // console.log(imgurl);
+
+  const changeimgfile = (e) => {};
 
   const { productname, price, category, image } = formData;
 
@@ -87,7 +86,12 @@ const AddNewProduct = () => {
       );
     };
     file && uploadFile();
-  }, [imgurl, file]);
+  }, [file]);
+
+  useEffect(() => {
+    setFormData({ ...formData, image: imgurl });
+  }, [imgurl]);
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="border border-2 my-8 ">

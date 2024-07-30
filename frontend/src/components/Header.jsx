@@ -6,8 +6,8 @@ import Marquee from "react-fast-marquee";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
 
-const Header = (islogged) => {
-  let userlogged = islogged["islogged"];
+const Header = ({ islogged }) => {
+  // let userlogged = islogged["islogged"];
 
   let getuserId = localStorage.getItem("userId");
 
@@ -23,7 +23,7 @@ const Header = (islogged) => {
         <p> 30 Days Free Return</p>
       </div>
 
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 m-w-full">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
@@ -97,17 +97,10 @@ const Header = (islogged) => {
             <li>
               <Link to={`/product`}>Products</Link>
             </li>
-            <li>
+            <li className="border border-2 rounded-md">
               <Link to={`/plan-your-vacation`}>
-                <Alert
-                  banner
-                  message={
-                    <Marquee>
-                      Need help what to pack! Ask From
-                      <strong>&nbsp;JourneyPack</strong>
-                    </Marquee>
-                  }
-                />
+                Need help what to pack! Ask From
+                <strong>&nbsp;JourneyPack</strong>
               </Link>
             </li>
             <li>
@@ -160,7 +153,7 @@ const Header = (islogged) => {
             </div>
           </div>
 
-          {userlogged ? (
+          {islogged ? (
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}

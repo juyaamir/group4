@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const SignOut = () => {
-  const [token, setToken] = useState(null);
+const SignOut = ({ setToken }) => {
+  // const [token, setToken] = useState(null);
   const navigate = useNavigate();
 
   function signoutftn() {

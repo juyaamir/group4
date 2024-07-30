@@ -1,7 +1,14 @@
+import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const UpdataProduct = ({ itemid, ct }) => {
+  /*   const id = itemid["itemid"];
+  const cat = ct["ct"]; */
+
+  // const [radioValue, setRadioValue] = useState(0);
+  // console.log(id);
+
   const [updateFormData, setUpdateFormData] = useState({
     productname: "",
     price: "",
@@ -9,6 +16,12 @@ const UpdataProduct = ({ itemid, ct }) => {
   });
 
   const { productname, price, category } = updateFormData;
+
+  /*  const onChange = (ev) => {
+    //save your value here with state variable
+    console.log(ev.target.value);
+    setRadioValue(ev.target.value);
+  }; */
 
   const handleChange1 = (e) => {
     setUpdateFormData({
@@ -18,7 +31,6 @@ const UpdataProduct = ({ itemid, ct }) => {
 
     console.log(updateFormData);
   };
-
   const handleSubmit1 = async (e) => {
     e.preventDefault();
   
@@ -35,10 +47,13 @@ const UpdataProduct = ({ itemid, ct }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit1} className="flex flex-col border-2">
+      <form
+        onSubmit={handleSubmit1}
+        className="flex flex-col border-2  "
+      >
         <div className="flex-col">
           <h2 className="text-center text-xl font-bold">Edit</h2>
-          <label htmlFor="productname">Enter Product Name </label>
+          <label htmlFor="name">Enter Product Name </label>
           <input
             className="border border-2 m-5"
             type="text"
@@ -61,6 +76,7 @@ const UpdataProduct = ({ itemid, ct }) => {
             required
           />
         </div>
+
         <div className="px-4">
           <input
             className="border border-2 m-5"
@@ -70,8 +86,9 @@ const UpdataProduct = ({ itemid, ct }) => {
             onChange={handleChange1}
             value={ct}
           />
-          <label htmlFor="category">{ct}</label>
+          <label htmlFor="price">{ct}</label>
         </div>
+
         <div className="px-4">
           <input
             className="border border-solid rounded-md text-white bg-black p-2 my-6 justify-end"

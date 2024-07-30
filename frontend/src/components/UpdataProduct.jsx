@@ -2,9 +2,9 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const UpdataProduct = (itemid, ct) => {
-  const id = itemid["itemid"];
-  const cat = ct["ct"];
+const UpdataProduct = ({ itemid, ct }) => {
+  /*   const id = itemid["itemid"];
+  const cat = ct["ct"]; */
 
   // const [radioValue, setRadioValue] = useState(0);
   // console.log(id);
@@ -35,7 +35,7 @@ const UpdataProduct = (itemid, ct) => {
     // e.preventDefault();
     // axios.post(`http://localhost:8000/api/v1/product/${newitem}`);
     axios
-      .put(`http://localhost:8000/api/v1/product/${id}`, updateFormData)
+      .put(`http://localhost:8000/api/v1/product/${itemid}`, updateFormData)
       .then((response) => {
         console.log("Response:", response.data);
       })
@@ -83,9 +83,9 @@ const UpdataProduct = (itemid, ct) => {
             name="category"
             id="category"
             onChange={handleChange1}
-            value={cat}
+            value={ct}
           />
-          <label for="price">{cat} </label>
+          <label for="price">{ct}</label>
         </div>
 
         <div className="px-4">

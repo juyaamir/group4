@@ -15,8 +15,6 @@ const AddNewProduct = () => {
 
   // console.log(imgurl);
 
-  const changeimgfile = (e) => {};
-
   const { productname, price, category, image } = formData;
 
   const handleChange = (e) => {
@@ -45,7 +43,7 @@ const AddNewProduct = () => {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
       //console.log(name);
-      const storageRef = ref(storage, "images/file.name");
+      const storageRef = ref(storage, `images/file.${name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
 

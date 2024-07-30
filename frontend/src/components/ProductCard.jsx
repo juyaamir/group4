@@ -43,7 +43,8 @@ const ProductCard = (c) => {
       });
   };
   useEffect(() => {
-    getitems();
+    // getitems();
+    console.log("I am a useeffect");
   }, [handleClick2]);
 
   // console.log(productItem.map((item) => item.image));

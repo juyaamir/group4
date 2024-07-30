@@ -37,12 +37,12 @@ function App() {
     }
   };
   useEffect(() => {
-    console.log("from App useEffect", token);
+    // console.log("from App useEffect", token);
 
     getuserlogged();
   }, [token]);
 
-  console.log("from App", token);
+  //  console.log("from App", token);
   return (
     <>
       <Header islogged={islogged} />

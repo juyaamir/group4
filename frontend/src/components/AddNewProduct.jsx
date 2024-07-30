@@ -15,8 +15,6 @@ const AddNewProduct = () => {
 
   // console.log(imgurl);
 
-  const changeimgfile = (e) => {};
-
   const { productname, price, category, image } = formData;
 
   const handleChange = (e) => {

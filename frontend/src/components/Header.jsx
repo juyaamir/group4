@@ -56,6 +56,9 @@ const Header = ({ islogged }) => {
               <Link to={`/product`}>Products</Link>
             </li>
             <li>
+              <Link to={`/stores`}>Stores</Link>
+            </li>
+            <li>
               <Link to={`/plan-your-vacation`}>
                 Ask from <strong>JourneyPack</strong>
               </Link>
@@ -96,6 +99,9 @@ const Header = ({ islogged }) => {
             </li>
             <li>
               <Link to={`/product`}>Products</Link>
+            </li>
+            <li>
+              <Link to={`/stores`}>Stores</Link>
             </li>
             <li className="border border-2 rounded-md">
               <Link to={`/plan-your-vacation`}>

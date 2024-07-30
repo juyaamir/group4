@@ -14,6 +14,7 @@ import Product from "./pages/Product.jsx";
 import Contact from "./pages/Contact.jsx";
 import Profile from "./pages/Profile.jsx";
 import Cart from "./pages/Cart.jsx";
+import Stores from "./components/Stores.jsx"
 
 import PlanYourVacation from "./pages/PlanYourVacation.jsx";
 import Header from "./components/Header.jsx";
@@ -53,6 +54,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/product" element={<Product />} />
+            <Route path="/stores" element={<Stores />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/cart" element={<Cart />} />

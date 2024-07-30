@@ -32,7 +32,27 @@ const ProductCard = (c) => {
   }; */
 
   //get items//7
-  const getitems = () => {
+
+
+
+
+
+
+
+  useEffect(() => {
+    try {
+      const response = axios.get(`http://localhost:8000/api/v1/product?category=${category}`);
+      setProductItem(response.data);
+    } catch (error) {
+      console.error(`Error in fetching Product data: ${error}`);
+    }
+  },[])
+
+
+
+
+
+/*   const getitems = () => {
     axios
       .get(`http://localhost:8000/api/v1/product?category=${category}`)
       .then((response) => {
@@ -44,7 +64,11 @@ const ProductCard = (c) => {
   };
   useEffect(() => {
     getitems();
-  }, [handleClick2]);
+  }, [handleClick2]); */
+
+
+
+
 
   // console.log(productItem.map((item) => item.image));
   /*   console.log(productItem.map((item) => item._id));

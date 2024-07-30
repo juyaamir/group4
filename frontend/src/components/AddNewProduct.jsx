@@ -109,7 +109,7 @@ const AddNewProduct = () => {
           />
         </div>
         <div className="px-4">
-          <label for="price">Enter Product Price </label>
+          <label htmlFor="price">Enter Product Price </label>
           <input
             className="border border-2 m-5"
             type="text"
@@ -129,7 +129,7 @@ const AddNewProduct = () => {
             onChange={handleChange}
             value="Travel Clothing"
           />
-          <label for="price">Travel Clothing</label>
+          <label htmlFor="price">Travel Clothing</label>
         </div>
 
         <div className="px-4">
@@ -141,7 +141,7 @@ const AddNewProduct = () => {
             onChange={handleChange}
             value="Electronics"
           />
-          <label for="price">Electronics </label>
+          <label htmlFor="price">Electronics </label>
         </div>
         <div className="px-4">
           <input
@@ -152,7 +152,7 @@ const AddNewProduct = () => {
             onChange={handleChange}
             value="Bags"
           />
-          <label for="price">Bags </label>
+          <label htmlFor="price">Bags </label>
         </div>
 
         <div className="px-4">
@@ -164,11 +164,11 @@ const AddNewProduct = () => {
             onChange={handleChange}
             value="Cosmetics"
           />
-          <label for="price">Cosmetics</label>
+          <label htmlFor="price">Cosmetics</label>
         </div>
 
         <div className="px-4">
-          <label for="name">Add Image</label>
+          <label htmlFor="name">Add Image</label>
           <input
             className=""
             type="file"

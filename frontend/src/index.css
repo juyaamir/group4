@@ -20,3 +20,18 @@
       height: auto;
     }
   }
+
+  .height {
+    height: 512px;
+    overflow: auto;
+  }
+  .height2 {
+    height: 512px;
+
+  }
+  .width {
+    width: 30%;
+  }
+  .fGap {
+    gap: 5%;
+  }

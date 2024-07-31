@@ -33,6 +33,7 @@ const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData}) 
     });
     setState((prev) => ({ ...prev, [name]: newValue }));
 };
+
 //location suggestions 
 const fetchLocationSuggestions = async (location) => {
     setError(null);

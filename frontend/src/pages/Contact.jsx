@@ -5,8 +5,8 @@ const Contact = () => {
   return (
     <div className="flex m-32 p-12 justify-around">
       <div>
-        <img src={logo} alt="logo" className="w-full h-auto" /> {/* Responsive Image */}
-        <p className="mt-8">Weißkopf Straße 00 <br />65432 Berlin <br />Tel: 0123456789</p>
+        <img src={logo} alt="logo" className="mt-24 w-full h-auto" /> {/* Responsive Image */}
+        <p className="mt-8">Weißkopf Straße 00 <br />65432 Berlin <br />Tel: 0123456789 <br />journeypack@gmail.com</p>
       </div>
       <div>
         <h1 className="text-3xl font-bold pb-8">Contact Us</h1>

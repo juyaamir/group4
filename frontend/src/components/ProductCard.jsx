@@ -67,6 +67,11 @@ const ProductCard = (c) => {
       });
   };
   useEffect(() => {
+  feature/contact-page
+    // getitems();
+    console.log("I am a useeffect");
+  }, [handleClick2]);
+
     getitems();
   }, [handleClick2]); */
 

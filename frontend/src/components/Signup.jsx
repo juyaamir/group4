@@ -49,7 +49,7 @@ const Signup = () => {
       navigate("/login");
     } catch (error) {
       // console.log(error.message);
-      toast.error("Please fill all information in the form");
+      toast.error("User Already exists");
       // toast.error(error.response.data.message);
     }
   };

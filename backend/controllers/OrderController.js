@@ -23,9 +23,9 @@ export const getAllOrders = async (req, res) => {
  */
 
 export const createSinglOrder = async (req, res) => {
-  const { userid, price, productid } = req.body;
+  const { userid, price, productname } = req.body;
 
-  //console.log(userid, price, productid);
+  console.log(userid, price, productname);
   try {
     const order = new Order(req.body);
     const createdOrder = await order.save();

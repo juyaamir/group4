@@ -14,15 +14,20 @@ import Product from "./pages/Product.jsx";
 import Contact from "./pages/Contact.jsx";
 import Profile from "./pages/Profile.jsx";
 import Cart from "./pages/Cart.jsx";
-import Stores from "./components/Stores.jsx"
+import Stores from "./components/Stores.jsx";
 
 import PlanYourVacation from "./pages/PlanYourVacation.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import WelcomeMessage from "./components/WelcomeMessage.jsx";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [islogged, setIslogged] = useState(false);
+  const [user, setUser] = useState(null);
+  const [productCount, setProductCount] = useState(0);
+  const [productArray, setProductArray] = useState([]);
+  const [productPrice, setProductPrice] = useState(0);
 
   // console.log(islogged);
 
@@ -46,18 +51,50 @@ function App() {
   //  console.log("from App", token);
   return (
     <>
-      <Header islogged={islogged} />
+      <Header
+        islogged={islogged}
+        productCount={productCount}
+        productArray={productArray}
+        productPrice={productPrice}
+      />
 
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
+          {islogged && user && <WelcomeMessage firstName={user.firstname} />}
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home setUser={setUser} />} />
             <Route path="/about" element={<About />} />
-            <Route path="/product" element={<Product />} />
+            <Route
+              path="/product"
+              element={
+                <Product
+                  productCount={productCount}
+                  setProductCount={setProductCount}
+                  productArray={productArray}
+                  setProductArray={setProductArray}
+                  productPrice={productPrice}
+                  setProductPrice={setProductPrice}
+                />
+              }
+            />
             <Route path="/stores" element={<Stores />} />
             <Route path="/contact-us" element={<Contact />} />
-            <Route path="/profile/:id" element={<Profile />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/profile/:id"
+              element={<Profile setUser={setUser} />}
+            />
+            <Route
+              path="/cart"
+              element={
+                <Cart
+                  productArray={productArray}
+                  setProductArray={setProductArray}
+                  productPrice={productPrice}
+                  setProductPrice={setProductPrice}
+                  user={user}
+                />
+              }
+            />
 
             <Route path="/signin" element={<Login setToken={setToken} />} />
             <Route path="/login" element={<Login setToken={setToken} />} />

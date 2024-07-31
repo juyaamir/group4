@@ -7,11 +7,23 @@ import { Button, Flex, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import UpdateProduct from "./UpdataProduct";
 import Newimage from "./Newimage";
+import { use } from "marked";
 
-const ProductCard = (c) => {
+const ProductCard = ({
+  category,
+  productCount,
+  setProductCount,
+  productArray,
+  setProductArray,
+  productPrice,
+  setProductPrice,
+}) => {
   const [productItem, setProductItem] = useState([]);
+
+  //const [productArray, setProductArray] = useState([]);
   //console.log(c["category"]);
-  let category = c["category"];
+  //console.log(productARR);
+  /*  let category = c["category"]; */
   /* let isUserAdmin = localStorage.getItem("isAdmin"); */
   // console.log(isUserAdmin);
   /*  const newdata = {
@@ -20,6 +32,17 @@ const ProductCard = (c) => {
     category: category,
   }; */
   let isUserAdmin = "true";
+
+  const handleClick = (productname, price) => (event) => {
+    setProductCount(productCount + 1);
+    console.log(productname);
+
+    setProductArray((current) => [...current, productname]);
+    console.log(productArray);
+    setProductPrice(productPrice + price);
+    console.log(productPrice);
+    //productARR.push(productid);
+  };
 
   ///DELETE Product//
   const handleClick2 = (item) => {
@@ -33,30 +56,22 @@ const ProductCard = (c) => {
 
   //get items//7
 
-
-
-
-
-
-
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/product?category=${category}`);
+        const response = await axios.get(
+          `http://localhost:8000/api/v1/product?category=${category}`
+        );
         setProductItem(response.data);
       } catch (error) {
         console.error(`Error in fetching Product data: ${error}`);
       }
     };
-  
+
     fetchProductData();
   }, [category]);
 
-
-
-
-
-/*   const getitems = () => {
+  /*   const getitems = () => {
     axios
       .get(`http://localhost:8000/api/v1/product?category=${category}`)
       .then((response) => {
@@ -67,12 +82,13 @@ const ProductCard = (c) => {
       });
   };
   useEffect(() => {
+  feature/contact-page
+    // getitems();
+    console.log("I am a useeffect");
+  }, [handleClick2]);
+
     getitems();
   }, [handleClick2]); */
-
-
-
-
 
   // console.log(productItem.map((item) => item.image));
   /*   console.log(productItem.map((item) => item._id));
@@ -83,9 +99,9 @@ const ProductCard = (c) => {
   const itemcategory = productItem.map((item) => item.category); */
 
   return (
-    <div className="flex flex-col max-w-full ">
+    <div className="flex flex-col ">
       <div className="flex flex-row flex-wrap gap-4">
-        {productItem?.map((item) => (
+        {productItem?.map((item, key) => (
           <div
             key={item._id}
             className="card card-compact bg-base-100 w-80 shadow-xl"
@@ -97,7 +113,12 @@ const ProductCard = (c) => {
               <h2 className="card-title">{item.productname}</h2>
               <p>Price :&nbsp;{item.price} &nbsp;Euro </p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Add </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleClick(item.productname, item.price)}
+                >
+                  Move to Cart
+                </button>
               </div>
               {isUserAdmin === "true" ? (
                 <div className="flex justify-between">

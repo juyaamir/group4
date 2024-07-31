@@ -30,7 +30,12 @@ const PlanYourVacation = () => {
           formData={formData}
           setFormData={setFormData}
         />
-        <Chat hide2={hide2} messages={messages} formData={formData} />
+        <Chat
+          hide2={hide2}
+          messages={messages}
+          formData={formData}
+          firstName={localStorage.getItem("userName")}
+        />
       </div>
     </>
   );

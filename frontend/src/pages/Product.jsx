@@ -1,7 +1,14 @@
 import ProductCard from "../components/ProductCard";
 import AddNewProduct from "../components/AddNewProduct";
 
-const Product = () => {
+const Product = ({
+  productCount,
+  setProductCount,
+  productArray,
+  setProductArray,
+  productPrice,
+  setProductPrice,
+}) => {
   /*  let isUserAdmin = localStorage.getItem("isAdmin"); */
   let isUserAdmin = "true";
   let categories = ["Travel Clothing", "Electronics", "Bags", "Cosmetics"];
@@ -20,7 +27,15 @@ const Product = () => {
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          <ProductCard category={categories[0]} />
+          <ProductCard
+            category={categories[0]}
+            productCount={productCount}
+            setProductCount={setProductCount}
+            productArray={productArray}
+            setProductArray={setProductArray}
+            productPrice={productPrice}
+            setProductPrice={setProductPrice}
+          />
         </div>
 
         <input
@@ -34,7 +49,15 @@ const Product = () => {
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          <ProductCard category={categories[1]} />
+          <ProductCard
+            category={categories[1]}
+            productCount={productCount}
+            setProductCount={setProductCount}
+            productArray={productArray}
+            setProductArray={setProductArray}
+            productPrice={productPrice}
+            setProductPrice={setProductPrice}
+          />
         </div>
 
         <input
@@ -48,7 +71,15 @@ const Product = () => {
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          <ProductCard category={categories[2]} />
+          <ProductCard
+            category={categories[2]}
+            productCount={productCount}
+            setProductCount={setProductCount}
+            productArray={productArray}
+            setProductArray={setProductArray}
+            productPrice={productPrice}
+            setProductPrice={setProductPrice}
+          />
         </div>
         <input
           type="radio"
@@ -61,7 +92,15 @@ const Product = () => {
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          <ProductCard category={categories[3]} />
+          <ProductCard
+            category={categories[3]}
+            productCount={productCount}
+            setProductCount={setProductCount}
+            productArray={productArray}
+            setProductArray={setProductArray}
+            productPrice={productPrice}
+            setProductPrice={setProductPrice}
+          />
         </div>
       </div>
 

@@ -4,7 +4,7 @@ const ordersSchema = mongoose.Schema(
   {
     userid: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      required: false,
       ref: "UsersAccount",
     },
     price: {
@@ -13,9 +13,9 @@ const ordersSchema = mongoose.Schema(
       default: 0.0,
     },
     //items array should refer products (one thing or many)
-    productid: [
+    productname: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: "String",
         required: true,
         ref: "Products",
       },

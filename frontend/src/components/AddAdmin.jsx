@@ -1,12 +1,14 @@
-import backgroundImage from "../assets/nellie-adamyan-DQLEFBUHiVs-unsplash.jpg";
+import React from "react";
+import axios from "axios";
+
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
+/* import { isAdmin } from "../../../backend/Middleware/Users"; */
 
-const Signup = () => {
+const AddAdmin = () => {
   const URL = import.meta.env.VITE_APP_URL;
   const navigate = useNavigate();
 
@@ -15,15 +17,17 @@ const Signup = () => {
     lastname: "",
     email: "",
     password: "",
+    isAdmin: "",
   });
 
-  const { firstname, lastname, email, password } = formData;
+  const { firstname, lastname, email, password, isAdmin } = formData;
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    console.log(formData);
   };
 
   const handleReset = () => {
@@ -32,6 +36,7 @@ const Signup = () => {
       lastname: "",
       email: "",
       password: "",
+      isAdmin: "",
     });
   };
 
@@ -43,26 +48,21 @@ const Signup = () => {
         `${URL}/api/v1/usersaccounts`,
         formData
       );
-      toast.success("Sign up successful!");
+      toast.success("New Admin Added Successfully!");
 
       handleReset();
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       // console.log(error.message);
-      toast.error("User Already exists");
+      toast.error("Please fill all information in the form");
       // toast.error(error.response.data.message);
     }
   };
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-    >
+    <div className="min-h-screen bg-cover bg-center flex items-center justify-center">
       <motion.div>
-        <h2 className="text-3xl font-bold mb-6 text-center">Sign Up</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center">Add New Admin</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-white text-left text-sm">
@@ -117,6 +117,22 @@ const Signup = () => {
               className="mt-1 p-2 w-full border rounded outline-none text-black bg-cyan-50"
             />
           </div>
+          <div className="mb-4">
+            <input
+              type="radio"
+              name="isAdmin"
+              onClick={handleChange}
+              value="true"
+            />
+            Yes
+            <input
+              type="radio"
+              name="isAdmin"
+              onClick={handleChange}
+              value="false"
+            />
+            No
+          </div>
 
           <motion.button
             initial={{ scale: 0.9 }}
@@ -139,4 +155,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default AddAdmin;

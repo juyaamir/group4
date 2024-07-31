@@ -57,8 +57,9 @@ const fetchLocationSuggestions = async (location) => {
       role: 'user',
       content: message,
     };
-
-    setMessages((prev) => [...prev, newMessage]);
+console.log("line updated")
+    setMessages([...messages, newMessage]);
+    // setMessages((prev) => [...prev, newMessage]);
     try {
       const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
       const {data} = response;
@@ -153,12 +154,14 @@ const fetchLocationSuggestions = async (location) => {
           },
           body: JSON.stringify({
             model: 'gpt-4o',
+            // messages: [{ ...newMessage, content: prompt }],
+            // messages: [...messages, { content: prompt }],
             messages: [...messages, { ...newMessage, content: prompt }],
             stream,
           }),
         }
       );
-
+      console.log(aiResponse);
       setState({
         stream,
         message: '',

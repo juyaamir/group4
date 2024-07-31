@@ -11,7 +11,7 @@ import {
   deletOne,
 } from "../../controllers/userControlers/index.js";
 
-//import { isAuthenticated } from "../../Middleware/Users/index.js";
+import { isAuthenticated } from "../../Middleware/Users/index.js";
 // import {
 //   postErrorValidator,
 //   isAuthenticated,

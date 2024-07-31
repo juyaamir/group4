@@ -1,18 +1,15 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { useState, useEffect } from "react";
 import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
 
-const Header = () => {
-  //Get item from local Storage"
-  let getid = localStorage.getItem("id");
+const Header = ({ islogged }) => {
+  // let userlogged = islogged["islogged"];
 
-  //// Getting id manually from database"
-  let idObj = { _id: "6699132f8f11764e49cbcba4" };
-  let id = idObj["_id"];
-  console.log(id);
+  let getuserId = localStorage.getItem("userId");
 
   return (
     <>
@@ -26,7 +23,7 @@ const Header = () => {
         <p> 30 Days Free Return</p>
       </div>
 
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 m-w-full">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
@@ -59,6 +56,9 @@ const Header = () => {
               <Link to={`/product`}>Products</Link>
             </li>
             <li>
+              <Link to={`/stores`}>Stores</Link>
+            </li>
+            <li>
               <Link to={`/plan-your-vacation`}>
                 Ask from <strong>JourneyPack</strong>
               </Link>
@@ -69,7 +69,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-start">
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,9 @@ const Header = () => {
                 />
               </svg>
             </div>
-          </div>
+          </div> */}
+          <img src="./assets/logo.png" alt="logo" />
+
           <a className="btn btn-ghost text-xl">JourneyPack</a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -101,16 +103,12 @@ const Header = () => {
               <Link to={`/product`}>Products</Link>
             </li>
             <li>
+              <Link to={`/stores`}>Stores</Link>
+            </li>
+            <li className="border border-2 rounded-md">
               <Link to={`/plan-your-vacation`}>
-                <Alert
-                  banner
-                  message={
-                    <Marquee>
-                      Need help what to pack! Ask From
-                      <strong>&nbsp;JourneyPack</strong>
-                    </Marquee>
-                  }
-                />
+                Need help what to pack! Ask From
+                <strong>&nbsp;JourneyPack</strong>
               </Link>
             </li>
             <li>
@@ -163,38 +161,44 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <Avatar
-                  style={{ backgroundColor: "#87d068" }}
-                  icon={<UserOutlined />}
-                />
+          {islogged ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <Avatar
+                    style={{ backgroundColor: "#87d068" }}
+                    icon={<UserOutlined />}
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <button className="btn btn-sm glass">
+                    <Link to={`/profile/${getuserId}`}>Profile</Link>
+                  </button>
+                </li>
+
+                <li>
+                  <button className="btn btn-sm glass">
+                    <Link to={`/signout`}>Sign out</Link>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li className="justify-between">
-                <Link to={`/profile/${id}`}>Profile</Link>
-              </li>
-
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <Link to={`/signin`}>
-              <button className="btn btn-sm glass">Sign in</button>
-            </Link>
-          </div>
+          ) : (
+            <div>
+              <Link to={`/signin`}>
+                <button className="btn btn-sm glass">Sign in</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>

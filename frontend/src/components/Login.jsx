@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import backgroundImage from "../assets/nellie-adamyan-DQLEFBUHiVs-unsplash.jpg";
 import { toast } from "react-toastify";
 import axios from "axios";
 // import { URL } from "../utils/MyLocalURL";
 import { motion } from "framer-motion";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const URL = import.meta.env.VITE_APP_URL;
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -27,15 +27,20 @@ const Login = () => {
       const { data } = await axios.post(`${URL}/api/v1/auth/login`, newUser);
       toast.success("Login successfully!");
       localStorage.setItem("token", data.token);
+      setToken(localStorage.getItem("token"));
       localStorage.setItem("email", data.email);
       localStorage.setItem("userName", data.userName);
       localStorage.setItem("userId", data.userId);
+      localStorage.setItem("isAdmin", data.isAdmin);
       handleReset();
       navigate("/");
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
+
+  // useEffect(() => {
+  // }, [handleLogin]);
 
   return (
     <motion.div

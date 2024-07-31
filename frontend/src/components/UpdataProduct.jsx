@@ -21,7 +21,7 @@ const UpdataProduct = ({ itemid, ct }) => {
 
   const handleSubmit1 = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.put(
         `http://localhost:8000/api/v1/product/${itemid}`,
@@ -36,26 +36,28 @@ const UpdataProduct = ({ itemid, ct }) => {
   return (
     <div>
       <form onSubmit={handleSubmit1} className="flex flex-col border-2">
-        <div className="flex-col">
+        <div className="flex-col px-4 my-2">
           <h2 className="text-center text-xl font-bold">Edit</h2>
-          <label htmlFor="productname">Enter Product Name </label>
+          {/*  <label htmlFor="productname">Enter Product Name </label> */}
           <input
-            className="border border-2 m-5"
+            className="border border-2 rounded-md my-2"
             type="text"
             name="productname"
             id="productname"
+            placeholder="Enter Product Name"
             onChange={handleChange1}
             value={productname}
             required
           />
         </div>
-        <div className="px-4">
-          <label htmlFor="price">Enter Product Price </label>
+        <div className="px-4 my-2">
+          {/* <label htmlFor="price">Enter Product Price </label> */}
           <input
-            className="border border-2 m-5"
+            className="border border-2 rounded-md "
             type="text"
             name="price"
             id="price"
+            placeholder="Enter Product Price"
             onChange={handleChange1}
             value={price}
             required
@@ -63,14 +65,14 @@ const UpdataProduct = ({ itemid, ct }) => {
         </div>
         <div className="px-4">
           <input
-            className="border border-2 m-5"
+            className="border border-2 "
             type="radio"
             name="category"
             id="category"
             onChange={handleChange1}
             value={ct}
           />
-          <label htmlFor="category">{ct}</label>
+          <label htmlFor="category">&nbsp;{ct}</label>
         </div>
         <div className="px-4">
           <input

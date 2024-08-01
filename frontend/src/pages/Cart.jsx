@@ -70,7 +70,7 @@ const Cart = ({
         <div className="p-14 flex flex-row gap-6">
           <Avatar size={40}>{user?.firstname}</Avatar>
           <Text type="success">
-            {user?.firstname}
+            {user?.firstname} &nbsp;&nbsp;
             {user?.lastname}
           </Text>
         </div>

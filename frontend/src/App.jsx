@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { ThemeProvider } from './components/ThemeContext.jsx';
+
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 import SignOut from "./components/SignOut.jsx";
@@ -50,7 +52,8 @@ function App() {
 
   //  console.log("from App", token);
   return (
-    <>
+    <ThemeProvider>
+      <>
       <Header
         islogged={islogged}
         productCount={productCount}
@@ -123,6 +126,8 @@ function App() {
       </div>
       <Footer />
     </>
+    </ThemeProvider>
+    
   );
 }
 export default App;

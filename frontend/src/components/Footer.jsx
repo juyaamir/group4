@@ -62,6 +62,23 @@ const Footer = () => {
             </a>
           </div>
         </nav>
+        <form action="">
+          <h6 className="footer-title">Subscribe</h6>
+          <div className="grid grid-flow-col gap-4">
+            <input
+            
+              type="text"
+              placeholder="Your Email"
+              className="input input-sm text-black"
+            />
+            <button className="btn btn-sm "
+            onClick={(e) => {
+              e.preventDefault();
+              alert("Subscribed");
+            }}
+            >Subscribe</button>
+          </div>
+        </form>
       </footer>
     </>
   );

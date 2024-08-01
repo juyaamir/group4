@@ -25,7 +25,7 @@ function Profile() {
           firstname: response.data.firstname,
           lastname: response.data.lastname,
           email: response.data.email,
-          password: 'response.data.password'
+          password: ''
         });
       })
       .catch((err) => {

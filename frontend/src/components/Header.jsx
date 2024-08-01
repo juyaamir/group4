@@ -5,7 +5,11 @@ import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
+
+import logo from "../assets/logo.png";
+
 import ThemeToggle from "./Theme";
+
 
 const Header = ({ islogged, productCount, productPrice }) => {
   // let userlogged = islogged["islogged"];
@@ -89,7 +93,7 @@ const Header = ({ islogged, productCount, productPrice }) => {
               </svg>
             </div>
           </div> */}
-          <img src="./assets/logo.png" alt="logo" />
+          <img src={logo} alt="logo" className="h-10 w-10 rounded-full" />
 
           <a className="btn btn-ghost text-xl">JourneyPack</a>
         </div>

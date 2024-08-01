@@ -1,0 +1,61 @@
+[
+  {
+    "lat": "47.347540",
+    "lon": "-3.157250",
+    "name": "JourneyPack Store",
+    "address": "10 Rue de la Citadelle, 56360 Le Palais, France"
+  },
+  {
+    "lat": "47.379190",
+    "lon": "13.424120",
+    "name": "JourneyPack Store",
+    "address": "Untere Marktstraße 6, 5541 Altenmarkt im Pongau, Austria"
+  },
+  {
+    "lat": "48.104380",
+    "lon": "11.765820",
+    "name": "JourneyPack Store",
+    "address": "Zugspitzstr. 4A, 85591 Vaterstetten, Germany"
+  },
+  {
+    "lat": "48.838220",
+    "lon": "10.092460",
+    "name": "JourneyPack Store",
+    "address": "Radgasse 13, 73430 Aalen, Germany"
+  },
+  {
+    "lat": "49.1325966",
+    "lon": "10.0493411",
+    "name": "JourneyPack Store",
+    "address": "Wilhelmstraße 1-5 Creailsheim, 74564 Germany"
+  }
+  ,
+  {
+    "lat": "52.4511287",
+    "lon": "13.5424887",
+    "name": "JourneyPack Store",
+    "address": "Oberspreestraße 55, 12439 Berlin, Germany"
+  },
+  {
+    "lat": "52.5245224",
+    "lon": "13.407914",
+    "name": "JourneyPack Store",
+    "address": "Münzstraße, 10178 Berlin, Germany"
+  }
+  ,
+  {
+    "lat": "53.0723858",
+    "lon": "8.8177171",
+    "name": "JourneyPack Store",
+    "address": "Ostertorsteinweg 25-26, 28203 Bremen Germany"
+  },
+  
+  {
+    "lat": "40.4257281",
+    "lon": "-3.7039201",
+    "name": "JourneyPack Store",
+    "address": "Calle de San Andrés, 3, Centro, 28004 Madrid, Spain"
+  }
+  
+  
+]

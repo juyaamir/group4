@@ -28,7 +28,8 @@ export const createSinglOrder = async (req, res) => {
   console.log(userid, price, productname);
   try {
     const order = new Order(req.body);
-    const createdOrder = await order.save();
+    const createdOrder = await order.create(req.body);
+
     res.json(createdOrder);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error });

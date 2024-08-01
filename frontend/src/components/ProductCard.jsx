@@ -8,6 +8,10 @@ import { EditOutlined } from "@ant-design/icons";
 import UpdateProduct from "./UpdataProduct";
 import Newimage from "./Newimage";
 import { use } from "marked";
+import { Card } from "antd";
+import { HeartOutlined } from "@ant-design/icons";
+
+const { Meta } = Card;
 
 const ProductCard = ({
   category,
@@ -17,6 +21,7 @@ const ProductCard = ({
   setProductArray,
   productPrice,
   setProductPrice,
+  setFavArray,
 }) => {
   const [productItem, setProductItem] = useState([]);
 
@@ -24,24 +29,24 @@ const ProductCard = ({
   //console.log(c["category"]);
   //console.log(productARR);
   /*  let category = c["category"]; */
-  /* let isUserAdmin = localStorage.getItem("isAdmin"); */
+  let isUserAdmin = localStorage.getItem("isAdmin");
   // console.log(isUserAdmin);
   /*  const newdata = {
     productname: productname,
     price: price,
     category: category,
   }; */
-  let isUserAdmin = "true";
+  /*  let isUserAdmin = "true"; */
+  const addfav = (item) => {
+    setFavArray((current) => [...current, item]);
+    console.log(favArray);
+  };
 
   const handleClick = (productname, price) => (event) => {
     setProductCount(productCount + 1);
-    console.log(productname);
-
     setProductArray((current) => [...current, productname]);
-    console.log(productArray);
+
     setProductPrice(productPrice + price);
-    console.log(productPrice);
-    //productARR.push(productid);
   };
 
   ///DELETE Product//
@@ -69,7 +74,7 @@ const ProductCard = ({
     };
 
     fetchProductData();
-  }, [category]);
+  }, [category, handleClick2]);
 
   /*   const getitems = () => {
     axios
@@ -99,8 +104,69 @@ const ProductCard = ({
   const itemcategory = productItem.map((item) => item.category); */
 
   return (
-    <div className="flex flex-col ">
-      <div className="flex flex-row flex-wrap gap-4">
+    <div className="flex flex-row flex-wrap gap-4  rounded-md p-1 ">
+      {productItem?.map((item, key) => (
+        <div key={item._id} className="card bg-base-200 w-64 shadow-xl">
+          <p className="m-4 text-end">
+            <button
+              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
+              onClick={() => addfav(item.productname)}
+            >
+              <HeartOutlined />
+            </button>
+          </p>
+          <figure className="px-10">
+            <img
+              src={item.image}
+              alt={item.productname}
+              className="rounded-xl"
+            />
+          </figure>
+
+          <div className="card-body items-center text-center">
+            <h2 className="card-title">{item.productname}</h2>
+            <p>
+              <strong>Price :&nbsp; {item.price}&nbsp;€</strong>
+            </p>
+            <div className="card-actions">
+              <button
+                className="btn btn-primary  btn-sm"
+                onClick={handleClick(item.productname, item.price)}
+              >
+                Move to Cart
+              </button>
+            </div>
+          </div>
+          <div>
+            {isUserAdmin === "true" ? (
+              <div className="flex justify-between">
+                <div className="collapse max-w-full">
+                  <input type="checkbox" />
+                  <div className="collapse-title text-md font-small">
+                    <Button type="dashed" icon={<EditOutlined />}></Button>
+                  </div>
+                  <div className="collapse-content">
+                    <p>
+                      <UpdateProduct itemid={item._id} ct={category} />
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <Button
+                    className="mt-4 mr-3 max-w-full"
+                    type="dashed"
+                    icon={<DeleteOutlined />}
+                    onClick={() => handleClick2(item._id)}
+                  ></Button>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ))}
+
+      {/*  <div className="flex flex-row flex-wrap gap-4">
         {productItem?.map((item, key) => (
           <div
             key={item._id}
@@ -147,7 +213,7 @@ const ProductCard = ({
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -21,8 +21,13 @@ import Stores from "./components/Stores.jsx";
 import PlanYourVacation from "./pages/PlanYourVacation.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+
+import FavProduct from "./components/FavProduct.jsx";
+
+
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
+
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [islogged, setIslogged] = useState(false);
@@ -30,6 +35,7 @@ function App() {
   const [productCount, setProductCount] = useState(0);
   const [productArray, setProductArray] = useState([]);
   const [productPrice, setProductPrice] = useState(0);
+  const [favArray, setFavArray] = useState([]);
 
   // console.log(islogged);
 
@@ -76,6 +82,7 @@ function App() {
                   setProductArray={setProductArray}
                   productPrice={productPrice}
                   setProductPrice={setProductPrice}
+                  setFavArray={setFavArray}
                 />
               }
             />
@@ -98,7 +105,10 @@ function App() {
                 />
               }
             />
-
+            <Route
+              path="/favourite-product"
+              element={<FavProduct favArray={favArray} />}
+            />
             <Route path="/signin" element={<Login setToken={setToken} />} />
             <Route path="/login" element={<Login setToken={setToken} />} />
             <Route path="/signup" element={<Signup />} />

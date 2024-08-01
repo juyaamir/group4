@@ -123,7 +123,7 @@ const Header = ({ islogged, productCount, productPrice }) => {
             <li>
               <Link to={`/stores`}>Stores</Link>
             </li>
-            <li className="border border-2 rounded-md">
+            <li className=" border-2 rounded-md">
               <Link to={`/plan-your-vacation`}>
                 Need help what to pack! Ask From
                 <strong>&nbsp;JourneyPack</strong>

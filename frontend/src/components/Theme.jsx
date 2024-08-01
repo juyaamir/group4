@@ -5,7 +5,7 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <label className="grid cursor-pointer place-items-center">
+    <label className="grid cursor-pointer place-items-center md:mt-1">
       <input
         type="checkbox"
         checked={theme === 'dark'}

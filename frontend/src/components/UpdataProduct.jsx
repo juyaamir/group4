@@ -1,14 +1,19 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { storage } from "../firebaseConfig/FirebaseConfig";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const UpdataProduct = ({ itemid, ct }) => {
+  const [file, setFile] = useState("");
+  const [imgurl, setImgurl] = useState("");
   const [updateFormData, setUpdateFormData] = useState({
     productname: "",
     price: "",
-    category: "",
+    category: ct,
+    image: "",
   });
 
-  const { productname, price, category } = updateFormData;
+  const { productname, price, category, image } = updateFormData;
 
   const handleChange1 = (e) => {
     setUpdateFormData({
@@ -32,6 +37,57 @@ const UpdataProduct = ({ itemid, ct }) => {
       console.error("Error:", error);
     }
   };
+
+  useEffect(() => {
+    const uploadFile = () => {
+      const name = new Date().getTime() + file.name;
+      //console.log(name);
+      const storageRef = ref(storage, `images/file.${name}`);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      // Register three observers:
+      // 1. 'state_changed' observer, called any time the state changes
+      // 2. Error observer, called on failure
+      // 3. Completion observer, called on successful completion
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+              break;
+          }
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+        },
+        () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL);
+            setImgurl(downloadURL);
+          });
+        }
+      );
+    };
+    file && uploadFile();
+  }, [file]);
+
+  useEffect(() => {
+    setUpdateFormData({ ...updateFormData, image: imgurl });
+  }, [imgurl]);
 
   return (
     <div>
@@ -63,7 +119,7 @@ const UpdataProduct = ({ itemid, ct }) => {
             required
           />
         </div>
-        <div className="px-4">
+        {/*   <div className="px-4">
           <input
             className="border border-2 "
             type="radio"
@@ -73,7 +129,17 @@ const UpdataProduct = ({ itemid, ct }) => {
             value={ct}
           />
           <label htmlFor="category">&nbsp;{ct}</label>
+        </div> */}
+        <div className="px-4 my-2">
+          <input
+            className="file-input file-input-bordered file-input-xs w-full max-w-xs"
+            type="file"
+            name="image"
+            id="image"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
         </div>
+
         <div className="px-4">
           <input
             className="border border-solid rounded-md text-white bg-black p-2 my-6 justify-end"

@@ -35,12 +35,12 @@ const UpdataProduct = ({ itemid, ct }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit1} className="flex flex-col border-2">
-        <div className="flex-col px-4 my-2">
+      <form onSubmit={handleSubmit1} className="flex flex-col border-1">
+        <div className="flex-col px-2 my-2">
           <h2 className="text-center text-xl font-bold">Edit</h2>
           {/*  <label htmlFor="productname">Enter Product Name </label> */}
           <input
-            className="border border-2 rounded-md my-2"
+            className="input input-bordered input-md w-full max-w-xs"
             type="text"
             name="productname"
             id="productname"
@@ -50,10 +50,10 @@ const UpdataProduct = ({ itemid, ct }) => {
             required
           />
         </div>
-        <div className="px-4 my-2">
+        <div className="px-2 my-2">
           {/* <label htmlFor="price">Enter Product Price </label> */}
           <input
-            className="border border-2 rounded-md "
+            className="input input-bordered input-md w-full max-w-xs "
             type="text"
             name="price"
             id="price"

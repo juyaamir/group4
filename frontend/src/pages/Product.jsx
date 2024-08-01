@@ -1,5 +1,16 @@
 import ProductCard from "../components/ProductCard";
 import AddNewProduct from "../components/AddNewProduct";
+import { Select, Space } from "antd";
+
+import { Carousel } from "antd";
+
+const contentStyle = {
+  height: "360px",
+  color: "#fff",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "#c0c0c0",
+};
 
 const Product = ({
   productCount,
@@ -8,13 +19,40 @@ const Product = ({
   setProductArray,
   productPrice,
   setProductPrice,
+  setFavArray,
 }) => {
-  /*  let isUserAdmin = localStorage.getItem("isAdmin"); */
-  let isUserAdmin = "true";
+  let isUserAdmin = localStorage.getItem("isAdmin");
+  //let isUserAdmin = "true";
   let categories = ["Travel Clothing", "Electronics", "Bags", "Cosmetics"];
+
   return (
     <>
-      <div role="tablist" className="tabs tabs-lifted">
+      <div>
+        <Carousel autoplay>
+          <div>
+            <h3 style={contentStyle}>
+              <img src="https://img.freepik.com/premium-vector/summer-sale-season-web-banner-template_196418-576.jpg" />
+            </h3>
+          </div>
+          <div>
+            <h3 style={contentStyle} className="border border-0 text-center">
+              <img src="https://img.freepik.com/premium-vector/summer-sale-season-web-banner-template_196418-576.jpg" />
+            </h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>
+              <img src="https://img.freepik.com/premium-vector/summer-sale-season-web-banner-template_196418-576.jpg" />
+            </h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>
+              <img src="https://img.freepik.com/premium-vector/summer-sale-season-web-banner-template_196418-576.jpg" />
+            </h3>
+          </div>
+        </Carousel>
+      </div>
+
+      <div role="tablist" className="tabs tabs-lifted m-10 rounded-md">
         <input
           type="radio"
           name="my_tabs_2"
@@ -35,6 +73,7 @@ const Product = ({
             setProductArray={setProductArray}
             productPrice={productPrice}
             setProductPrice={setProductPrice}
+            setFavArray={setFavArray}
           />
         </div>
 
@@ -57,6 +96,7 @@ const Product = ({
             setProductArray={setProductArray}
             productPrice={productPrice}
             setProductPrice={setProductPrice}
+            setFavArray={setFavArray}
           />
         </div>
 
@@ -79,6 +119,7 @@ const Product = ({
             setProductArray={setProductArray}
             productPrice={productPrice}
             setProductPrice={setProductPrice}
+            setFavArray={setFavArray}
           />
         </div>
         <input
@@ -100,6 +141,7 @@ const Product = ({
             setProductArray={setProductArray}
             productPrice={productPrice}
             setProductPrice={setProductPrice}
+            setFavArray={setFavArray}
           />
         </div>
       </div>

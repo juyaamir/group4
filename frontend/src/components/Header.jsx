@@ -5,10 +5,11 @@ import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
+import { HeartOutlined } from "@ant-design/icons";
 
 const Header = ({ islogged, productCount, productPrice }) => {
   // let userlogged = islogged["islogged"];
-
+  /*  console.log(favArray + "header"); */
   let getuserId = localStorage.getItem("userId");
 
   return (
@@ -117,6 +118,11 @@ const Header = ({ islogged, productCount, productPrice }) => {
           </ul>
         </div>
         <div className="navbar-end">
+          <div>
+            <Link to="/favourite-product">
+              <HeartOutlined />
+            </Link>
+          </div>
           <div className="flex-none">
             <div className="dropdown dropdown-end">
               <div

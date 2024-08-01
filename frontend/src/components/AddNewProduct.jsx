@@ -2,8 +2,39 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { storage } from "../firebaseConfig/FirebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { Select, Space } from "antd";
 
 const AddNewProduct = () => {
+  /*  const handleChangeoption = (value) => {
+    console.log(`selected ${value}`);
+  }; */
+  const options = [
+    {
+      label: "Travel Clothing",
+      value: "Travel Clothing",
+
+      desc: "Travel Clothing",
+    },
+    {
+      label: "Electronics",
+      value: "Electronics",
+
+      desc: "Electronics",
+    },
+    {
+      label: "Bags",
+      value: "Bags",
+
+      desc: "Bags",
+    },
+    {
+      label: "Cosmetics",
+      value: "Cosmetics",
+
+      desc: "Cosmetics",
+    },
+  ];
+
   const [file, setFile] = useState("");
   const [imgurl, setImgurl] = useState("");
   const [formData, setFormData] = useState({
@@ -91,34 +122,35 @@ const AddNewProduct = () => {
   }, [imgurl]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="border border-2 my-8 ">
-        <div className="px-4">
+    <div className="text-center my-2">
+      <form onSubmit={handleSubmit} className="">
+        <div className="px-4 my-2">
           <h2 className="text-center text-xl font-bold">Add New Product</h2>
-          <label for="name">Enter Product Name </label>
+
           <input
-            className="border border-2 m-5"
+            className="input input-bordered input-md w-full max-w-xs"
             type="text"
             name="productname"
             id="productname"
+            placeholder="Enter Product Name"
             onChange={handleChange}
             value={productname}
             required
           />
         </div>
-        <div className="px-4">
-          <label htmlFor="price">Enter Product Price </label>
+        <div className="px-4 my-2">
           <input
-            className="border border-2 m-5"
+            className="input input-bordered input-md w-full max-w-xs"
             type="text"
             name="price"
             id="price"
+            placeholder="Enter Price"
             onChange={handleChange}
             value={price}
             required
           />
         </div>
-        <div className="px-4">
+        {/*  <div className="px-4">
           <input
             className="border border-2 m-5"
             type="radio"
@@ -163,17 +195,30 @@ const AddNewProduct = () => {
             value="Cosmetics"
           />
           <label htmlFor="price">Cosmetics</label>
-        </div>
+        </div> */}
 
-        <div className="px-4">
-          <label htmlFor="name">Add Image</label>
+        <div className="px-4 my-2">
           <input
-            className=""
+            className="file-input file-input-bordered file-input-xs w-full max-w-xs"
             type="file"
             name="image"
             id="image"
             onChange={(e) => setFile(e.target.files[0])}
           />
+        </div>
+        <div className="px-4 my-2">
+          <select
+            name="category"
+            id="category"
+            onChange={handleChange}
+            className="select select-bordered select-xs w-full max-w-xs"
+          >
+            <option value="#">Select Category</option>
+            <option value="Travel Clothing">Travel Clothing</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Bags">Bags</option>
+            <option value="Cosmetics">Cosmetics</option>
+          </select>
         </div>
         <div className="px-4">
           <input

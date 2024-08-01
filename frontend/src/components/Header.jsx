@@ -18,13 +18,24 @@ const Header = ({ islogged, productCount, productPrice }) => {
 
   return (
     <>
-      <div className="flex justify-around navbar bg-neutral text-neutral-content">
+      <div className="flex flex-wrap justify-around navbar bg-neutral text-neutral-content">
         <p>Reviews</p>
         <p>
           Free &nbsp;
           <span className="text-white">DELIVERY</span>
           &nbsp; over 60€
         </p>
+          <p><Link to={`/sale`} 
+            className=" bg-yellow-200  py-2 px-3 rounded-md animate-pulse text-black"> 
+            <span className="font-bold"><i className="fa-regular fa-star bg-yellow-400"></i> Special Offer <i className="fa-regular fa-star bg-yellow-400"></i> </span> Purchase today and get <span className="text-red-500 underline font-bold ">60%</span> off!  
+            
+{/*             <span className="relative flex h-3 w-3 bottom-8 left-full">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            </span> */}
+
+            </Link>
+          </p>
         <p> 30 Days Free Return</p>
         <ThemeToggle />
       </div>
@@ -97,6 +108,7 @@ const Header = ({ islogged, productCount, productPrice }) => {
 
           <a className="btn btn-ghost text-xl">JourneyPack</a>
         </div>
+
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
@@ -122,6 +134,7 @@ const Header = ({ islogged, productCount, productPrice }) => {
             </li>
           </ul>
         </div>
+        
         <div className="navbar-end">
           <div className="flex-none">
             <div className="dropdown dropdown-end">

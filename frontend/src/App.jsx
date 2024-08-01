@@ -22,7 +22,7 @@ import PlanYourVacation from "./pages/PlanYourVacation.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
-
+import Sale from "./components/Sale.jsx";
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [islogged, setIslogged] = useState(false);
@@ -67,8 +67,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home setUser={setUser} />} />
             <Route path="/about" element={<About />} />
-            <Route
-              path="/product"
+            <Route path="/product"
               element={
                 <Product
                   productCount={productCount}
@@ -82,6 +81,7 @@ function App() {
             />
             <Route path="/stores" element={<Stores />} />
             <Route path="/contact-us" element={<Contact />} />
+            <Route path="/sale" element={<Sale />} />
             <Route
               path="/profile/:id"
               element={<Profile setUser={setUser} />}
@@ -103,10 +103,7 @@ function App() {
             <Route path="/login" element={<Login setToken={setToken} />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signout" element={<SignOut setToken={setToken} />} />
-            <Route
-              path="/plan-your-vacation"
-              element={<PlanYourVacation userlogged={islogged} />}
-            />
+            <Route path="/plan-your-vacation" element={<PlanYourVacation userlogged={islogged} />} />
           </Routes>
 
           <ToastContainer

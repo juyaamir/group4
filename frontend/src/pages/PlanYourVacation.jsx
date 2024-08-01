@@ -21,8 +21,8 @@ const PlanYourVacation = () => {
   ]);
   const [formData, setFormData] = useState(initialFormData);
   return (
-    <>
-      <div>
+    <div className="">
+      <div className="">
         <LocationAPI
           setHide2={setHide2}
           setMessages={setMessages}
@@ -37,7 +37,7 @@ const PlanYourVacation = () => {
           firstName={localStorage.getItem("userName")}
         />
       </div>
-    </>
+    </div>
   );
 };
 

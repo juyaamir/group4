@@ -12,6 +12,8 @@ import pic5 from '../assets/pic4.jpg'
 import pic4 from '../assets/pic1.jpg'
 import pic1 from '../assets/pic2.jpg';
 
+import Theme from './Theme';
+
 const customIcon = L.icon({
   iconUrl: markerIcon,
   iconSize: [25, 41], 
@@ -92,6 +94,7 @@ const Stores = () => {
   return (
     <div>
       <h1 className='text-center text-2xl my-4 font-thin'>STORES</h1>
+      
       <div className=' min-h-screen mb-10 mx-4 sm:mx-0 md:mx-10 lg:mx-60 flex flex-col' >
         <div className='flex flex-wrap'>
           <div className='w-full md:w-1/3 height p-2'>

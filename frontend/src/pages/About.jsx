@@ -1,7 +1,7 @@
 import React from "react";
 
 const About = () => {
-  return <div className="text-white p-32">
+  return <div className="text-grey p-32">
     <h2 className="text-3xl font-bold">Welcome to  JourneyPack: Your Ultimate Travel Companion!</h2><br />
 
  <p> Planning a trip can be both exciting and overwhelming. At JourneyPack, we simplify your travel preparations by helping you pack smartly for any destination, based on weather conditions and your planned activities. Our comprehensive guide ensures you have everything you need for a perfect getaway, and you can conveniently purchase all your essentials from our e-commerce store.</p><br /><br />

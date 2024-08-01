@@ -5,7 +5,7 @@ const HeroImage = () => {
   return (
     <>
       <div
-        className="min-h-screen bg-cover flex justify-left px-12"
+        className="min-h-screen bg-center bg-cover flex justify-left px-12"
         style={{
           backgroundImage: `url(${image})`,
         }}

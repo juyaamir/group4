@@ -33,6 +33,7 @@ const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData}) 
     });
     setState((prev) => ({ ...prev, [name]: newValue }));
 };
+
 //location suggestions 
 const fetchLocationSuggestions = async (location) => {
     setError(null);
@@ -242,7 +243,7 @@ console.log("line updated")
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div >    
       {
         showForm && 
         <form onSubmit={handleSubmit} disabled={loading} className="p-4 mx-auto my-20 border border-gray-200 rounded-lg w-80 ">
@@ -280,7 +281,7 @@ console.log("line updated")
               />
               <ul>
                 {suggestions.map((suggestion, index) => (
-                  <li key={index} onClick={() => handleSuggestionClick(suggestion)} className="bg-gray-50 hover:cursor-pointer hover:bg-gray-200 m-2">
+                  <li key={index} onClick={() => handleSuggestionClick(suggestion)} className=" hover:cursor-pointer hover:bg-gray-200 m-2">
                     {suggestion.display_name}
                   </li>
                 ))}

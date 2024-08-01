@@ -5,7 +5,11 @@ import { Alert } from "antd";
 import Marquee from "react-fast-marquee";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
+
 import logo from "../assets/logo.png";
+
+import ThemeToggle from "./Theme";
+
 
 const Header = ({ islogged, productCount, productPrice }) => {
   // let userlogged = islogged["islogged"];
@@ -22,6 +26,7 @@ const Header = ({ islogged, productCount, productPrice }) => {
           &nbsp; over 60€
         </p>
         <p> 30 Days Free Return</p>
+        <ThemeToggle />
       </div>
 
       <div className="navbar bg-base-100 m-w-full">
@@ -167,6 +172,8 @@ const Header = ({ islogged, productCount, productPrice }) => {
               </div>
             </div>
           </div>
+
+          
 
           {islogged ? (
             <div className="dropdown dropdown-end">

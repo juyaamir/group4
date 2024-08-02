@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,99 +60,96 @@ function App() {
   //  console.log("from App", token);
   return (
     <ThemeProvider>
-      <>
-        <Header
-          islogged={islogged}
-          productCount={productCount}
-          productArray={productArray}
-          productPrice={productPrice}
-        />
+      <Header
+        islogged={islogged}
+        productCount={productCount}
+        productArray={productArray}
+        productPrice={productPrice}
+      />
 
-        <div className="flex flex-col min-h-screen">
-          <div className="flex-grow">
-            {islogged && user && <WelcomeMessage firstName={user.firstname} />}
-            <Routes>
-              <Route path="/" element={<Home setUser={setUser} />} />
-              <Route path="/about" element={<About />} />
-              <Route
-                path="/product"
-                element={
-                  <Product
-                    productCount={productCount}
-                    setProductCount={setProductCount}
-                    productArray={productArray}
-                    setProductArray={setProductArray}
-                    productPrice={productPrice}
-                    setProductPrice={setProductPrice}
-                    setFavArray={setFavArray}
-                  />
-                }
-              />
-              <Route path="/stores" element={<Stores />} />
-              <Route
-                path="/image-description/:id"
-                element={
-                  <ImageDescription
-                    productCount={productCount}
-                    setProductCount={setProductCount}
-                    setProductArray={setProductArray}
-                    productPrice={productPrice}
-                    setProductPrice={setProductPrice}
-                  />
-                }
-              />
-              <Route path="/contact-us" element={<Contact />} />
-              <Route path="/sale" element={<Sale />} />
-              <Route
-                path="/profile/:id"
-                element={<Profile setUser={setUser} />}
-              />
-              <Route
-                path="/cart"
-                element={
-                  <Cart
-                    productArray={productArray}
-                    setProductArray={setProductArray}
-                    productPrice={productPrice}
-                    setProductPrice={setProductPrice}
-                    user={user}
-                  />
-                }
-              />
-              <Route
-                path="/favourite-product"
-                element={<FavProduct favArray={favArray} />}
-              />
-              <Route path="/signin" element={<Login setToken={setToken} />} />
-              <Route path="/login" element={<Login setToken={setToken} />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route
-                path="/signout"
-                element={<SignOut setToken={setToken} />}
-              />
-              <Route
-                path="/plan-your-vacation"
-                element={<PlanYourVacation userlogged={islogged} />}
-              />
-            </Routes>
-
-            <ToastContainer
-              position="top-right"
-              limit={1}
-              autoClose={2000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
+      <div className="flex flex-col min-h-screen">
+        <div className="flex-grow">
+          {islogged && user && <WelcomeMessage firstName={user.firstname} />}
+          <Routes>
+            <Route path="/" element={<Home setUser={setUser} />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/product"
+              element={
+                <Product
+                  productCount={productCount}
+                  setProductCount={setProductCount}
+                  productArray={productArray}
+                  setProductArray={setProductArray}
+                  productPrice={productPrice}
+                  setProductPrice={setProductPrice}
+                  setFavArray={setFavArray}
+                />
+              }
             />
-          </div>
+            <Route path="/stores" element={<Stores />} />
+            <Route
+              path="/image-description/:id"
+              element={
+                <ImageDescription
+                  productCount={productCount}
+                  setProductCount={setProductCount}
+                  setProductArray={setProductArray}
+                  productPrice={productPrice}
+                  setProductPrice={setProductPrice}
+                />
+              }
+            />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/sale" element={<Sale />} />
+            <Route
+              path="/profile/:id"
+              element={<Profile setUser={setUser} />}
+            />
+
+            <Route
+              path="/cart"
+              element={
+                <Cart
+                  productArray={productArray}
+                  setProductArray={setProductArray}
+                  productPrice={productPrice}
+                  setProductPrice={setProductPrice}
+                  user={user}
+                />
+              }
+            />
+
+            <Route
+              path="/favourite-product"
+              element={<FavProduct favArray={favArray} />}
+            />
+            <Route path="/signin" element={<Login setToken={setToken} />} />
+            <Route path="/login" element={<Login setToken={setToken} />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signout" element={<SignOut setToken={setToken} />} />
+            <Route
+              path="/plan-your-vacation"
+              element={<PlanYourVacation userlogged={islogged} />}
+            />
+          </Routes>
+
+          <ToastContainer
+            position="top-right"
+            limit={1}
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
-        <Footer />
-      </>
+      </div>
+      <Footer />
     </ThemeProvider>
   );
 }

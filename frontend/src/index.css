@@ -51,3 +51,27 @@ body {
   .fGap {
     gap: 5%;
   }
+
+  .background {
+    background-image: url('./assets/bgf.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .sub-container button {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -30%);
+    display: none;
+   
+}
+.sub-container {
+    position: relative;
+}
+.sub-container:hover button{
+        display:block;
+}
+.active {
+    background-color: rgb(23, 164, 219);
+}

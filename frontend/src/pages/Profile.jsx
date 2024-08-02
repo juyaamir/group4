@@ -109,7 +109,7 @@ function Profile() {
                   <label className="form-label">First Name</label>
                   <input
                     type="text"
-                    className="form-control mt-1 p-2 bg-white rounded text-black"
+                    className="form-control mt-1 p-2 bg-gray-300 rounded text-black"
                     name="firstname"
                     value={formData.firstname}
                     onChange={handleChange}
@@ -119,7 +119,7 @@ function Profile() {
                   <label className="form-label">Last Name</label>
                   <input
                     type="text"
-                    className="form-control mt-1 p-2 bg-white rounded text-black"
+                    className="form-control mt-1 p-2 bg-gray-300 rounded text-black"
                     name="lastname"
                     value={formData.lastname}
                     onChange={handleChange}
@@ -129,7 +129,7 @@ function Profile() {
                   <label className="form-label">Email</label>
                   <input
                     type="email"
-                    className="form-control mt-1 p-2 bg-white rounded text-black"
+                    className="form-control mt-1 p-2 bg-gray-300 rounded text-black"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -139,7 +139,7 @@ function Profile() {
                   <label className="form-label">Password</label>
                   <input
                     type="password"
-                    className="form-control mt-1 p-2 bg-white rounded text-black"
+                    className="form-control mt-1 p-2 bg-gray-300 rounded text-black"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}

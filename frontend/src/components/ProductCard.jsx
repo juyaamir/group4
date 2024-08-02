@@ -44,9 +44,9 @@ const ProductCard = ({
     console.log(favArray);
   };
 
-  const handleClick = (productname, price) => (event) => {
+  const handleClick = (productId, price) => (event) => {
     setProductCount(productCount + 1);
-    setProductArray((current) => [...current, productname]);
+    setProductArray((current) => [...current, productId]);
 
     setProductPrice(productPrice + price);
   };
@@ -136,7 +136,7 @@ const ProductCard = ({
             <div className="card-actions">
               <button
                 className="btn btn-primary  btn-sm"
-                onClick={handleClick(item.productname, item.price)}
+                onClick={handleClick(item._id, item.price)}
               >
                 Move to Cart
               </button>

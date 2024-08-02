@@ -1,4 +1,5 @@
 import Product from "../models/Products.js";
+import mongoose from "mongoose";
 
 export const getAllProducts = async (req, res) => {
   try {
@@ -31,6 +32,12 @@ export const getAllProducts = async (req, res) => {
 
 export const createSinglProduct = async (req, res) => {
   try {
+    if (req.body.productArray) {
+      const { productArray } = req.body;
+      const products = await Product.find({ _id: { $in: productArray } });
+      res.json(products);
+      return;
+    }
     const { porductname, price, category, image } = req.body;
     console.log(porductname, price, category, image);
 

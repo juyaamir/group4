@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/rakaposhi.jpg";
+import logo from "../assets/packing.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faMobileScreenButton, faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 

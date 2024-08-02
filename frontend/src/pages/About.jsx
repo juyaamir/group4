@@ -1,5 +1,9 @@
 import React from "react";
 import image from "../assets/heroimage2.jpg";
+import map from "../assets/map.jpg";
+import paragleiding from "../assets/paragleiding.jpg";
+import list from "../assets/list.jpg";
+import shopping from "../assets/shopping.jpg";
 
 const About = () => {
   return (

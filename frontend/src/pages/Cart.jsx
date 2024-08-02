@@ -12,18 +12,15 @@ const Cart = ({ productArray, productPrice }) => {
   let id = localStorage.getItem("userId");
   const [error, setError] = useState(null);
   const [payload, setPayload] = useState(null);
-
-  /*  let payload = {
-    userid: id,
-    price: productPrice,
-    productId: productArray,
-  }; */
+  const [productDesc, setProductDesc] = useState(null);
 
   const deleteProduct = (PId) => {
     console.log(PId);
     productArray.splice(PId - 1, 1);
+    productPrice;
     console.log(productArray);
   };
+
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/v1/usersaccounts/${id}`)
@@ -57,7 +54,20 @@ const Cart = ({ productArray, productPrice }) => {
 
   /*  useEffect(() => {
     setNewOrder({ ...newitem, productid: "hello" });
-  }, [productArray]); */
+    }, [productArray]); */
+
+  // const message = { name: "john" };
+
+  useEffect(() => {
+    axios
+      .post(`http://localhost:8000/api/v1/product`, { productArray })
+      // .then((response) => setUser(response.data))
+      .then((response) => setProductDesc(response.data))
+
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <>
@@ -92,10 +102,18 @@ const Cart = ({ productArray, productPrice }) => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {productArray?.map((item, key = 1) => (
+            {productDesc?.map((item, key) => (
               <tr>
-                <th>{key}</th>
-                <td>{item}</td>
+                <th></th>
+                <td>
+                  <strong>{item.productname}</strong>
+                </td>
+                <td>
+                  <strong>{item.price}&nbsp; €</strong>
+                </td>
+                <td>
+                  <img src={item.image} height="50" width="50" />
+                </td>
                 <td>
                   <Button
                     type="dashed"

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { Image } from "antd";
 import { Avatar } from "antd";
 import { Space, Typography, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -112,7 +112,7 @@ const Cart = ({ productArray, productPrice }) => {
                   <strong>{item.price}&nbsp; €</strong>
                 </td>
                 <td>
-                  <img src={item.image} height="50" width="50" />
+                  <Image width={50} src={item.image} />
                 </td>
                 <td>
                   <Button

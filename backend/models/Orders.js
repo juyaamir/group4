@@ -13,9 +13,9 @@ const ordersSchema = mongoose.Schema(
       default: 0.0,
     },
     //items array should refer products (one thing or many)
-    productname: [
+    productId: [
       {
-        type: "String",
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "Products",
       },

@@ -11,7 +11,6 @@ import logo from "../assets/logo.png";
 
 import ThemeToggle from "./Theme";
 
-
 const Header = ({ islogged, productCount, productPrice }) => {
   // let userlogged = islogged["islogged"];
   /*  console.log(favArray + "header"); */
@@ -26,21 +25,26 @@ const Header = ({ islogged, productCount, productPrice }) => {
           <span className="text-white">DELIVERY</span>
           &nbsp; over 60€
         </p>
-          <p><Link to={`/sale`} 
-            className=" bg-yellow-200  py-2 px-3 rounded-md animate-pulse text-black"> 
-            <span className="font-bold"><i className="fa-regular fa-star bg-yellow-400"></i> Special Offer <i className="fa-regular fa-star bg-yellow-400"></i> </span> Purchase today and get <span className="text-red-500 underline font-bold ">60%</span> off!  
-            
-{/*             <span className="relative flex h-3 w-3 bottom-8 left-full">
+        <p>
+          <Link
+            to={`/sale`}
+            className=" bg-yellow-200  py-2 px-3 rounded-md animate-pulse text-black"
+          >
+            <span className="font-bold">
+              <i className="fa-regular fa-star bg-yellow-400"></i> Special Offer{" "}
+              <i className="fa-regular fa-star bg-yellow-400"></i>{" "}
+            </span>{" "}
+            Purchase today and get{" "}
+            <span className="text-red-500 underline font-bold ">60%</span> off!
+            {/*             <span className="relative flex h-3 w-3 bottom-8 left-full">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
             </span> */}
-
-            </Link>
-          </p>
+          </Link>
+        </p>
         <p> 30 Days Free Return</p>
         <ThemeToggle />
       </div>
-
       <div className="navbar bg-base-100 m-w-full">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -86,6 +90,7 @@ const Header = ({ islogged, productCount, productPrice }) => {
             </li>
           </ul>
         </div>
+
         <div className="navbar-start">
           {/* <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -109,7 +114,6 @@ const Header = ({ islogged, productCount, productPrice }) => {
 
           <a className="btn btn-ghost text-xl">JourneyPack</a>
         </div>
-
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
@@ -135,7 +139,6 @@ const Header = ({ islogged, productCount, productPrice }) => {
             </li>
           </ul>
         </div>
-        
         <div className="navbar-end">
           <div>
             <Link to="/favourite-product">
@@ -191,8 +194,6 @@ const Header = ({ islogged, productCount, productPrice }) => {
               </div>
             </div>
           </div>
-
-          
 
           {islogged ? (
             <div className="dropdown dropdown-end">

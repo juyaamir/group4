@@ -191,7 +191,8 @@ const AddNewProduct = () => {
             <option value="Travel Clothing">Travel Clothing</option>
             <option value="Electronics">Electronics</option>
             <option value="Bags">Bags</option>
-            <option value="Cosmetics">Cosmetics</option>
+            <option value="Camping Gear">Camping Gear</option>
+            <option value="Accessories">Accessories</option>
           </select>
         </div>
         <div className="px-4">

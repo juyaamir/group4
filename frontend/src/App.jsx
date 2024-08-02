@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { ThemeProvider } from './components/ThemeContext.jsx';
+import { ThemeProvider } from "./components/ThemeContext.jsx";
 
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
@@ -23,7 +24,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
 import FavProduct from "./components/FavProduct.jsx";
-
+import ImageDescription from "./pages/ImageDescription.jsx";
 
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
@@ -60,7 +61,6 @@ function App() {
   //  console.log("from App", token);
   return (
     <ThemeProvider>
-      <>
       <Header
         islogged={islogged}
         productCount={productCount}
@@ -74,7 +74,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home setUser={setUser} />} />
             <Route path="/about" element={<About />} />
-            <Route path="/product"
+            <Route
+              path="/product"
               element={
                 <Product
                   productCount={productCount}
@@ -89,6 +90,18 @@ function App() {
             />
             <Route path="/stores" element={<Stores />} />
 
+            <Route
+              path="/image-description/:id"
+              element={
+                <ImageDescription
+                  productCount={productCount}
+                  setProductCount={setProductCount}
+                  setProductArray={setProductArray}
+                  productPrice={productPrice}
+                  setProductPrice={setProductPrice}
+                />
+              }
+            />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/sale" element={<Sale />} /> 
             <Route path="/sale/:productId" element={<ProductDetails />} />
@@ -97,6 +110,7 @@ function App() {
               path="/profile/:id"
               element={<Profile setUser={setUser} />}
             />
+
             <Route
               path="/cart"
               element={
@@ -109,6 +123,7 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/favourite-product"
               element={<FavProduct favArray={favArray} />}
@@ -117,7 +132,10 @@ function App() {
             <Route path="/login" element={<Login setToken={setToken} />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signout" element={<SignOut setToken={setToken} />} />
-            <Route path="/plan-your-vacation" element={<PlanYourVacation userlogged={islogged} />} />
+            <Route
+              path="/plan-your-vacation"
+              element={<PlanYourVacation userlogged={islogged} />}
+            />
           </Routes>
 
           <ToastContainer
@@ -136,9 +154,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </>
     </ThemeProvider>
-    
   );
 }
 export default App;

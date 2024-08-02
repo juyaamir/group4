@@ -8,32 +8,6 @@ const AddNewProduct = () => {
   /*  const handleChangeoption = (value) => {
     console.log(`selected ${value}`);
   }; */
-  const options = [
-    {
-      label: "Travel Clothing",
-      value: "Travel Clothing",
-
-      desc: "Travel Clothing",
-    },
-    {
-      label: "Electronics",
-      value: "Electronics",
-
-      desc: "Electronics",
-    },
-    {
-      label: "Bags",
-      value: "Bags",
-
-      desc: "Bags",
-    },
-    {
-      label: "Cosmetics",
-      value: "Cosmetics",
-
-      desc: "Cosmetics",
-    },
-  ];
 
   const [file, setFile] = useState("");
   const [imgurl, setImgurl] = useState("");
@@ -217,7 +191,8 @@ const AddNewProduct = () => {
             <option value="Travel Clothing">Travel Clothing</option>
             <option value="Electronics">Electronics</option>
             <option value="Bags">Bags</option>
-            <option value="Cosmetics">Cosmetics</option>
+            <option value="Camping Gear">Camping Gear</option>
+            <option value="Accessories">Accessories</option>
           </select>
         </div>
         <div className="px-4">

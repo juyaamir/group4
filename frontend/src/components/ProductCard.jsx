@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 //import AddNewProduct from "./AddNewProduct";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Flex, Tooltip } from "antd";
@@ -10,6 +11,7 @@ import Newimage from "./Newimage";
 import { use } from "marked";
 import { Card } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
+import { Image } from "antd";
 
 const { Meta } = Card;
 
@@ -42,9 +44,9 @@ const ProductCard = ({
     console.log(favArray);
   };
 
-  const handleClick = (productname, price) => (event) => {
+  const handleClick = (productId, price) => (event) => {
     setProductCount(productCount + 1);
-    setProductArray((current) => [...current, productname]);
+    setProductArray((current) => [...current, productId]);
 
     setProductPrice(productPrice + price);
   };
@@ -116,11 +118,14 @@ const ProductCard = ({
             </button>
           </p>
           <figure className="px-10">
-            <img
+            <Link to={`/image-description/${item._id}`}>
+              <Image width={200} src={item.image} alt={item.productname} />
+            </Link>
+            {/* <img
               src={item.image}
               alt={item.productname}
               className="rounded-xl"
-            />
+            /> */}
           </figure>
 
           <div className="card-body items-center text-center">
@@ -131,7 +136,7 @@ const ProductCard = ({
             <div className="card-actions">
               <button
                 className="btn btn-primary  btn-sm"
-                onClick={handleClick(item.productname, item.price)}
+                onClick={handleClick(item._id, item.price)}
               >
                 Move to Cart
               </button>

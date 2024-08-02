@@ -337,6 +337,11 @@ console.log("line updated")
                 <label htmlFor="photography" title='photography'><i className="p-1 fa-solid fa-camera"></i></label>
                 <p className="text-base">Photography</p>
               </div>
+              <div className="hover:text-blue-600 border hover:border-none relative">
+                <input type="checkbox" id="fishing" name="Fishing" onChange={handleActivity} className="absolute top-0 left-0" />
+                <label htmlFor="fishing" title='fishing'><i className="p-1 fa-solid fa-otter"></i></label>
+                <p className="text-base">Fishing</p>
+              </div>
               <div className="hover:text-blue-600 border hover:border-none relative rounded">
                 <input type="checkbox" id="cooking" name="Cooking" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="cooking" title='cooking'><i className="p-1 fa-solid fa-kitchen-set"></i></label>

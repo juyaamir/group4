@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import {Link }from 'react-router-dom';
 import {client} from "./client"
 import Heart from 'react-heart'
-
+import logo from '../assets/logo.png'
 
 const Sale = () => {
     const [data, setData] = useState([]);
@@ -66,8 +66,9 @@ const Sale = () => {
   <select className="select select-bordered join-item"
   onChange={handleBrandChange}>
     <option value="all">--products--</option>
+    <option value="Shoes">Shoes</option>
     <option value="Computer">Computer</option>
-    <option value="Clothing">Clothing & Shoes</option>
+    <option value="Clothing">Clothing</option>
     <option value="Accessories">Accessories</option>
     <option value="Hiking">Hiking</option>
     <option value="Camping">Camping</option>
@@ -103,6 +104,7 @@ const Sale = () => {
                         alt="mobile" 
                         className=' h-64 w-full'
                         />
+                        <img src={logo} alt="logo" className="h-10 absolute w-10 rounded-full bottom2" />
                     </figure>
                     <button className="text-white bg-cyan-400 w-full h-10 hover:bg-slate-950">
                     <Link to={`/sale/${e?.sys.id}`}>More Info</Link>
@@ -111,7 +113,7 @@ const Sale = () => {
                         <p className='text-red-500'>
                         <span className='text-white bg-red-500 p-1 mr-2'>{e?.fields.discount}% off </span> Ends in
                         {/* Limited time deal! */}
-                        <div style={{width: "2rem"}} className=" absolute inline right-1">
+                        <div style={{width: "1.5rem"}} className=" absolute inline right-1">
                         <Heart 
                           isActive={activeStates[e?.sys.id] || false} 
                           onClick={() => toggleHeart(e?.sys.id)} 

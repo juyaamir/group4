@@ -75,3 +75,12 @@ body {
 .active {
     background-color: rgb(23, 164, 219);
 }
+
+.bottom {
+  bottom: 88%;
+  left: 1%;
+}
+.bottom2 {
+  bottom: 83%;
+  left: 3%;
+}

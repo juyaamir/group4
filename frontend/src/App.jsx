@@ -28,6 +28,7 @@ import ImageDescription from "./pages/ImageDescription.jsx";
 
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
+import ProductDetails from "./components/saleDetails.jsx";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -88,6 +89,7 @@ function App() {
               }
             />
             <Route path="/stores" element={<Stores />} />
+
             <Route
               path="/image-description/:id"
               element={
@@ -101,7 +103,9 @@ function App() {
               }
             />
             <Route path="/contact-us" element={<Contact />} />
-            <Route path="/sale" element={<Sale />} />
+            <Route path="/sale" element={<Sale />} /> 
+            <Route path="/sale/:productId" element={<ProductDetails />} />
+            
             <Route
               path="/profile/:id"
               element={<Profile setUser={setUser} />}

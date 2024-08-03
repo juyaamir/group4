@@ -6,11 +6,10 @@ import list from "../assets/list.jpg";
 import shopping from "../assets/shopping.jpg";
 import kondol from "../assets/kondol-lake.jpg";
 import camera from "../assets/camera.jpg";
-import raining from "../assets/raining.jpg";
+import snowgirl from "../assets/snowgirl.jpg";
 const About = () => {
 return (
   <div className="text-grey px-24">
-
     <div className="hero bg-base-200 mb-24">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
@@ -26,11 +25,7 @@ return (
         </div>
       </div>
     </div>
-
-
-  
     <div className="text-grey px-8">
-  
       <div className="mb-8">
         <h2 className="text-2xl font-bold">Why Choose JourneyPack?</h2>
         <br />
@@ -43,7 +38,6 @@ return (
         <p><b>Shop with Ease:</b> Find all your travel essentials in one place. Our e-commerce platform offers a wide range of high-quality products from trusted brands, making it easy for you to purchase everything you need for your trip.</p>
         <br /><br />
       </div>
-
       <h2 className="text-2xl font-bold">How It Works </h2><br />
       <ul className="steps steps-vertical text-black pb-8">
         <li className="step step-primary">Select your destination</li>
@@ -51,9 +45,6 @@ return (
         <li className="step">Get Your AI Generated Packing list</li>
         <li className="step">Go For Shopping</li>
       </ul>
-
-
-
       <div className="flex flex-wrap gap-4 mb-24">
         <div className="card bg-base-100 w-96 shadow-xl">
           <figure>
@@ -109,15 +100,13 @@ return (
           </div>
         </div>
       </div>
-
       <h2 className="text-2xl font-bold">Explore Our Collections</h2><br />
-
       <div className="flex flex-wrap gap-4 mb-24">
         <div className="card bg-base-100 image-full w-96 shadow-xl">
           <figure>
             <img
-              src={raining}
-              alt="Shoes" />
+              src={snowgirl}
+              alt="girl in snow" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">Weather-Ready Apparel</h2>
@@ -127,7 +116,6 @@ return (
             </div>
           </div>
         </div>
-    
         <div className="card bg-base-100 image-full w-96 shadow-xl">
           <figure>
             <img
@@ -142,8 +130,6 @@ return (
             </div>
           </div>
         </div>
-    
-    
         <div className="card bg-base-100 image-full w-96 shadow-xl">
           <figure>
             <img
@@ -159,18 +145,16 @@ return (
           </div>
         </div>
       </div>
-
       <h2 className="text-2xl font-bold">Travel Smart, Pack Smart</h2><br />
-  
       <div className="mb-24">
         <p>Don’t let packing stress you out. With JourneyPack, you can focus on the excitement of your journey while we take care of the details. Trust us to provide the best recommendations and products, so you're always prepared, no matter where your travels take you.</p><br />
         <p>Start your packing journey with JourneyPack today and enjoy a seamless travel experience from start to finish!</p><br />
         <p>Ready to Pack? Let's Get Started!</p>
         Visit <a href="https://http://www.journeypack.com" className="text-blue-500"><i>JourneyPack</i></a> and explore the ultimate way to prepare for your next adventure. Happy travels!</div>
       </div>
-
   </div>
   );
 };
-
 export default About;
+
+

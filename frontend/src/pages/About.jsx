@@ -158,10 +158,3 @@ return (
 export default About;
 
 
-
-
-
-
-
-
-

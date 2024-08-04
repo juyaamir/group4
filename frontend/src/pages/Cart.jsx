@@ -7,7 +7,12 @@ import { DeleteOutlined } from "@ant-design/icons";
 
 const { Text, Link } = Typography;
 
-const Cart = ({ productArray, productPrice }) => {
+const Cart = ({
+  productArray,
+  setProductArray,
+  productPrice,
+  setProductPrice,
+}) => {
   const [user, setUser] = useState(null);
   let id = localStorage.getItem("userId");
   const [error, setError] = useState(null);
@@ -16,10 +21,20 @@ const Cart = ({ productArray, productPrice }) => {
 
   const deleteProduct = (PId) => {
     console.log(PId);
-    productArray.splice(PId - 1, 1);
-    productPrice;
+
+    setProductArray(productArray.splice(PId - 1, 1));
+
     console.log(productArray);
   };
+
+  useEffect(() => {
+    let total = 0;
+    productDesc?.map((item) => {
+      total = total + item.price;
+      console.log(total);
+    });
+    setProductPrice(total);
+  }, [productArray]);
 
   useEffect(() => {
     axios
@@ -37,7 +52,7 @@ const Cart = ({ productArray, productPrice }) => {
       price: productPrice,
       productId: productArray,
     });
-  }, [deleteProduct]);
+  }, []);
 
   const postproduct = (e) => {
     // e.preventDefault();
@@ -100,10 +115,11 @@ const Cart = ({ productArray, productPrice }) => {
               <th>Product Name</th>
             </tr>
           </thead>
-          <tbody>
-            {/* row 1 */}
-            {productDesc?.map((item, key) => (
-              <tr>
+          {productDesc?.map((item, key) => (
+            <tbody>
+              {/* row 1 */}
+
+              <tr key={item._id}>
                 <th></th>
                 <td>
                   <strong>{item.productname}</strong>
@@ -119,19 +135,27 @@ const Cart = ({ productArray, productPrice }) => {
                     type="dashed"
                     danger
                     onClick={() => {
-                      deleteProduct(item);
+                      deleteProduct(item._id);
                     }}
                   >
                     <DeleteOutlined />
                   </Button>
                 </td>
               </tr>
-            ))}
-          </tbody>
+              {/*  <tr>
+                <td>
+             
+                  Total Price:
+                  <strong>&nbsp;{(item.price += item.price)}</strong>
+                </td>
+              </tr> */}
+            </tbody>
+          ))}
         </table>
 
         <div className="max-w-full text-end px-16 py-2">
-          Total Price:<strong>&nbsp;{productPrice}</strong>
+          Total Price:
+          <strong>&nbsp;{productPrice}</strong>
         </div>
         <div className="max-w-full text-end px-16 py-2 ">
           <button

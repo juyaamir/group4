@@ -1,20 +1,62 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useInsertionEffect } from "react";
 import { storage } from "../firebaseConfig/FirebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { useState } from "react";
-import AddNewProduct from "./AddNewProduct";
+import { useRef, useState } from "react";
+import { Image } from "antd";
+import { Avatar } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import axios from "axios";
+import Imgfromdb from "./Imgfromdb.jsx";
 
 const Newimage = () => {
   const [file, setFile] = useState("");
   const [imgurl, setImgurl] = useState("");
+  const inputRef = useRef(null);
+  const [imgId, setImgId] = useState(null);
 
-  console.log(file);
+  let id = localStorage.getItem("userId");
+
+  const [formData, setFormData] = useState({
+    userid: "66accc992ce0a4422230a61c",
+    image: "",
+  });
+
+  //console.log(imgurl);
+
+  const { userid, image } = formData;
+
+  /* const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    console.log(formData);
+  }; */
+
+  ///Create Product//
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+
+    axios
+      .post("http://localhost:8000/api/v1/user-image", formData)
+      .then((response) => {
+        console.log("Response:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  /*  console.log(file); */
+  const handleImageClick = () => {
+    inputRef.current.click();
+  };
 
   useEffect(() => {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
       //console.log(name);
-      const storageRef = ref(storage, "images/file.name");
+      const storageRef = ref(storage, "userimages/file.name");
 
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -56,36 +98,70 @@ const Newimage = () => {
     };
     file && uploadFile();
   }, [file]);
+
+  useEffect(() => {
+    const fetchuserimage = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/api/v1/user-image/${id}`
+        );
+        setImgId(response.data);
+      } catch (error) {
+        console.error(`Error in fetching Product data: ${error}`);
+      }
+    };
+
+    fetchuserimage();
+  }, [id]);
+
+  useEffect(() => {
+    setFormData({ ...formData, image: imgurl });
+  }, [imgurl]);
+
   return (
-    <div>
+    <>
       <div>
-        <img src={imgurl} alt="image" />
+        {imgId ? (
+          <img src={imgId.image} height="100" width="100" />
+        ) : (
+          "No image found"
+        )}
       </div>
-      <form className="border border-2 my-8 ">
-        <div className="px-4">
-          <h2 className="text-center text-xl font-bold">Add New Product</h2>
-          <label for="name">Enter Product Name </label>
+      <form onSubmit={handleSubmit} className="flex flex row">
+        <div onClick={handleImageClick} className="px-4">
+          {imgurl ? (
+            <img src={imgurl} alt="pic" height="100" width="100" className="" />
+          ) : (
+            <div className="">
+              <Avatar icon={<PlusOutlined />} />
+            </div>
+          )}
+
+          {/* <input
+          type="text"
+          onChange={handleChange}
+          name="userid"
+          value={userid}
+          style={{ display: "none" }}
+        /> */}
           <input
-            className="border border-2 m-5"
             type="file"
+            ref={inputRef}
             name="file"
             id="file "
             onChange={(e) => setFile(e.target.files[0])}
-            value={imgurl}
+            style={{ display: "none" }}
+            /*  value={imgurl} */
           />
         </div>
 
-        <div className="px-4">
-          <input
-            className="border border-solid rounded-md text-white bg-black p-2 my-6 justify-end"
-            type="submit"
-            value="Submit"
-          />
-        </div>
+        <input
+          className="text-end text-black bg-base-100 right-0 bottom-0"
+          type="submit"
+          value="Save"
+        />
       </form>
-      {/*  <AddNewProduct url={imgurl} /> */}
-      <AddNewProduct />
-    </div>
+    </>
   );
 };
 

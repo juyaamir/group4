@@ -3,6 +3,7 @@ import axios from "axios";
 import { storage } from "../firebaseConfig/FirebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { Select, Space } from "antd";
+import { Upload } from "antd";
 
 const AddNewProduct = () => {
   /*  const handleChangeoption = (value) => {

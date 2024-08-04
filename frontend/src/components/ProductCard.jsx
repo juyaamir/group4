@@ -7,11 +7,13 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Flex, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import UpdateProduct from "./UpdataProduct";
-import Newimage from "./Newimage";
-import { use } from "marked";
+
+import Heart from "react-heart";
 import { Card } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 import { Image } from "antd";
+import { MdAddShoppingCart } from "react-icons/md";
+import { CiHeart } from "react-icons/ci";
 
 const { Meta } = Card;
 
@@ -26,6 +28,8 @@ const ProductCard = ({
   setFavArray,
 }) => {
   const [productItem, setProductItem] = useState([]);
+  const [active, setActive] = useState(false);
+  /*   let length = productArray.length; */
 
   //const [productArray, setProductArray] = useState([]);
   //console.log(c["category"]);
@@ -39,16 +43,21 @@ const ProductCard = ({
     category: category,
   }; */
   /*  let isUserAdmin = "true"; */
-  const addfav = (item) => {
-    setFavArray((current) => [...current, item]);
-    console.log(favArray);
+  const addfav = (productid) => {
+    setFavArray((current) => [...current, productid]);
+    // console.log(setFavArray);
+    setActive(!active);
+    //console.log(active);
   };
 
   const handleClick = (productId, price) => (event) => {
-    setProductCount(productCount + 1);
+    console.log(productId);
     setProductArray((current) => [...current, productId]);
-
-    setProductPrice(productPrice + price);
+    console.log(productArray);
+    setProductCount(productArray.length);
+    console.log(productArray.length);
+    setProductPrice(price);
+    console.log(price);
   };
 
   ///DELETE Product//
@@ -108,39 +117,46 @@ const ProductCard = ({
   return (
     <div className="flex flex-row flex-wrap gap-4  rounded-md p-1 ">
       {productItem?.map((item, key) => (
-        <div key={item._id} className="card bg-base-200 w-64 shadow-xl">
-          <p className="m-4 text-end">
-            <button
-              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-              onClick={() => addfav(item.productname)}
-            >
-              <HeartOutlined />
-            </button>
-          </p>
-          <figure className="px-10">
-            <Link to={`/image-description/${item._id}`}>
-              <Image width={200} src={item.image} alt={item.productname} />
-            </Link>
-            {/* <img
-              src={item.image}
-              alt={item.productname}
-              className="rounded-xl"
-            /> */}
-          </figure>
-
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">{item.productname}</h2>
+        <div
+          key={item._id}
+          className="card bg-base-200 w-64 shadow-xl rounded-md"
+        >
+          <div className="card-body  text-center">
+            <figure className="px-8 relative max-w-full ">
+              <Link to={`/image-description/${item._id}`}>
+                <Image width={200} src={item.image} alt={item.productname} />
+              </Link>
+              <div className="absolute top-0 right-0 m-2">
+                <div style={{ width: "1rem" }}>
+                  <Heart
+                    isActive={active}
+                    onClick={() => addfav(item._id)}
+                    animationTrigger="both"
+                    inactiveColor="black"
+                    activeColor="red"
+                    animationDuration={0.1}
+                  />
+                </div>
+                {/*     <button
+                  className="text-2xl text-black-300"
+                  onClick={() => addfav(item.productname)}
+                >
+                  <CiHeart />
+                </button> */}
+              </div>
+              <div className="absolute bottom-0 right-0 m-2">
+                <button
+                  className=" text-xl text-blue-300 mr-0 mb-0"
+                  onClick={handleClick(item._id, item.price)}
+                >
+                  <MdAddShoppingCart />
+                </button>
+              </div>
+            </figure>
+            <h2 className="card-title text-xl">{item.productname}</h2>
             <p>
-              <strong>Price :&nbsp; {item.price}&nbsp;€</strong>
+              <div className="text-md">Price :&nbsp; {item.price}&nbsp;€</div>
             </p>
-            <div className="card-actions">
-              <button
-                className="btn btn-primary  btn-sm"
-                onClick={handleClick(item._id, item.price)}
-              >
-                Move to Cart
-              </button>
-            </div>
           </div>
           <div>
             {isUserAdmin === "true" ? (

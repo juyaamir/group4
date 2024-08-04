@@ -3,6 +3,7 @@ import { Button, Card, Flex, Typography } from "antd";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { MdAddShoppingCart } from "react-icons/md";
 
 const ImageDescription = ({
   productCount,
@@ -78,6 +79,7 @@ const ImageDescription = ({
                   </tbody>
                 </table>
                 <div className="rating text-center">
+                  <p className="text-sm">Reviews&nbsp;&nbsp;</p>
                   <input
                     type="radio"
                     name="rating-2"
@@ -107,10 +109,17 @@ const ImageDescription = ({
                 </div>
               </div>
             </Typography.Title>
-            <Button type="primary" target="_blank">
-              <button onClick={handleClick(imgId?.productname, imgId?.price)}>
+            <Button
+              type="primary"
+              target="_blank"
+              className="btn btn-square btn-outline text-xl text-blue-300 mr-0 mb-0 text-2xl text-red-400"
+              onClick={handleClick(imgId?.productname, imgId?.price)}
+            >
+              <MdAddShoppingCart />
+
+              {/* <button onClick={handleClick(imgId?.productname, imgId?.price)}>
                 Move to Cart
-              </button>
+              </button> */}
             </Button>
           </Flex>
         </Flex>

@@ -103,9 +103,9 @@ function App() {
               }
             />
             <Route path="/contact-us" element={<Contact />} />
-            <Route path="/sale" element={<Sale />} /> 
+            <Route path="/sale" element={<Sale />} />
             <Route path="/sale/:productId" element={<ProductDetails />} />
-            
+
             <Route
               path="/profile/:id"
               element={<Profile setUser={setUser} />}
@@ -119,7 +119,6 @@ function App() {
                   setProductArray={setProductArray}
                   productPrice={productPrice}
                   setProductPrice={setProductPrice}
-                  user={user}
                 />
               }
             />

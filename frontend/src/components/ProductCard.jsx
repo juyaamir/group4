@@ -46,7 +46,7 @@ const ProductCard = ({
   const addfav = (productid) => {
     setFavArray((current) => [...current, productid]);
     // console.log(setFavArray);
-    setActive(!active);
+    /*    setActive(!active); */
     //console.log(active);
   };
 
@@ -186,55 +186,6 @@ const ProductCard = ({
           </div>
         </div>
       ))}
-
-      {/*  <div className="flex flex-row flex-wrap gap-4">
-        {productItem?.map((item, key) => (
-          <div
-            key={item._id}
-            className="card card-compact bg-base-100 w-80 shadow-xl"
-          >
-            <figure>
-              <img src={item.image} alt={item.productname} />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{item.productname}</h2>
-              <p>Price :&nbsp;{item.price} &nbsp;Euro </p>
-              <div className="card-actions justify-end">
-                <button
-                  className="btn btn-primary"
-                  onClick={handleClick(item.productname, item.price)}
-                >
-                  Move to Cart
-                </button>
-              </div>
-              {isUserAdmin === "true" ? (
-                <div className="flex justify-between">
-                  <div className="collapse max-w-full">
-                    <input type="checkbox" />
-                    <div className="collapse-title text-md font-small">
-                      <Button type="dashed" icon={<EditOutlined />}></Button>
-                    </div>
-                    <div className="collapse-content">
-                      <p>
-                        <UpdateProduct itemid={item._id} ct={category} />
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <Button
-                      className="mt-4 mr-3 max-w-full"
-                      type="dashed"
-                      icon={<DeleteOutlined />}
-                      onClick={() => handleClick2(item._id)}
-                    ></Button>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };

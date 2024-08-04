@@ -22,11 +22,9 @@ body {
     font-family: 'Sofia';
 }
 .list-width {
-    width: 200mm;
-   /*  height: 297mm; */
-  /*   padding: o.7rem; */
-    box-sizing: border-box;
-    background-color: white;
+    width: 755px;
+   /*  width: 200mm; */
+
   }
   
   /* For screens smaller than 210mm */
@@ -81,6 +79,14 @@ body {
   left: 1%;
 }
 .bottom2 {
-  bottom: 83%;
+  bottom: 70%;
   left: 3%;
+}
+
+.suggestion-width {
+  width: 640px;
+
+
+ 
+
 }

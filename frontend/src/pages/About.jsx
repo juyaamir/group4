@@ -28,15 +28,35 @@ return (
     <div className="text-grey px-8">
       <div className="mb-8">
         <h2 className="text-2xl font-bold">Why Choose JourneyPack?</h2>
-        <br />
-        <p><b className="text-l">Personalized Packing Lists</b>: Get custom packing recommendations tailored to your destinations weather and your planned activities. Whether you are heading to a sunny beach, a snowy mountain, or a bustling city, we've got you covered.</p>
-        <br />
-        <p><b>Weather-Based Suggestions:</b> Our smart system analyzes the weather forecast at your destination and suggests appropriate clothing, gear, and accessories to keep you comfortable and prepared. </p>
-        <br />
-        <p><b>Activity-Specific Gear:</b> From hiking boots and snorkeling gear to city walking shoes and formal wear, we recommend items based on your itinerary to ensure you're ready for every adventure. </p>
-        <br />
+
+      <div className="collapse collapse-plus bg-base-200">
+        <input type="radio" name="my-accordion-3"  />
+        <div className="collapse-title text-xl font-medium">Personalized Packing Lists</div>
+        <div className="collapse-content">
+        <p>Get custom packing recommendations tailored to your destinations weather and your planned activities. Whether you are heading to a sunny beach, a snowy mountain, or a bustling city, we've got you covered.</p>
+        </div>
+      </div>
+      <div className="collapse collapse-plus bg-base-200">
+        <input type="radio" name="my-accordion-3" />
+        <div className="collapse-title text-xl font-medium">Weather-Based Suggestions</div>
+        <div className="collapse-content">
+        <p>Our smart system analyzes the weather forecast at your destination and suggests appropriate clothing, gear, and accessories to keep you comfortable and prepared.</p>
+        </div>
+      </div>
+      <div className="collapse collapse-plus bg-base-200">
+        <input type="radio" name="my-accordion-3" />
+        <div className="collapse-title text-xl font-medium">Activity-Specific Gear</div>
+        <div className="collapse-content">
+        <p>From hiking boots and snorkeling gear to city walking shoes and formal wear, we recommend items based on your itinerary to ensure you're ready for every adventure.</p>
+        </div> 
+      </div>
+      <div className="collapse collapse-plus bg-base-200">
+        <input type="radio" name="my-accordion-3" />
+        <div className="collapse-title text-xl font-medium">Shop with Ease</div>
+        <div className="collapse-content">
         <p><b>Shop with Ease:</b> Find all your travel essentials in one place. Our e-commerce platform offers a wide range of high-quality products from trusted brands, making it easy for you to purchase everything you need for your trip.</p>
-        <br /><br />
+        </div> 
+      </div>
       </div>
       <h2 className="text-2xl font-bold">How It Works </h2><br />
       <ul className="steps steps-vertical text-black pb-8">

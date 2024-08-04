@@ -3,17 +3,19 @@ import axios from "axios";
 
  import { fetchLocation } from "./utils/fetchLocation.jsx";
 
-const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData}) => {
+const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData,activities, setActivities}) => {
   const [error, setError] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [ready, setReady] = useState(false);
   const [show, setShow] = useState(false);
-  const [activities, setActivities] = useState([]);
+  //const [activities, setActivities] = useState([]);
   const [hotel, setHotel] = useState(null);
   const [showForm, setShowForm] = useState(true);
+
+
   console.log(activities);
-  console.log(hotel);
+  //console.log(hotel);
 
   const [{ stream, message }, setState] = useState({
     stream: true,
@@ -231,6 +233,7 @@ console.log("line updated")
     const {name, checked} = e.target;
     if(checked) {
       setActivities([...activities, name]);
+     /*  console.log(activities); */
     }
   };
 
@@ -254,7 +257,7 @@ console.log("line updated")
             <p className="text-center mb-3 font-bold">Enter Your Trip Details</p>
             <div>
               <label htmlFor="start" className="mx-4" >Start Date</label>
-              <input type="date" name="start" id="start"
+              <input type="date" name="start" id="start" min={new Date().toISOString().split('T')[0] }
               value={formData.start}
               onChange={handleChange}
               placeholder="Enter the start date"

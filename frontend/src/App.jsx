@@ -30,6 +30,8 @@ import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
 import ProductDetails from "./components/saleDetails.jsx";
 
+
+
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [islogged, setIslogged] = useState(false);
@@ -67,6 +69,8 @@ function App() {
         productArray={productArray}
         productPrice={productPrice}
       />
+
+ 
 
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">

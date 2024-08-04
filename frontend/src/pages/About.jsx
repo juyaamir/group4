@@ -54,7 +54,7 @@ return (
         <input type="radio" name="my-accordion-3" />
         <div className="collapse-title text-xl font-medium">Shop with Ease</div>
         <div className="collapse-content">
-        <p><b>Shop with Ease:</b> Find all your travel essentials in one place. Our e-commerce platform offers a wide range of high-quality products from trusted brands, making it easy for you to purchase everything you need for your trip.</p>
+        <p> Find all your travel essentials in one place. Our e-commerce platform offers a wide range of high-quality products from trusted brands, making it easy for you to purchase everything you need for your trip.</p>
         </div> 
       </div>
       </div>

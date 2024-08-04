@@ -20,11 +20,10 @@ const Cart = ({
   const [productDesc, setProductDesc] = useState(null);
 
   const deleteProduct = (PId) => {
-    console.log(PId);
-
-    setProductArray(productArray.splice(PId - 1, 1));
-
-    console.log(productArray);
+    var index = productArray.indexOf(PId);
+    productArray.splice(index, 1);
+    // favArray.remove(id);
+    setProductArray([...productArray]);
   };
 
   useEffect(() => {
@@ -82,7 +81,7 @@ const Cart = ({
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [productArray]);
 
   return (
     <>

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { marked } from "marked";
 import Footer from "./utils/listFooter";
 import Header from "./utils/listHeader";
-import WelcomeMessage from "./WelcomeMessage";
+import Suggestion from "./Suggestion";
 
 export const Chat = ({ messages, hide2, formData, firstName }) => {
   const imgRef = useRef();
@@ -27,8 +27,8 @@ export const Chat = ({ messages, hide2, formData, firstName }) => {
   return (
     <div>
       {hide2 && (
-        <div className="flex flex-wrap">
-          <div className="list-width">
+        <div className="flex justify-center">
+          <div className="list-width  ">
             <div className="relative">
               <button
                 type="button"
@@ -72,8 +72,8 @@ export const Chat = ({ messages, hide2, formData, firstName }) => {
           </div>
 
 
-          <div className="border border-red-400 flex-grow mb-10 mr-10 p-2">
-          <p>Our Suggestions for you..</p>
+          <div className="border border-gray-300 rounded-lg  mb-10 mr-10 p-2 suggestion-width">
+          <Suggestion  />
           </div>
         </div>
       )}

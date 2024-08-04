@@ -28,7 +28,7 @@ const Suggestion = ({ activities }) => {
       setError(error);
     }
   };
-
+ /* console.log */
   useEffect(() => {
     const getEntries = async () => {
       const entries = await fetchProducts("mobile");
@@ -50,14 +50,14 @@ const Suggestion = ({ activities }) => {
     }));
   };
 
-  const filteredData = data.filter((e) => activities.includes(e.fields.brand));
+  const filteredData = activities.length === 0 ? data : data.filter((e) => activities.includes(e.fields.brand));
 
   return (
     <div>
       <div className="text-white bg-cyan-700 p-3 mb-3 text-center">
-        <p className="text-xl font-bold">Our Suggestion</p>
+        <p className="text-xl font-bold">Our Suggestion for you</p>
         <p className="text-sm">Check out our latest products and enjoy your shopping</p>
-        <p>activities: {activities.join(', ')}</p>
+       {/*  <p>activities: {activities.join(', ')}</p> */}
       </div>
       <div className="text-center mb-4">
         <div className="join">

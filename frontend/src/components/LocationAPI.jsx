@@ -13,8 +13,8 @@ const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData,ac
   const [hotel, setHotel] = useState(null);
   const [showForm, setShowForm] = useState(true);
 
-
-  console.log(activities);
+/* console.log */
+  //console.log(activities);
   //console.log(hotel);
 
   const [{ stream, message }, setState] = useState({
@@ -60,7 +60,7 @@ const fetchLocationSuggestions = async (location) => {
       role: 'user',
       content: message,
     };
-console.log("line updated")
+//console.log("line updated")
     setMessages([...messages, newMessage]);
     // setMessages((prev) => [...prev, newMessage]);
     try {
@@ -82,7 +82,7 @@ console.log("line updated")
         })) 
       };
       
-      console.log(weatherData);
+      //console.log(weatherData);
 
       //prompt for the AI
       const prompt  = `Give a brief overview of the weather, then provide a 
@@ -164,7 +164,7 @@ console.log("line updated")
           }),
         }
       );
-      console.log(aiResponse);
+      //console.log(aiResponse);
       setState({
         stream,
         message: '',

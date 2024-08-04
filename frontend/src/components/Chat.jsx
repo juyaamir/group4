@@ -6,6 +6,8 @@ import Footer from "./utils/listFooter";
 import Header from "./utils/listHeader";
 import Suggestion from "./Suggestion";
 
+
+
 export const Chat = ({ messages, hide2, formData, firstName, activities }) => {
   const imgRef = useRef();
   const downloadIMG = async () => {

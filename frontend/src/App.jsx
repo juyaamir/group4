@@ -29,6 +29,9 @@ import ImageDescription from "./pages/ImageDescription.jsx";
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
 import ProductDetails from "./components/saleDetails.jsx";
+import Paynow from "./pages/Paynow.jsx";
+import { createContext } from "react";
+export const priceContext = createContext(null);
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -61,19 +64,20 @@ function App() {
   //  console.log("from App", token);
   return (
     <ThemeProvider>
-      <Header
-        islogged={islogged}
-        productCount={productCount}
-        productArray={productArray}
-        productPrice={productPrice}
-      />
-
+      <priceContext.Provider value={productPrice}>
+        <Header
+          islogged={islogged}
+          productCount={productCount}
+          productArray={productArray}
+        />
+      </priceContext.Provider>
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
           {islogged && user && <WelcomeMessage firstName={user.firstname} />}
           <Routes>
             <Route path="/" element={<Home setUser={setUser} />} />
             <Route path="/about" element={<About />} />
+
             <Route
               path="/product"
               element={
@@ -82,12 +86,11 @@ function App() {
                   setProductCount={setProductCount}
                   productArray={productArray}
                   setProductArray={setProductArray}
-                  productPrice={productPrice}
-                  setProductPrice={setProductPrice}
                   setFavArray={setFavArray}
                 />
               }
             />
+
             <Route path="/stores" element={<Stores />} />
 
             <Route
@@ -110,7 +113,7 @@ function App() {
               path="/profile/:id"
               element={<Profile setUser={setUser} />}
             />
-
+            {/*   <priceContext.Provider value={productPrice}> */}
             <Route
               path="/cart"
               element={
@@ -119,6 +122,16 @@ function App() {
                   setProductArray={setProductArray}
                   productPrice={productPrice}
                   setProductPrice={setProductPrice}
+                />
+              }
+            />
+            {/*  </priceContext.Provider> */}
+            <Route
+              path="/pay-now"
+              element={
+                <Paynow
+                  productPrice={productPrice}
+                  productArray={productArray}
                 />
               }
             />

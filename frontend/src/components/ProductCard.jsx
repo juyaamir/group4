@@ -41,8 +41,11 @@ const ProductCard = ({
     productname: productname,
     price: price,
     category: category,
+
+    
   }; */
   /*  let isUserAdmin = "true"; */
+
   const addfav = (productid) => {
     setFavArray((current) => [...current, productid]);
     // console.log(setFavArray);
@@ -51,13 +54,13 @@ const ProductCard = ({
   };
 
   const handleClick = (productId, price) => (event) => {
-    console.log(productId);
+    /*  console.log(productId); */
     setProductArray((current) => [...current, productId]);
-    console.log(productArray);
-    setProductCount(productArray.length);
-    console.log(productArray.length);
-    setProductPrice(price);
-    console.log(price);
+    let length = productArray.length + 1;
+    setProductCount(length);
+    console.log(length);
+    /*  setProductPrice((cur) => [...cur, price]);
+    console.log(setProductPrice); */
   };
 
   ///DELETE Product//

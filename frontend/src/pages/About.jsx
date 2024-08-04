@@ -78,6 +78,12 @@ return (
             <div className="card-actions justify-end">
             </div>
           </div>
+          <div className="card-body">
+            <h2 className="card-title">1. Select Your Destination!</h2>
+            <p>Enter your travel destination and dates to receive up-to-date weather forecasts and tailored packing advice.</p>
+            <div className="card-actions justify-end">
+            </div>
+          </div>
         </div>
         <div className="card bg-base-100 w-96 shadow-xl">
           <figure>

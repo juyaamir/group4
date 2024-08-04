@@ -157,7 +157,7 @@ console.log(product);
                   </div>
                 ) : null
           }
-            {
+          {
             product?.brand === "Photography" ? (
                   <div>
                     <p>Color:</p>
@@ -211,6 +211,246 @@ console.log(product);
                     <p>Size Name:</p>
                     <ul className="flex gap-4 flex-wrap text-sm">
                       {['64 GB', '128 GB', '256 GB', '512 GB', '1 TB'].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+                    {
+            product?.brand === "Computer" ? (
+                  <div>
+                    <p>Size Name:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['128 SSD', '256 SSD', '512 SSD', '1 TB SSD'].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Accessories" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White', 'Pink', 'Clay', ' Blue'].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Hiking" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White', 'Pink', 'Clay', ' Blue'].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Camping" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White', 'Pink', 'Clay', ' Blue'].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Fishing" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White',  'Clay', ].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Essentials" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White',  'Clay', ].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Toiletries" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White',  'Clay', ].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Swimming" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White', 'Pink', 'Clay', ' Blue'].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Snowboarding" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White', 'Pink', 'Clay', ' Blue'].map(size => (
+                        <li key={size}>
+                          <NavLink
+                            to="#"
+                            onClick={() => handleSizeClick(size)}
+                            style={{ backgroundColor: selectedSize === size ? 'white' : 'white',
+                              fontWeight: selectedSize === size ? 'bold' : 'normal',
+                              borderBottom: selectedSize === size ? '2px solid black' : '1px dashed gray'
+                            }}
+                            className="border-b-2 border-gray-200 px-4 hover:bg-black"
+                          >
+                            {size}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            ) : null
+          }
+          {
+            product?.brand === "Beach" ? (
+                  <div>
+                    <p>Color:</p>
+                    <ul className="flex gap-4 flex-wrap text-sm">
+                      {['Black', 'White', 'Pink', 'Clay', ' Blue'].map(size => (
                         <li key={size}>
                           <NavLink
                             to="#"

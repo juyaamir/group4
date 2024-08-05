@@ -115,7 +115,7 @@ const Header = ({ islogged, productCount }) => {
           </div> */}
           <img src={logo} alt="logo" className="h-10 w-10 rounded-full" />
 
-          <a className="btn btn-ghost text-xl">JourneyPack</a>
+          <h4 className="text-3xl pl-2 text-yellow-600 font-DM1">JourneyPack</h4>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

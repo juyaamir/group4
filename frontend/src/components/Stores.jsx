@@ -7,12 +7,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'; 
 import markerIcon from '../assets/map-marker-icon-.png'; 
 import markerShadow from 'leaflet/dist/images/marker-shadow.png'; 
-import pic3 from '../assets/pic3.jpg';
-import pic5 from '../assets/pic4.jpg'
-import pic4 from '../assets/pic1.jpg'
-import pic1 from '../assets/pic2.jpg';
 
-import Theme from './Theme';
+import HotelCard from './HotelCard';
 
 const customIcon = L.icon({
   iconUrl: markerIcon,
@@ -90,7 +86,6 @@ const Stores = () => {
     coords: PropTypes.arrayOf(PropTypes.number).isRequired,
     zoom: PropTypes.number.isRequired,
   };
-
   return (
     <div>
       <h1 className='text-center text-2xl my-4 font-thin'>STORES</h1>
@@ -149,7 +144,7 @@ const Stores = () => {
                     <p>
                       <u>
                         <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(city.address)}`} target="_blank" rel="noopener noreferrer">
-                          {city.address}
+                        {city.address}
                         </a>
                       </u>
                     </p>
@@ -161,25 +156,12 @@ const Stores = () => {
         </div>
         </div>
         
-        <div className='flex flex-grow  w-full p-2 
-        fGap  flex-wrap mt-10
-        '>
-          <img src={pic1} alt="vacation pic" 
-          className='width border border-gray-100 h-auto  hover:border-none hover:cursor-pointer'
-          />
-          <div className='width border border-gray-100 flex flex-col justify-between'>
-            <img src={pic3} alt="vacation pic" 
-            className='hover:border-none hover:cursor-pointer border border-gray-100'
-            />
-            <img src={pic5} alt="vacation pic" 
-            className='hover:border-none hover:cursor-pointer border border-gray-100' />
-          </div>
 
-          <img src={pic4} alt="vacation pic" 
-          className='width border border-gray-100 h-auto hover:border-none hover:cursor-pointer '
-          />
-        </div>
+        
       </div>
+      <div className=' mx-10 justify-between border border-red-200'>
+          <HotelCard />
+        </div>
     </div>
   );
 };

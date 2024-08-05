@@ -91,6 +91,7 @@ console.log(product);
             </div>
             <p className="text-gray-500">Ships from: <span className=" underline">journeypack.com</span></p>
             <p className=" text-gray-500">Returns: <span className="  text-blue-500">Eligible for Return, Refund or Replacement within 30 days of receipt</span></p>
+            <button onClick={() => navigate(-1)}>Back </button>
             
         </div>
 

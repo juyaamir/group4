@@ -96,7 +96,7 @@ const Cart = ({
             {productduplicate}
           </button>
         </div>
-        <table className="table">
+        {/*  <table className="table">
           <thead>
             <tr>
               <th></th>
@@ -131,7 +131,7 @@ const Cart = ({
                 </tr>
               </tbody>
             ))}
-        </table>
+        </table> */}
 
         {/* <div className="max-w-full text-end px-16 py-2">
           Total Price:

@@ -15,9 +15,9 @@ const OrderHistory = () => {
         .get(`http://localhost:8000/api/v1/usersaccounts/${id}/orders`)
         .then((response) => {
           setOrderHistory(response.data);
-          const productIds = response.data.flatMap(order => order.products);
-          console.log('Product IDs:', productIds); // Log product IDs
-          fetchProductDetails(productIds);
+          const itemIds = response.data.flatMap(order => order.items);
+          console.log('Item IDs:', itemIds); // Log item IDs
+          fetchProductDetails(itemIds);
         })
         .catch((err) => {
           console.error(err);
@@ -26,10 +26,10 @@ const OrderHistory = () => {
     }
   }, [id]);
 
-  const fetchProductDetails = (productIds) => {
-    const uniqueProductIds = [...new Set(productIds)]; // Remove duplicates
-    console.log('Unique Product IDs:', uniqueProductIds); // Log unique product IDs
-    Promise.all(uniqueProductIds.map(id => 
+  const fetchProductDetails = (itemIds) => {
+    const uniqueItemIds = [...new Set(itemIds)]; // Remove duplicates
+    console.log('Unique Item IDs:', uniqueItemIds); // Log unique item IDs
+    Promise.all(uniqueItemIds.map(id => 
       axios.get(`http://localhost:8000/api/v1/products/${id}`)
         .then(response => {
           console.log(`Product ${id} data:`, response.data); // Log product data
@@ -70,11 +70,11 @@ const OrderHistory = () => {
               <h3>Order ID: {order._id}</h3>
               <p>Date: {formatDate(order.createdAt)}</p>
               <h4>Total: {order.price}</h4>
-              <h4>Products:</h4>
+              <h4>Items:</h4>
               <ul>
-                {order.products && order.products.length > 0 ? (
-                  order.products.map((productId) => {
-                    const product = productDetails[productId];
+                {order.items && order.items.length > 0 ? (
+                  order.items.map((itemid) => {
+                    const product = productDetails[itemid];
                     return product ? (
                       <li key={product._id}>
                         <p>Product Name: {product.productname}</p>
@@ -82,7 +82,7 @@ const OrderHistory = () => {
                         <p>Category: {product.category}</p>
                       </li>
                     ) : (
-                      <li key={productId}>Loading product details...</li>
+                      <li key={itemid}>Loading product details...</li>
                     );
                   })
                 ) : (

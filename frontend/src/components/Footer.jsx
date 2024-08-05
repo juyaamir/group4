@@ -6,7 +6,7 @@ const Footer = () => {
     <>
       <footer className="footer bg-neutral text-neutral-content p-10 my-1 justify-around">
         <aside className="flex items-center ">
-        <img src={logo} alt="logo" className="h-20 w-20 rounded-full" />
+          <img src={logo} alt="logo" className="h-20 w-20 rounded-full" />
           {/* <svg
             width="50"
             height="50"
@@ -20,7 +20,6 @@ const Footer = () => {
           </svg> */}
           <p className="pl-2">
             <h1 className="text-xl font-bold">JourneyPack</h1>
-            
             Copyright reserved by JourneyPack &copy; 2024
           </p>
         </aside>
@@ -62,7 +61,7 @@ const Footer = () => {
             </a>
           </div>
         </nav>
-        <form action="">
+        {/* <form action="">
           <h6 className="footer-title">Subscribe</h6>
           <div className="grid grid-flow-col gap-4">
             <input
@@ -78,7 +77,7 @@ const Footer = () => {
             }}
             >Subscribe</button>
           </div>
-        </form>
+        </form> */}
       </footer>
     </>
   );

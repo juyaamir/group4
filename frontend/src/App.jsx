@@ -28,6 +28,8 @@ import ImageDescription from "./pages/ImageDescription.jsx";
 
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
+// import OrderHistory from "./components/OrderHistory.jsx";
+// import ProductDetail from "./components/ProductDetail.jsx";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -102,10 +104,8 @@ function App() {
             />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/sale" element={<Sale />} />
-            <Route
-              path="/profile/:id"
-              element={<Profile setUser={setUser} />}
-            />
+            <Route path="/profile/:id" element={<Profile setUser={setUser} />}/>
+            {/* <Route path="/:id/orders" element={<OrderHistory />} /> */}
 
             <Route
               path="/cart"

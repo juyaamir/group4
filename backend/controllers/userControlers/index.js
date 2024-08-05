@@ -1,6 +1,7 @@
 import UsersAccount from "../../models/UsersAccount.js";
 import bcrypt from "bcryptjs";
 
+import Order from "../../models/Orders.js";
 // import bcrypt from "bcrypt";
 //import { validationResult } from "express-validator";
 
@@ -133,3 +134,30 @@ export const deletOne = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error", error });
   }
 };
+
+
+
+//===========================
+//order history of a user
+//=============================
+export const getOrderHistory = async (req, res) => {
+  try {
+    const {id}=req.params
+    const orders = await Order.find({ userid: req.params.id });
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+//Get order history for a specific user
+// router.get('/usersaccounts/:id/orders', async (req, res) => {
+//   try {
+//     const orders = await Order.find({ userid: req.params.id });
+//     res.json(orders);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// });
+
+// export default router;

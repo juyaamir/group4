@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import AddAdmin from "../components/AddAdmin";
 import WelcomeMessage from "../components/WelcomeMessage";
+import OrderHistory from "../components/OrderHistory";
+
 
 function Profile() {
   const { id } = useParams();
@@ -15,25 +17,25 @@ function Profile() {
     password: ''
   });
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/usersaccounts/${id}`)
-      .then((response) => {
-        setUser(response.data);
-        setFormData({
-          firstname: response.data.firstname,
-          lastname: response.data.lastname,
-          email: response.data.email,
-          password: ''
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Error fetching user data");
+    .get(`http://localhost:8000/api/v1/usersaccounts/${id}`)
+    .then((response) => {
+      setUser(response.data);
+      setFormData({
+        firstname: response.data.firstname,
+        lastname: response.data.lastname,
+        email: response.data.email,
+        password: ''
       });
+    })
+    .catch((err) => {
+      console.error(err);
+      setError("Error fetching user data");
+    });
   }, [id]);
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,21 +43,21 @@ function Profile() {
       [name]: value
     });
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:8000/api/v1/usersaccounts/${id}`, formData)
-      .then((response) => {
-        setUser(response.data);
-        setEditMode(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Error updating user data");
-      });
+    .put(`http://localhost:8000/api/v1/usersaccounts/${id}`, formData)
+    .then((response) => {
+      setUser(response.data);
+      setEditMode(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setError("Error updating user data");
+    });
   };
-
+  
   if (error) {
     return (
       <div className="w-50 vh-100 d-flex justify-content-center align-items-center">
@@ -70,6 +72,7 @@ function Profile() {
       </div>
     );
   }
+  
   return (
     <>
       {user && (
@@ -153,9 +156,7 @@ function Profile() {
               </form>
             )}
           </div>
-          <div className="w-100 vh-100 d-flex justify-center items-center border border-1 rounded-md m-8">
-            <h2>Orders History</h2>
-          </div>
+          <OrderHistory />
           <AddAdmin />
         </div>
       )}

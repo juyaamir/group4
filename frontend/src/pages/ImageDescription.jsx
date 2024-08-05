@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { MdAddShoppingCart } from "react-icons/md";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const ImageDescription = ({
   productArray,
@@ -51,6 +53,9 @@ const ImageDescription = ({
           },
         }}
       >
+        <Link to="/product" className="absolute bg-base-200 text-2xl ml-4 mt-2">
+          <IoMdArrowRoundBack />
+        </Link>
         <Flex justify="space-between">
           <img alt="avatar" src={imgId?.image} style={imgStyle} />
           <Flex

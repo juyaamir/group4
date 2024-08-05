@@ -28,12 +28,15 @@ import ImageDescription from "./pages/ImageDescription.jsx";
 
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
+// import OrderHistory from "./components/OrderHistory.jsx";
+// import ProductDetail from "./components/ProductDetail.jsx";
 import ProductDetails from "./components/saleDetails.jsx";
 
 
 import Paynow from "./pages/Paynow.jsx";
 import { createContext } from "react";
 export const priceContext = createContext(null);
+
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -44,12 +47,6 @@ function App() {
   const [productPrice, setProductPrice] = useState(0);
   const [favArray, setFavArray] = useState([]);
 
-  // console.log(islogged);
-
-  /* const signout = () => {
-    localStorage.clear();
-    console.log("You signed out");
-    }; */
   const getuserlogged = () => {
     if (token) {
       setIslogged(true);
@@ -109,13 +106,11 @@ function App() {
             />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/sale" element={<Sale />} />
+            <Route path="/profile/:id" element={<Profile setUser={setUser} />}/>
+            {/* <Route path="/:id/orders" element={<OrderHistory />} /> */}
+
             <Route path="/sale/:productId" element={<ProductDetails />} />
 
-            <Route
-              path="/profile/:id"
-              element={<Profile setUser={setUser} />}
-            />
-            {/*   <priceContext.Provider value={productPrice}> */}
             <Route
               path="/cart"
               element={

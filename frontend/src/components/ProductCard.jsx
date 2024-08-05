@@ -145,7 +145,7 @@ const ProductCard = ({
                 </Link>
                 <div className="absolute top-0 right-0 mr-4">
                   <div style={{ width: "1rem" }}>
-                    <Heart
+                    {/*    <Heart
                       className=""
                       isActive={active}
                       onClick={() => addfav(item._id)}
@@ -153,7 +153,7 @@ const ProductCard = ({
                       inactiveColor="black"
                       activeColor="red"
                       animationDuration={0.1}
-                    />
+                    /> */}
                     <Space>
                       <Button
                         type="dashed"
@@ -184,7 +184,7 @@ const ProductCard = ({
               </p>
               <div className="absolute bottom-4 right-0">
                 <button
-                  className="btn glass  text-2xl text-red-400 mr-0 mb-0"
+                  className="btn glass  text-2xl text-black-300 "
                   onClick={handleClick(item._id, item.price)}
                 >
                   <MdAddShoppingCart />

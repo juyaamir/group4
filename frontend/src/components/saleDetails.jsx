@@ -45,7 +45,7 @@ const ProductDetails = () => {
       ...prevState, [productId]: !prevState[productId]
     }))
   }
-console.log(product);
+/* console.log(product); */
   return (
     !product ? (
       <div className="relative inset-x-2/4 top-8">
@@ -60,7 +60,7 @@ console.log(product);
           wrapperStyle={{}}
           wrapperClass=""
         />
-      </div>
+      </div> /* console.log */
     ) : (
     <div className="flex flex-wrap mx-auto my-6 border-2 border-gray-200 w-2/3 justify-around rounded-lg ">
         <div className="w-80 p-3">

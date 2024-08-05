@@ -109,10 +109,10 @@ const Sale = () => {
                     <button className="text-white bg-cyan-400 w-full h-10 hover:bg-slate-950">
                     <Link to={`/sale/${e?.sys.id}`}>More Info</Link>
                     </button>
-                    <div className="card-body  m-0 p-1">
+              {/*       <div className="card-body  m-0 p-1"> */}
                         <p className='text-red-500'>
                         <span className='text-white bg-red-500 p-1 mr-2'>{e?.fields.discount}% off </span> Ends in
-                        {/* Limited time deal! */}
+                        {/* Limited time deal!  console.log*/}
                         <div style={{width: "1.5rem"}} className=" absolute inline right-1">
                         <Heart 
                           isActive={activeStates[e?.sys.id] || false} 
@@ -164,7 +164,7 @@ const Sale = () => {
                             <i className="fa-solid fa-star-half-stroke text-orange-400"></i>
                             {e.fields.rating}
                         </p>
-                    </div>
+                    {/* </div> */}
                     </div>
                 ))
             )

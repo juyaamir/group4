@@ -88,7 +88,12 @@ const Stores = () => {
   };
   return (
     <div>
-      <h1 className='text-center text-2xl my-4 font-thin'>STORES</h1>
+      <div className='my-4 text-center'>
+      <h1 className=' text-2xl mb-2'>STORES</h1>
+      <p className=' text-medium '>Find the nearest store to you</p>
+      <p> </p>
+      </div>
+
       
       <div className=' min-h-screen mb-10 mx-4 sm:mx-0 md:mx-10 lg:mx-60 flex flex-col' >
         <div className='flex flex-wrap'>
@@ -155,11 +160,13 @@ const Stores = () => {
           </div>
         </div>
         </div>
-        
-
-        
       </div>
-      <div className=' mx-10 justify-between border border-red-200'>
+
+
+      <h1 className='text-center text-2xl mb-2'>HOTELS</h1>
+      <p className='text-center text-medium mb-4'>The following hotels are advertisements and not affiliated with our store.</p>
+
+      <div className=' mx-10 justify-between '>
           <HotelCard />
         </div>
     </div>

@@ -35,32 +35,18 @@ const Cart = ({
   };
   const [list, setList] = useState(productArray); // Example list
 
-  const getDuplicates = () => {
-    const duplicates = findDuplicates(list);
-    console.log("Duplicates:", duplicates);
-    setProductduplicate(duplicates);
-    // You can set the duplicates to state or use them as needed
-  };
-
-  // Function to find duplicates
-  function findDuplicates(array) {
-    const itemCounts = new Map();
-
-    // Count the occurrences of each item
-    array.forEach((item) => {
-      itemCounts.set(item, (itemCounts.get(item) || 0) + 1);
-    });
-
-    // Filter items that occur more than once
-    const duplicates = Array.from(itemCounts)
-      .filter(([item, count]) => count > 1)
-      .map(([item, count]) => item);
-
-    return duplicates;
+  function countOccurrences(arr) {
+    return arr.reduce((counts, item) => {
+      counts[item] = (counts[item] || 0) + 1;
+      return counts;
+    }, {});
   }
 
-  /*   const total = productDesc?.reduce((acc, item) => acc + item.price, 0);
-  setProductPrice(total); */
+  const result = countOccurrences(list);
+  console.log(result);
+
+  const total = productDesc?.reduce((acc, item) => acc + item.price, 0);
+  setProductPrice(total);
 
   useEffect(() => {
     axios
@@ -72,9 +58,6 @@ const Cart = ({
         console.error(err);
       });
   }, [productArray]);
-  useEffect(() => {
-    getDuplicates();
-  }, []);
 
   return (
     <>
@@ -82,21 +65,18 @@ const Cart = ({
         <div className="p-14 flex flex-row gap-6">
           <Userinfo />
         </div>
-
+        {/* 
         <div>
           <ul>
             {productArray?.map((item) => (
-              <li>{item}</li>
+              <li>
+                {item} : {result[item]}
+              </li>
             ))}
           </ul>
-        </div>
-        <div>
-          <button className="border border-2" onClick={() => {}}>
-            Check for Duplicates
-            {productduplicate}
-          </button>
-        </div>
-        {/*  <table className="table">
+        </div> */}
+
+        <table className="table">
           <thead>
             <tr>
               <th></th>
@@ -106,8 +86,7 @@ const Cart = ({
           {productDesc &&
             productDesc?.map((item, key) => (
               <tbody>
-                <tr>
-                  <th key={item._id}>{item._id}</th>
+                <tr key={item._id}>
                   <td>
                     <strong>{item.productname}</strong>
                   </td>
@@ -117,6 +96,7 @@ const Cart = ({
                   <td>
                     <Image width={50} src={item.image} />
                   </td>
+                  <td>{result[item._id]}</td>
                   <td>
                     <Button
                       type="dashed"
@@ -131,12 +111,12 @@ const Cart = ({
                 </tr>
               </tbody>
             ))}
-        </table> */}
+        </table>
 
-        {/* <div className="max-w-full text-end px-16 py-2">
+        <div className="max-w-full text-end px-16 py-2">
           Total Price:
           <strong>&nbsp;{productPrice}</strong>
-        </div> */}
+        </div>
         <div className="max-w-full text-end px-16 py-2 ">
           <Link to="/pay-now">
             <button className="btn btn-outline btn-success">Pay Now</button>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Avatar } from "antd";
 /* const { Text } = Typography; */
 const Userinfo = () => {
+  const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
   let id = localStorage.getItem("userId");
   useEffect(() => {

@@ -66,6 +66,7 @@ const ProductCard = ({
   const handleClick = (productId, price) => (event) => {
     /*  console.log(productId); */
     setProductArray((current) => [...current, productId]);
+    openNotification("top");
     let length = productArray.length + 1;
     setProductCount(length);
     console.log(length);

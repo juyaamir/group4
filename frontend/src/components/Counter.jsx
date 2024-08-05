@@ -14,7 +14,7 @@ const Counter = () => {
   return (
     <div className=''>
       <div 
-      className="flex gap-2 text-red-400 font-mono   justify-center   
+      className="flex gap-2 text-red-400 font-mono justify-center   
       ">
         <div>
           <span className="countdown font-mono text-xl">

@@ -31,13 +31,13 @@ const HeroImage = () => {
             </div>
           </Link>
 
-          <p className="font-normal text-black text-xl my-3 ">
+          {/* <p className="font-normal text-black text-xl my-3 ">
             Don't have an account? No worries!<strong>&nbsp;Sign up</strong>
             &nbsp; now
           </p>
           <Link to={`/signup`}>
             <button className="btn btn-primary my-3">Sign up</button>
-          </Link>
+          </Link> */}
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <img
@@ -46,6 +46,17 @@ const HeroImage = () => {
             className="w-full"
           />
         </div>
+      </div>
+      <div className="container mx-auto px-4 py-16 text-center">
+        <p className="font-OpenSans text-xl font-semibold italic tracking-widest text-[#54524f] my-3 ">
+          Don't have an account? No worries!<strong>&nbsp;Sign up</strong>
+          &nbsp; now
+        </p>
+        <Link to={`/signup`}>
+          <button className="h-12 w-56 rounded-full bg-[#776c64] px-4 py-2 text-center font-OpenSans text-xl font-extrabold text-white opacity-90 focus:border-2 focus:border-white focus:outline-none">
+            Sign up
+          </button>
+        </Link>
       </div>
     </>
   );

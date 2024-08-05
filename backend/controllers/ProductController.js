@@ -32,7 +32,15 @@ export const getAllProducts = async (req, res) => {
 
 export const createSinglProduct = async (req, res) => {
   try {
+    if (req.body.favArray) {
+      console.log(req.body.favArray);
+      const { favArray } = req.body;
+      const favproducts = await Product.find({ _id: { $in: favArray } });
+      res.json(favproducts);
+      return;
+    }
     if (req.body.productArray) {
+      console.log(req.body);
       const { productArray } = req.body;
       const products = await Product.find({ _id: { $in: productArray } });
       res.json(products);

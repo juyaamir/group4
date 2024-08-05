@@ -11,13 +11,13 @@ import validateMode from "./Middleware/validateMode.js";
 //import validateProvider from "./Middleware/validateProvider.js";
 //import validateMode from "./Middleware/validateMode.js";
 
-
 // database connection
 import connectDB from "./db/db.js";
 
 import weatherRouter from "./routes/API/weatherRoutes.js";
 
 import locationRouter from "./routes/API/locationRoutes.js";
+import userimageRouter from "./routes/UserimageRouter.js";
 
 //import userRouter from "./routes/UsersAccountRoutes.js";
 import orderRouter from "./routes/OrderRouter.js";
@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 app.use("/api/v1/location", locationRouter);
 
 //Routes for models (user account, product, order) //user account API route
-
+app.use("/api/v1/user-image", userimageRouter);
 //app.use("/api/v1/user-account", userRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/product", productRouter);

@@ -4,16 +4,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //import AddNewProduct from "./AddNewProduct";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, Flex, Tooltip } from "antd";
+
 import { EditOutlined } from "@ant-design/icons";
 import UpdateProduct from "./UpdataProduct";
-import Newimage from "./Newimage";
-import { use } from "marked";
+
+import Heart from "react-heart";
 import { Card } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 import { Image } from "antd";
-
-const { Meta } = Card;
+import { MdAddShoppingCart } from "react-icons/md";
+import { CiHeart } from "react-icons/ci";
+import { Button, Divider, notification, Space } from "antd";
+import { BorderBottomOutlined, BorderTopOutlined } from "@ant-design/icons";
 
 const ProductCard = ({
   category,
@@ -25,7 +27,18 @@ const ProductCard = ({
   setProductPrice,
   setFavArray,
 }) => {
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (placement) => {
+    api.info({
+      message: ``,
+      description: "Item is added successfully.",
+      placement,
+    });
+  };
   const [productItem, setProductItem] = useState([]);
+  const [active, setActive] = useState(false);
+
+  /*   let length = productArray.length; */
 
   //const [productArray, setProductArray] = useState([]);
   //console.log(c["category"]);
@@ -37,18 +50,28 @@ const ProductCard = ({
     productname: productname,
     price: price,
     category: category,
+
+    
   }; */
   /*  let isUserAdmin = "true"; */
-  const addfav = (item) => {
-    setFavArray((current) => [...current, item]);
-    console.log(favArray);
+
+  const addfav = (productid) => {
+    setFavArray((current) => [...current, productid]);
+    openNotification("top");
+    // console.log(setFavArray);
+    setActive(!active);
+    //console.log(active);
   };
 
   const handleClick = (productId, price) => (event) => {
-    setProductCount(productCount + 1);
+    /*  console.log(productId); */
     setProductArray((current) => [...current, productId]);
-
-    setProductPrice(productPrice + price);
+    openNotification("top");
+    let length = productArray.length + 1;
+    setProductCount(length);
+    console.log(length);
+    /*  setProductPrice((cur) => [...cur, price]);
+    console.log(setProductPrice); */
   };
 
   ///DELETE Product//
@@ -106,93 +129,55 @@ const ProductCard = ({
   const itemcategory = productItem.map((item) => item.category); */
 
   return (
-    <div className="flex flex-row flex-wrap gap-4  rounded-md p-1 ">
-      {productItem?.map((item, key) => (
-        <div key={item._id} className="card bg-base-200 w-64 shadow-xl">
-          <p className="m-4 text-end">
-            <button
-              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-              onClick={() => addfav(item.productname)}
-            >
-              <HeartOutlined />
-            </button>
-          </p>
-          <figure className="px-10">
-            <Link to={`/image-description/${item._id}`}>
-              <Image width={200} src={item.image} alt={item.productname} />
-            </Link>
-            {/* <img
-              src={item.image}
-              alt={item.productname}
-              className="rounded-xl"
-            /> */}
-          </figure>
+    <>
+      {contextHolder}
 
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">{item.productname}</h2>
-            <p>
-              <strong>Price :&nbsp; {item.price}&nbsp;€</strong>
-            </p>
-            <div className="card-actions">
-              <button
-                className="btn btn-primary  btn-sm"
-                onClick={handleClick(item._id, item.price)}
-              >
-                Move to Cart
-              </button>
-            </div>
-          </div>
-          <div>
-            {isUserAdmin === "true" ? (
-              <div className="flex justify-between">
-                <div className="collapse max-w-full">
-                  <input type="checkbox" />
-                  <div className="collapse-title text-md font-small">
-                    <Button type="dashed" icon={<EditOutlined />}></Button>
-                  </div>
-                  <div className="collapse-content">
-                    <p>
-                      <UpdateProduct itemid={item._id} ct={category} />
-                    </p>
-                  </div>
-                </div>
-
-                <div>
-                  <Button
-                    className="mt-4 mr-3 max-w-full"
-                    type="dashed"
-                    icon={<DeleteOutlined />}
-                    onClick={() => handleClick2(item._id)}
-                  ></Button>
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      ))}
-
-      {/*  <div className="flex flex-row flex-wrap gap-4">
+      <div className="flex flex-row flex-wrap gap-2 rounded-md ">
         {productItem?.map((item, key) => (
           <div
             key={item._id}
-            className="card card-compact bg-base-100 w-80 shadow-xl"
+            className="card bg-base-200 w-60 shadow-xl rounded-md"
           >
-            <figure>
-              <img src={item.image} alt={item.productname} />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{item.productname}</h2>
-              <p>Price :&nbsp;{item.price} &nbsp;Euro </p>
-              <div className="card-actions justify-end">
-                <button
-                  className="btn btn-primary"
-                  onClick={handleClick(item.productname, item.price)}
+            <div className="card-body  text-center">
+              <figure className="relative max-w-full ">
+                <Link to={`/image-description/${item._id}`}>
+                  <Image width={200} src={item.image} alt={item.productname} />
+                </Link>
+                <div className="">
+                  <div style={{ width: "1rem" }}>
+                    <Space>
+                      <Button
+                        className="absolute top-0 right-0"
+                        type="dashed"
+                        icon={<HeartOutlined />}
+                        onClick={() => addfav(item._id)}
+                      ></Button>
+                    </Space>
+                  </div>
+                  {/*     <button
+                  className="text-2xl text-black-300"
+                  onClick={() => addfav(item.productname)}
                 >
-                  Move to Cart
-                </button>
-              </div>
+                  <CiHeart />
+                </button> */}
+                </div>
+              </figure>
+              <h2 className="card-title text-lg">{item.productname}</h2>
+              <p>
+                <div className="text-sm">Price :&nbsp; {item.price}&nbsp;€</div>
+              </p>
+
+              <Button
+                className="absolute text-lg border-none"
+                onClick={handleClick(item._id, item.price)}
+              >
+                <MdAddShoppingCart />
+              </Button>
+            </div>
+
+            <div>
               {isUserAdmin === "true" ? (
-                <div className="flex justify-between">
+                <div className="flex justify-between border border-2 ">
                   <div className="collapse max-w-full">
                     <input type="checkbox" />
                     <div className="collapse-title text-md font-small">
@@ -218,8 +203,8 @@ const ProductCard = ({
             </div>
           </div>
         ))}
-      </div> */}
-    </div>
+      </div>
+    </>
   );
 };
 

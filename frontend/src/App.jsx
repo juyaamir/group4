@@ -30,6 +30,13 @@ import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
 // import OrderHistory from "./components/OrderHistory.jsx";
 // import ProductDetail from "./components/ProductDetail.jsx";
+import ProductDetails from "./components/saleDetails.jsx";
+
+
+import Paynow from "./pages/Paynow.jsx";
+import { createContext } from "react";
+export const priceContext = createContext(null);
+
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -40,12 +47,6 @@ function App() {
   const [productPrice, setProductPrice] = useState(0);
   const [favArray, setFavArray] = useState([]);
 
-  // console.log(islogged);
-
-  /* const signout = () => {
-    localStorage.clear();
-    console.log("You signed out");
-    }; */
   const getuserlogged = () => {
     if (token) {
       setIslogged(true);
@@ -75,6 +76,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home setUser={setUser} />} />
             <Route path="/about" element={<About />} />
+
             <Route
               path="/product"
               element={
@@ -83,18 +85,18 @@ function App() {
                   setProductCount={setProductCount}
                   productArray={productArray}
                   setProductArray={setProductArray}
-                  productPrice={productPrice}
-                  setProductPrice={setProductPrice}
                   setFavArray={setFavArray}
                 />
               }
             />
+
             <Route path="/stores" element={<Stores />} />
+
             <Route
               path="/image-description/:id"
               element={
                 <ImageDescription
-                  productCount={productCount}
+                  productArray={productArray}
                   setProductCount={setProductCount}
                   setProductArray={setProductArray}
                   productPrice={productPrice}
@@ -107,6 +109,8 @@ function App() {
             <Route path="/profile/:id" element={<Profile setUser={setUser} />}/>
             {/* <Route path="/:id/orders" element={<OrderHistory />} /> */}
 
+            <Route path="/sale/:productId" element={<ProductDetails />} />
+
             <Route
               path="/cart"
               element={
@@ -115,14 +119,34 @@ function App() {
                   setProductArray={setProductArray}
                   productPrice={productPrice}
                   setProductPrice={setProductPrice}
-                  user={user}
+                  productCount={productCount}
+                  setProductCount={setProductCount}
+                />
+              }
+            />
+            {/*  </priceContext.Provider> */}
+            <Route
+              path="/pay-now"
+              element={
+                <Paynow
+                  productPrice={productPrice}
+                  productArray={productArray}
+                  setProductCount={setProductCount}
                 />
               }
             />
 
             <Route
               path="/favourite-product"
-              element={<FavProduct favArray={favArray} />}
+              element={
+                <FavProduct
+                  favArray={favArray}
+                  setFavArray={setFavArray}
+                  productArray={productArray}
+                  setProductArray={setProductArray}
+                  setProductCount={setProductCount}
+                />
+              }
             />
             <Route path="/signin" element={<Login setToken={setToken} />} />
             <Route path="/login" element={<Login setToken={setToken} />} />

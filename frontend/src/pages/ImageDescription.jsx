@@ -3,9 +3,12 @@ import { Button, Card, Flex, Typography } from "antd";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { MdAddShoppingCart } from "react-icons/md";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const ImageDescription = ({
-  productCount,
+  productArray,
   setProductCount,
   setProductArray,
   productPrice,
@@ -20,11 +23,14 @@ const ImageDescription = ({
     display: "block",
     width: 273,
   };
-  const handleClick = (productname, price) => (event) => {
-    setProductCount(productCount + 1);
-    setProductArray((current) => [...current, productname]);
+  const handleClick = (productid) => (event) => {
+    /*   setProductCount(productCount + 1); */
+    setProductArray((current) => [...current, productid]);
+    let length = productArray.length + 1;
+    setProductCount(length);
+    //console.log(length);
 
-    setProductPrice(productPrice + price);
+    /*  setProductPrice(productPrice + price); */
   };
   useEffect(() => {
     axios
@@ -47,6 +53,9 @@ const ImageDescription = ({
           },
         }}
       >
+        <Link to="/product" className="absolute bg-base-200 text-2xl ml-4 mt-2">
+          <IoMdArrowRoundBack />
+        </Link>
         <Flex justify="space-between">
           <img alt="avatar" src={imgId?.image} style={imgStyle} />
           <Flex
@@ -78,6 +87,7 @@ const ImageDescription = ({
                   </tbody>
                 </table>
                 <div className="rating text-center">
+                  <p className="text-sm">Reviews&nbsp;&nbsp;</p>
                   <input
                     type="radio"
                     name="rating-2"
@@ -107,10 +117,17 @@ const ImageDescription = ({
                 </div>
               </div>
             </Typography.Title>
-            <Button type="primary" target="_blank">
-              <button onClick={handleClick(imgId?.productname, imgId?.price)}>
+            <Button
+              type="primary"
+              target="_blank"
+              className="btn btn-square btn-outline text-xl text-blue-300 mr-0 mb-0 text-2xl text-red-400"
+              onClick={handleClick(imgId?._id)}
+            >
+              <MdAddShoppingCart />
+
+              {/* <button onClick={handleClick(imgId?.productname, imgId?.price)}>
                 Move to Cart
-              </button>
+              </button> */}
             </Button>
           </Flex>
         </Flex>

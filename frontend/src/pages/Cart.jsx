@@ -1,62 +1,58 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Image } from "antd";
-import { Avatar } from "antd";
+
 import { Space, Typography, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import Userinfo from "../components/Userinfo";
 
-const { Text, Link } = Typography;
+import { Link } from "react-router-dom";
+/* import { priceContext } from "../App";
+import { useContext } from "react"; */
 
-const Cart = ({ productArray, productPrice }) => {
-  const [user, setUser] = useState(null);
-  let id = localStorage.getItem("userId");
+const Cart = ({
+  productArray,
+  setProductArray,
+  productPrice,
+  setProductPrice,
+  productCount,
+  setProductCount,
+}) => {
   const [error, setError] = useState(null);
-  const [payload, setPayload] = useState(null);
-  const [productDesc, setProductDesc] = useState(null);
+  /*   const setProductPrice = useContext(priceContext); */
+
+  const [productDesc, setProductDesc] = useState([]);
+  const [productduplicate, setProductduplicate] = useState([]);
 
   const deleteProduct = (PId) => {
-    console.log(PId);
-    productArray.splice(PId - 1, 1);
-    productPrice;
-    console.log(productArray);
+    var index = productArray.indexOf(PId);
+    /*   var indexprice = productPrice.indexOf(PId); */
+    productArray.splice(index, 1);
+    /*     productPrice.splice(indexprice, 1); */
+    // favArray.remove(id);
+    setProductArray([...productArray]);
+    setProductCount(productArray.length);
   };
+  const [list, setList] = useState(productArray); // Example list
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/v1/usersaccounts/${id}`)
-      .then((response) => setUser(response.data))
-      .catch((err) => {
-        console.error(err);
-        setError("Error fetching user data");
-      });
-  }, [id]);
+  function countOccurrences(arr) {
+    return arr.reduce((counts, item) => {
+      counts[item] = (counts[item] || 0) + 1;
+      return counts;
+    }, {});
+  }
 
-  useEffect(() => {
-    setPayload({
-      userid: id,
-      price: productPrice,
-      productId: productArray,
-    });
-  }, [deleteProduct]);
+  const result = countOccurrences(list);
+  console.log(result);
 
-  const postproduct = (e) => {
-    // e.preventDefault();
-    // axios.post(`http://localhost:8000/api/v1/product/${newitem}`);
-    axios
-      .post("http://localhost:8000/api/v1/order", payload)
-      .then((response) => {
-        console.log("Response:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
-  /*  useEffect(() => {
-    setNewOrder({ ...newitem, productid: "hello" });
-    }, [productArray]); */
-
-  // const message = { name: "john" };
+  /*  const total = productDesc?.map((item) => {
+    item._id;
+  }); */
+  const total = productDesc?.reduce(
+    (acc, item) => acc + item.price * result[item._id],
+    0
+  );
+  setProductPrice(total);
 
   useEffect(() => {
     axios
@@ -67,81 +63,74 @@ const Cart = ({ productArray, productPrice }) => {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [productArray]);
 
   return (
     <>
-      {/*  <div>
-        <h1>List of products</h1>
-        {productArray?.map((item) => (
-          <ol type="1">
-            <li>{item}</li>
-          </ol>
-        ))}
-        <div>
-          Total Price:<strong>{productPrice}</strong>
-        </div>
-      </div> */}
-
-      <div className="overflow-x-auto mx-20 border border-2 rounded-md p-4 my-4">
+      <div className="overflow-x-auto mx-20 border border-2 rounded-md p-4 m-16">
         <div className="p-14 flex flex-row gap-6">
-          <Avatar size={40}>{user?.firstname}</Avatar>
-          <Text type="success">
-            {user?.firstname} &nbsp;&nbsp;
-            {user?.lastname}
-          </Text>
+          <Userinfo />
         </div>
-        <table className="table">
-          {/* head */}
+        {/* 
+        <div>
+          <ul>
+            {productArray?.map((item) => (
+              <li>
+                {item} : {result[item]}
+              </li>
+            ))}
+          </ul>
+        </div> */}
 
+        <table className="table">
           <thead>
             <tr>
-              <th></th>
               <th>Product Name</th>
+              <th>Price</th>
+
+              <th>Quantity</th>
+              <th></th>
             </tr>
           </thead>
-          <tbody>
-            {/* row 1 */}
-            {productDesc?.map((item, key) => (
-              <tr>
-                <th></th>
-                <td>
-                  <strong>{item.productname}</strong>
-                </td>
-                <td>
-                  <strong>{item.price}&nbsp; €</strong>
-                </td>
-                <td>
-                  <Image width={50} src={item.image} />
-                </td>
-                <td>
-                  <Button
-                    type="dashed"
-                    danger
-                    onClick={() => {
-                      deleteProduct(item);
-                    }}
-                  >
-                    <DeleteOutlined />
-                  </Button>
-                </td>
-              </tr>
+          {productDesc &&
+            productDesc?.map((item, key) => (
+              <tbody>
+                <tr key={item._id}>
+                  <td>
+                    <strong>{item.productname}</strong>
+                  </td>
+                  <td>
+                    <strong>{item.price}&nbsp; €</strong>
+                  </td>
+                  <td>{result[item._id]}</td>
+                  <td>
+                    <Image width={50} src={item.image} />
+                  </td>
+
+                  <td>
+                    <Button
+                      type="dashed"
+                      danger
+                      onClick={() => {
+                        deleteProduct(item._id);
+                      }}
+                    >
+                      <DeleteOutlined />
+                    </Button>
+                  </td>
+                </tr>
+              </tbody>
             ))}
-          </tbody>
         </table>
 
         <div className="max-w-full text-end px-16 py-2">
-          Total Price:<strong>&nbsp;{productPrice}</strong>
+          Total Price:
+          <strong>&nbsp;{productPrice}</strong>
         </div>
         <div className="max-w-full text-end px-16 py-2 ">
-          <button
-            className="btn btn-outline btn-success"
-            onClick={() => {
-              postproduct();
-            }}
-          >
-            Pay Now
-          </button>
+          <Link to="/pay-now">
+            <button className="btn btn-outline btn-success">Pay Now</button>
+          </Link>
         </div>
       </div>
       {/*  <div> Products from Cart{productArray?.map((item) => item)}</div>; */}

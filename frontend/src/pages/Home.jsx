@@ -26,7 +26,7 @@ const Home = () => {
     <div>
       {islogged && user && <WelcomeMessage firstName={user.firstname} />}
       <HeroImage />
-      {/* <Part2hero /> */}
+      <Part2hero />
 
       {/*  <Main /> */}
     </div>

@@ -31,6 +31,9 @@ import Sale from "./components/Sale.jsx";
 import ProductDetails from "./components/saleDetails.jsx";
 
 
+import Paynow from "./pages/Paynow.jsx";
+import { createContext } from "react";
+export const priceContext = createContext(null);
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -70,14 +73,13 @@ function App() {
         productPrice={productPrice}
       />
 
- 
-
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
           {islogged && user && <WelcomeMessage firstName={user.firstname} />}
           <Routes>
             <Route path="/" element={<Home setUser={setUser} />} />
             <Route path="/about" element={<About />} />
+
             <Route
               path="/product"
               element={
@@ -86,19 +88,18 @@ function App() {
                   setProductCount={setProductCount}
                   productArray={productArray}
                   setProductArray={setProductArray}
-                  productPrice={productPrice}
-                  setProductPrice={setProductPrice}
                   setFavArray={setFavArray}
                 />
               }
             />
+
             <Route path="/stores" element={<Stores />} />
 
             <Route
               path="/image-description/:id"
               element={
                 <ImageDescription
-                  productCount={productCount}
+                  productArray={productArray}
                   setProductCount={setProductCount}
                   setProductArray={setProductArray}
                   productPrice={productPrice}
@@ -107,14 +108,14 @@ function App() {
               }
             />
             <Route path="/contact-us" element={<Contact />} />
-            <Route path="/sale" element={<Sale />} /> 
+            <Route path="/sale" element={<Sale />} />
             <Route path="/sale/:productId" element={<ProductDetails />} />
-            
+
             <Route
               path="/profile/:id"
               element={<Profile setUser={setUser} />}
             />
-
+            {/*   <priceContext.Provider value={productPrice}> */}
             <Route
               path="/cart"
               element={
@@ -123,14 +124,34 @@ function App() {
                   setProductArray={setProductArray}
                   productPrice={productPrice}
                   setProductPrice={setProductPrice}
-                  user={user}
+                  productCount={productCount}
+                  setProductCount={setProductCount}
+                />
+              }
+            />
+            {/*  </priceContext.Provider> */}
+            <Route
+              path="/pay-now"
+              element={
+                <Paynow
+                  productPrice={productPrice}
+                  productArray={productArray}
+                  setProductCount={setProductCount}
                 />
               }
             />
 
             <Route
               path="/favourite-product"
-              element={<FavProduct favArray={favArray} />}
+              element={
+                <FavProduct
+                  favArray={favArray}
+                  setFavArray={setFavArray}
+                  productArray={productArray}
+                  setProductArray={setProductArray}
+                  setProductCount={setProductCount}
+                />
+              }
             />
             <Route path="/signin" element={<Login setToken={setToken} />} />
             <Route path="/login" element={<Login setToken={setToken} />} />

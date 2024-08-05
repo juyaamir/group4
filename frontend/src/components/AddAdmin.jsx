@@ -119,6 +119,7 @@ const AddAdmin = () => {
           </div>
           <div className="mb-4">
             <input
+              className="ml-4"
               type="radio"
               name="isAdmin"
               onClick={handleChange}
@@ -126,6 +127,7 @@ const AddAdmin = () => {
             />
             Yes
             <input
+              className="ml-4"
               type="radio"
               name="isAdmin"
               onClick={handleChange}

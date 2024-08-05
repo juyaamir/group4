@@ -4,15 +4,17 @@ import axios from "axios";
 import AddAdmin from "../components/AddAdmin";
 import WelcomeMessage from "../components/WelcomeMessage";
 
+import Newimage from "../components/Newimage";
+
 function Profile() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: ''
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
   });
   const [error, setError] = useState(null);
 
@@ -25,7 +27,7 @@ function Profile() {
           firstname: response.data.firstname,
           lastname: response.data.lastname,
           email: response.data.email,
-          password: ''
+          password: "",
         });
       })
       .catch((err) => {
@@ -38,7 +40,7 @@ function Profile() {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -76,6 +78,9 @@ function Profile() {
         <div>
           <WelcomeMessage firstName={user.firstname} />
           <div className="w-100 vh-100 d-flex justify-center items-center  border border-1 rounded-md m-8">
+            <div className="m-6">
+              <Newimage />
+            </div>
             {!editMode ? (
               <>
                 <table className="table">
@@ -97,14 +102,22 @@ function Profile() {
                       <td>{"••••••••"}</td>
                       <td>{localStorage.getItem("isAdmin")}</td>
                       <td>
-                        <button className="text-blue-500" onClick={() => setEditMode(true)}>Edit</button>
+                        <button
+                          className="text-blue-500"
+                          onClick={() => setEditMode(true)}
+                        >
+                          Edit
+                        </button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </>
             ) : (
-              <form onSubmit={handleSubmit} className="w-50 flex flex-col items-center p-2">
+              <form
+                onSubmit={handleSubmit}
+                className="w-50 flex flex-col items-center p-2"
+              >
                 <div className="mb-4">
                   <label className="form-label">First Name</label>
                   <input
@@ -147,8 +160,16 @@ function Profile() {
                   />
                 </div>
                 <div className="m-4">
-                <button type="submit" className="btn btn-primary w-20 mr-4">Save</button>
-                <button type="button" className="btn btn-secondary w-20" onClick={() => setEditMode(false)}>Cancel</button>
+                  <button type="submit" className="btn btn-primary w-20 mr-4">
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary w-20"
+                    onClick={() => setEditMode(false)}
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
             )}

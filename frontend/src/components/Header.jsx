@@ -6,15 +6,18 @@ import Marquee from "react-fast-marquee";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
+import { priceContext } from "../App";
+import { useContext } from "react";
 
 import logo from "../assets/logo.png";
 
 import ThemeToggle from "./Theme";
 
-const Header = ({ islogged, productCount, productPrice }) => {
+const Header = ({ islogged, productCount }) => {
   // let userlogged = islogged["islogged"];
   /*  console.log(favArray + "header"); */
   let getuserId = localStorage.getItem("userId");
+  const productPrice = useContext(priceContext);
 
   return (
     <>
@@ -180,9 +183,9 @@ const Header = ({ islogged, productCount, productPrice }) => {
                   <span className="text-lg font-bold">
                     {productCount} Items
                   </span>
-                  <span className="text-info m-2">
+                  {/*  <span className="text-info m-2">
                     Total price: &nbsp;{productPrice} €
-                  </span>
+                  </span> */}
                   <div className="card-actions">
                     <Link to={`/cart`}>
                       <button className="btn btn-primary btn-block">

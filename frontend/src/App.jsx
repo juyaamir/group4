@@ -29,6 +29,8 @@ import ImageDescription from "./pages/ImageDescription.jsx";
 import WelcomeMessage from "./components/WelcomeMessage.jsx";
 import Sale from "./components/Sale.jsx";
 import ProductDetails from "./components/saleDetails.jsx";
+
+
 import Paynow from "./pages/Paynow.jsx";
 import { createContext } from "react";
 export const priceContext = createContext(null);
@@ -64,13 +66,13 @@ function App() {
   //  console.log("from App", token);
   return (
     <ThemeProvider>
-      <priceContext.Provider value={productPrice}>
-        <Header
-          islogged={islogged}
-          productCount={productCount}
-          productArray={productArray}
-        />
-      </priceContext.Provider>
+      <Header
+        islogged={islogged}
+        productCount={productCount}
+        productArray={productArray}
+        productPrice={productPrice}
+      />
+
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
           {islogged && user && <WelcomeMessage firstName={user.firstname} />}

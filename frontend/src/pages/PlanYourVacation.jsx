@@ -22,6 +22,7 @@ const PlanYourVacation = ({ userlogged }) => {
       content: "You are a helpful assistant.",
     },
   ]);
+  const [activities, setActivities] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
   return (
     <>
@@ -34,11 +35,14 @@ const PlanYourVacation = ({ userlogged }) => {
               messages={messages}
               formData={formData}
               setFormData={setFormData}
+              activities={activities}
+              setActivities={setActivities}
             />
             <Chat
               hide2={hide2}
               messages={messages}
               formData={formData}
+              activities= {activities}
               firstName={localStorage.getItem("userName")}
             />
           </div>

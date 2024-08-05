@@ -3,17 +3,19 @@ import axios from "axios";
 
  import { fetchLocation } from "./utils/fetchLocation.jsx";
 
-const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData}) => {
+const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData,activities, setActivities}) => {
   const [error, setError] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [ready, setReady] = useState(false);
   const [show, setShow] = useState(false);
-  const [activities, setActivities] = useState([]);
+  //const [activities, setActivities] = useState([]);
   const [hotel, setHotel] = useState(null);
   const [showForm, setShowForm] = useState(true);
-  console.log(activities);
-  console.log(hotel);
+
+/* console.log */
+  //console.log(activities);
+  //console.log(hotel);
 
   const [{ stream, message }, setState] = useState({
     stream: true,
@@ -58,7 +60,7 @@ const fetchLocationSuggestions = async (location) => {
       role: 'user',
       content: message,
     };
-console.log("line updated")
+//console.log("line updated")
     setMessages([...messages, newMessage]);
     // setMessages((prev) => [...prev, newMessage]);
     try {
@@ -80,7 +82,7 @@ console.log("line updated")
         })) 
       };
       
-      console.log(weatherData);
+      //console.log(weatherData);
 
       //prompt for the AI
       const prompt  = `Give a brief overview of the weather, then provide a 
@@ -162,7 +164,7 @@ console.log("line updated")
           }),
         }
       );
-      console.log(aiResponse);
+      //console.log(aiResponse);
       setState({
         stream,
         message: '',
@@ -231,6 +233,7 @@ console.log("line updated")
     const {name, checked} = e.target;
     if(checked) {
       setActivities([...activities, name]);
+     /*  console.log(activities); */
     }
   };
 
@@ -254,7 +257,7 @@ console.log("line updated")
             <p className="text-center mb-3 font-bold">Enter Your Trip Details</p>
             <div>
               <label htmlFor="start" className="mx-4" >Start Date</label>
-              <input type="date" name="start" id="start"
+              <input type="date" name="start" id="start" min={new Date().toISOString().split('T')[0] }
               value={formData.start}
               onChange={handleChange}
               placeholder="Enter the start date"
@@ -291,63 +294,63 @@ console.log("line updated")
         ) : show && !ready ? (
             <fieldset className="border p-2 rounded-lg">
             <legend className="text-center ">Choose Activities</legend>
-            <div className="text-6xl text-blue-400 flex flex-wrap gap-2">
-              <div className="hover:text-blue-600 border hover:border-none relative">
+            <div className="text-6xl text-blue-400 flex flex-wrap gap-2 ">
+              <div className="hover:text-blue-600  border hover:border-none relative w-20 ">
                 <input type="checkbox" id="swimming" name="Swimming" onChange={handleActivity} className="absolute top-0 left-0"/>
                 <label htmlFor="swimming" title='swimming'><i className="  fa-solid fa-person-swimming"></i></label>
                 <p className="text-base">Swimming</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="hiking" name="Hiking" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="hiking" title='hiking'><i className=" p-1 fa-solid fa-person-hiking"></i></label>
                 <p className="text-base">Hiking</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="cycling" name="Cycling" onChange={handleActivity} className="absolute top-0 left-0"/>
                 <label htmlFor="cycling" title='cycling'><i className=" p-1 fa-solid fa-person-biking"></i></label>
                 <p className="text-base">Cycling</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="skiing" name="Skiing" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="skiing" title='skiing'><i className=" p-1 fa-solid fa-person-skiing"></i></label>
                 <p className="text-base">Skiing</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="snowboarding" name="Snowboarding" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="snowboarding" title='snowboarding'><i className="p-1 fa-solid fa-person-snowboarding"></i></label>
-                <p className="text-base">Snowboarding</p>
+                <p className="text-base">Snowboad..</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="camping" name="Camping" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="camping" title='camping'><i className="p-1 fa-solid fa-fire"></i></label>
                 <p className="text-base">Camping</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="beach" name="Beach" onChange={handleActivity} className="absolute top-0 left-0"/>
                 <label htmlFor="beach" title='beach'><i className="p-1 fa-solid fa-umbrella-beach"></i></label>
                 <p className="text-base">Beach</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="running" name="Running" onChange={handleActivity} className="absolute top-0 left-0"/>
                 <label htmlFor="running" title='running'><i className="p-1 fa-solid fa-person-running"></i></label>
                 <p className="text-base">Running</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="photography" name="Photography" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="photography" title='photography'><i className="p-1 fa-solid fa-camera"></i></label>
                 <p className="text-base">Photography</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative">
+              <div className="hover:text-blue-600 border hover:border-none relative w-20">
                 <input type="checkbox" id="fishing" name="Fishing" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="fishing" title='fishing'><i className="p-1 fa-solid fa-otter"></i></label>
                 <p className="text-base">Fishing</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative rounded">
+              <div className="hover:text-blue-600 border hover:border-none relative rounded w-20">
                 <input type="checkbox" id="cooking" name="Cooking" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="cooking" title='cooking'><i className="p-1 fa-solid fa-kitchen-set"></i></label>
                 <p className="text-base">Cooking</p>
               </div>
-              <div className="hover:text-blue-600 border hover:border-none relative rounded">
+              <div className="hover:text-blue-600 border hover:border-none relative rounded w-20">
                 <input type="checkbox" id="museum" name="Museum visits" onChange={handleActivity} className="absolute top-0 left-0" />
                 <label htmlFor="museum" title='museum'><i className="p-1 fa-solid fa-landmark"></i></label>
                 <p className="text-base">Museum</p>

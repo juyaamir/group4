@@ -6,7 +6,7 @@ import axios from "axios";
 import { MdAddShoppingCart } from "react-icons/md";
 
 const ImageDescription = ({
-  productCount,
+  productArray,
   setProductCount,
   setProductArray,
   productPrice,
@@ -21,11 +21,14 @@ const ImageDescription = ({
     display: "block",
     width: 273,
   };
-  const handleClick = (productname, price) => (event) => {
-    setProductCount(productCount + 1);
-    setProductArray((current) => [...current, productname]);
+  const handleClick = (productid) => (event) => {
+    /*   setProductCount(productCount + 1); */
+    setProductArray((current) => [...current, productid]);
+    let length = productArray.length + 1;
+    setProductCount(length);
+    //console.log(length);
 
-    setProductPrice(productPrice + price);
+    /*  setProductPrice(productPrice + price); */
   };
   useEffect(() => {
     axios
@@ -113,7 +116,7 @@ const ImageDescription = ({
               type="primary"
               target="_blank"
               className="btn btn-square btn-outline text-xl text-blue-300 mr-0 mb-0 text-2xl text-red-400"
-              onClick={handleClick(imgId?.productname, imgId?.price)}
+              onClick={handleClick(imgId?._id)}
             >
               <MdAddShoppingCart />
 

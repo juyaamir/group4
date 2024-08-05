@@ -15,6 +15,8 @@ const Cart = ({
   setProductArray,
   productPrice,
   setProductPrice,
+  productCount,
+  setProductCount,
 }) => {
   const [error, setError] = useState(null);
   /*   const setProductPrice = useContext(priceContext); */
@@ -28,7 +30,7 @@ const Cart = ({
     /*     productPrice.splice(indexprice, 1); */
     // favArray.remove(id);
     setProductArray([...productArray]);
-    /*     setProductPrice([...productPrice]); */
+    setProductCount(productArray.length);
   };
 
   const total = productDesc?.reduce((acc, item) => acc + item.price, 0);
@@ -64,8 +66,8 @@ const Cart = ({
             <tbody>
               {/* row 1 */}
 
-              <tr key={item._id}>
-                <th></th>
+              <tr>
+                <th key={item._id}>{item._id}</th>
                 <td>
                   <strong>{item.productname}</strong>
                 </td>

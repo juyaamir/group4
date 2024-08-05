@@ -97,7 +97,7 @@ function App() {
               path="/image-description/:id"
               element={
                 <ImageDescription
-                  productCount={productCount}
+                  productArray={productArray}
                   setProductCount={setProductCount}
                   setProductArray={setProductArray}
                   productPrice={productPrice}
@@ -122,6 +122,8 @@ function App() {
                   setProductArray={setProductArray}
                   productPrice={productPrice}
                   setProductPrice={setProductPrice}
+                  productCount={productCount}
+                  setProductCount={setProductCount}
                 />
               }
             />

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductDetail from "../components/ProductDetail";
 
-const OrderHistory = ({ userId }) => {
+const OrderHistory = ({ user }) => {
   const [orderHistory, setOrderHistory] = useState([]);
   const [error, setError] = useState(null);
   const { id } = useParams();
@@ -47,19 +47,33 @@ const OrderHistory = ({ userId }) => {
                 <th>Total</th>
                 <th>Products</th>
               </tr>
-              </thead>
-              <tbody>
+            </thead>
+            <tbody>
               {orderHistory.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{formatDate(order.createdAt)}</td>
-                  <td>{order.price}</td>
-                  <td>
-                    {order.productId.map((product) => (
-                      <ProductDetail key={product._id} productId={product._id} />
-                    ))}
-                  </td>
-                </tr>
+                <React.Fragment key={order._id}>
+                  <tr>
+                    <td>{order._id}</td>
+                    <td>{formatDate(order.createdAt)}</td>
+                    <td>{order.price}</td>
+                    <td>
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {order.productId?.map((product) => (
+                            <ProductDetail key={product._id} productId={product._id} />
+                          ))}
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </React.Fragment>
               ))}
             </tbody>
           </table>

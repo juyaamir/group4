@@ -30,12 +30,14 @@ const ProductDetail = ({ productId }) => {
   }
 
   return (
+    <div>
     <tr key={product._id}>
       <td>{product._id}</td>
       <td>{product.productname}</td>
       <td>{product.price}</td>
       <td>{product.category}</td>
     </tr>
+    </div>
   );
 };
 

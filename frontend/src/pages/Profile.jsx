@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import AddAdmin from "../components/AddAdmin";
 import WelcomeMessage from "../components/WelcomeMessage";
 import OrderHistory from "../components/OrderHistory";
 
@@ -156,8 +155,8 @@ function Profile() {
               </form>
             )}
           </div>
-          <OrderHistory />
-          <AddAdmin />
+          <OrderHistory user={user}/>
+          
         </div>
       )}
     </>

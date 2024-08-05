@@ -8,17 +8,34 @@ import { Avatar, Space } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 import { priceContext } from "../App";
 import { useContext } from "react";
+import axios from "axios";
 
 import logo from "../assets/logo.png";
 
 import ThemeToggle from "./Theme";
 
 const Header = ({ islogged, productCount }) => {
+  const [headimg, setHeadimg] = useState([]);
   // let userlogged = islogged["islogged"];
   /*  console.log(favArray + "header"); */
   let getuserId = localStorage.getItem("userId");
   const productPrice = useContext(priceContext);
+  useEffect(() => {
+    const fetchuserimage = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/api/v1/user-image/${getuserId}`
+        );
+        setHeadimg(response.data);
+      } catch (error) {
+        console.error(`Error in fetching Product data: ${error}`);
+      }
+    };
 
+    fetchuserimage();
+  }, []);
+  const latestimghead = headimg && headimg[headimg.length - 1];
+  console.log(latestimghead);
   return (
     <>
       <div className="flex flex-wrap justify-around navbar bg-neutral text-neutral-content">
@@ -206,10 +223,17 @@ const Header = ({ islogged, productCount }) => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <Avatar
+                  {/*  <Avatar
                     style={{ backgroundColor: "#87d068" }}
                     icon={<UserOutlined />}
-                  />
+                  /> */}
+                  {latestimghead ? (
+                    <img src={latestimghead.image} height="100" width="100" />
+                  ) : (
+                    <div className="">
+                      <Avatar icon={<UserOutlined />} />
+                    </div>
+                  )}
                 </div>
               </div>
               <ul

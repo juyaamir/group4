@@ -132,30 +132,22 @@ const ProductCard = ({
     <>
       {contextHolder}
 
-      <div className="flex flex-row flex-wrap gap-6 rounded-md p-1 ">
+      <div className="flex flex-row flex-wrap gap-2 rounded-md ">
         {productItem?.map((item, key) => (
           <div
             key={item._id}
             className="card bg-base-200 w-52 shadow-xl rounded-md"
           >
             <div className="card-body  text-center">
-              <figure className="px-8 relative max-w-full ">
+              <figure className="relative max-w-full ">
                 <Link to={`/image-description/${item._id}`}>
                   <Image width={200} src={item.image} alt={item.productname} />
                 </Link>
-                <div className="absolute top-0 right-0 mr-4">
+                <div className="">
                   <div style={{ width: "1rem" }}>
-                    {/*    <Heart
-                      className=""
-                      isActive={active}
-                      onClick={() => addfav(item._id)}
-                      animationTrigger="both"
-                      inactiveColor="black"
-                      activeColor="red"
-                      animationDuration={0.1}
-                    /> */}
                     <Space>
                       <Button
+                        className="absolute top-0 right-0"
                         type="dashed"
                         icon={<HeartOutlined />}
                         onClick={() => addfav(item._id)}
@@ -169,32 +161,23 @@ const ProductCard = ({
                   <CiHeart />
                 </button> */}
                 </div>
-                {/*   <div className="absolute bottom-0 right-0 m-2">
-                <button
-                  className=" text-xl text-blue-300 mr-0 mb-0"
-                  onClick={handleClick(item._id, item.price)}
-                >
-                  <MdAddShoppingCart />
-                </button>
-              </div> */}
               </figure>
-              <h2 className="card-title text-xl">{item.productname}</h2>
+              <h2 className="card-title text-lg">{item.productname}</h2>
               <p>
-                <div className="text-md">Price :&nbsp; {item.price}&nbsp;€</div>
+                <div className="text-sm">Price :&nbsp; {item.price}&nbsp;€</div>
               </p>
-              <div className="bottom-4 right-0">
-                <button
-                  className="btn glass  text-2xl text-black-300 "
-                  onClick={handleClick(item._id, item.price)}
-                >
-                  <MdAddShoppingCart />
-                </button>
-              </div>
+
+              <Button
+                className="absolute text-lg border-none"
+                onClick={handleClick(item._id, item.price)}
+              >
+                <MdAddShoppingCart />
+              </Button>
             </div>
 
             <div>
               {isUserAdmin === "true" ? (
-                <div className="flex justify-between">
+                <div className="flex justify-between border border-2 ">
                   <div className="collapse max-w-full">
                     <input type="checkbox" />
                     <div className="collapse-title text-md font-small">

@@ -85,8 +85,11 @@ const Cart = ({
         <table className="table">
           <thead>
             <tr>
-              <th></th>
               <th>Product Name</th>
+              <th>Price</th>
+
+              <th>Quantity</th>
+              <th></th>
             </tr>
           </thead>
           {productDesc &&
@@ -99,10 +102,11 @@ const Cart = ({
                   <td>
                     <strong>{item.price}&nbsp; €</strong>
                   </td>
+                  <td>{result[item._id]}</td>
                   <td>
                     <Image width={50} src={item.image} />
                   </td>
-                  <td>{result[item._id]}</td>
+
                   <td>
                     <Button
                       type="dashed"

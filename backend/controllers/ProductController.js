@@ -42,7 +42,7 @@ export const createSinglProduct = async (req, res) => {
     if (req.body.productArray) {
       console.log(req.body);
       const { productArray } = req.body;
-      const products = await Product.find({ _id: { $in: productArray } });
+      const products = await Product.findOne({ _id: { $in: productArray } });
       res.json(products);
       return;
     }

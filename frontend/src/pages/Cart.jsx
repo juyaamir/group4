@@ -49,7 +49,7 @@ const Cart = ({
 
   return (
     <>
-      <div className="overflow-x-auto mx-20 border border-2 rounded-md p-4 my-4 mx-8">
+      <div className="overflow-x-auto mx-20 border border-2 rounded-md p-4 m-16">
         <div className="p-14 flex flex-row gap-6">
           <Userinfo />
         </div>

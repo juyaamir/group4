@@ -136,7 +136,7 @@ const ProductCard = ({
         {productItem?.map((item, key) => (
           <div
             key={item._id}
-            className="card bg-base-200 w-52 shadow-xl rounded-md"
+            className="card bg-base-200 w-60 shadow-xl rounded-md"
           >
             <div className="card-body  text-center">
               <figure className="relative max-w-full ">

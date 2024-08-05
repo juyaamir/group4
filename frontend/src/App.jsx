@@ -139,7 +139,13 @@ function App() {
             <Route
               path="/favourite-product"
               element={
-                <FavProduct favArray={favArray} setFavArray={setFavArray} />
+                <FavProduct
+                  favArray={favArray}
+                  setFavArray={setFavArray}
+                  productArray={productArray}
+                  setProductArray={setProductArray}
+                  setProductCount={setProductCount}
+                />
               }
             />
             <Route path="/signin" element={<Login setToken={setToken} />} />

@@ -7,7 +7,13 @@ import { Link } from "react-router-dom";
 import { Image } from "antd";
 import { MdAddShoppingCart } from "react-icons/md";
 
-const FavProduct = ({ favArray, setFavArray }) => {
+const FavProduct = ({
+  favArray,
+  setFavArray,
+  productArray,
+  setProductArray,
+  setProductCount,
+}) => {
   const [favproduct, setFavproduct] = useState(null);
   console.log(favArray);
 
@@ -19,13 +25,13 @@ const FavProduct = ({ favArray, setFavArray }) => {
   };
 
   const handleClick = (productId, price) => (event) => {
-    console.log(productId);
+    /*  console.log(productId); */
     setProductArray((current) => [...current, productId]);
-    console.log(productArray);
-    setProductCount(productArray.length);
-    console.log(productArray.length);
-    setProductPrice(price);
-    console.log(price);
+    let length = productArray.length + 1;
+    setProductCount(length);
+    console.log(length);
+    /*  setProductPrice((cur) => [...cur, price]);
+    console.log(setProductPrice); */
   };
 
   useEffect(() => {
@@ -65,12 +71,12 @@ const FavProduct = ({ favArray, setFavArray }) => {
                 </div>
               </div>
               <div className="absolute bottom-0 right-0 m-2">
-                {/* <button
+                <button
                   className=" text-xl text-blue-300 mr-0 mb-0"
                   onClick={handleClick(item._id, item.price)}
                 >
                   <MdAddShoppingCart />
-                </button> */}
+                </button>
               </div>
             </figure>
             <h2 className="card-title text-xl">{item.productname}</h2>

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Image } from "antd";
-
+import { Watermark } from "antd";
+import { TiMinus } from "react-icons/ti";
+import { FaPlus } from "react-icons/fa";
 import { Space, Typography, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import Userinfo from "../components/Userinfo";
@@ -33,6 +35,12 @@ const Cart = ({
     setProductArray([...productArray]);
     setProductCount(productArray.length);
   };
+  /*  const addProduct = (PId) => {
+    setProductArray((current) => [...current, PId]);
+
+    setProductCount(length + 1);
+    // console.log(length);
+  }; */
   const [list, setList] = useState(productArray); // Example list
 
   function countOccurrences(arr) {
@@ -67,11 +75,12 @@ const Cart = ({
 
   return (
     <>
-      <div className="overflow-x-auto mx-20 border border-2 rounded-md p-4 m-16">
-        <div className="p-14 flex flex-row gap-6">
-          <Userinfo />
-        </div>
-        {/* 
+      <Watermark content={["Journey Pack", "Happy Traveling"]}>
+        <div className="overflow-x-auto mx-72 align-center  rounded-md px-4 m-16">
+          <div className="p-1 flex flex-row gap-6 ">
+            <Userinfo />
+          </div>
+          {/* 
         <div>
           <ul>
             {productArray?.map((item) => (
@@ -82,58 +91,66 @@ const Cart = ({
           </ul>
         </div> */}
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>Price</th>
+          <table className="table border border-2 ">
+            <thead>
+              <tr className="text-md">
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th></th>
+              </tr>
+            </thead>
+            {productDesc &&
+              productDesc?.map((item, key) => (
+                <tbody>
+                  <tr key={item._id}>
+                    <td>
+                      <strong>{item.productname}</strong>
+                    </td>
+                    <td>
+                      <strong>{item.price}&nbsp; €</strong>
+                    </td>
 
-              <th>Quantity</th>
-              <th></th>
-            </tr>
-          </thead>
-          {productDesc &&
-            productDesc?.map((item, key) => (
-              <tbody>
-                <tr key={item._id}>
-                  <td>
-                    <strong>{item.productname}</strong>
-                  </td>
-                  <td>
-                    <strong>{item.price}&nbsp; €</strong>
-                  </td>
-                  <td>{result[item._id]}</td>
-                  <td>
-                    <Image width={50} src={item.image} />
-                  </td>
+                    <td>
+                      <Image width={50} src={item.image} />
+                    </td>
+                    <td>
+                      {/*  <button
+                        onClick={() => {
+                          addProduct(item._id);
+                        }}
+                      >
+                        <FaPlus />
+                      </button> */}
 
-                  <td>
-                    <Button
-                      type="dashed"
-                      danger
-                      onClick={() => {
-                        deleteProduct(item._id);
-                      }}
-                    >
-                      <DeleteOutlined />
-                    </Button>
-                  </td>
-                </tr>
-              </tbody>
-            ))}
-        </table>
+                      {result[item._id]}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          deleteProduct(item._id);
+                        }}
+                      >
+                        <TiMinus />
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
+          </table>
 
-        <div className="max-w-full text-end px-16 py-2">
-          Total Price:
-          <strong>&nbsp;{productPrice}</strong>
+          <div className="max-w-full text-end px-16 py-2">
+            Total Price:
+            <strong>&nbsp;{productPrice}</strong>
+          </div>
+          <div className="max-w-full text-end px-16 py-2 ">
+            <Link to="/pay-now">
+              <button className="btn btn-outline btn-success">Pay Now</button>
+            </Link>
+          </div>
         </div>
-        <div className="max-w-full text-end px-16 py-2 ">
-          <Link to="/pay-now">
-            <button className="btn btn-outline btn-success">Pay Now</button>
-          </Link>
-        </div>
-      </div>
-      {/*  <div> Products from Cart{productArray?.map((item) => item)}</div>; */}
+        {/*  <div> Products from Cart{productArray?.map((item) => item)}</div>; */}
+      </Watermark>
     </>
   );
 };

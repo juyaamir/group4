@@ -150,7 +150,7 @@ function Profile() {
                   />
                 </div>
                 <div className="m-4">
-                <button type="submit" className="btn btn-primary w-20 mr-4">Save</button>
+                <button type="submit" className="btn btn-primary bg-blue-500 w-20 mr-4">Save</button>
                 <button type="button" className="btn btn-secondary w-20" onClick={() => setEditMode(false)}>Cancel</button>
                 </div>
               </form>

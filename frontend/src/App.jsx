@@ -134,6 +134,7 @@ function App() {
                 <Paynow
                   productPrice={productPrice}
                   productArray={productArray}
+                  setProductCount={setProductCount}
                 />
               }
             />

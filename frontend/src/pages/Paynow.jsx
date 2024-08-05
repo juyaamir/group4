@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Table } from "antd";
 
-const Paynow = ({ productPrice, productArray }) => {
+const Paynow = ({ productPrice, productArray, setProductCount }) => {
   const id = localStorage.getItem("userId");
   const [orderhistory, setOrderhistory] = useState([]);
   const [payload, setPayload] = useState({
@@ -19,9 +19,12 @@ const Paynow = ({ productPrice, productArray }) => {
       .then((response) => {
         console.log("Response:", response.data);
       })
+
       .catch((error) => {
         console.error("Error:", error);
       });
+
+    setProductCount(0);
   }, []);
 
   useEffect(() => {

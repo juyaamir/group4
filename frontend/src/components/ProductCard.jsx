@@ -182,7 +182,7 @@ const ProductCard = ({
               <p>
                 <div className="text-md">Price :&nbsp; {item.price}&nbsp;€</div>
               </p>
-              <div className="absolute bottom-4 right-0">
+              <div className="bottom-4 right-0">
                 <button
                   className="btn glass  text-2xl text-black-300 "
                   onClick={handleClick(item._id, item.price)}

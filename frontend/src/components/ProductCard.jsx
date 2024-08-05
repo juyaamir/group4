@@ -59,7 +59,7 @@ const ProductCard = ({
     setFavArray((current) => [...current, productid]);
     openNotification("top");
     // console.log(setFavArray);
-    /*    setActive(!active); */
+    setActive(!active);
     //console.log(active);
   };
 
@@ -145,7 +145,7 @@ const ProductCard = ({
                 </Link>
                 <div className="absolute top-0 right-0 mr-4">
                   <div style={{ width: "1rem" }}>
-                    {/*  <Heart
+                    <Heart
                       className=""
                       isActive={active}
                       onClick={() => addfav(item._id)}
@@ -153,7 +153,7 @@ const ProductCard = ({
                       inactiveColor="black"
                       activeColor="red"
                       animationDuration={0.1}
-                    /> */}
+                    />
                     <Space>
                       <Button
                         type="dashed"

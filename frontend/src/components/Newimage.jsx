@@ -17,7 +17,7 @@ const Newimage = () => {
   let id = localStorage.getItem("userId");
 
   const [formData, setFormData] = useState({
-    userid: "66accc992ce0a4422230a61c",
+    userid: id,
     image: "",
   });
 
@@ -99,6 +99,7 @@ const Newimage = () => {
     file && uploadFile();
   }, [file]);
 
+  //user image from db fetching"///
   useEffect(() => {
     const fetchuserimage = async () => {
       try {
@@ -117,20 +118,29 @@ const Newimage = () => {
   useEffect(() => {
     setFormData({ ...formData, image: imgurl });
   }, [imgurl]);
-
+  const latestimg = imgId && imgId[imgId.length - 1];
+  // console.log(latestimg);
   return (
     <>
-      <div>
+      {/* <div>
         {imgId ? (
           <img src={imgId.image} height="100" width="100" />
         ) : (
           "No image found"
         )}
-      </div>
+      </div> */}
+      {/* <div>
+        {latestimg ? (
+          <img src={latestimg.image} height="100" width="100" />
+        ) : (
+          "No image found"
+        )}
+      </div> */}
+
       <form onSubmit={handleSubmit} className="flex flex row">
         <div onClick={handleImageClick} className="px-4">
-          {imgurl ? (
-            <img src={imgurl} alt="pic" height="100" width="100" className="" />
+          {latestimg ? (
+            <img src={latestimg.image} height="100" width="100" />
           ) : (
             <div className="">
               <Avatar icon={<PlusOutlined />} />

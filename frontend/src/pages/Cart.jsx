@@ -96,46 +96,42 @@ const Cart = ({
             {productduplicate}
           </button>
         </div>
-        {/* <table className="table">
-      
-
+        <table className="table">
           <thead>
             <tr>
               <th></th>
               <th>Product Name</th>
             </tr>
           </thead>
-          {productDesc?.map((item, key) => (
-            <tbody>
-             
-
-              <tr>
-                <th key={item._id}>{item._id}</th>
-                <td>
-                  <strong>{item.productname}</strong>
-                </td>
-                <td>
-                  <strong>{item.price}&nbsp; €</strong>
-                </td>
-                <td>
-                  <Image width={50} src={item.image} />
-                </td>
-                <td>
-                  <Button
-                    type="dashed"
-                    danger
-                    onClick={() => {
-                      deleteProduct(item._id);
-                    }}
-                  >
-                    <DeleteOutlined />
-                  </Button>
-                </td>
-              </tr>
-             
-            </tbody>
-          ))}
-        </table>  */}
+          {productDesc &&
+            productDesc?.map((item, key) => (
+              <tbody>
+                <tr>
+                  <th key={item._id}>{item._id}</th>
+                  <td>
+                    <strong>{item.productname}</strong>
+                  </td>
+                  <td>
+                    <strong>{item.price}&nbsp; €</strong>
+                  </td>
+                  <td>
+                    <Image width={50} src={item.image} />
+                  </td>
+                  <td>
+                    <Button
+                      type="dashed"
+                      danger
+                      onClick={() => {
+                        deleteProduct(item._id);
+                      }}
+                    >
+                      <DeleteOutlined />
+                    </Button>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+        </table>
 
         {/* <div className="max-w-full text-end px-16 py-2">
           Total Price:

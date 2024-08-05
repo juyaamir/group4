@@ -45,7 +45,13 @@ const Cart = ({
   const result = countOccurrences(list);
   console.log(result);
 
-  const total = productDesc?.reduce((acc, item) => acc + item.price, 0);
+  /*  const total = productDesc?.map((item) => {
+    item._id;
+  }); */
+  const total = productDesc?.reduce(
+    (acc, item) => acc + item.price * result[item._id],
+    0
+  );
   setProductPrice(total);
 
   useEffect(() => {

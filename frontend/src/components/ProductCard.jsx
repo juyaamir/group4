@@ -36,7 +36,7 @@ const ProductCard = ({
     });
   };
   const [productItem, setProductItem] = useState([]);
-  const [active, setActive] = useState(false);
+  const [activeStates, setActiveStates] = useState({});
 
   /*   let length = productArray.length; */
 
@@ -54,14 +54,22 @@ const ProductCard = ({
     
   }; */
   /*  let isUserAdmin = "true"; */
+  const toggleHeart = (productId) => {
+    console.log(productId);
 
-  const addfav = (productid) => {
+    setActiveStates((prevState) => ({
+      ...prevState,
+      [productId]: !prevState[productId],
+    }));
+    setFavArray((current) => [...current, productId]);
+  };
+  /*  const addfav = (productid) => {
     setFavArray((current) => [...current, productid]);
     openNotification("top");
     // console.log(setFavArray);
     setActive(!active);
-    //console.log(active);
-  };
+    //console.log(active);S
+  }; */
 
   const handleClick = (productId, price) => (event) => {
     /*  console.log(productId); */
@@ -145,14 +153,23 @@ const ProductCard = ({
                 </Link>
                 <div className="">
                   <div style={{ width: "1rem" }}>
-                    <Space>
-                      <Button
+                    <Heart
+                      className="w-4 absolute top-2 right-2"
+                      isActive={activeStates[item._id] || false}
+                      onClick={() => toggleHeart(item._id)}
+                      animationScale={1.2}
+                      activeColor="red"
+                      inactiveColor="black"
+                      animationDuration={0.9}
+                    />
+                    {/*  <Space>
+                         <Button
                         className="absolute top-0 right-0"
                         type="dashed"
                         icon={<HeartOutlined />}
                         onClick={() => addfav(item._id)}
-                      ></Button>
-                    </Space>
+                      ></Button> 
+                    </Space> */}
                   </div>
                   {/*     <button
                   className="text-2xl text-black-300"

@@ -77,19 +77,20 @@ const Cart = ({
     <>
       <Watermark content={["Journey Pack", "Happy Traveling"]}>
         <div className="overflow-x-auto mx-72 align-center  rounded-md px-4 m-16">
-          <div className="p-1 flex flex-row gap-6 ">
+          <div className="p-1 flex flex-row flex-wrap gap-6 ">
             <Userinfo />
           </div>
-          {/* 
-        <div>
-          <ul>
-            {productArray?.map((item) => (
-              <li>
-                {item} : {result[item]}
-              </li>
-            ))}
-          </ul>
-        </div> */}
+
+          <div className="md:hidden lg:hidden">
+            <ul>
+              {productDesc?.map((item) => (
+                <li>
+                  {item.productname} : {item.price}
+                </li>
+              ))}
+              <li>{productPrice}</li>
+            </ul>
+          </div>
 
           <table className="table border border-2 ">
             <thead>

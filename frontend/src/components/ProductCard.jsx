@@ -31,7 +31,7 @@ const ProductCard = ({
   const openNotification = (placement) => {
     api.info({
       message: ``,
-      description: "Item is added successfully.",
+      description: "Item added successfully.",
       placement,
     });
   };

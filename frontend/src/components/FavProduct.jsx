@@ -67,6 +67,7 @@ const FavProduct = ({
   }, [favArray]);
 
   useEffect(() => {}, [favAmazonProduct]);
+  console.log(favAmazonProduct.map((item) => item.productid));
 
   return (
     <>
@@ -131,7 +132,7 @@ const FavProduct = ({
                   <div className=" bg-base-200 w-64 shadow-xl rounded-md">
                     <div key={index} className="  text-center">
                       <figure className="px-8 relative max-w-full ">
-                        <Image width={200} src={item} alt="" />
+                        <Image width={200} src={item.productimage} alt="" />
 
                         <div className="absolute top-0 right-16 m-2">
                           <div style={{ width: "0.5rem" }}>
@@ -157,13 +158,15 @@ const FavProduct = ({
                           More Info
                         </button> */}
                       </figure>
-
-                      {/*   <h2 className="card-title text-xl">{item.productname}</h2>
+                      <button className="text-white bg-cyan-400 w-full h-10 hover:bg-slate-950">
+                        <Link to={`/sale/${item.productid}`}>More Info</Link>
+                      </button>
+                      <h2 className=" text-sm">{item.productname}</h2>
                       <p>
-                        <div className="text-md">
-                          Price :&nbsp; {item.price}&nbsp;€
-                        </div>
-                      </p> */}
+                        {/*    <div className="text-md">
+                          Ratings :&nbsp; {item.ratings}&nbsp;€
+                        </div> */}
+                      </p>
                     </div>
                   </div>
                 ))}

@@ -97,7 +97,7 @@ const Cart = ({
                     <td>
                       <Image width={50} src={item.image} />
                     </td>
-                    <td>{localStorage.getItem("size")}</td>
+                    <td></td>
                     <td>
                       {result[item._id]}
                     </td>

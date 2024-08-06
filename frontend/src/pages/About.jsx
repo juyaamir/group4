@@ -16,7 +16,7 @@ return (
           src={packing}
           className="max-w-sm rounded-lg shadow-2xl" />
         <div>
-          <h1 className="text-5xl font-bold pb-6 text-orange-400">Welcome to  JourneyPack</h1>
+          <h1 className="text-5xl font-bold pb-6 text-[#deb37e]">Welcome to  JourneyPack</h1>
           <h1 className="text-2xl  font-bold italic pb-6 text-gray-600">Your Ultimate Travel Companion!</h1>
           <p className="py-6">
           Planning a trip can be both exciting and overwhelming. At JourneyPack, we simplify your travel preparations by helping you pack smartly for any destination, based on weather conditions and your planned activities. Our comprehensive guide ensures you have everything you need for a perfect getaway, and you can conveniently purchase all your essentials from our e-commerce store.

@@ -6,8 +6,8 @@ const Footer = () => {
     <>
       <footer className="footer bg-neutral text-neutral-content p-1 justify-around ">
         <aside className="flex items-center ">
-          <img src={logo} alt="logo" className="h-16 w-16 rounded-full" />
-          <h1 className="text-xl font-bold">JourneyPack</h1>
+          <img src={logo} alt="logo" className="h-12 w-12 rounded-full mt-3" />
+          <h1 className="text-xl font-bold mt-3">JourneyPack</h1>
         </aside>
         <nav className="py-1">
           <h6 className="footer-title">Follow Us</h6>

@@ -22,21 +22,33 @@ const ProductDetail = ({ productId }) => {
   }, [productId]);
 
   if (error) {
-    return <tr><td colSpan="4">{error}</td></tr>;
+    return <div>{error}</div>;
   }
 
   if (!product) {
-    return <tr><td colSpan="4">Loading product details...</td></tr>;
+    return <div>Loading product details...</div>;
   }
 
   return (
-    <div>
-    <tr key={product._id}>
-      <td>{product._id}</td>
-      <td>{product.productname}</td>
-      <td>{product.price}</td>
-      <td>{product.category}</td>
-    </tr>
+    <div className="w-100 vh-100 d-flex flex-col justify-center items-center border border-1 rounded-md m-8">
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr key={product._id}>
+            <td>{product._id}</td>
+            <td>{product.productname}</td>
+            <td>{product.price}</td>
+            <td>{product.category}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

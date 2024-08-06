@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Image } from "antd";
 
 const ProductDetail = ({ productId }) => {
   const [product, setProduct] = useState(null);
@@ -22,21 +23,24 @@ const ProductDetail = ({ productId }) => {
   }, [productId]);
 
   if (error) {
-    return <tr><td colSpan="4">{error}</td></tr>;
+    return <div className="text-red-500">{error}</div>;
   }
 
   if (!product) {
-    return <tr><td colSpan="4">Loading product details...</td></tr>;
+    return <div>Loading product details...</div>;
   }
 
   return (
-    <div>
-    <tr key={product._id}>
-      <td>{product._id}</td>
-      <td>{product.productname}</td>
-      <td>{product.price}</td>
-      <td>{product.category}</td>
-    </tr>
+    <div className="border-bottom rounded-md p-4 mb-4">
+      <div className="flex items-center">
+        <Image width={60} src={product.image} className="mr-4" />
+        <div className='pl-8'>
+          <p className="font-semibold">Product Name: {product.productname}</p>
+          <p>Price: ${product.price}</p>
+          <p>Category: {product.category}</p>
+          <p>Product Id: {product._id}</p>
+        </div>
+      </div>
     </div>
   );
 };

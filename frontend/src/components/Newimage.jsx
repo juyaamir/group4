@@ -24,9 +24,10 @@ const Newimage = () => {
   };
 
   let id = localStorage.getItem("userId");
+  console.log(imgId);
 
   const [formData, setFormData] = useState({
-    userid: id,
+    userid: "",
     image: "",
   });
 
@@ -34,13 +35,13 @@ const Newimage = () => {
 
   const { userid, image } = formData;
 
-  /* const handleChange = (e) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
     console.log(formData);
-  }; */
+  };
 
   ///Create Product//
   const handleSubmit = (e) => {
@@ -57,9 +58,9 @@ const Newimage = () => {
   };
 
   /*  console.log(file); */
-  const handleImageClick = () => {
+  /*  const handleImageClick = () => {
     inputRef.current.click();
-  };
+  }; */
 
   useEffect(() => {
     const uploadFile = () => {
@@ -124,59 +125,63 @@ const Newimage = () => {
   useEffect(() => {
     setFormData({ ...formData, image: imgurl });
   }, [imgurl]);
-  const latestimg = imgId && imgId[imgId.length - 1];
+  const lastimg = imgId && imgId[imgId.length - 1];
   // console.log(latestimg);
   return (
     <>
-      {/* <div>
-        {imgId ? (
-          <img src={imgId.image} height="100" width="100" />
-        ) : (
-          "No image found"
-        )}
-      </div> */}
-      {/* <div>
+      <div className="flex flex-row flex-wrap justify-between">
+        <div>
+          {lastimg ? (
+            <Image width={200} src={lastimg.image} />
+          ) : (
+            <div className="">
+              <Avatar icon={<PlusOutlined />} />
+            </div>
+          )}
+        </div>
+
+        {/* <div>
         {latestimg ? (
           <img src={latestimg.image} height="100" width="100" />
         ) : (
           "No image found"
         )}
       </div> */}
-
-      <form onSubmit={handleSubmit} className="flex flex row">
-        <div onClick={handleImageClick} className="px-4">
-          {latestimg ? (
-            <img src={latestimg.image} height="100" width="100" />
-          ) : (
-            <div className="">
-              <Avatar icon={<PlusOutlined />} />
+        <div className="">
+          <form onSubmit={handleSubmit} className=" ">
+            <div
+              /* onClick={handleImageClick} */
+              className="flex flex-row  justify-evenly px-4"
+            >
+              <input
+                className="border border-none"
+                type="text"
+                onChange={handleChange}
+                name="userid"
+                value={id}
+                style={{ display: "none" }}
+              />
+              <input
+                type="file"
+                /* ref={inputRef} */
+                name="file"
+                id="file "
+                onChange={(e) => setFile(e.target.files[0])}
+                /*  style={{ display: "none" }} */
+                /*  value={imgurl} */
+              />
             </div>
-          )}
-
-          {/* <input
-          type="text"
-          onChange={handleChange}
-          name="userid"
-          value={userid}
-          style={{ display: "none" }}
-        /> */}
-          <input
-            type="file"
-            ref={inputRef}
-            name="file"
-            id="file "
-            onChange={(e) => setFile(e.target.files[0])}
-            style={{ display: "none" }}
-            /*  value={imgurl} */
-          />
+            <div className="text-center m-3">
+              {imgurl ? <img src={imgurl} height="100" width="100" /> : ""}
+              <input
+                className="btn btn-xs text-black bg-base-100 "
+                type="submit"
+                value="Upload"
+              />
+            </div>
+          </form>
         </div>
-
-        <input
-          className="text-end text-black bg-base-100 right-0 bottom-0"
-          type="submit"
-          value="Save"
-        />
-      </form>
+      </div>
     </>
   );
 };

@@ -30,7 +30,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center text-gray-700 py-4 my-12 text-center space-y-8 md:space-y-0 md:space-x-20">
+      <div className="flex flex-col md:flex-row justify-center text-slate-600 py-4 my-12 text-center space-y-8 md:space-y-0 md:space-x-20">
         <div className="flex flex-col items-center px-4 md:px-20">
           <FontAwesomeIcon icon={faLocationDot} size="2x" />
           <h1 className="text-xl font-bold text-center mt-2">Address</h1>

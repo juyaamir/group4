@@ -27,7 +27,7 @@ const Newimage = () => {
   console.log(imgId);
 
   const [formData, setFormData] = useState({
-    userid: "",
+    userid: id,
     image: "",
   });
 
@@ -66,7 +66,7 @@ const Newimage = () => {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
       //console.log(name);
-      const storageRef = ref(storage, "userimages/file.name");
+      const storageRef = ref(storage, `userimages/file.${name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -132,7 +132,7 @@ const Newimage = () => {
       <div className="flex flex-row flex-wrap gap-6">
         <div>
           {lastimg ? (
-            <Image width={200} src={lastimg.image} />
+            <Image width={100} src={lastimg.image} className="rounded-full" />
           ) : (
             <div className="">
               <Avatar icon={<PlusOutlined />} />

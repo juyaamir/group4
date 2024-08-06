@@ -27,8 +27,8 @@ export const getAllImages = async (req, res) => {
 
 export const createSinglImage = async (req, res) => {
   try {
-    const { userid, image } = req.body;
-    console.log(userid, image);
+    /*  const { userid, image } = req.body; */
+    console.log(req.body);
 
     const userimage = new UserImage(req.body);
     const createdUserimage = await userimage.save();

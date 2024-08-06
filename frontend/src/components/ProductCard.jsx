@@ -5,10 +5,8 @@ import { Link } from "react-router-dom";
 //import AddNewProduct from "./AddNewProduct";
 import { DeleteOutlined } from "@ant-design/icons";
 import logo from "../assets/logo.png";
-
 import { EditOutlined } from "@ant-design/icons";
 import UpdateProduct from "./UpdataProduct";
-
 import Heart from "react-heart";
 import { Card } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
@@ -17,7 +15,6 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
 import { Button, Divider, notification, Space } from "antd";
 import { BorderBottomOutlined, BorderTopOutlined } from "@ant-design/icons";
-
 const ProductCard = ({
   category,
   productCount,
@@ -38,9 +35,7 @@ const ProductCard = ({
   };
   const [productItem, setProductItem] = useState([]);
   const [activeStates, setActiveStates] = useState({});
-
   /*   let length = productArray.length; */
-
   //const [productArray, setProductArray] = useState([]);
   //console.log(c["category"]);
   //console.log(productARR);
@@ -51,13 +46,11 @@ const ProductCard = ({
     productname: productname,
     price: price,
     category: category,
-
     
   }; */
   /*  let isUserAdmin = "true"; */
   const toggleHeart = (productId) => {
     console.log(productId);
-
     setActiveStates((prevState) => ({
       ...prevState,
       [productId]: !prevState[productId],
@@ -71,7 +64,6 @@ const ProductCard = ({
     setActive(!active);
     //console.log(active);S
   }; */
-
   const handleClick = (productId, price) => (event) => {
     /*  console.log(productId); */
     setProductArray((current) => [...current, productId]);
@@ -82,19 +74,15 @@ const ProductCard = ({
     /*  setProductPrice((cur) => [...cur, price]);
     console.log(setProductPrice); */
   };
-
   ///DELETE Product//
   const handleClick2 = (item) => {
     axios.delete(`http://localhost:8000/api/v1/product/${item}`);
   };
-
   ///EDIT Product//
   /*  const handleClick3 = (item) => {
     axios.put(`http://localhost:8000/api/v1/product/${item}`);
   }; */
-
   //get items//7
-
   useEffect(() => {
     const fetchProductData = async () => {
       try {
@@ -106,10 +94,8 @@ const ProductCard = ({
         console.error(`Error in fetching Product data: ${error}`);
       }
     };
-
     fetchProductData();
   }, [category, handleClick2]);
-
   /*   const getitems = () => {
     axios
       .get(`http://localhost:8000/api/v1/product?category=${category}`)
@@ -125,22 +111,17 @@ const ProductCard = ({
     // getitems();
     console.log("I am a useeffect");
   }, [handleClick2]);
-
     getitems();
   }, [handleClick2]); */
-
   // console.log(productItem.map((item) => item.image));
   /*   console.log(productItem.map((item) => item._id));
   console.log(productItem.map((item) => item.productname));
   console.log(productItem.map((item) => item.price));
   console.log(productItem.map((item) => item.category));
-
   const itemcategory = productItem.map((item) => item.category); */
-
   return (
     <>
       {contextHolder}
-
       <div className="flex flex-row flex-wrap gap-2 rounded-md ">
         {productItem?.map((item) => (
           <div
@@ -188,7 +169,6 @@ const ProductCard = ({
               <p>
                 <div className="text-sm">Price :&nbsp; {item.price}&nbsp;€</div>
               </p>
-
               <Button
                 className="absolute text-lg border-none"
                 onClick={handleClick(item._id, item.price)}
@@ -196,7 +176,6 @@ const ProductCard = ({
                 <MdAddShoppingCart />
               </Button>
             </div>
-
             <div>
               {isUserAdmin === "true" ? (
                 <div className="flex justify-between border-2 ">
@@ -211,7 +190,6 @@ const ProductCard = ({
                       </p>
                     </div>
                   </div>
-
                   <div>
                     <Button
                       className="mt-4 mr-3 max-w-full"
@@ -229,5 +207,4 @@ const ProductCard = ({
     </>
   );
 };
-
 export default ProductCard;

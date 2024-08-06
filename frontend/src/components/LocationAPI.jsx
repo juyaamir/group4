@@ -157,8 +157,6 @@ const fetchLocationSuggestions = async (location) => {
           },
           body: JSON.stringify({
             model: 'gpt-4o',
-            // messages: [{ ...newMessage, content: prompt }],
-            // messages: [...messages, { content: prompt }],
             messages: [...messages, { ...newMessage, content: prompt }],
             stream,
           }),
@@ -294,7 +292,7 @@ const fetchLocationSuggestions = async (location) => {
         </div> 
         ) : show && !ready ? (
             <fieldset className="border p-2 rounded-lg">
-            <legend className="text-center ">Choose Activities</legend>
+            <legend className="text-center mb-2">Choose Activities</legend>
             <div className="text-6xl text-blue-400 flex flex-wrap gap-2 ">
               <div className="hover:text-blue-600  border hover:border-none relative w-20 ">
                 <input type="checkbox" id="swimming" name="Swimming" onChange={handleActivity} className="absolute top-0 left-0 "/>

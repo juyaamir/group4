@@ -7,10 +7,7 @@ import { FaPlus } from "react-icons/fa";
 import { Space, Typography, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import Userinfo from "../components/Userinfo";
-
 import { Link } from "react-router-dom";
-/* import { priceContext } from "../App";
-import { useContext } from "react"; */
 
 const Cart = ({
   productArray,
@@ -21,27 +18,17 @@ const Cart = ({
   setProductCount,
 }) => {
   const [error, setError] = useState(null);
-  /*   const setProductPrice = useContext(priceContext); */
-
   const [productDesc, setProductDesc] = useState([]);
   const [productduplicate, setProductduplicate] = useState([]);
 
   const deleteProduct = (PId) => {
     var index = productArray.indexOf(PId);
-    /*   var indexprice = productPrice.indexOf(PId); */
     productArray.splice(index, 1);
-    /*     productPrice.splice(indexprice, 1); */
-    // favArray.remove(id);
     setProductArray([...productArray]);
     setProductCount(productArray.length);
   };
-  /*  const addProduct = (PId) => {
-    setProductArray((current) => [...current, PId]);
 
-    setProductCount(length + 1);
-    // console.log(length);
-  }; */
-  const [list, setList] = useState(productArray); // Example list
+  const [list, setList] = useState(productArray);
 
   function countOccurrences(arr) {
     return arr.reduce((counts, item) => {
@@ -51,27 +38,23 @@ const Cart = ({
   }
 
   const result = countOccurrences(list);
-  console.log(result);
-
-  /*  const total = productDesc?.map((item) => {
-    item._id;
-  }); */
-  const total = productDesc?.reduce(
-    (acc, item) => acc + item.price * result[item._id],
-    0
-  );
-  setProductPrice(total);
 
   useEffect(() => {
     axios
       .post(`http://localhost:8000/api/v1/product`, { productArray })
-      // .then((response) => setUser(response.data))
       .then((response) => setProductDesc(response.data))
-
       .catch((err) => {
         console.error(err);
       });
   }, [productArray]);
+
+  useEffect(() => {
+    const total = productDesc?.reduce(
+      (acc, item) => acc + item.price * result[item._id],
+      0
+    );
+    setProductPrice(total);
+  }, [productDesc, result, setProductPrice]);
 
   return (
     <>
@@ -84,7 +67,7 @@ const Cart = ({
           <div className="md:hidden lg:hidden">
             <ul>
               {productDesc?.map((item) => (
-                <li>
+                <li key={item._id}>
                   {item.productname} : {item.price}
                 </li>
               ))}
@@ -102,29 +85,20 @@ const Cart = ({
               </tr>
             </thead>
             {productDesc &&
-              productDesc?.map((item, key) => (
-                <tbody>
-                  <tr key={item._id}>
+              productDesc?.map((item) => (
+                <tbody key={item._id}>
+                  <tr>
                     <td>
                       <strong>{item.productname}</strong>
                     </td>
                     <td>
                       <strong>{item.price}&nbsp; €</strong>
                     </td>
-
                     <td>
                       <Image width={50} src={item.image} />
                     </td>
                     <td></td>
                     <td>
-                      {/*  <button
-                        onClick={() => {
-                          addProduct(item._id);
-                        }}
-                      >
-                        <FaPlus />
-                      </button> */}
-
                       {result[item._id]}
                     </td>
                     <td>
@@ -146,12 +120,11 @@ const Cart = ({
             <strong>&nbsp;{productPrice}&nbsp;€</strong>
           </div>
           <div className="max-w-full text-end px-16 py-2 ">
-            <Link to="/pay-now">
-              <button className="btn btn-outline btn-success">Pay Now</button>
+            <Link to="/purchase">
+              <button className="btn btn-outline btn-success">Proceed to checkout</button>
             </Link>
           </div>
         </div>
-        {/*  <div> Products from Cart{productArray?.map((item) => item)}</div>; */}
       </Watermark>
     </>
   );

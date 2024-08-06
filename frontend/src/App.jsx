@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+//import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -31,12 +32,12 @@ import Sale from "./components/Sale.jsx";
 // import OrderHistory from "./components/OrderHistory.jsx";
 // import ProductDetail from "./components/ProductDetail.jsx";
 import ProductDetails from "./components/saleDetails.jsx";
-
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 import Paynow from "./pages/Paynow.jsx";
 import { createContext } from "react";
+import { element } from "prop-types";
 export const priceContext = createContext(null);
-
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -105,8 +106,14 @@ function App() {
               }
             />
             <Route path="/contact-us" element={<Contact />} />
-            <Route path="/sale" element={<Sale />} />
-            <Route path="/profile/:id" element={<Profile setUser={setUser} />}/>
+            <Route
+              path="/sale"
+              element={<ProtectedRoute element={<Sale />} />}
+            />
+            <Route
+              path="/profile/:id"
+              element={<Profile setUser={setUser} />}
+            />
             {/* <Route path="/:id/orders" element={<OrderHistory />} /> */}
 
             <Route path="/sale/:productId" element={<ProductDetails />} />
@@ -128,10 +135,14 @@ function App() {
             <Route
               path="/pay-now"
               element={
-                <Paynow
-                  productPrice={productPrice}
-                  productArray={productArray}
-                  setProductCount={setProductCount}
+                <ProtectedRoute
+                  element={
+                    <Paynow
+                      productPrice={productPrice}
+                      productArray={productArray}
+                      setProductCount={setProductCount}
+                    />
+                  }
                 />
               }
             />
@@ -154,7 +165,11 @@ function App() {
             <Route path="/signout" element={<SignOut setToken={setToken} />} />
             <Route
               path="/plan-your-vacation"
-              element={<PlanYourVacation userlogged={islogged} />}
+              element={
+                <ProtectedRoute
+                  element={<PlanYourVacation userlogged={islogged} />}
+                />
+              }
             />
           </Routes>
 

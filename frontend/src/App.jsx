@@ -47,6 +47,8 @@ function App() {
   const [productArray, setProductArray] = useState([]);
   const [productPrice, setProductPrice] = useState(0);
   const [favArray, setFavArray] = useState([]);
+  const [favAmazonProduct, setFavAmazonProduct] = useState([]);
+  const [productid, setProductId] = useState([]);
 
   const getuserlogged = () => {
     if (token) {
@@ -108,7 +110,16 @@ function App() {
             <Route path="/contact-us" element={<Contact />} />
             <Route
               path="/sale"
-              element={<ProtectedRoute element={<Sale />} />}
+              element={
+                <ProtectedRoute
+                  element={
+                    <Sale
+                      setFavAmazonProduct={setFavAmazonProduct}
+                      setProductId={setProductId}
+                    />
+                  }
+                />
+              }
             />
             <Route
               path="/profile/:id"
@@ -156,6 +167,10 @@ function App() {
                   productArray={productArray}
                   setProductArray={setProductArray}
                   setProductCount={setProductCount}
+                  favAmazonProduct={favAmazonProduct}
+                  setFavAmazonProduct={setFavAmazonProduct}
+                  productId={productid}
+                  setProductId={setProductId}
                 />
               }
             />

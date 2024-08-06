@@ -14,15 +14,35 @@ const FavProduct = ({
   productArray,
   setProductArray,
   setProductCount,
+  favAmazonProduct,
+  setFavAmazonProduct,
+  productId,
+  setProductId,
 }) => {
   const [favproduct, setFavproduct] = useState(null);
-  console.log(favArray);
+  /* console.log(productId);
+  const [itemid, setItemid] = useState(null); */
 
   const deleteProduct = (id) => {
     var index = favArray.indexOf(id);
     favArray.splice(index, 1);
     // favArray.remove(id);
     setFavArray([...favArray]);
+  };
+
+  /*  const handleclickAmazon = (productindex) => {
+    pid = productId[productindex];
+    setItemid(pid);
+    console.log(pid);
+  }; */
+
+  const deleteAmazonProduct = (id) => {
+    /*  var index = favAmazonProduct.indexOf(id); */
+    let index = id;
+    favAmazonProduct.splice(index, 1);
+    /* favAmazonProduct.remove(index); */
+    setFavAmazonProduct([...favAmazonProduct]);
+    // setFavAmazonProduct([...favAmazonProduct]);
   };
 
   const handleClick = (productId, price) => (event) => {
@@ -46,10 +66,12 @@ const FavProduct = ({
       });
   }, [favArray]);
 
+  useEffect(() => {}, [favAmazonProduct]);
+
   return (
     <>
       <Watermark content={["Journey Pack", "Happy Traveling"]}>
-        <div style={{ height: 500 }}>
+        <div>
           <h1 className="text-4xl text-center m-8">Favorite Products</h1>
           {favproduct ? (
             <div className="flex flex-row flex-wrap gap-8 border border-2 rounded-md text-center m-8">
@@ -102,6 +124,54 @@ const FavProduct = ({
           ) : (
             <div className="text-2xl text-center m-8">No favorite product</div>
           )}
+          <div>
+            {favAmazonProduct ? (
+              <div className="flex flex-row flex-wrap gap-8 border border-2 rounded-md text-center m-8">
+                {favAmazonProduct?.map((item, index) => (
+                  <div className=" bg-base-200 w-64 shadow-xl rounded-md">
+                    <div key={index} className="  text-center">
+                      <figure className="px-8 relative max-w-full ">
+                        <Image width={200} src={item} alt="" />
+
+                        <div className="absolute top-0 right-16 m-2">
+                          <div style={{ width: "0.5rem" }}>
+                            <Button
+                              shape="circle"
+                              onClick={() => {
+                                deleteAmazonProduct(index);
+                              }}
+                            >
+                              <RxCrossCircled />
+                            </Button>
+                          </div>
+                        </div>
+                        {/*  <div className="absolute bottom-0 right-0 m-2">
+                          <button
+                            className=" text-xl text-blue-300 mr-0 mb-0"
+                            onClick={handleClick(item._id, item.price)}
+                          >
+                            <MdAddShoppingCart />
+                          </button>
+                        </div> */}
+                        {/* <button className="text-white bg-cyan-400 w-full h-10 hover:bg-slate-950">
+                          More Info
+                        </button> */}
+                      </figure>
+
+                      {/*   <h2 className="card-title text-xl">{item.productname}</h2>
+                      <p>
+                        <div className="text-md">
+                          Price :&nbsp; {item.price}&nbsp;€
+                        </div>
+                      </p> */}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </Watermark>
     </>

@@ -26,8 +26,8 @@ return (
       </div>
     </div>
     <div className="text-grey px-8">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold">Why Choose JourneyPack?</h2>
+      <div className="mb-24">
+        <h2 className="text-2xl font-bold pb-6">Why Choose JourneyPack?</h2>
 
       <div className="collapse collapse-plus bg-base-200">
         <input type="radio" name="my-accordion-3"  />
@@ -58,15 +58,15 @@ return (
         </div> 
       </div>
       </div>
-      <h2 className="text-2xl font-bold">How It Works </h2><br />
+      <h2 className="text-2xl font-bold pb-4">How It Works </h2>
       <ul className="steps steps-vertical text-black pb-8">
         <li className="step step-primary">Select your destination</li>
         <li className="step step-primary">Choose Your Activities</li>
         <li className="step">Get Your AI Generated Packing list</li>
-        <li className="step">Go For Shopping</li>
+        <li className="step">Go For Shop</li>
       </ul>
       <div className="flex flex-wrap gap-4 mb-24">
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 w-96 shadow-xl hover:scale-105">
           <figure>
           <img
             src={map}
@@ -78,14 +78,10 @@ return (
             <div className="card-actions justify-end">
             </div>
           </div>
-          <div className="card-body">
-            <h2 className="card-title">1. Select Your Destination!</h2>
-            <p>Enter your travel destination and dates to receive up-to-date weather forecasts and tailored packing advice.</p>
-            <div className="card-actions justify-end">
-            </div>
-          </div>
+          
+          
         </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 w-96 shadow-xl hover:scale-105">
           <figure>
           <img
             src={hiking}
@@ -94,11 +90,10 @@ return (
           <div className="card-body">
             <h2 className="card-title">2. Choose Your Activities</h2>
             <p>Specify the activities you plan to do, such as hiking, swimming, dining out, or sightseeing.</p>
-            <div className="card-actions justify-end">
-            </div>
           </div>
         </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
+
+        <div className="card bg-base-100 w-96 shadow-xl hover:scale-105">
           <figure>
           <img
             src={list}
@@ -107,11 +102,10 @@ return (
           <div className="card-body">
             <h2 className="card-title">3. Get Your AI Generated Packing List</h2>
             <p>Receive a customized packing list with all the essentials you will need for your trip, based on the weather and your activities.</p>
-            <div className="card-actions justify-end">
-            </div>
           </div>
         </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
+
+        <div className="card bg-base-100 w-96 shadow-xl hover:scale-105">
           <figure>
           <img
             src={shopping}
@@ -121,14 +115,14 @@ return (
             <h2 className="card-title">4. Go For Shop</h2>
             <p>Browse and purchase recommended items directly from our website. Enjoy the convenience of having all your travel gear delivered to your doorstep.</p>
             <div className="card-actions justify-end">
-            <button className="btn btn-primary">Shop Now</button>
+            <button className="btn btn-primary"><a href="http://localhost:5173/product">Shop Now</a></button>
             </div>
           </div>
         </div>
       </div>
-      <h2 className="text-2xl font-bold">Explore Our Collections</h2><br />
+      <h2 className="text-2xl font-bold pb-6">Explore Our Collections</h2>
       <div className="flex flex-wrap gap-4 mb-24">
-        <div className="card bg-base-100 image-full w-96 shadow-xl">
+        <div className="card bg-base-100 image-full w-96 shadow-xl hover:scale-105">
           <figure>
             <img
               src={snowgirl}
@@ -137,12 +131,9 @@ return (
           <div className="card-body">
             <h2 className="card-title">Weather-Ready Apparel</h2>
             <p>Stay comfortable and stylish with our range of weather-appropriate clothing.</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
           </div>
         </div>
-        <div className="card bg-base-100 image-full w-96 shadow-xl">
+        <div className="card bg-base-100 image-full w-96 shadow-xl hover:scale-105">
           <figure>
             <img
               src={kondol}
@@ -151,23 +142,17 @@ return (
           <div className="card-body">
             <h2 className="card-title">Adventure Gear</h2>
             <p>Equip yourself with top-notch gear for outdoor activities and adventures.</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
           </div>
         </div>
-        <div className="card bg-base-100 image-full w-96 shadow-xl">
+        <div className="card bg-base-100 image-full w-96 shadow-xl hover:scale-105">
           <figure>
             <img
               src={camera}
               alt="Camera pic" />
           </figure>
-          <div className="card-body">
+          <div className="card-body focus-active">
             <h2 className="card-title">Travel Accessories</h2>
             <p>Discover must-have travel accessories, from luggage and travel pillows to travel-sized toiletries and gadgets.</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
           </div>
         </div>
       </div>
@@ -176,7 +161,7 @@ return (
         <p>Don’t let packing stress you out. With JourneyPack, you can focus on the excitement of your journey while we take care of the details. Trust us to provide the best recommendations and products, so you're always prepared, no matter where your travels take you.</p><br />
         <p>Start your packing journey with JourneyPack today and enjoy a seamless travel experience from start to finish!</p><br />
         <p>Ready to Pack? Let's Get Started!</p>
-        Visit <a href="https://http://www.journeypack.com" className="text-blue-500"><i>JourneyPack</i></a> and explore the ultimate way to prepare for your next adventure. Happy travels!</div>
+        Visit <a href="http://localhost:5173" className="text-yellow-600 font-bold italic">JourneyPack</a> and explore the ultimate way to prepare for your next adventure. Happy travels!</div>
       </div>
   </div>
   );

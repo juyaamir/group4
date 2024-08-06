@@ -1,12 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+
+import { useMemo } from 'react'
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
+
 
 const Purchase = () => {
+    const [countryValue, setCountryValue] = useState('');
+const [phoneValue, setPhoneValue] = useState('');
+
+    const [value, setValue] = useState();
   const [isAddress, setIsAddress] = useState(true);
   const [formData, setFormData] = useState({
+    country: '',
     name: '',
     number: '',
     address: '',
+    plz: '',
+    town: '',
     message: '',
     email: '',
     cardNumber: '',
@@ -16,45 +30,75 @@ const Purchase = () => {
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const options = useMemo(() => countryList().getData(), []);
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-    // Clear error for the specific field when the user starts typing
+    
     setErrors({
       ...errors,
       [name]: '',
     });
   };
 
+  const handleCountryChange = (value) => {
+    setCountryValue(value);
+    setFormData({
+      ...formData,
+      country: value.label,  // update country in formData
+    });
+    setErrors({
+      ...errors,
+      country: '',  // clear country error
+    });
+  };
+  
+  const handlePhoneChange = (value) => {
+    setPhoneValue(value);
+    setFormData({
+      ...formData,
+      number: value,  // update phone number in formData
+    });
+    setErrors({
+      ...errors,
+      number: '',  // clear phone number error
+    });
+  };
+  
   const handleAddressSubmit = () => {
-    const { name, number, address, message } = formData;
+    const { country, name, number, address, plz, town } = formData;
     const newErrors = {};
-
+    if (!country) newErrors.country = "Country is required.";
     if (!name) newErrors.name = "Full Name is required.";
     if (!number) newErrors.number = "Phone Number is required.";
     if (!address) newErrors.address = "Address is required.";
-    if (!message) newErrors.message = "Delivery instructions are required.";
+    if (!plz) newErrors.plz = "PLZ Number is required.";
+    if (!town) newErrors.town = "Town/City is required.";
 
     if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
+        setErrors(newErrors);
+        return;
     }
     setIsAddress(false);
-  };
+};
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { cardNumber, expiryDate, cvv } = formData;
+    const { country, cardNumber, expiryDate, cvv, plz, town } = formData;
     const newErrors = {};
-
+    if (!country) newErrors.country = "Country is required.";
     if (!cardNumber) newErrors.cardNumber = "Card Number is required.";
     if (!expiryDate) newErrors.expiryDate = "Expiration Date is required.";
     if (!cvv) newErrors.cvv = "CVV is required.";
+    if (!plz) newErrors.plz = "PLZ Number is required.";
+    if (!town) newErrors.town = "Town/City is required.";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -71,6 +115,21 @@ const Purchase = () => {
         {isAddress ? (
           <fieldset className="border p-2 rounded-lg">
             <legend className="block mb-2 text-center">Add your address</legend>
+            
+
+            <div className="mb-3">
+              <label htmlFor="name" className="block mb-2 font-medium">Country</label>
+              <Select 
+  options={options} 
+  value={countryValue} 
+  onChange={handleCountryChange} 
+  placeholder="Select Country"
+  className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>
+{errors.country && <p className="text-red-500 text-sm mt-1">{errors.country}</p>}
+            </div>
+            
+
             <div className="mb-3">
               <label htmlFor="name" className="block mb-2 font-medium">Full Name</label>
               <input type="text" name="name" id="name"
@@ -84,14 +143,14 @@ const Purchase = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="number" className="block mb-2 font-medium">Phone number</label>
-              <input type="text" name="number" id="number"
-                value={formData.number}
-                onChange={handleChange}
-                placeholder=""
-                className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-              {errors.number && <p className="text-red-500 text-sm mt-1">{errors.number}</p>}
+              <PhoneInput
+  placeholder="Enter phone number"
+  value={phoneValue}
+  onChange={handlePhoneChange}
+  className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+  required
+/>
+{errors.number && <p className="text-red-500 text-sm mt-1">{errors.number}</p>}
             </div>
             <div className="mb-3">
               <label htmlFor="address" className="block mb-2 font-medium">Address</label>
@@ -103,6 +162,34 @@ const Purchase = () => {
                 required
               />
               {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+            </div>
+            <div className='flex'>
+                
+            <div className="mb-3">
+              <label htmlFor="plz" className="block mb-2 font-medium">PLZ</label>
+              <input type="number" name="plz" id="plz"
+                value={formData.plz}
+                onChange={handleChange}
+                placeholder=""
+                className="p-2 w-2/3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              {errors.plz && <p className="text-red-500 text-sm mt-1">{errors.plz}</p>}
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="town" className="block mb-2 font-medium">Town/City</label>
+              <input type="text" name="town" id="town"
+                value={formData.town}
+                onChange={handleChange}
+                placeholder=""
+                className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              {errors.town && <p className="text-red-500 text-sm mt-1">{errors.town}</p>}
+            </div>
+
+
             </div>
             <div className="mb-3">
               <label htmlFor="message" className="block mb-2 font-medium">Add delivery instructions (optional)</label>
@@ -147,24 +234,24 @@ const Purchase = () => {
             <div className="mb-3">
             <label htmlFor="cvv" className="block mb-2 font-medium">Security Code (CVV/CVC)</label>
             <input 
-                type="text"  // Use text to control length and pattern
+                type="text"  
                 name="cvv" 
                 id="cvv"
                 value={formData.cvv}
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                pattern="\d{2,4}"  // Pattern allows between 2 and 4 digits
-                minLength={2}  // Minimum length of 2 characters
-                maxLength={4}  // Maximum length of 4 characters
+                pattern="\d{2,4}"  
+                minLength={2}  
+                maxLength={4}  
                 required
             />
             {errors.cvv && <p className="text-red-500 text-sm mt-1">{errors.cvv}</p>}
             </div>
 
             <button type="button" onClick={() => setIsAddress(true)}
-              className="border border-gray-300 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full"
-            >Back to Address</button>
+              className="border border-gray-300 bg-orange-500 hover:bg-orange-600 rounded-lg mx-auto block text-white p-2 my-2 w-full"
+            ><i className="fa-solid fa-arrow-left-long mr-2 hover:"></i> Change Address</button>
             <button type="submit"
               className="border border-gray-300 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full">Pay Now</button>
           </fieldset>

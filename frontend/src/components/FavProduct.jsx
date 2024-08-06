@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Image } from "antd";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Watermark } from "antd";
-import AmazonProduct from "./AmazonProduct";
 
 const FavProduct = ({
   favArray,
@@ -158,11 +157,13 @@ const FavProduct = ({
                           More Info
                         </button> */}
                       </figure>
-                      {/*  {favAmazonProduct?.map((item) => (
-                        <AmazonProduct favitem={item} />
-                      ))}
- */}
-                      <AmazonProduct favitem="1PVmp1IHhYSjuJZcE10TsS" />
+
+                      {/*   <h2 className="card-title text-xl">{item.productname}</h2>
+                      <p>
+                        <div className="text-md">
+                          Price :&nbsp; {item.price}&nbsp;€
+                        </div>
+                      </p> */}
                     </div>
                   </div>
                 ))}

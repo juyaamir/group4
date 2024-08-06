@@ -7,12 +7,21 @@ import { Avatar } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 import Imgfromdb from "./Imgfromdb.jsx";
+import { Button, Divider, notification, Space } from "antd";
 
 const Newimage = () => {
   const [file, setFile] = useState("");
   const [imgurl, setImgurl] = useState("");
   const inputRef = useRef(null);
   const [imgId, setImgId] = useState(null);
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (placement) => {
+    api.info({
+      message: ``,
+      description: "Picture added successfully Click upload to save.",
+      placement,
+    });
+  };
 
   let id = localStorage.getItem("userId");
 
@@ -60,10 +69,6 @@ const Newimage = () => {
 
       const uploadTask = uploadBytesResumable(storageRef, file);
 
-      // Register three observers:
-      // 1. 'state_changed' observer, called any time the state changes
-      // 2. Error observer, called on failure
-      // 3. Completion observer, called on successful completion
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -96,6 +101,7 @@ const Newimage = () => {
         }
       );
     };
+    openNotification("top");
     file && uploadFile();
   }, [file]);
 

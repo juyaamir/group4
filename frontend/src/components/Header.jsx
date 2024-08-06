@@ -9,6 +9,7 @@ import { HeartOutlined } from "@ant-design/icons";
 import { priceContext } from "../App";
 import { useContext } from "react";
 import axios from "axios";
+import "../App.css";
 
 import logo from "../assets/logo.png";
 
@@ -20,6 +21,7 @@ const Header = ({ islogged, productCount }) => {
   /*  console.log(favArray + "header"); */
   let getuserId = localStorage.getItem("userId");
   const productPrice = useContext(priceContext);
+  /*  console.log(getuserId); */
   useEffect(() => {
     const fetchuserimage = async () => {
       try {
@@ -34,12 +36,13 @@ const Header = ({ islogged, productCount }) => {
 
     fetchuserimage();
   }, []);
-  const latestimghead = headimg && headimg[headimg.length - 1];
+  /*   console.log(headimg[headimg.length - 1]); */
+
+  const latestimghead = headimg[headimg.length - 1];
   console.log(latestimghead);
   return (
     <>
       <div className="flex flex-wrap justify-around navbar bg-neutral text-neutral-content">
-        <p>Reviews</p>
         <p>
           Free &nbsp;
           <span className="text-white">DELIVERY</span>
@@ -66,7 +69,7 @@ const Header = ({ islogged, productCount }) => {
         <ThemeToggle />
       </div>
       <div className="navbar bg-base-100 m-w-full">
-        <div className="dropdown">
+        <div className="dropdown md:hidden lg:hidden ">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"

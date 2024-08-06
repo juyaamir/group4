@@ -7,6 +7,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import Cart from "./Cart";
 
 const ImageDescription = ({
   productArray,
@@ -19,6 +20,7 @@ const ImageDescription = ({
   const [imgId, setImgId] = useState(null);
   const [error, setError] = useState(null);
   const [size, setSize] = useState({});
+  const [productObj, setProductObj] = useState({});
 
   const cardStyle = {
     width: 620,
@@ -49,6 +51,16 @@ const ImageDescription = ({
     setProductArray((current) => [...current, productid]);
     let length = productArray.length + 1;
     setProductCount(length);
+
+    let price = 30;
+
+    /*   productObj.price = 30;
+    productObj.id = 2; */
+
+    setProductObj((current) => [
+      { ...current, productid: productid, price: 30 },
+    ]);
+
     //console.log(length);
 
     /*  setProductPrice(productPrice + price); */

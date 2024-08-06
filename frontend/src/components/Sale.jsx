@@ -4,7 +4,7 @@ import { client } from "./client";
 import Heart from "react-heart";
 import logo from "../assets/logo.png";
 
-const Sale = ({ setFavAmazonProduct, setProductId }) => {
+const Sale = ({ favAmazonProduct, setFavAmazonProduct, setProductId }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [selectBrand, setSelectBrand] = useState("all");
@@ -40,11 +40,31 @@ const Sale = ({ setFavAmazonProduct, setProductId }) => {
     setSelectBrand(e.target.value);
   };
 
-  const toggleHeart = (id, imgurl) => {
+  const toggleHeart = (id, imgurl, pname, rating) => {
     //Add product id to the favArray
-    setProductId((current) => [...current, id]);
-    setFavAmazonProduct((current) => [...current, imgurl]);
-    console.log(id);
+    //setProductId((current) => [...current, id]);
+    setFavAmazonProduct([
+      ...favAmazonProduct,
+      {
+        productid: id,
+        productimage: imgurl,
+        productname: pname,
+        productrating: rating,
+      },
+    ]);
+    /*  setFavAmazonProduct((current) => [
+      {
+        ...current,
+        ...{
+          productid: id,
+          productimage: imgurl,
+          productname: pname,
+          productrating: rating,
+        },
+      },
+    ]); */
+    /* (books) => [...books, ...x]; */
+    /*   console.log(id); */
     //console.log(setFavArray);
     setActiveStates((prevState) => ({
       ...prevState,
@@ -143,7 +163,12 @@ const Sale = ({ setFavAmazonProduct, setProductId }) => {
                   <Heart
                     isActive={activeStates[e?.sys.id] || false}
                     onClick={() =>
-                      toggleHeart(e?.sys.id, e?.fields.image.fields.file.url)
+                      toggleHeart(
+                        e?.sys.id,
+                        e?.fields.image.fields.file.url,
+                        e?.fields.mobileName,
+                        e.fields.rating
+                      )
                     }
                     animationScale={1.2}
                     activeColor="red"

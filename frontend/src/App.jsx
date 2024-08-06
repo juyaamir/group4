@@ -114,6 +114,7 @@ function App() {
                 <ProtectedRoute
                   element={
                     <Sale
+                      favAmazonProduct={favAmazonProduct}
                       setFavAmazonProduct={setFavAmazonProduct}
                       setProductId={setProductId}
                     />

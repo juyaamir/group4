@@ -140,3 +140,18 @@ body {
     display: inline-block;
     animation: bounce 2s infinite;
   }
+
+  @keyframes moveLeftRight {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(20px);
+    }
+  }
+  
+  .animate-move-left-right {
+    animation: moveLeftRight 2s infinite;
+  }
+
+  

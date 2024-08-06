@@ -89,9 +89,8 @@ const Stores = () => {
   return (
     <div>
       <div className='my-4 text-center'>
-      <h1 className=' text-2xl mb-2'>STORES</h1>
-      <p className=' text-medium '>Find the nearest store to you</p>
-      <p> </p>
+        <h1 className=' text-2xl mb-2'>STORES</h1>
+        <p className=' text-medium '>Find the nearest store to you</p>
       </div>
 
       
@@ -162,13 +161,13 @@ const Stores = () => {
         </div>
       </div>
 
-
-      <h1 className='text-center text-2xl mb-2'>HOTELS</h1>
-      <p className='text-center text-medium mb-4'>The following hotels are advertisements and not affiliated with our store.</p>
-
-      <div className=' mx-10 justify-between '>
+      <div className='mb-6'>
+        <h1 className='text-center text-xl mt-6 mb-8'>ADVERTISEMENT</h1>
+        <div className=' mx-10 justify-between '>
           <HotelCard />
         </div>
+      </div>
+
     </div>
   );
 };

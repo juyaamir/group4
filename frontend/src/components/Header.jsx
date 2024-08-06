@@ -71,7 +71,7 @@ const Header = ({ islogged, productCount }) => {
       <div className="navbar bg-base-100 m-w-full">
 
         <div className="dropdown md:hidden lg:hidden ">
-
+{/* JourneyPack */}
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ const Header = ({ islogged, productCount }) => {
           </div> */}
           <img src={logo} alt="logo" className="h-10 w-10 rounded-full" />
 
-          <h4 className="text-3xl pl-2 text-yellow-600 font-DM1">
+          <h4 className="text-3xl pl-2 text-yellow-600 font-DM1 ">
             JourneyPack
           </h4>
         </div>
@@ -155,9 +155,9 @@ const Header = ({ islogged, productCount }) => {
             <li>
               <Link to={`/stores`}>Stores</Link>
             </li>
-            <li className=" border-2 rounded-md">
+            <li className=" border-2 rounded-md animate-move-left-right mx-2">
               <Link to={`/plan-your-vacation`}>
-                Need help what to pack! Ask From
+                Need help what to pack? Ask from
                 <strong>&nbsp;JourneyPack</strong>
               </Link>
             </li>

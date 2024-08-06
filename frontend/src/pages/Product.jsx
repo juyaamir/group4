@@ -37,7 +37,7 @@ const Product = ({
 
   return (
     <>
-{/*       <div>
+      <div>
         {/*  <Carousel autoplay>
           <div>
             <h3 style={contentStyle} className="border border-0 text-center">
@@ -55,7 +55,7 @@ const Product = ({
             </h3>
           </div>
         </Carousel> */}
-      </div> */}
+      </div>
 
       <div role="tablist" className="tabs tabs-lifted m-10 rounded-md">
         <input

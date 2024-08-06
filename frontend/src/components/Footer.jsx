@@ -31,7 +31,7 @@ const Footer = () => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="input input-bordered w-full max-w-xs mr-2"
+              className="input input-bordered text-black w-full max-w-xs mr-2"
               required
             />
             <button

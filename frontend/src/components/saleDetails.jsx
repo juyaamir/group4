@@ -15,7 +15,7 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
   const [selectedSize, setSelectedSize] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(null);
+  //const [selectedColor, setSelectedColor] = useState(null);
   const [activeStates, setActiveStates] = useState({});
   const [buy, setBuy] = useState(false);
   const handleSizeClick = (size) => {

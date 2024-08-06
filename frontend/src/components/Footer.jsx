@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 const Footer = () => {
   return (
     <>
-      <footer className="footer bg-neutral text-neutral-content p-8 justify-around ">
+      <footer className="footer bg-neutral text-neutral-content p-4 justify-around ">
         <aside className="flex items-center ">
           <img src={logo} alt="logo" className="h-12 w-12 rounded-full mt-3" />
           <h1 className="text-3xl text-yellow-500 font-DM1 mt-3">JourneyPack</h1>

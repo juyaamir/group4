@@ -6,6 +6,7 @@ import axios from "axios";
 import { MdAddShoppingCart } from "react-icons/md";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
+import logo from '../assets/logo.png'
 
 const ImageDescription = ({
   productArray,
@@ -53,10 +54,10 @@ const ImageDescription = ({
           },
         }}
       >
-        <Link to="/product" className="absolute bg-base-200 text-2xl ml-4 mt-2">
+        <Link to="/product" className="absolute bg-base-200 text-2xl ml-4 mt-2 ">
           <IoMdArrowRoundBack />
         </Link>
-        <Flex justify="space-between">
+        <Flex justify="space-between " >
           <img alt="avatar" src={imgId?.image} style={imgStyle} />
           <Flex
             vertical
@@ -66,6 +67,11 @@ const ImageDescription = ({
               padding: 32,
             }}
           >
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="h-10 absolute w-10 rounded-full bottom5"
+                />
             <Typography.Title level={3}>
               <div className="overflow-x-auto">
                 <table className="table">
@@ -120,7 +126,7 @@ const ImageDescription = ({
             <Button
               type="primary"
               target="_blank"
-              className="btn btn-square btn-outline text-xl text-blue-300 mr-0 mb-0 text-2xl text-red-400"
+              className="btn btn-square btn-outline  text-blue-300 mr-0 mb-0 text-2xl "
               onClick={handleClick(imgId?._id)}
             >
               <MdAddShoppingCart />

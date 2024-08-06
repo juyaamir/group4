@@ -154,4 +154,15 @@ body {
     animation: moveLeftRight 2s infinite;
   }
 
-  
+  .width3 {
+    width: 340px
+  }
+
+  .bottom4 {
+    bottom: 67%;
+    left: 3%;
+  }
+  .bottom5 {
+    bottom: 67%;
+    left: 3%;
+  }

@@ -90,7 +90,7 @@ const Stores = () => {
     <div>
       <div className='my-4 text-center'>
         <h1 className=' text-2xl mb-2'>STORES</h1>
-        <p className=' text-medium '>Find the nearest store to you</p>
+        <p className=' text-medium italic text-xl font-thin'>You can find the nearest store at the following addresses:</p>
       </div>
 
       

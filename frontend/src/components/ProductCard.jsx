@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //import AddNewProduct from "./AddNewProduct";
 import { DeleteOutlined } from "@ant-design/icons";
+import logo from "../assets/logo.png";
 
 import { EditOutlined } from "@ant-design/icons";
 import UpdateProduct from "./UpdataProduct";
@@ -133,7 +134,7 @@ const ProductCard = ({
       {contextHolder}
 
       <div className="flex flex-row flex-wrap gap-2 rounded-md ">
-        {productItem?.map((item, key) => (
+        {productItem?.map((item) => (
           <div
             key={item._id}
             className="card bg-base-200 w-60 shadow-xl rounded-md"
@@ -141,7 +142,7 @@ const ProductCard = ({
             <div className="card-body  text-center">
               <figure className="relative max-w-full ">
                 <Link to={`/image-description/${item._id}`}>
-                  <Image width={200} src={item.image} alt={item.productname} />
+                  <Image width={200} height={220} src={item.image} alt={item.productname} />
                 </Link>
                 <div className="">
                   <div style={{ width: "1rem" }}>
@@ -161,6 +162,10 @@ const ProductCard = ({
                   <CiHeart />
                 </button> */}
                 </div>
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="h-10 absolute w-10 rounded-full bottom4"/>
               </figure>
               <h2 className="card-title text-lg">{item.productname}</h2>
               <p>
@@ -177,7 +182,7 @@ const ProductCard = ({
 
             <div>
               {isUserAdmin === "true" ? (
-                <div className="flex justify-between border border-2 ">
+                <div className="flex justify-between border-2 ">
                   <div className="collapse max-w-full">
                     <input type="checkbox" />
                     <div className="collapse-title text-md font-small">

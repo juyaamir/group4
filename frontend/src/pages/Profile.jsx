@@ -178,7 +178,7 @@ function Profile() {
               </form>
             )}
           </div>
-          <OrderHistory user={user} />
+          <OrderHistory />
         </div>
       )}
     </>

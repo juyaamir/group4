@@ -66,8 +66,8 @@ const FavProduct = ({
       });
   }, [favArray]);
 
-  useEffect(() => {}, [favAmazonProduct]);
-  console.log(favAmazonProduct.map((item) => item.productid));
+  /*   useEffect(() => {}, [favAmazonProduct]);
+  console.log(favAmazonProduct.map((item) => item.productid)); */
 
   return (
     <>

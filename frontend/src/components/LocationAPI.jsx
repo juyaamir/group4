@@ -250,38 +250,38 @@ const fetchLocationSuggestions = async (location) => {
       {
         showForm && 
         <form onSubmit={handleSubmit} disabled={loading}  
-        className="p-4 mx-auto my-20 border bg-white rounded-lg w-80 shadow-md">
+        className="p-8 mx-auto my-20 border bg-white rounded-lg width3 shadow-md ">
         
         {
         !show && !ready ? (
           <div>
-            <p className="text-center mb-3 font-bold">Enter Your Trip Details</p>
-            <div>
-              <label htmlFor="start" className="mx-4" >Start Date</label>
+            <p className="text-center mb-4 font-bold text-lg">Enter Your Trip Details</p>
+            <div className="mb-3">
+              <label htmlFor="start" className="block mb-2 font-medium" >Start Date</label>
               <input type="date" name="start" id="start" min={new Date().toISOString().split('T')[0] }
               value={formData.start}
               onChange={handleChange}
               placeholder="Enter the start date"
-              className="p-1 text-center mx-4 my-1 border border-gray-200 w-64"
+              className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               </div>
-              <div>
-              <label htmlFor="end" className="mx-4">End Date</label>
+              <div className="mb-3">
+              <label htmlFor="end" className="block mb-2 font-medium">End Date</label>
               <input
               type="date" id="end" name="end"
               value={formData.end}
               onChange={handleChange}
               placeholder="Enter the end date"
-              className="p-1 text-center mx-4 my-1 border border-gray-200 w-64 "
+              className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               </div>
-              <div>
-              <label htmlFor="location" className="mx-4">Destination</label>
+              <div className="mb-3">
+              <label htmlFor="location" className="block mb-2 font-medium">Destination</label>
               <input type="search" name="location" id="location"
               value={formData.location}
               onChange={handleChange}
               placeholder="Enter the destination"
-              className="p-1 text-center mx-4 my-1 border border-gray-200 w-64"
+              className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <ul>
                 {suggestions.map((suggestion, index) => (
@@ -297,7 +297,7 @@ const fetchLocationSuggestions = async (location) => {
             <legend className="text-center ">Choose Activities</legend>
             <div className="text-6xl text-blue-400 flex flex-wrap gap-2 ">
               <div className="hover:text-blue-600  border hover:border-none relative w-20 ">
-                <input type="checkbox" id="swimming" name="Swimming" onChange={handleActivity} className="absolute top-0 left-0"/>
+                <input type="checkbox" id="swimming" name="Swimming" onChange={handleActivity} className="absolute top-0 left-0 "/>
                 <label htmlFor="swimming" title='swimming'><i className="  fa-solid fa-person-swimming"></i></label>
                 <p className="text-base">Swimming</p>
               </div>
@@ -412,15 +412,15 @@ const fetchLocationSuggestions = async (location) => {
           !show && !ready ? (
           formData.location &&  formData.start && formData.end && 
           <button key='next' type="button" onClick={(()=> {setShow(true)})}
-          className="border border-gray-300 px-3 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-1 my-2 w-full"
+          className="border border-gray-300  bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full"
           >Select Activities</button>
           ) : show && !ready ? (
             <button type="button" key='next2' onClick={()=> setReady(true)}
-            className="border border-gray-300 px-3 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-1 my-2 w-full"
+            className="border border-gray-300  bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full"
             >Select Hotel Type</button>
           ) : (
           <button key='submit' type="submit" 
-          className="border border-gray-300 px-3 bg-orange-500 hover:bg-orange-700 rounded-lg mx-auto block text-white p-1 my-2 w-full "
+          className="border border-gray-300  bg-orange-500 hover:bg-orange-700 rounded-lg mx-auto block text-white p-2 my-2 w-full "
           disabled={loading} >
           {loading ? 'loading...' : 
           'Begin Packing'} </button>

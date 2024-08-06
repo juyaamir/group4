@@ -38,8 +38,8 @@ const Header = ({ islogged, productCount }) => {
   }, []);
   /*   console.log(headimg[headimg.length - 1]); */
 
-  const latestimghead = headimg[headimg.length - 1];
-  console.log(latestimghead);
+  const latestimghead = headimg && headimg[headimg.length - 1];
+  //console.log(latestimghead);
   return (
     <>
       <div className="flex flex-wrap justify-around navbar bg-neutral text-neutral-content">
@@ -69,9 +69,8 @@ const Header = ({ islogged, productCount }) => {
         <ThemeToggle />
       </div>
       <div className="navbar bg-base-100 m-w-full">
-
         <div className="dropdown md:hidden lg:hidden ">
-{/* JourneyPack */}
+          {/* JourneyPack */}
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"

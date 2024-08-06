@@ -38,7 +38,7 @@ const Suggestion = ({ activities }) => {
     };
     setTimeout(() => {
       getEntries();
-      setShowBounce(true); // Show Bounce after fetching data
+      setShowBounce(true); 
     }, 4000);
   }, []);
 

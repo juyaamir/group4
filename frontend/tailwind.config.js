@@ -8,8 +8,8 @@ export default {
       },
       fontFamily: {
         DM: ["Bungee Shade", "sans-serif"],
-        DM1: ["Spicy Rice", "serif"] 
-      }
+        DM1: ["Spicy Rice", "serif"], 
+      },
     },
   },
   plugins: [require("daisyui")],

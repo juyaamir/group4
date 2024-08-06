@@ -78,6 +78,7 @@ function Profile() {
       {user && (
         <div>
           <WelcomeMessage firstName={user.firstname} />
+          <h4 className="text-2xl font-bold pl-8 pt-6">Personal Information</h4>
           <div className="w-100 vh-100 d-flex justify-center items-center  border border-1 rounded-md m-8">
             <div className=" max-w-full  m-6">
               <Newimage />

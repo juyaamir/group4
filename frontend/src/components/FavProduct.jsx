@@ -1,4 +1,3 @@
-
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -59,6 +58,10 @@ const FavProduct = ({
         console.error(err);
       });
   }, [favArray]);
+
+  /*   useEffect(() => {}, [favAmazonProduct]);
+  console.log(favAmazonProduct.map((item) => item.productid)); */
+
   /*   useEffect(() => {}, [favAmazonProduct]);
   console.log(favAmazonProduct.map((item) => item.productid)); */
   return (

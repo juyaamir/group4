@@ -8,7 +8,7 @@ const Userinfo = () => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
   let id = localStorage.getItem("userId");
-  console.log(id);
+  //console.log(id);
   const [userimg, setuserimg] = useState([]);
   useEffect(() => {
     axios
@@ -35,7 +35,7 @@ const Userinfo = () => {
     fetchuserimage();
   }, []);
   const lastuserimg = userimg && userimg[userimg.length - 1];
-  console.log(lastuserimg);
+  //console.log(lastuserimg);
   return (
     <div className="p-14 flex flex-row gap-6">
       <div className="w-10 border border-2 rounded-full">

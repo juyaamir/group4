@@ -129,7 +129,7 @@ const Newimage = () => {
   // console.log(latestimg);
   return (
     <>
-      <div className="flex flex-row flex-wrap justify-between">
+      <div className="flex flex-row flex-wrap gap-6">
         <div>
           {lastimg ? (
             <Image width={200} src={lastimg.image} />

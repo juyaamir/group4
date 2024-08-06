@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Image } from "antd";
 
 const ProductDetail = ({ productId }) => {
   const [product, setProduct] = useState(null);
@@ -22,7 +23,7 @@ const ProductDetail = ({ productId }) => {
   }, [productId]);
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="text-red-500">{error}</div>;
   }
 
   if (!product) {
@@ -30,25 +31,16 @@ const ProductDetail = ({ productId }) => {
   }
 
   return (
-    <div className="w-100 vh-100 d-flex flex-col justify-center items-center border border-1 rounded-md m-8">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Product Id</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr key={product._id}>
-            <td>{product._id}</td>
-            <td>{product.productname}</td>
-            <td>{product.price}</td>
-            <td>{product.category}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="border-bottom rounded-md p-4 mb-4">
+      <div className="flex items-center">
+        <Image width={60} src={product.image} className="mr-4" />
+        <div className='pl-8'>
+          <p className="font-semibold">Product Name: {product.productname}</p>
+          <p>Price: ${product.price}</p>
+          <p>Category: {product.category}</p>
+          <p>Product Id: {product._id}</p>
+        </div>
+      </div>
     </div>
   );
 };

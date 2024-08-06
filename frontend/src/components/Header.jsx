@@ -66,7 +66,7 @@ const Header = ({ islogged, productCount }) => {
         <ThemeToggle />
       </div>
       <div className="navbar bg-base-100 m-w-full">
-        <div className="dropdown">
+        <div className="dropdown md:hidden lg:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,9 @@ const Header = ({ islogged, productCount }) => {
           </div> */}
           <img src={logo} alt="logo" className="h-10 w-10 rounded-full" />
 
-          <h4 className="text-3xl pl-2 text-yellow-600 font-DM1">JourneyPack</h4>
+          <h4 className="text-3xl pl-2 text-yellow-600 font-DM1">
+            JourneyPack
+          </h4>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

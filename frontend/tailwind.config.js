@@ -6,6 +6,10 @@ export default {
       backgroundImage: {
         "hero-pattern": "url('./src/assets/heroimage.jpg')",
       },
+      fontFamily: {
+        DM: ["Bungee Shade", "sans-serif"],
+        DM1: ["Spicy Rice", "serif"], 
+      },
     },
   },
   plugins: [require("daisyui")],

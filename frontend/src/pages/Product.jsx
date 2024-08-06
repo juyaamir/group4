@@ -38,34 +38,7 @@ const Product = ({
   return (
     <>
 {/*       <div>
-        <Carousel autoplay>
-          <div>
-            <h3 style={contentStyle}>
-              <div className="carousel carousel-center rounded-box">
-                <div className="carousel-item">
-                  <img
-                    src="https://img.fruugo.com/product/6/32/834613326_max.jpg"
-                    alt="Pizza"
-                    className="w-full h-full"
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    src="https://i.bosity.com/product_img/278/78022657/78022657_9_image.jpg?x-oss-process=image/resize,p_100/watermark,image_d2F0ZXJtYXJrX2ltZy8xNzExMTQwNC9kZWZhdWx0LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSxQXzk5,g_nw,x_0,y_0"
-                    alt="Pizza"
-                    className="w-full h-full"
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    src="https://i.etsystatic.com/10681468/r/il/075824/5293550620/il_794xN.5293550620_g995.jpg"
-                    alt="Pizza"
-                    className="w-full h-full"
-                  />
-                </div>
-              </div>
-            </h3>
-          </div>
+        {/*  <Carousel autoplay>
           <div>
             <h3 style={contentStyle} className="border border-0 text-center">
               <img src={beautifulpic} className="w-full h-full" />
@@ -81,7 +54,7 @@ const Product = ({
               <img src={rakaposhi} className="w-full h-full" />
             </h3>
           </div>
-        </Carousel>
+        </Carousel> */}
       </div> */}
 
       <div role="tablist" className="tabs tabs-lifted m-10 rounded-md">

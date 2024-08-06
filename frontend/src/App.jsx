@@ -73,7 +73,7 @@ function App() {
         productArray={productArray}
         productPrice={productPrice}
       />
-
+{/* sale */}
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
           {islogged && user && <WelcomeMessage firstName={user.firstname} />}

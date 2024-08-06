@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 const Purchase = () => {
   const [isAddress, setIsAddress] = useState(true);
   const [formData, setFormData] = useState({
@@ -13,7 +14,8 @@ const Purchase = () => {
     cvv: '',
   });
 
-
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,19 +23,45 @@ const Purchase = () => {
       ...formData,
       [name]: value,
     });
+    // Clear error for the specific field when the user starts typing
+    setErrors({
+      ...errors,
+      [name]: '',
+    });
+  };
+
+  const handleAddressSubmit = () => {
+    const { name, number, address, message } = formData;
+    const newErrors = {};
+
+    if (!name) newErrors.name = "Full Name is required.";
+    if (!number) newErrors.number = "Phone Number is required.";
+    if (!address) newErrors.address = "Address is required.";
+    if (!message) newErrors.message = "Delivery instructions are required.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setIsAddress(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-  };
+    const { cardNumber, expiryDate, cvv } = formData;
+    const newErrors = {};
 
-  const handleEnterCardDetails = () => {
-    setIsAddress(false);
-  };
+    if (!cardNumber) newErrors.cardNumber = "Card Number is required.";
+    if (!expiryDate) newErrors.expiryDate = "Expiration Date is required.";
+    if (!cvv) newErrors.cvv = "CVV is required.";
 
-  const handleBackToAddress = () => {
-    setIsAddress(true);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    navigate('/pay-now');
   };
 
   return (
@@ -50,7 +78,9 @@ const Purchase = () => {
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
             <div className="mb-3">
               <label htmlFor="number" className="block mb-2 font-medium">Phone number</label>
@@ -59,7 +89,9 @@ const Purchase = () => {
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
+              {errors.number && <p className="text-red-500 text-sm mt-1">{errors.number}</p>}
             </div>
             <div className="mb-3">
               <label htmlFor="address" className="block mb-2 font-medium">Address</label>
@@ -68,7 +100,9 @@ const Purchase = () => {
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
+              {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
             </div>
             <div className="mb-3">
               <label htmlFor="message" className="block mb-2 font-medium">Add delivery instructions (optional)</label>
@@ -77,9 +111,11 @@ const Purchase = () => {
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
+              {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
             </div>
-            <button type="button" onClick={() => setIsAddress(false)}
+            <button type="button" onClick={handleAddressSubmit}
               className="border border-gray-300 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full"
             >Enter Card Details</button>
           </fieldset>
@@ -93,35 +129,44 @@ const Purchase = () => {
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
+              {errors.cardNumber && <p className="text-red-500 text-sm mt-1">{errors.cardNumber}</p>}
             </div>
             <div className="mb-3">
               <label htmlFor="expiryDate" className="block mb-2 font-medium">Expiration Date</label>
-              <input type="date" name="expiryDate" id="expiryDate"
+              <input type="month" name="expiryDate" id="expiryDate"
                 value={formData.expiryDate}
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
+              {errors.expiryDate && <p className="text-red-500 text-sm mt-1">{errors.expiryDate}</p>}
             </div>
             <div className="mb-3">
-              <label htmlFor="cvv" className="block mb-2 font-medium">Security Code (CVV/CVC)</label>
-              <input type="number" name="cvv" id="cvv"
+            <label htmlFor="cvv" className="block mb-2 font-medium">Security Code (CVV/CVC)</label>
+            <input 
+                type="text"  // Use text to control length and pattern
+                name="cvv" 
+                id="cvv"
                 value={formData.cvv}
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                min="2" max="4"
-              />
+                pattern="\d{2,4}"  // Pattern allows between 2 and 4 digits
+                minLength={2}  // Minimum length of 2 characters
+                maxLength={4}  // Maximum length of 4 characters
+                required
+            />
+            {errors.cvv && <p className="text-red-500 text-sm mt-1">{errors.cvv}</p>}
             </div>
+
             <button type="button" onClick={() => setIsAddress(true)}
               className="border border-gray-300 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full"
             >Back to Address</button>
-            <Link to='/pay-now'>
             <button type="submit"
               className="border border-gray-300 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full">Pay Now</button>
-            </Link>
-
           </fieldset>
         )}
       </form>

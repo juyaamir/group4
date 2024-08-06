@@ -32,7 +32,7 @@ const Part2hero = () => {
 
   return (
     <div>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto my-20 px-4">
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:gap-24">
           <Card
             description="Visit our store for all your travel needs"
@@ -53,7 +53,7 @@ const Part2hero = () => {
             link="/sale"
           />
         </div>
-        <div className="bg-white p-6 rounded-lg mt-8">
+        {/* <div className="bg-white p-6 rounded-lg mt-8">
           <h2 className="font-OpenSans text-xl font-semibold italic tracking-widest text-[#54524f] text-center my-3">
             Subscribe to our Newsletter
           </h2>
@@ -73,7 +73,7 @@ const Part2hero = () => {
               Subscribe
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ import Sale from "./components/Sale.jsx";
 // import ProductDetail from "./components/ProductDetail.jsx";
 import ProductDetails from "./components/saleDetails.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-
+import ChatIcon from "./components/ChatIcon.jsx";
 import Paynow from "./pages/Paynow.jsx";
 import { createContext } from "react";
 import { element } from "prop-types";
@@ -204,6 +204,7 @@ function App() {
             theme="light"
           />
         </div>
+        <ChatIcon whatsappNumber="1234567890" contactUs="/contact-us" />
       </div>
       <Footer />
     </ThemeProvider>

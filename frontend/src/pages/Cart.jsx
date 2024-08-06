@@ -115,6 +115,7 @@ const Cart = ({
                     <td>
                       <Image width={50} src={item.image} />
                     </td>
+                    <td>{get.localStorage.getItem("size")}</td>
                     <td>
                       {/*  <button
                         onClick={() => {
@@ -142,7 +143,7 @@ const Cart = ({
 
           <div className="max-w-full text-end px-16 py-2">
             Total Price:
-            <strong>&nbsp;{productPrice}</strong>
+            <strong>&nbsp;{productPrice}&nbsp;€</strong>
           </div>
           <div className="max-w-full text-end px-16 py-2 ">
             <Link to="/purchase">

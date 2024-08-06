@@ -46,8 +46,26 @@ export const createSinglProduct = async (req, res) => {
       res.json(products);
       return;
     }
-    const { porductname, price, category, image } = req.body;
-    console.log(porductname, price, category, image);
+    const {
+      productname,
+      price,
+      category,
+      image,
+      brand,
+      rating,
+      size,
+      imageDescription,
+    } = req.body;
+    console.log(
+      productname,
+      price,
+      category,
+      image,
+      brand,
+      rating,
+      size,
+      imageDescription
+    );
 
     const product = new Product(req.body);
     const createdProduct = await product.save();
@@ -84,8 +102,17 @@ export const updateSingleProduct = async (req, res) => {
   /* console.log(req.body);
   console.log(req.params.id); */
 
-  const { porductname, price, category } = req.body;
-  console.log(porductname, price, category);
+  const { productname, price, category, image, brand, size, imageDescription } =
+    req.body;
+  console.log(
+    productname,
+    price,
+    category,
+    image,
+    brand,
+    size,
+    imageDescription
+  );
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body);
     if (!product) {

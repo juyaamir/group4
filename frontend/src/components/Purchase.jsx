@@ -135,7 +135,7 @@ const Purchase = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="expiryDate" className="block mb-2 font-medium">Expiration Date</label>
-              <input type="date" name="expiryDate" id="expiryDate"
+              <input type="month" name="expiryDate" id="expiryDate"
                 value={formData.expiryDate}
                 onChange={handleChange}
                 placeholder=""
@@ -145,16 +145,23 @@ const Purchase = () => {
               {errors.expiryDate && <p className="text-red-500 text-sm mt-1">{errors.expiryDate}</p>}
             </div>
             <div className="mb-3">
-              <label htmlFor="cvv" className="block mb-2 font-medium">Security Code (CVV/CVC)</label>
-              <input type="number" name="cvv" id="cvv"
+            <label htmlFor="cvv" className="block mb-2 font-medium">Security Code (CVV/CVC)</label>
+            <input 
+                type="text"  // Use text to control length and pattern
+                name="cvv" 
+                id="cvv"
                 value={formData.cvv}
                 onChange={handleChange}
                 placeholder=""
                 className="p-2 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                pattern="\d{2,4}"  // Pattern allows between 2 and 4 digits
+                minLength={2}  // Minimum length of 2 characters
+                maxLength={4}  // Maximum length of 4 characters
                 required
-              />
-              {errors.cvv && <p className="text-red-500 text-sm mt-1">{errors.cvv}</p>}
+            />
+            {errors.cvv && <p className="text-red-500 text-sm mt-1">{errors.cvv}</p>}
             </div>
+
             <button type="button" onClick={() => setIsAddress(true)}
               className="border border-gray-300 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 w-full"
             >Back to Address</button>

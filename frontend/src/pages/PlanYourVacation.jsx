@@ -27,8 +27,8 @@ const PlanYourVacation = ({ userlogged }) => {
   return (
     <>
       {userlogged ? (
-        <div className="">
-          <div className="">
+        <div >
+          <div >
             <LocationAPI
               setHide2={setHide2}
               setMessages={setMessages}

@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Spicy+Rice&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
   --background-color: #ffffff;
@@ -38,10 +40,6 @@ body {
   .height {
     height: 512px;
     overflow: auto;
-  }
-  .height2 {
-    height: 512px;
-
   }
   .width {
     width: 30%;
@@ -89,6 +87,17 @@ body {
 
 }
 
+.bungee-shade-regular {
+  font-family: "Bungee Shade", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.spicy-rice-regular {
+  font-family: "Spicy Rice", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 
 

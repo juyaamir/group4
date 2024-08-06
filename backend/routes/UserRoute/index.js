@@ -9,6 +9,8 @@ import {
   createOne,
   updateOne,
   deletOne,
+  getOrderHistory,
+
 } from "../../controllers/userControlers/index.js";
 
 import { isAuthenticated } from "../../Middleware/Users/index.js";
@@ -32,5 +34,6 @@ userRouter.post("/", createOne);
 userRouter.get("/:id", getOne);
 userRouter.put("/:id", updateOne);
 userRouter.delete("/:id", deletOne);
+userRouter.get("/:id/orders", getOrderHistory);
 
 export default userRouter;

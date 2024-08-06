@@ -95,9 +95,9 @@ const Stores = () => {
       </div>
 
       
-      <div className=' min-h-screen mb-10 mx-4 sm:mx-0 md:mx-10 lg:mx-60 flex flex-col' >
-        <div className='flex flex-wrap'>
-          <div className='w-full md:w-1/3 height p-2'>
+      <div className='mx-4 sm:mx-0 md:mx-10 lg:mx-40 flex flex-col mb-4' >
+        <div className='flex flex-wrap '>
+          <div className='w-full md:w-1/3 height p-2 '>
           <form>
             <div className='flex flex-wrap justify-center'>
                 <input
@@ -134,7 +134,7 @@ const Stores = () => {
             ))}
           </ul>
         </div>
-        <div className='w-full md:w-2/3 p-2 height2'>
+        <div className='w-full md:w-2/3 '>
           <div style={{ height: '500px' }}> 
             <MapContainer center={location} zoom={zoom} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
               <ChangeMapView coords={location} zoom={zoom} />

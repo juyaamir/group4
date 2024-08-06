@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import AddAdmin from "../components/AddAdmin";
 import WelcomeMessage from "../components/WelcomeMessage";
+import OrderHistory from "../components/OrderHistory";
+
 
 import Newimage from "../components/Newimage";
 
@@ -17,7 +18,7 @@ function Profile() {
     password: "",
   });
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/v1/usersaccounts/${id}`)
@@ -28,14 +29,14 @@ function Profile() {
           lastname: response.data.lastname,
           email: response.data.email,
           password: "",
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Error fetching user data");
       });
+    })
+    .catch((err) => {
+      console.error(err);
+      setError("Error fetching user data");
+    });
   }, [id]);
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -43,21 +44,21 @@ function Profile() {
       [name]: value,
     });
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:8000/api/v1/usersaccounts/${id}`, formData)
-      .then((response) => {
-        setUser(response.data);
-        setEditMode(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Error updating user data");
-      });
+    .put(`http://localhost:8000/api/v1/usersaccounts/${id}`, formData)
+    .then((response) => {
+      setUser(response.data);
+      setEditMode(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setError("Error updating user data");
+    });
   };
-
+  
   if (error) {
     return (
       <div className="w-50 vh-100 d-flex justify-content-center align-items-center">
@@ -72,6 +73,7 @@ function Profile() {
       </div>
     );
   }
+  
   return (
     <>
       {user && (
@@ -160,24 +162,14 @@ function Profile() {
                   />
                 </div>
                 <div className="m-4">
-                  <button type="submit" className="btn btn-primary w-20 mr-4">
-                    Save
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary w-20"
-                    onClick={() => setEditMode(false)}
-                  >
-                    Cancel
-                  </button>
+                <button type="submit" className="btn btn-primary bg-blue-500 w-20 mr-4">Save</button>
+                <button type="button" className="btn btn-secondary w-20" onClick={() => setEditMode(false)}>Cancel</button>
                 </div>
               </form>
             )}
           </div>
-          <div className="w-100 vh-100 d-flex justify-center items-center border border-1 rounded-md m-8">
-            <h2>Orders History</h2>
-          </div>
-          <AddAdmin />
+          <OrderHistory user={user}/>
+          
         </div>
       )}
     </>

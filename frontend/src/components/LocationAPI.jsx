@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import hero from '../assets/bg-form.jpg'
 
  import { fetchLocation } from "./utils/fetchLocation.jsx";
 
@@ -9,13 +10,11 @@ const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData,ac
   const [loading, setLoading] = useState(false);
   const [ready, setReady] = useState(false);
   const [show, setShow] = useState(false);
-  //const [activities, setActivities] = useState([]);
   const [hotel, setHotel] = useState(null);
   const [showForm, setShowForm] = useState(true);
+  const [showBG, setShowBG] = useState(true);
 
-/* console.log */
-  //console.log(activities);
-  //console.log(hotel);
+
 
   const [{ stream, message }, setState] = useState({
     stream: true,
@@ -53,6 +52,7 @@ const fetchLocationSuggestions = async (location) => {
   //form submit handler 
   const handleSubmit =  async(e) => {
     e.preventDefault();
+    setShowBG(false);
     setShowForm(false);
     setHide2(true);
     const newMessage = {
@@ -245,11 +245,12 @@ const fetchLocationSuggestions = async (location) => {
   if(loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  return (
-    <div >    
+  return (showBG &&
+    <div style={{backgroundImage: `url(${hero})`}} className="border  min-h-screen bg-cover bg-center bg-no-repeat">    
       {
         showForm && 
-        <form onSubmit={handleSubmit} disabled={loading} className="p-4 mx-auto my-20 border border-gray-200 rounded-lg w-80 ">
+        <form onSubmit={handleSubmit} disabled={loading}  
+        className="p-4 mx-auto my-20 border bg-white rounded-lg w-80 shadow-md">
         
         {
         !show && !ready ? (
@@ -400,7 +401,7 @@ const fetchLocationSuggestions = async (location) => {
               name="stream"
               onChange={handleChange}
               checked={stream}
-              className=""
+
             />
             </label>
           </div>

@@ -8,6 +8,7 @@ import Suggestion from "./Suggestion";
 
 
 
+
 export const Chat = ({ messages, hide2, formData, firstName, activities }) => {
   const imgRef = useRef();
   const downloadIMG = async () => {
@@ -82,3 +83,20 @@ export const Chat = ({ messages, hide2, formData, firstName, activities }) => {
     </div>
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

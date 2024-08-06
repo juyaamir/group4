@@ -13,7 +13,7 @@ export const Message = ({ message }) => {
   const mid = Math.floor(fullMessage.length / 2);
   const firstPart = fullMessage.slice(0, mid);
   const secondPart = fullMessage.slice(mid);
-  //console.log(firstPart, secondPart);
+
 
   return (
     <div className="flex flex-wrap">

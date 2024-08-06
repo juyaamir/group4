@@ -19,6 +19,7 @@ import Contact from "./pages/Contact.jsx";
 import Profile from "./pages/Profile.jsx";
 import Cart from "./pages/Cart.jsx";
 import Stores from "./components/Stores.jsx";
+import Purchase from "./components/Purchase.jsx";
 
 import PlanYourVacation from "./pages/PlanYourVacation.jsx";
 import Header from "./components/Header.jsx";
@@ -79,6 +80,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home setUser={setUser} />} />
             <Route path="/about" element={<About />} />
+            <Route path="/purchase" element={<Purchase />} />
 
             <Route
               path="/product"

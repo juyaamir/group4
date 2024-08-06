@@ -145,8 +145,8 @@ const Cart = ({
             <strong>&nbsp;{productPrice}</strong>
           </div>
           <div className="max-w-full text-end px-16 py-2 ">
-            <Link to="/pay-now">
-              <button className="btn btn-outline btn-success">Pay Now</button>
+            <Link to="/purchase">
+              <button className="btn btn-outline btn-success">Proceed to checkout</button>
             </Link>
           </div>
         </div>

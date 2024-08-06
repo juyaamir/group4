@@ -88,7 +88,7 @@ const Suggestion = ({ activities }) => {
           ))
         )}
       </div>
-      {showBounce && <Bounce />} {/* Conditionally render Bounce */}
+      {showBounce && <Bounce />} 
     </div>
   );
 };

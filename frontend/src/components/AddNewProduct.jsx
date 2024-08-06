@@ -17,11 +17,15 @@ const AddNewProduct = () => {
     price: "",
     category: "",
     image: "",
+    brand: "",
+    size: "",
+    imageDescription: "",
   });
 
   // console.log(imgurl);
 
-  const { productname, price, category, image } = formData;
+  const { productname, price, category, image, brand, size, imageDescription } =
+    formData;
 
   const handleChange = (e) => {
     setFormData({
@@ -195,6 +199,29 @@ const AddNewProduct = () => {
             <option value="Camping Gear">Camping Gear</option>
             <option value="Accessories">Accessories</option>
           </select>
+        </div>
+        <div className="px-4 my-2">
+          <input
+            className="input input-bordered input-md w-full max-w-xs"
+            type="text"
+            name="brand"
+            id="brand"
+            placeholder="Brand"
+            onChange={handleChange}
+            value={brand}
+          />
+        </div>
+
+        <div className="px-4 my-2">
+          <input
+            className="input input-bordered input-md w-full max-w-xs"
+            type="textarea"
+            name="imageDescription"
+            id="imageDescription"
+            placeholder="Image Description"
+            onChange={handleChange}
+            value={imageDescription}
+          />
         </div>
         <div className="px-4">
           <input

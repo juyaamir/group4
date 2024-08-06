@@ -19,6 +19,23 @@ const productsSchema = mongoose.Schema(
       type: String,
       required: false,
     },
+    brand: {
+      type: String,
+      required: false,
+    },
+    rating: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    size: {
+      type: String,
+      required: false,
+    },
+    imageDescription: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,

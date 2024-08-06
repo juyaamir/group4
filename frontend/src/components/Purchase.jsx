@@ -110,7 +110,7 @@ const [phoneValue, setPhoneValue] = useState('');
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4">Purchase Form</h1>
+      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
       <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
         {isAddress ? (
           <fieldset className="border p-2 rounded-lg">

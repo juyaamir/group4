@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table } from "antd";
 
 const Paynow = ({ productPrice, productArray, setProductCount }) => {
@@ -11,15 +11,14 @@ const Paynow = ({ productPrice, productArray, setProductCount }) => {
     price: productPrice,
     productId: productArray,
   });
+  const navigate = useNavigate();
 
-  // console.log(productArray);
   useEffect(() => {
     axios
       .post("http://localhost:8000/api/v1/order", payload)
       .then((response) => {
         console.log("Response:", response.data);
       })
-
       .catch((error) => {
         console.error("Error:", error);
       });
@@ -36,11 +35,23 @@ const Paynow = ({ productPrice, productArray, setProductCount }) => {
         setError("Error fetching user data");
       });
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/product");
+    }, 5000);
+
+    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+  }, [navigate]);
+
   return (
-    <div className="bg-base-100 text-center border border-2 m-24">
-      <h2 className="text-blue">
-        Congratulation ! You Ordered Successfully ..
+    <div className="bg-green-600 text-center border-2 w-1/2 mx-auto text-white p-6 rounded-lg">
+      <h2 className="text-2xl font-bold mb-4">
+        Congratulations! Your order has been received successfully.
       </h2>
+      <p className="text-lg">
+        You will receive an email confirmation shortly with the details of your order.
+      </p>
       <h3>Your Order History</h3>
       {orderhistory.map((item) => item.price)}
     </div>

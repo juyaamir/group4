@@ -1,3 +1,4 @@
+
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -7,7 +8,6 @@ import { Link } from "react-router-dom";
 import { Image } from "antd";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Watermark } from "antd";
-
 const FavProduct = ({
   favArray,
   setFavArray,
@@ -22,20 +22,17 @@ const FavProduct = ({
   const [favproduct, setFavproduct] = useState(null);
   /* console.log(productId);
   const [itemid, setItemid] = useState(null); */
-
   const deleteProduct = (id) => {
     var index = favArray.indexOf(id);
     favArray.splice(index, 1);
     // favArray.remove(id);
     setFavArray([...favArray]);
   };
-
   /*  const handleclickAmazon = (productindex) => {
     pid = productId[productindex];
     setItemid(pid);
     console.log(pid);
   }; */
-
   const deleteAmazonProduct = (id) => {
     /*  var index = favAmazonProduct.indexOf(id); */
     let index = id;
@@ -44,7 +41,6 @@ const FavProduct = ({
     setFavAmazonProduct([...favAmazonProduct]);
     // setFavAmazonProduct([...favAmazonProduct]);
   };
-
   const handleClick = (productId, price) => (event) => {
     /*  console.log(productId); */
     setProductArray((current) => [...current, productId]);
@@ -54,21 +50,17 @@ const FavProduct = ({
     /*  setProductPrice((cur) => [...cur, price]);
     console.log(setProductPrice); */
   };
-
   useEffect(() => {
     axios
       .post(`http://localhost:8000/api/v1/product`, { favArray })
       // .then((response) => setUser(response.data))
       .then((response) => setFavproduct(response.data))
-
       .catch((err) => {
         console.error(err);
       });
   }, [favArray]);
-
-  useEffect(() => {}, [favAmazonProduct]);
-  console.log(favAmazonProduct.map((item) => item.productid));
-
+  /*   useEffect(() => {}, [favAmazonProduct]);
+  console.log(favAmazonProduct.map((item) => item.productid)); */
   return (
     <>
       <Watermark content={["Journey Pack", "Happy Traveling"]}>
@@ -133,7 +125,6 @@ const FavProduct = ({
                     <div key={index} className="  text-center">
                       <figure className="px-8 relative max-w-full ">
                         <Image width={200} src={item.productimage} alt="" />
-
                         <div className="absolute top-0 right-16 m-2">
                           <div style={{ width: "0.5rem" }}>
                             <Button
@@ -180,5 +171,4 @@ const FavProduct = ({
     </>
   );
 };
-
 export default FavProduct;

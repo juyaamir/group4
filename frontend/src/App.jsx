@@ -20,7 +20,7 @@ import Profile from "./pages/Profile.jsx";
 import Cart from "./pages/Cart.jsx";
 import Stores from "./components/Stores.jsx";
 import Purchase from "./components/Purchase.jsx";
-
+/* chat */
 import PlanYourVacation from "./pages/PlanYourVacation.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";

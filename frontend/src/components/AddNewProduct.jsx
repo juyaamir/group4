@@ -225,7 +225,7 @@ const AddNewProduct = () => {
         </div>
         <div className="px-4">
           <input
-            className="border border-solid rounded-md text-white bg-black p-2 my-6 justify-end"
+            className=" hover:cursor-pointer border border-solid rounded-md text-white bg-black p-2 my-6 justify-end"
             type="submit"
             value="Submit"
           />

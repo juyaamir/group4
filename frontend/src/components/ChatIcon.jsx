@@ -8,11 +8,11 @@ const ChatIcon = ({ whatsappNumber, contactUs }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
+        {/* <img
           src="https://img.icons8.com/?size=100&id=d5ntEsf0JRhM&format=png&color=000000"
           alt="WhatsApp"
           className="w-8 h-8"
-        />
+        /> */}
       </a>
       <a href={contactUs}>
         <img

@@ -9,6 +9,7 @@ import markerIcon from '../assets/map-marker-icon-.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png'; 
 
 import HotelCard from './HotelCard';
+/* console.log */
 
 const customIcon = L.icon({
   iconUrl: markerIcon,
@@ -42,7 +43,7 @@ const Stores = () => {
     try {
       const response = await axios.get(`http://localhost:8000/api/v1/location?destination=${query}`);
       setSuggestions(response.data);
-      console.log(response.data);
+      
     } catch (error) {
       console.log(error);
     }

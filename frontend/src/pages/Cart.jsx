@@ -121,7 +121,8 @@ const Cart = ({
           </div>
           <div className="max-w-full text-end px-16 py-2 ">
             <Link to="/purchase">
-              <button className="btn btn-outline btn-success">Proceed to checkout</button>
+              <button className="border border-gray-300 bg-green-600 hover:bg-green-800 rounded-lg mx-auto block text-white p-2 my-2 px-4">Proceed to checkout</button>
+              
             </Link>
           </div>
         </div>

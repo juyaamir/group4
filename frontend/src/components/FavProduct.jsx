@@ -18,7 +18,7 @@ const FavProduct = ({
 }) => {
   const [favproduct, setFavproduct] = useState(null);
 
-  console.log(favAmazonProduct);
+ /*  console.log(favAmazonProduct); */
   /* console.log(productId);
   const [itemid, setItemid] = useState(null); */
   const deleteProduct = (id) => {
@@ -45,7 +45,7 @@ const FavProduct = ({
     setProductArray((current) => [...current, productId]);
     let length = productArray.length + 1;
     setProductCount(length);
-    console.log(length);
+   /*  console.log(length); */
     /*  setProductPrice((cur) => [...cur, price]);
     console.log(setProductPrice); */
   };
@@ -140,26 +140,14 @@ const FavProduct = ({
                             </Button>
                           </div>
                         </div>
-                        {/*  <div className="absolute bottom-0 right-0 m-2">
-                          <button
-                            className=" text-xl text-blue-300 mr-0 mb-0"
-                            onClick={handleClick(item._id, item.price)}
-                          >
-                            <MdAddShoppingCart />
-                          </button>
-                        </div> */}
-                        {/* <button className="text-white bg-cyan-400 w-full h-10 hover:bg-slate-950">
-                          More Info
-                        </button> */}
+
                       </figure>
                       <button className="text-white bg-cyan-400 w-full h-10 hover:bg-slate-950">
                         <Link to={`/sale/${item.productid}`}>More Info</Link>
                       </button>
                       <h2 className=" text-sm">{item.productname}</h2>
                       <p>
-                        {/*    <div className="text-md">
-                          Ratings :&nbsp; {item.ratings}&nbsp;€
-                        </div> */}
+
                       </p>
                     </div>
                   </div>

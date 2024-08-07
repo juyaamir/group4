@@ -1,20 +1,13 @@
-import React from "react";
+import  { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-//import AddNewProduct from "./AddNewProduct";
-import { DeleteOutlined } from "@ant-design/icons";
-import logo from "../assets/logo.png";
-import { EditOutlined } from "@ant-design/icons";
-import UpdateProduct from "./UpdataProduct";
-import Heart from "react-heart";
-import { Card } from "antd";
-import { HeartOutlined } from "@ant-design/icons";
-import { Image } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Image, Button, notification } from "antd";
 import { MdAddShoppingCart } from "react-icons/md";
-import { CiHeart } from "react-icons/ci";
-import { Button, Divider, notification, Space } from "antd";
-import { BorderBottomOutlined, BorderTopOutlined } from "@ant-design/icons";
+import Heart from "react-heart";
+import logo from "../assets/logo.png";
+import UpdateProduct from "./UpdataProduct";
+
 const ProductCard = ({
   category,
   productCount,
@@ -26,48 +19,31 @@ const ProductCard = ({
   setFavArray,
 }) => {
   const [api, contextHolder] = notification.useNotification();
+  const [productItem, setProductItem] = useState([]);
+  const [activeStates, setActiveStates] = useState({});
+
+  const isUserAdmin = localStorage.getItem("isAdmin");
+
   const openNotification = (placement) => {
     api.info({
-      message: ``,
+      message: "",
       description: "Item added successfully.",
       placement,
     });
   };
-  const [productItem, setProductItem] = useState([]);
-  const [activeStates, setActiveStates] = useState({});
-  /*   let length = productArray.length; */
-  //const [productArray, setProductArray] = useState([]);
-  //console.log(c["category"]);
-  //console.log(productARR);
-  /*  let category = c["category"]; */
-  let isUserAdmin = localStorage.getItem("isAdmin");
-  // console.log(isUserAdmin);
-  /*  const newdata = {
-    productname: productname,
-    price: price,
-    category: category,
-    
-  }; */
-  /*  let isUserAdmin = "true"; */
+
   const toggleHeart = (productId) => {
-    console.log(productId);
     setActiveStates((prevState) => ({
       ...prevState,
       [productId]: !prevState[productId],
     }));
     setFavArray((current) => [...current, productId]);
   };
-  /*  const addfav = (productid) => {
-    setFavArray((current) => [...current, productid]);
-    openNotification("top");
-    // console.log(setFavArray);
-    setActive(!active);
-    //console.log(active);S
-  }; */
-  const handleClick = (productId, price) => (event) => {
-    /*  console.log(productId); */
+
+  const handleClick = useCallback((productId, price) => (event) => {
     setProductArray((current) => [...current, productId]);
     openNotification("top");
+<<<<<<< HEAD
     let length = productArray.length + 1;
     setProductCount(length);
     // console.log(length);
@@ -75,14 +51,15 @@ const ProductCard = ({
     console.log(setProductPrice); */
   };
   ///DELETE Product//
+=======
+    setProductCount((prevCount) => prevCount + 1);
+  }, [setProductArray, setProductCount]);
+
+>>>>>>> 35ba4d32cad12cbbc770614677ed2b7f1df0500e
   const handleClick2 = (item) => {
     axios.delete(`http://localhost:8000/api/v1/product/${item}`);
   };
-  ///EDIT Product//
-  /*  const handleClick3 = (item) => {
-    axios.put(`http://localhost:8000/api/v1/product/${item}`);
-  }; */
-  //get items//7
+
   useEffect(() => {
     const fetchProductData = async () => {
       try {
@@ -94,42 +71,21 @@ const ProductCard = ({
         console.error(`Error in fetching Product data: ${error}`);
       }
     };
+
     fetchProductData();
   }, [category, handleClick2]);
-  /*   const getitems = () => {
-    axios
-      .get(`http://localhost:8000/api/v1/product?category=${category}`)
-      .then((response) => {
-        setProductItem(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  useEffect(() => {
-  feature/contact-page
-    // getitems();
-    console.log("I am a useeffect");
-  }, [handleClick2]);
-    getitems();
-  }, [handleClick2]); */
-  // console.log(productItem.map((item) => item.image));
-  /*   console.log(productItem.map((item) => item._id));
-  console.log(productItem.map((item) => item.productname));
-  console.log(productItem.map((item) => item.price));
-  console.log(productItem.map((item) => item.category));
-  const itemcategory = productItem.map((item) => item.category); */
+
   return (
     <>
       {contextHolder}
-      <div className="flex flex-row flex-wrap gap-2 rounded-md ">
+      <div className="flex flex-row flex-wrap gap-2 rounded-md">
         {productItem?.map((item) => (
           <div
             key={item._id}
             className="card bg-base-200 w-60 shadow-xl rounded-md"
           >
-            <div className="card-body  text-center">
-              <figure className="relative max-w-full ">
+            <div className="card-body text-center">
+              <figure className="relative max-w-full">
                 <Link to={`/image-description/${item._id}`}>
                   <Image
                     width={200}
@@ -149,21 +105,7 @@ const ProductCard = ({
                       inactiveColor="black"
                       animationDuration={0.9}
                     />
-                    {/*  <Space>
-                         <Button
-                        className="absolute top-0 right-0"
-                        type="dashed"
-                        icon={<HeartOutlined />}
-                        onClick={() => addfav(item._id)}
-                      ></Button> 
-                    </Space> */}
                   </div>
-                  {/*     <button
-                  className="text-2xl text-black-300"
-                  onClick={() => addfav(item.productname)}
-                >
-                  <CiHeart />
-                </button> */}
                 </div>
                 <img
                   src={logo}
@@ -184,7 +126,7 @@ const ProductCard = ({
             </div>
             <div>
               {isUserAdmin === "true" ? (
-                <div className="flex justify-between border-2 ">
+                <div className="flex justify-between border-2">
                   <div className="collapse max-w-full">
                     <input type="checkbox" />
                     <div className="collapse-title text-md font-small">
@@ -213,4 +155,9 @@ const ProductCard = ({
     </>
   );
 };
+<<<<<<< HEAD
 export default ProductCard;
+=======
+
+export default ProductCard;
+>>>>>>> 35ba4d32cad12cbbc770614677ed2b7f1df0500e

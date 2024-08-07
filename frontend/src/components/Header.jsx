@@ -69,7 +69,7 @@ const Header = ({ islogged, productCount }) => {
         <ThemeToggle />
       </div>
       <div className="navbar bg-base-100 m-w-full">
-        <div className="dropdown md:hidden lg:hidden ">
+        <div className="dropdown lg:hidden ">
           {/* JourneyPack */}
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg

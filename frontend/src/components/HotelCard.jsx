@@ -21,7 +21,7 @@ const HotelCard = () => {
         const getEntries = async () => {
             const entries = await fetchProducts("hotel");
             setData(entries?.items);
-            console.log(entries?.items);
+            /* console.log(entries?.items); */
         };
         getEntries();
     }, []);

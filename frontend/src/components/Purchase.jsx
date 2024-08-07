@@ -12,7 +12,7 @@ const Purchase = () => {
     const [countryValue, setCountryValue] = useState('');
 const [phoneValue, setPhoneValue] = useState('');
 
-    const [value, setValue] = useState();
+   // const [value, setValue] = useState();
   const [isAddress, setIsAddress] = useState(true);
   const [formData, setFormData] = useState({
     country: '',
@@ -50,7 +50,7 @@ const [phoneValue, setPhoneValue] = useState('');
     setCountryValue(value);
     setFormData({
       ...formData,
-      country: value.label,  // update country in formData
+      country: value.label,  // update country in formData settimeout
     });
     setErrors({
       ...errors,

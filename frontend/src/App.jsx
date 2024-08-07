@@ -193,7 +193,13 @@ function App() {
               path="/plan-your-vacation"
               element={
                 <ProtectedRoute
-                  element={<PlanYourVacation userlogged={islogged} />}
+                  element={
+                    <PlanYourVacation
+                      favAmazonProduct={favAmazonProduct}
+                      setFavAmazonProduct={setFavAmazonProduct}
+                      userlogged={islogged}
+                    />
+                  }
                 />
               }
             />

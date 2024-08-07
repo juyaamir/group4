@@ -12,7 +12,11 @@ const initialFormData = {
   end: "",
 };
 
-const PlanYourVacation = ({ userlogged }) => {
+const PlanYourVacation = ({
+  favAmazonProduct,
+  setFavAmazonProduct,
+  userlogged,
+}) => {
   const navigate = useNavigate();
   const [hide2, setHide2] = useState(false);
   const [messages, setMessages] = useState([
@@ -27,8 +31,8 @@ const PlanYourVacation = ({ userlogged }) => {
   return (
     <>
       {userlogged ? (
-        <div >
-          <div >
+        <div>
+          <div>
             <LocationAPI
               setHide2={setHide2}
               setMessages={setMessages}
@@ -39,10 +43,12 @@ const PlanYourVacation = ({ userlogged }) => {
               setActivities={setActivities}
             />
             <Chat
+              favAmazonProduct={favAmazonProduct}
+              setFavAmazonProduct={setFavAmazonProduct}
               hide2={hide2}
               messages={messages}
               formData={formData}
-              activities= {activities}
+              activities={activities}
               firstName={localStorage.getItem("userName")}
             />
           </div>

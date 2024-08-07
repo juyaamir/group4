@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { client } from "./client";
-import Heart from 'react-heart';
-import logo from '../assets/logo.png';
+import Heart from "react-heart";
+import logo from "../assets/logo.png";
 import Bounce from "./Bounce";
 
-const Suggestion = ({ activities }) => {
+const Suggestion = ({ favAmazonProduct, setFavAmazonProduct, activities }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [selectBrand, setSelectBrand] = useState('all');
+  const [selectBrand, setSelectBrand] = useState("all");
   const [counter, setCounter] = useState(0);
   const [activeStates, setActiveStates] = useState({});
   const [showBounce, setShowBounce] = useState(false); // State to control Bounce visibility
@@ -38,24 +38,54 @@ const Suggestion = ({ activities }) => {
     };
     setTimeout(() => {
       getEntries();
-      setShowBounce(true); 
+      setShowBounce(true);
     }, 4000);
   }, []);
 
-  const toggleHeart = (id) => {
+  const toggleHeart = (id, imgurl, pname, rating) => {
+    //Add product id to the favArray
+    //setProductId((current) => [...current, id]);
+    setFavAmazonProduct([
+      ...favAmazonProduct,
+      {
+        productid: id,
+        productimage: imgurl,
+        productname: pname,
+        productrating: rating,
+      },
+    ]);
+    /*  setFavAmazonProduct((current) => [
+      {
+        ...current,
+        ...{
+          productid: id,
+          productimage: imgurl,
+          productname: pname,
+          productrating: rating,
+        },
+      },
+    ]); */
+    /* (books) => [...books, ...x]; */
+    /*   console.log(id); */
+    //console.log(setFavArray);
     setActiveStates((prevState) => ({
       ...prevState,
       [id]: !prevState[id],
     }));
   };
 
-  const filteredData = activities.length === 0 ? data : data.filter((e) => activities.includes(e.fields.brand));
+  const filteredData =
+    activities.length === 0
+      ? data
+      : data.filter((e) => activities.includes(e.fields.brand));
 
   return (
     <div>
       <div className="text-white bg-cyan-700 p-3 mb-3 text-center">
         <p className="text-xl font-bold">Our Suggestion for you</p>
-        <p className="text-sm">Check out our latest products and enjoy your shopping</p>
+        <p className="text-sm">
+          Check out our latest products and enjoy your shopping
+        </p>
       </div>
 
       <div className="flex gap-2 gap-y-6 flex-wrap mx-2 justify-around">
@@ -63,10 +93,21 @@ const Suggestion = ({ activities }) => {
           <div>Error: {error.message}</div>
         ) : (
           filteredData.map((e) => (
-            <div key={e?.sys.id} className="card bg-base-100 w-40 hover:cursor-pointer hover:shadow-2xl sub-container relative">
+            <div
+              key={e?.sys.id}
+              className="card bg-base-100 w-40 hover:cursor-pointer hover:shadow-2xl sub-container relative"
+            >
               <figure className="pb-0 relative">
-                <img src={e?.fields.image.fields.file.url} alt="mobile" className="h-52 w-full" />
-                <img src={logo} alt="logo" className="h-10 absolute w-10 rounded-full bottom2" />
+                <img
+                  src={e?.fields.image.fields.file.url}
+                  alt="mobile"
+                  className="h-52 w-full"
+                />
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="h-10 absolute w-10 rounded-full bottom2"
+                />
               </figure>
               <button className="text-white bg-cyan-400 w-full h-10 hover:bg-slate-950">
                 <Link to={`/sale/${e?.sys.id}`}>More Info</Link>
@@ -75,20 +116,29 @@ const Suggestion = ({ activities }) => {
                 <div style={{ width: "1.5rem" }} className="absolute right-1">
                   <Heart
                     isActive={activeStates[e?.sys.id] || false}
-                    onClick={() => toggleHeart(e?.sys.id)}
+                    onClick={() =>
+                      toggleHeart(
+                        e?.sys.id,
+                        e?.fields.image.fields.file.url,
+                        e?.fields.mobileName,
+                        e.fields.rating
+                      )
+                    }
                     animationScale={1.2}
                     activeColor="red"
                     inactiveColor="black"
                     animationDuration={0.9}
                   />
                 </div>
-                <p className="text-blue-700 text-center text-sm mt-5">{e?.fields.mobileName}</p>
+                <p className="text-blue-700 text-center text-sm mt-5">
+                  {e?.fields.mobileName}
+                </p>
               </div>
             </div>
           ))
         )}
       </div>
-      {showBounce && <Bounce />} 
+      {showBounce && <Bounce />}
     </div>
   );
 };

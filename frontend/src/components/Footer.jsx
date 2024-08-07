@@ -84,7 +84,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="link link-hover hover:text-blue-600"
             >
-              <i className="fa-brands fa-youtube hover:text-blue-600 text-2xl"></i>
+              <i className="fa-brands fa-square-youtube hover:text-blue-600"></i>
             </a>
           </div>
         </nav>

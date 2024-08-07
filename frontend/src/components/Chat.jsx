@@ -6,10 +6,15 @@ import Footer from "./utils/listFooter";
 import Header from "./utils/listHeader";
 import Suggestion from "./Suggestion";
 
-
-
-
-export const Chat = ({ messages, hide2, formData, firstName, activities }) => {
+export const Chat = ({
+  favAmazonProduct,
+  setFavAmazonProduct,
+  messages,
+  hide2,
+  formData,
+  firstName,
+  activities,
+}) => {
   const imgRef = useRef();
   const downloadIMG = async () => {
     const list = imgRef.current;
@@ -74,29 +79,15 @@ export const Chat = ({ messages, hide2, formData, firstName, activities }) => {
             </div>
           </div>
 
-
           <div className="border border-gray-300 rounded-lg  mb-10 mr-10 p-2 suggestion-width">
-          <Suggestion activities= {activities} />
+            <Suggestion
+              favAmazonProduct={favAmazonProduct}
+              setFavAmazonProduct={setFavAmazonProduct}
+              activities={activities}
+            />
           </div>
         </div>
       )}
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

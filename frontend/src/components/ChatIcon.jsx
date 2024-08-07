@@ -16,7 +16,7 @@ const ChatIcon = ({ whatsappNumber, contactUs }) => {
       </a>
       <a href={contactUs}>
         <img
-          src="https://img.icons8.com/?size=100&id=TYHpM3wZqwx1&format=png&color=000000"
+          src="https://img.icons8.com/?size=100&id=CLuWGSvnuOz9&format=png&color=000000"
           alt="Contact Us"
           className="w-8 h-8"
         />

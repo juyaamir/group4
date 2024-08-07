@@ -73,7 +73,7 @@ function App() {
         productArray={productArray}
         productPrice={productPrice}
       />
-{/* sale */}
+      {/* sale */}
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow">
           {islogged && user && <WelcomeMessage firstName={user.firstname} />}
@@ -130,7 +130,15 @@ function App() {
             />
             {/* <Route path="/:id/orders" element={<OrderHistory />} /> */}
 
-            <Route path="/sale/:productId" element={<ProductDetails />} />
+            <Route
+              path="/sale/:productId"
+              element={
+                <ProductDetails
+                  favAmazonProduct={favAmazonProduct}
+                  setFavAmazonProduct={setFavAmazonProduct}
+                />
+              }
+            />
 
             <Route
               path="/cart"

@@ -16,17 +16,19 @@ import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme";
 
 const Header = ({ islogged, productCount }) => {
+  let userid = localStorage.getItem("userId");
+  console.log(userid);
   const [headimg, setHeadimg] = useState([]);
   // let userlogged = islogged["islogged"];
   /*  console.log(favArray + "header"); */
-  let getuserId = localStorage.getItem("userId");
+
   const productPrice = useContext(priceContext);
   /*  console.log(getuserId); */
   useEffect(() => {
     const fetchuserimage = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/user-image/${getuserId}`
+          `http://localhost:8000/api/v1/user-image/${userid}`
         );
         setHeadimg(response.data);
       } catch (error) {
@@ -36,10 +38,8 @@ const Header = ({ islogged, productCount }) => {
 
     fetchuserimage();
   }, []);
-  /*   console.log(headimg[headimg.length - 1]); */
+  const lastuserimg = headimg && headimg[headimg.length - 1];
 
-  const latestimghead = headimg && headimg[headimg.length - 1];
-  //console.log(latestimghead);
   return (
     <>
       <div className="flex flex-wrap justify-around navbar bg-neutral text-neutral-content">
@@ -233,8 +233,8 @@ const Header = ({ islogged, productCount }) => {
                     style={{ backgroundColor: "#87d068" }}
                     icon={<UserOutlined />}
                   /> */}
-                  {latestimghead ? (
-                    <img src={latestimghead.image} height="100" width="100" />
+                  {lastuserimg ? (
+                    <img src={lastuserimg.image} height="100" width="100" />
                   ) : (
                     <div className="">
                       <Avatar icon={<UserOutlined />} />
@@ -248,7 +248,7 @@ const Header = ({ islogged, productCount }) => {
               >
                 <li>
                   <button className="btn btn-sm glass">
-                    <Link to={`/profile/${getuserId}`}>Profile</Link>
+                    <Link to={`/profile/${userid}`}>Profile</Link>
                   </button>
                 </li>
 

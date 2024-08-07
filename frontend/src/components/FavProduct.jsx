@@ -15,10 +15,10 @@ const FavProduct = ({
   setProductCount,
   favAmazonProduct,
   setFavAmazonProduct,
-  productId,
-  setProductId,
 }) => {
   const [favproduct, setFavproduct] = useState(null);
+
+  console.log(favAmazonProduct);
   /* console.log(productId);
   const [itemid, setItemid] = useState(null); */
   const deleteProduct = (id) => {

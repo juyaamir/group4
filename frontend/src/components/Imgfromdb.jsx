@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Imgfromdb = () => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [imgId, setImgId] = useState(null);
   const id = localStorage.getItem("userId");
 
@@ -12,7 +13,7 @@ const Imgfromdb = () => {
     const fetchuserimage = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/user-image/${id}`
+          `${URL}/api/v1/user-image/${id}`
         );
         setImgId(response.data);
       } catch (error) {

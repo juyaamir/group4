@@ -17,6 +17,7 @@ const Cart = ({
   productCount,
   setProductCount,
 }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [error, setError] = useState(null);
   const [productDesc, setProductDesc] = useState([]);
   const [productduplicate, setProductduplicate] = useState([]);
@@ -41,7 +42,7 @@ const Cart = ({
 
   useEffect(() => {
     axios
-      .post(`http://localhost:8000/api/v1/product`, { productArray })
+      .post(`${URL}/api/v1/product`, { productArray })
       .then((response) => setProductDesc(response.data))
       .catch((err) => {
         console.error(err);

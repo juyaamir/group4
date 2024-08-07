@@ -18,6 +18,7 @@ const ProductCard = ({
   setProductPrice,
   setFavArray,
 }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [api, contextHolder] = notification.useNotification();
   const [productItem, setProductItem] = useState([]);
   const [activeStates, setActiveStates] = useState({});
@@ -47,14 +48,14 @@ const ProductCard = ({
   }, [setProductArray, setProductCount]);
 
   const handleClick2 = (item) => {
-    axios.delete(`http://localhost:8000/api/v1/product/${item}`);
+    axios.delete(`${URL}/api/v1/product/${item}`);
   };
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/product?category=${category}`
+          `${URL}/api/v1/product?category=${category}`
         );
         setProductItem(response.data);
       } catch (error) {

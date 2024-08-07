@@ -22,6 +22,7 @@ const customIcon = L.icon({
 });
 
 const Stores = () => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [store, setStore] = useState(``);
   const [suggestions, setSuggestions] = useState([]);
   const [location, setLocation] = useState([52.451129, 13.542489]); 
@@ -41,7 +42,7 @@ const Stores = () => {
 
   const fetchLocationSuggestions = async (query) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/location?destination=${query}`);
+      const response = await axios.get(`${URL}/api/v1/location?destination=${query}`);
       setSuggestions(response.data);
       
     } catch (error) {
@@ -51,7 +52,7 @@ const Stores = () => {
 
   const fetchLocationCoordinates = async (query) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/location?destination=${query}`);
+      const response = await axios.get(`${URL}/api/v1/location?destination=${query}`);
       if (response.data && response.data.length > 0) {
         const locationData = response.data[0];
         if (locationData.lat && locationData.lon) {

@@ -5,6 +5,7 @@ import hero from '../assets/bg-form.jpg'
  import { fetchLocation } from "./utils/fetchLocation.jsx";
 
 const LocationAPI = ({ setMessages, messages, setHide2, formData, setFormData,activities, setActivities}) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [error, setError] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -64,7 +65,7 @@ const fetchLocationSuggestions = async (location) => {
     setMessages([...messages, newMessage]);
     // setMessages((prev) => [...prev, newMessage]);
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
+      const response = await axios.get(`${URL}/api/v1/weather?destination=${formData.location}&start=${formData.start}&end=${formData.end}`);
       const {data} = response;
       const weatherData = {
         timezone: data.timezone, 
@@ -147,7 +148,7 @@ const fetchLocationSuggestions = async (location) => {
 
       //posting the prompt to the AI and getting the response
       const aiResponse = await fetch(
-        'http://localhost:8000/api/v1/chat/completions',
+        `${URL}/api/v1/chat/completions`,
         {
           method: 'POST',
           headers: {

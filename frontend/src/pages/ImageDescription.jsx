@@ -16,6 +16,7 @@ const ImageDescription = ({
   productPrice,
   setProductPrice,
 }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const { id } = useParams();
   const [imgId, setImgId] = useState(null);
   const [error, setError] = useState(null);
@@ -28,7 +29,7 @@ const ImageDescription = ({
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/product/${id}`)
+      .get(`${URL}/api/v1/product/${id}`)
       .then((response) => setImgId(response.data))
       .catch((err) => {
         console.error(err);

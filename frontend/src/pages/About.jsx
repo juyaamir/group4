@@ -7,6 +7,7 @@ import shopping from "../assets/shopping.jpg";
 import kondol from "../assets/kondol-lake.jpg";
 import camera from "../assets/camera.jpg";
 import snowgirl from "../assets/snowgirl.jpg";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -99,7 +100,7 @@ const About = () => {
               <h2 className="card-title">4. Go For Shop</h2>
               <p>Browse and purchase recommended items directly from our website. Enjoy the convenience of having all your travel gear delivered to your doorstep.</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary"><a href="http://localhost:5173/product">Shop Now</a></button>
+                <button className="btn btn-primary"><Link to="/product">Shop Now</Link></button>
               </div>
             </div>
           </div>
@@ -139,7 +140,7 @@ const About = () => {
           <p>Don’t let packing stress you out. With JourneyPack, you can focus on the excitement of your journey while we take care of the details. Trust us to provide the best recommendations and products, so you're always prepared, no matter where your travels take you.</p><br />
           <p>Start your packing journey with JourneyPack today and enjoy a seamless travel experience from start to finish!</p><br />
           <p>Ready to Pack? Let's Get Started!</p>
-          Visit <a href="http://localhost:5173" className="text-yellow-600 font-bold italic">JourneyPack</a> and explore the ultimate way to prepare for your next adventure. Happy travels!</div>
+          Visit <Link to="/" className="text-yellow-600 font-bold italic">JourneyPack</Link> and explore the ultimate way to prepare for your next adventure. Happy travels!</div>
         </div>
   </div>
   );

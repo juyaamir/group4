@@ -5,6 +5,7 @@ import { Avatar } from "antd";
 /* const { Text } = Typography; */
 import { UserOutlined } from "@ant-design/icons";
 const Userinfo = () => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
   let id = localStorage.getItem("userId");
@@ -12,7 +13,7 @@ const Userinfo = () => {
   const [userimg, setuserimg] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/usersaccounts/${id}`)
+      .get(`${URL}/api/v1/usersaccounts/${id}`)
       .then((response) => setUser(response.data))
       .catch((err) => {
         console.error(err);
@@ -24,7 +25,7 @@ const Userinfo = () => {
     const fetchuserimage = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/user-image/${id}`
+          `${URL}/api/v1/user-image/${id}`
         );
         setuserimg(response.data);
       } catch (error) {

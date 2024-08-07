@@ -16,6 +16,7 @@ import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme";
 
 const Header = ({ islogged, productCount }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   let userid = localStorage.getItem("userId");
 
   const [headimg, setHeadimg] = useState([]);
@@ -28,7 +29,7 @@ const Header = ({ islogged, productCount }) => {
     const fetchuserimage = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/user-image/${userid}`
+          `${URL}/api/v1/user-image/${userid}`
         );
         setHeadimg(response.data);
       } catch (error) {

@@ -8,8 +8,8 @@ import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 import Imgfromdb from "./Imgfromdb.jsx";
 import { Button, Divider, notification, Space } from "antd";
-
 const Newimage = () => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [file, setFile] = useState("");
   const [imgurl, setImgurl] = useState("");
   const inputRef = useRef(null);
@@ -22,19 +22,14 @@ const Newimage = () => {
       placement,
     });
   };
-
   let id = localStorage.getItem("userId");
   console.log(imgId);
-
   const [formData, setFormData] = useState({
     userid: id,
     image: "",
   });
-
   //console.log(imgurl);
-
   const { userid, image } = formData;
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -42,13 +37,11 @@ const Newimage = () => {
     });
     console.log(formData);
   };
-
   ///Create Product//
   const handleSubmit = (e) => {
     // e.preventDefault();
-
     axios
-      .post("http://localhost:8000/api/v1/user-image", formData)
+      .post(`${URL}/api/v1/user-image`, formData)
       .then((response) => {
         console.log("Response:", response.data);
       })
@@ -56,20 +49,16 @@ const Newimage = () => {
         console.error("Error:", error);
       });
   };
-
   /*  console.log(file); */
   /*  const handleImageClick = () => {
     inputRef.current.click();
   }; */
-
   useEffect(() => {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
       //console.log(name);
       const storageRef = ref(storage, `userimages/file.${name}`);
-
       const uploadTask = uploadBytesResumable(storageRef, file);
-
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -105,23 +94,18 @@ const Newimage = () => {
     openNotification("top");
     file && uploadFile();
   }, [file]);
-
   //user image from db fetching"///
   useEffect(() => {
     const fetchuserimage = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8000/api/v1/user-image/${id}`
-        );
+        const response = await axios.get(`${URL}/api/v1/user-image/${id}`);
         setImgId(response.data);
       } catch (error) {
         console.error(`Error in fetching Product data: ${error}`);
       }
     };
-
     fetchuserimage();
   }, [id]);
-
   useEffect(() => {
     setFormData({ ...formData, image: imgurl });
   }, [imgurl]);
@@ -139,7 +123,6 @@ const Newimage = () => {
             </div>
           )}
         </div>
-
         {/* <div>
         {latestimg ? (
           <img src={latestimg.image} height="100" width="100" />
@@ -185,5 +168,4 @@ const Newimage = () => {
     </>
   );
 };
-
 export default Newimage;

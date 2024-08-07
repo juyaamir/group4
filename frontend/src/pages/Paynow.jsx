@@ -44,16 +44,40 @@ const Paynow = ({ productPrice, productArray, setProductCount }) => {
     return () => clearTimeout(timer); // Cleanup the timer on component unmount
   }, [navigate]);
 
+  const lastOrder = orderhistory && orderhistory[orderhistory.length - 1];
+
   return (
     <div className="bg-green-600 text-center border-2 w-1/2 mx-auto text-white p-6 rounded-lg">
       <h2 className="text-2xl font-bold mb-4">
         Congratulations! Your order has been received successfully.
       </h2>
       <p className="text-lg">
-        You will receive an email confirmation shortly with the details of your order.
+        You will receive an email confirmation shortly with the details of your
+        order.
       </p>
       <h3>Your Order History</h3>
-      {orderhistory.map((item) => item.price)}
+      {lastOrder && (
+        <Table
+          columns={[
+            {
+              title: "Order ID",
+              dataIndex: "_id",
+              key: "_id",
+            },
+            {
+              title: "Price",
+              dataIndex: "price",
+              key: "price",
+            },
+            {
+              title: "Product ID",
+              dataIndex: "productId",
+              key: "productId",
+            },
+          ]}
+          dataSource={[lastOrder]}
+        />
+      )}
     </div>
   );
 };

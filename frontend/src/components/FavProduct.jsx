@@ -16,6 +16,7 @@ const FavProduct = ({
   favAmazonProduct,
   setFavAmazonProduct,
 }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [favproduct, setFavproduct] = useState(null);
 
   /*  console.log(favAmazonProduct); */
@@ -51,7 +52,7 @@ const FavProduct = ({
   };
   useEffect(() => {
     axios
-      .post(`http://localhost:8000/api/v1/product`, { favArray })
+      .post(`${URL}/api/v1/product`, { favArray })
       // .then((response) => setUser(response.data))
       .then((response) => setFavproduct(response.data))
       .catch((err) => {

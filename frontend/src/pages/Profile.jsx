@@ -7,6 +7,7 @@ import OrderHistory from "../components/OrderHistory";
 import Newimage from "../components/Newimage";
 
 function Profile() {
+  const URL = import.meta.env.VITE_APP_URL;
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [editMode, setEditMode] = useState(false);
@@ -20,7 +21,7 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/usersaccounts/${id}`)
+      .get(`${URL}/api/v1/usersaccounts/${id}`)
       .then((response) => {
         setUser(response.data);
         setFormData({
@@ -47,7 +48,7 @@ function Profile() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:8000/api/v1/usersaccounts/${id}`, formData)
+      .put(`${URL}/api/v1/usersaccounts/${id}`, formData)
       .then((response) => {
         setUser(response.data);
         setEditMode(false);

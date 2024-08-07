@@ -6,6 +6,7 @@ import { Select, Space } from "antd";
 import { Upload } from "antd";
 
 const AddNewProduct = () => {
+  const URL = import.meta.env.VITE_APP_URL;
   /*  const handleChangeoption = (value) => {
     console.log(`selected ${value}`);
   }; */
@@ -40,7 +41,7 @@ const AddNewProduct = () => {
     // e.preventDefault();
     // axios.post(`http://localhost:8000/api/v1/product/${newitem}`);
     axios
-      .post("http://localhost:8000/api/v1/product", formData)
+      .post(`${URL}/api/v1/product`, formData)
       .then((response) => {
         console.log("Response:", response.data);
       })

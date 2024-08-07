@@ -6,6 +6,7 @@ import delivery from "../assets/dev.jpg";
 import ProductDetail from "../components/ProductDetail";
 
 const Paynow = ({ productPrice, productArray, setProductCount }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const id = localStorage.getItem("userId");
   const [orderhistory, setOrderhistory] = useState([]);
   const [payload, setPayload] = useState({
@@ -17,7 +18,7 @@ const Paynow = ({ productPrice, productArray, setProductCount }) => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:8000/api/v1/order", payload)
+      .post(`${URL}/api/v1/order`, payload)
       .then((response) => {
         console.log("Response:", response.data);
       })
@@ -30,7 +31,7 @@ const Paynow = ({ productPrice, productArray, setProductCount }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/order/${id}`)
+      .get(`${URL}/api/v1/order/${id}`)
       .then((response) => setOrderhistory(response.data))
       .catch((err) => {
         console.error(err);

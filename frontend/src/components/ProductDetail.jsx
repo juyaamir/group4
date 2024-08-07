@@ -3,6 +3,7 @@ import axios from "axios";
 import { Image } from "antd";
 
 const ProductDetail = ({ productId }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
 
@@ -10,7 +11,7 @@ const ProductDetail = ({ productId }) => {
     if (productId) {
       // Fetch product details
       axios
-        .get(`http://localhost:8000/api/v1/product/${productId}`)
+        .get(`${URL}/api/v1/product/${productId}`)
         .then((response) => {
           //  console.log("Product detail response:", response.data); // Log the response for debugging
           setProduct(response.data);

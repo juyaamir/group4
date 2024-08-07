@@ -4,6 +4,7 @@ import { storage } from "../firebaseConfig/FirebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const UpdataProduct = ({ itemid, ct }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [file, setFile] = useState("");
   const [imgurl, setImgurl] = useState("");
   const [updateFormData, setUpdateFormData] = useState({
@@ -29,7 +30,7 @@ const UpdataProduct = ({ itemid, ct }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/v1/product/${itemid}`,
+        `${URL}/api/v1/product/${itemid}`,
         updateFormData
       );
       console.log("Response:", response.data);

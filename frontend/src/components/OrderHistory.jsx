@@ -4,6 +4,7 @@ import axios from "axios";
 import ProductDetail from "../components/ProductDetail";
 
 const OrderHistory = ({ userId }) => {
+  const URL = import.meta.env.VITE_APP_URL;
   const [orderHistory, setOrderHistory] = useState([]);
   const [error, setError] = useState(null);
   const { id } = useParams();
@@ -13,7 +14,7 @@ const OrderHistory = ({ userId }) => {
       // Fetch order history
       console.log(id);
       axios
-        .get(`http://localhost:8000/api/v1/usersaccounts/${id}/orders`)
+        .get(`${URL}/api/v1/usersaccounts/${id}/orders`)
         .then((response) => {
           console.log("Order history response:", response.data); // Log the response for debugging
           setOrderHistory(response.data);

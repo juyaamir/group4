@@ -43,19 +43,9 @@ const ProductCard = ({
   const handleClick = useCallback((productId, price) => (event) => {
     setProductArray((current) => [...current, productId]);
     openNotification("top");
-<<<<<<< HEAD
-    let length = productArray.length + 1;
-    setProductCount(length);
-    // console.log(length);
-    /*  setProductPrice((cur) => [...cur, price]);
-    console.log(setProductPrice); */
-  };
-  ///DELETE Product//
-=======
     setProductCount((prevCount) => prevCount + 1);
   }, [setProductArray, setProductCount]);
 
->>>>>>> 35ba4d32cad12cbbc770614677ed2b7f1df0500e
   const handleClick2 = (item) => {
     axios.delete(`http://localhost:8000/api/v1/product/${item}`);
   };
@@ -155,9 +145,5 @@ const ProductCard = ({
     </>
   );
 };
-<<<<<<< HEAD
-export default ProductCard;
-=======
 
 export default ProductCard;
->>>>>>> 35ba4d32cad12cbbc770614677ed2b7f1df0500e

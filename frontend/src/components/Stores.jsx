@@ -162,6 +162,7 @@ const Stores = () => {
         </div>
       </div>
 
+
       <div className='mb-6'>
         <h1 className='text-center text-xl mt-6 mb-8'>ADVERTISEMENT</h1>
         <div className=' mx-10 justify-between '>

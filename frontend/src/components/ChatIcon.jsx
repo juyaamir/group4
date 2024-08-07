@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ChatIcon = ({ whatsappNumber, contactUs }) => {
   return (
@@ -14,13 +15,13 @@ const ChatIcon = ({ whatsappNumber, contactUs }) => {
           className="w-8 h-8"
         /> */}
       </a>
-      <a href={contactUs}>
+      <Link to={contactUs}>
         <img
           src="https://img.icons8.com/?size=100&id=CLuWGSvnuOz9&format=png&color=000000"
           alt="Contact Us"
           className="w-8 h-8"
         />
-      </a>
+      </Link>
     </div>
   );
 };

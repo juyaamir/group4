@@ -70,7 +70,7 @@ const ProductCard = ({
     openNotification("top");
     let length = productArray.length + 1;
     setProductCount(length);
-    console.log(length);
+    // console.log(length);
     /*  setProductPrice((cur) => [...cur, price]);
     console.log(setProductPrice); */
   };
@@ -131,7 +131,12 @@ const ProductCard = ({
             <div className="card-body  text-center">
               <figure className="relative max-w-full ">
                 <Link to={`/image-description/${item._id}`}>
-                  <Image width={200} height={220} src={item.image} alt={item.productname} />
+                  <Image
+                    width={200}
+                    height={220}
+                    src={item.image}
+                    alt={item.productname}
+                  />
                 </Link>
                 <div className="">
                   <div style={{ width: "1rem" }}>
@@ -163,7 +168,8 @@ const ProductCard = ({
                 <img
                   src={logo}
                   alt="logo"
-                  className="h-10 absolute w-10 rounded-full bottom4"/>
+                  className="h-10 absolute w-10 rounded-full bottom4"
+                />
               </figure>
               <h2 className="card-title text-lg">{item.productname}</h2>
               <p>

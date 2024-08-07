@@ -17,7 +17,7 @@ import ThemeToggle from "./Theme";
 
 const Header = ({ islogged, productCount }) => {
   let userid = localStorage.getItem("userId");
-  console.log(userid);
+
   const [headimg, setHeadimg] = useState([]);
   // let userlogged = islogged["islogged"];
   /*  console.log(favArray + "header"); */

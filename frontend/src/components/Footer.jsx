@@ -50,7 +50,7 @@ const Footer = () => {
               href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="link link-hover text-blue-500 hover:text-blue-700"
+              className="link link-hover hover:text-blue-600"
             >
               <i className="fa-brands fa-facebook"></i>
             </a>
@@ -58,7 +58,7 @@ const Footer = () => {
               href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="link link-hover text-red-400 hover:text-orange-600"
+              className="link link-hover hover:text-blue-600"
             >
               <i className="fa-brands fa-instagram"></i>
             </a>
@@ -66,7 +66,7 @@ const Footer = () => {
               href="https://www.twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="link link-hover text-blue-300 hover:text-blue-500"
+              className="link link-hover hover:text-blue-600"
             >
               <i className="fa-brands fa-square-twitter"></i>
             </a>
@@ -74,7 +74,7 @@ const Footer = () => {
               href="https://www.linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="link link-hover text-blue-400 hover:text-blue-600"
+              className="link link-hover hover:text-blue-600"
             >
               <i className="fa-brands fa-linkedin"></i>
             </a>
@@ -82,15 +82,15 @@ const Footer = () => {
               href="https://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="link link-hover text-blue-400 hover:text-blue-600"
+              className="link link-hover hover:text-blue-600"
             >
-              <i className="fa-brands fa-youtube text-red-500 hover:text-red-700 text-2xl"></i>
+              <i className="fa-brands fa-youtube hover:text-blue-600 text-2xl"></i>
             </a>
           </div>
         </nav>
       </footer>
 
-      <div className="bg-gray-900 text-white text-[14px] py-4 text-center">
+      <div className="bg-gray-900 text-gray-300 text-[14px] py-4 text-center">
         <p className="">
           &copy; {new Date().getFullYear()} JourneyPack All rights reserved
         </p>

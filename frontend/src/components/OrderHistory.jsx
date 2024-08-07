@@ -38,7 +38,7 @@ const OrderHistory = ({ userId }) => {
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold pl-4 pb-4">Orders History</h2>
       <div className="bg-white p-4 m-4 border border-1 rounded-md ">
-        {orderHistory.length > 0 ? (
+        {orderHistory.length ? (
           <div className="space-y-4">
             {orderHistory.map((order) => (
               <div key={order._id} className="border-b border-gray-200 pb-4">

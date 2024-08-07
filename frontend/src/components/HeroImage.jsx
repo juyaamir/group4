@@ -25,7 +25,7 @@ const HeroImage = () => {
           </p>
           <Link to={`/about`}>
             <div className="my-10 ml-4 flex">
-              <button className="h-12 w-56 rounded-full bg-white px-4 py-2 text-center font-OpenSans text-xl font-extrabold text-[#776c64] opacity-90 focus:border-2 focus:border-[#776c64] focus:outline-none">
+              <button className="hover:border-none border h-12 w-56 rounded-full bg-white px-4 py-2 text-center font-OpenSans text-xl font-extrabold text-[#776c64] opacity-90 focus:border-2 focus:border-[#776c64] focus:outline-none">
                 READ MORE
               </button>
             </div>
@@ -53,9 +53,12 @@ const HeroImage = () => {
           &nbsp; now
         </p>
         <Link to={`/signup`}>
-          <button className="h-12 w-56 rounded-full bg-[#776c64] px-4 py-2 text-center font-OpenSans text-xl font-extrabold text-white opacity-90 focus:border-2 focus:border-white focus:outline-none">
-            Sign up
-          </button>
+        <button
+        className=" border hover:border-none h-12 w-56 rounded-full bg-[#645a52] px-4 py-2 text-center font-OpenSans text-xl font-extrabold text-white opacity-90 focus:border-2 focus:border-white focus:outline-none hover:bg-[#5e544a] active:bg-[#4b423a]"
+        aria-label="Sign up for an account "
+      >
+        Sign up
+      </button>
         </Link>
       </div>
     </>

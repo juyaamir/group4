@@ -52,36 +52,6 @@ export const Message = ({ message }) => {
 
 
 
-/* export const Message = ({ message }) => {
-  const fullMessage = message.content;
-  const mid = Math.floor(fullMessage.length / 2);
-  const firstSpan = fullMessage.slice(0, mid);
-  const secondSpan = fullMessage.slice(mid);
-  const renderContent = (content) => {
-    // Assuming content is a string with Markdown or HTML list formatting
-    return (
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    );
-  };
-  return (
-    <div className="px-2 message">
-       {renderContent(message.content)}
-      <div className={message.role === "user" ? "right" : "left" }>
-      <p className="flex flex-wrap justify-around ">
-        <span className="w-56">
-          {firstSpan}
-        </span>
-        <span className="w-56">
-          {secondSpan}
-        </span>
-        </p>
-    </div>
-    </div>
-
-  );
-};
- */
-
 
 
 

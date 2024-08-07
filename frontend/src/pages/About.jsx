@@ -10,10 +10,10 @@ import snowgirl from "../assets/snowgirl.jpg";
 
 const About = () => {
   return (
-    <div className="text-grey px-6 md:px-12 lg:px-24">
-      <div className="hero bg-base-200 mb-12 md:mb-24">
+    <div className="text-grey px-6 md:px-12 lg:px-24 ">
+      <div className="hero bg-base-200 mb-12 md:mb-24 ">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <img src={packing} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={packing} className="max-w-sm rounded-lg shadow-2xl hover:cursor-pointer" />
           <div>
             <h1 className="text-3xl md:text-5xl font-bold pb-4 md:pb-6 text-[#deb37e]">Welcome to JourneyPack</h1>
             <h1 className="text-xl md:text-2xl font-bold italic pb-4 md:pb-6 text-gray-600">Your Ultimate Travel Companion!</h1>
@@ -27,28 +27,28 @@ const About = () => {
         <div className="mb-12 md:mb-24">
           <h2 className="text-xl md:text-2xl font-bold pb-4 md:pb-6">Why Choose JourneyPack?</h2>
 
-          <div className="collapse collapse-plus bg-base-200 mb-2">
+          <div className="collapse collapse-plus bg-base-200 mb-2 hover:cursor-pointer">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-lg md:text-xl font-medium">Personalized Packing Lists</div>
             <div className="collapse-content">
               <p>Get custom packing recommendations tailored to your destination's weather and your planned activities. Whether you are heading to a sunny beach, a snowy mountain, or a bustling city, we've got you covered.</p>
             </div>
           </div>
-          <div className="collapse collapse-plus bg-base-200 mb-2">
+          <div className="collapse collapse-plus bg-base-200 mb-2 hover:cursor-pointer">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-lg md:text-xl font-medium">Weather-Based Suggestions</div>
             <div className="collapse-content">
               <p>Our smart system analyzes the weather forecast at your destination and suggests appropriate clothing, gear, and accessories to keep you comfortable and prepared.</p>
             </div>
           </div>
-          <div className="collapse collapse-plus bg-base-200 mb-2">
+          <div className="collapse collapse-plus bg-base-200 mb-2 hover:cursor-pointer">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-lg md:text-xl font-medium">Activity-Specific Gear</div>
             <div className="collapse-content">
               <p>From hiking boots and snorkeling gear to city walking shoes and formal wear, we recommend items based on your itinerary to ensure you're ready for every adventure.</p>
             </div>
           </div>
-          <div className="collapse collapse-plus bg-base-200 mb-2">
+          <div className="collapse collapse-plus bg-base-200 mb-2 hover:cursor-pointer">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-lg md:text-xl font-medium">Shop with Ease</div>
             <div className="collapse-content">
@@ -56,7 +56,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <h2 className="text-xl md:text-2xl font-bold pb-4 md:pb-6">How It Works</h2>
+        <h2 className="text-xl md:text-2xl font-bold pb-4 md:pb-6 hover:cursor-pointer">How It Works</h2>
         <ul className="steps steps-vertical md:steps-horizontal text-black pb-4 md:pb-8">
           <li className="step step-primary">Select your destination</li>
           <li className="step step-primary">Choose Your Activities</li>
@@ -64,7 +64,7 @@ const About = () => {
           <li className="step">Go For Shop</li>
         </ul>
         <div className="flex flex-wrap gap-4 mb-12 md:mb-24 justify-center">
-          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105">
+          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105 hover:cursor-pointer">
             <figure>
               <img src={map} alt="destination map" />
             </figure>
@@ -73,7 +73,7 @@ const About = () => {
               <p>Enter your travel destination and dates to receive up-to-date weather forecasts and tailored packing advice.</p>
             </div>
           </div>
-          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105">
+          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105 hover:cursor-pointer">
             <figure>
               <img src={hiking} alt="activity pic" />
             </figure>
@@ -82,7 +82,7 @@ const About = () => {
               <p>Specify the activities you plan to do, such as hiking, swimming, dining out, or sightseeing.</p>
             </div>
           </div>
-          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105">
+          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105 hover:cursor-pointer">
             <figure>
               <img src={list} alt="list pic" />
             </figure>
@@ -91,7 +91,7 @@ const About = () => {
               <p>Receive a customized packing list with all the essentials you will need for your trip, based on the weather and your activities.</p>
             </div>
           </div>
-          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105">
+          <div className="card bg-base-100 w-full md:w-96 shadow-xl hover:scale-105 hover:cursor-pointer">
             <figure>
               <img src={shopping} alt="shopping pic" />
             </figure>
@@ -106,7 +106,7 @@ const About = () => {
         </div>
         <h2 className="text-xl md:text-2xl font-bold pb-4 md:pb-6">Explore Our Collections</h2>
         <div className="flex flex-wrap gap-4 mb-12 md:mb-24 justify-center">
-          <div className="card bg-base-100 image-full w-full md:w-96 shadow-xl hover:scale-105">
+          <div className="card bg-base-100 image-full w-full md:w-96 shadow-xl hover:scale-105 hover:cursor-pointer">
             <figure>
               <img src={snowgirl} alt="girl in snow" />
             </figure>
@@ -115,7 +115,7 @@ const About = () => {
               <p>Stay comfortable and stylish with our range of weather-appropriate clothing.</p>
             </div>
           </div>
-          <div className="card bg-base-100 image-full w-full md:w-96 shadow-xl hover:scale-105">
+          <div className="card bg-base-100 image-full w-full md:w-96 shadow-xl hover:scale-105 hover:cursor-pointer">
             <figure>
               <img src={kondol} alt="Kondol-lake pic" />
             </figure>
@@ -124,7 +124,7 @@ const About = () => {
               <p>Equip yourself with top-notch gear for outdoor activities and adventures.</p>
             </div>
           </div>
-          <div className="card bg-base-100 image-full w-full md:w-96 shadow-xl hover:scale-105">
+          <div className="card bg-base-100 image-full w-full md:w-96 shadow-xl hover:scale-105 hover:cursor-pointer">
             <figure>
               <img src={camera} alt="Camera pic" />
             </figure>

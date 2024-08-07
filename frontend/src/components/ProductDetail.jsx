@@ -32,13 +32,17 @@ const ProductDetail = ({ productId }) => {
 
   return (
     <div className="border-bottom rounded-md p-4 mb-4">
-      <div className="flex items-center">
-        <Image width={60} src={product.image} className="mr-4" />
+      <div className="flex items-center border border-4">
+        <Image width={100} src={product.image} className="mr-4" />
         <div className="pl-8">
-          <p className="font-semibold">Product Name: {product.productname}</p>
-          <p>Price: ${product.price}</p>
-          <p>Category: {product.category}</p>
-          <p>Product Id: {product._id}</p>
+          <p className="font-semibold m-2">
+            Product Name: {product.productname}
+          </p>
+          <p className="font-semibold m-2">Price: {product.price}&nbsp;€</p>
+          <p className="font-semibold m-2">Category: {product.category}</p>
+          <p className="font-semibold m-2">
+            Product Id: &nbsp;{product._id}&nbsp;
+          </p>
         </div>
       </div>
     </div>

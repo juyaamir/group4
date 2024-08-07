@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Table } from "antd";
-import delivery from "../assets/delivery.jpeg";
+import delivery from "../assets/dev.jpg";
+import ProductDetail from "../components/ProductDetail";
 
 const Paynow = ({ productPrice, productArray, setProductCount }) => {
   const id = localStorage.getItem("userId");
@@ -66,10 +67,10 @@ const Paynow = ({ productPrice, productArray, setProductCount }) => {
         backgroundImage: `url(${delivery})`,
       }}
     >
-      <div className="hero-overlay "></div>
-      <div className="hero-content text-neutral-content text-center">
+      <div className="hero"></div>
+      <div className="hero-content  text-center">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold text-yellow">
+          <h1 className="mb-5 text-5xl text-left font-bold text-yellow">
             Congratulations! Your order has been received successfully.
           </h1>
           <p className="mb-5">
@@ -77,13 +78,22 @@ const Paynow = ({ productPrice, productArray, setProductCount }) => {
             your order.
           </p>
           <div tabIndex={0} className="collapse bg-base-200">
-            <div className="collapse-title text-xl font-medium text-black">
+            <div className="collapse-title text-xl font-medium text-Red">
               Your Order History
             </div>
-            <div className="collapse-content text-black">
+            <div className="collapse-content text-black w-max-full">
               <p>{lastOrder && lastOrder?.userId}</p>
-              <p>{lastOrder && lastOrder?.price}</p>
-              <p>{lastOrder && lastOrder?.productId}</p>
+              <p className="text-blue">
+                Total Amount : &nbsp;{lastOrder && lastOrder?.price}&nbsp;€
+              </p>
+              {/* <p>{lastOrder && lastOrder?.productId}</p> */}
+              <p>
+                <div className="mt-2">
+                  {lastOrder?.productId.map((productId) => (
+                    <ProductDetail key={productId} productId={productId} />
+                  ))}
+                </div>
+              </p>
             </div>
           </div>
         </div>
